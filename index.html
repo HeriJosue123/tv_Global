@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tv_Global - Copa del Mundo</title>
+    <meta name="description" content="Plataforma premium para disfrutar de los partidos de la Copa del Mundo.">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">🏆 tv_Global</div>
+        <ul class="nav-links">
+            <li><a href="#">En Vivo</a></li>
+            <li><a href="#">Partidos</a></li>
+        </ul>
+    </nav>
+    <main class="container">
+        <section class="video-section">
+            <div class="glass-panel">
+                <div class="video-wrapper">
+                    <!-- Placeholder de video para probar las URLs -->
+                    <video id="main-player" controls>
+                        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                        Tu navegador no soporta la etiqueta de video.
+                    </video>
+                </div>
+                <div class="match-info">
+                    <h1 id="match-title">Partido Destacado</h1>
+                    <p id="match-description">Selecciona un partido para verlo en el reproductor.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="matches-list">
+            <h2>Próximos Partidos</h2>
+            <div class="grid">
+                <!-- Tarjetas interactivas -->
+                <div class="match-card" onclick="playMatch('Brasil vs Argentina', 'https://www.w3schools.com/html/mov_bbb.mp4')">
+                    <div class="match-teams">🇧🇷 BRA vs ARG 🇦🇷</div>
+                    <div class="match-status live">En Vivo</div>
+                </div>
+                <div class="match-card" onclick="playMatch('Francia vs Inglaterra', 'https://www.w3schools.com/html/mov_bbb.mp4')">
+                    <div class="match-teams">🇫🇷 FRA vs ENG 🏴󠁧󠁢󠁥󠁮󠁧󠁿</div>
+                    <div class="match-status">14:00 hrs</div>
+                </div>
+                <div class="match-card" onclick="playMatch('España vs Alemania', 'https://www.w3schools.com/html/mov_bbb.mp4')">
+                    <div class="match-teams">🇪🇸 ESP vs GER 🇩🇪</div>
+                    <div class="match-status">Mañana</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
