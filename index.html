@@ -290,7 +290,7 @@ left:1px;
         <iframe id="main-player" src="" frameborder="0" allowfullscreen="" allow="autoplay; encrypted-media" style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
     </div>
     <div style="text-align:center; margin-top:10px;">
-        <button onclick="document.getElementById('player-wrapper').style.display='none'; document.getElementById('main-player').src='';" style="background:#ff3b30; color:white; border:none; padding:10px 20px; border-radius:5px; cursor:pointer; font-weight:bold;">Cerrar Reproductor</button>
+        <button onclick="closePlayer()" style="background:#ff3b30; color:white; border:none; padding:10px 20px; border-radius:5px; cursor:pointer; font-weight:bold;">Cerrar Reproductor</button>
     </div>
 </div>
 <div id="channels" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
@@ -918,11 +918,20 @@ function toggleChat() {
 
 
 <script>
+    let lastScrollPosition = 0;
+    
     function playChannel(url) {
+        lastScrollPosition = window.scrollY || document.documentElement.scrollTop;
         const wrapper = document.getElementById('player-wrapper');
         const player = document.getElementById('main-player');
         player.src = url;
         wrapper.style.display = 'block';
         wrapper.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function closePlayer() {
+        document.getElementById('player-wrapper').style.display = 'none';
+        document.getElementById('main-player').src = '';
+        window.scrollTo({ top: lastScrollPosition, behavior: 'smooth' });
     }
 </script></body></html>
