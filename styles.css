@@ -80,10 +80,11 @@ body {
     background-color: #000;
 }
 
-video {
+video, iframe {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border: none;
 }
 
 .match-info {

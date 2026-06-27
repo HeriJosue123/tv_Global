@@ -8,10 +8,7 @@ function playMatch(title, videoUrl) {
     // Cambiar el título
     matchTitle.textContent = title;
     
-    // Reproducir automáticamente al hacer clic
-    player.play().catch(error => {
-        console.log("La reproducción automática requiere interacción en algunos navegadores:", error);
-    });
+    // Los iframes cargan su reproductor automáticamente. No es necesario llamar a .play()
     
     // Hacer scroll suave hacia el reproductor
     window.scrollTo({

@@ -21,10 +21,7 @@
             <div class="glass-panel">
                 <div class="video-wrapper">
                     <!-- Placeholder de video para probar las URLs -->
-                    <video id="main-player" controls>
-                        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-                        Tu navegador no soporta la etiqueta de video.
-                    </video>
+                    <iframe id="main-player" src="https://embedindia.st/embed/wc/2026-06-26/uru-esp/telemundo" allowfullscreen allow="encrypted-media; autoplay"></iframe>
                 </div>
                 <div class="match-info">
                     <h1 id="match-title">Partido Destacado</h1>
@@ -36,18 +33,30 @@
         <section class="matches-list">
             <h2>Próximos Partidos</h2>
             <div class="grid">
-                <!-- Tarjetas interactivas -->
-                <div class="match-card" onclick="playMatch('Brasil vs Argentina', 'https://www.w3schools.com/html/mov_bbb.mp4')">
-                    <div class="match-teams">🇧🇷 BRA vs ARG 🇦🇷</div>
-                    <div class="match-status live">En Vivo</div>
+                <!-- Opciones de transmisión -->
+                <div class="match-card" onclick="playMatch('Telemundo (Español)', 'https://embedindia.st/embed/wc/2026-06-26/uru-esp/telemundo')">
+                    <div class="match-teams">Telemundo</div>
+                    <div class="match-status live">ES</div>
                 </div>
-                <div class="match-card" onclick="playMatch('Francia vs Inglaterra', 'https://www.w3schools.com/html/mov_bbb.mp4')">
-                    <div class="match-teams">🇫🇷 FRA vs ENG 🏴󠁧󠁢󠁥󠁮󠁧󠁿</div>
-                    <div class="match-status">14:00 hrs</div>
+                <div class="match-card" onclick="playMatch('DSports (Español)', 'https://embedindia.st/embed/wc/2026-06-26/uru-esp/dsports')">
+                    <div class="match-teams">DSports</div>
+                    <div class="match-status live">ES</div>
                 </div>
-                <div class="match-card" onclick="playMatch('España vs Alemania', 'https://www.w3schools.com/html/mov_bbb.mp4')">
-                    <div class="match-teams">🇪🇸 ESP vs GER 🇩🇪</div>
-                    <div class="match-status">Mañana</div>
+                <div class="match-card" onclick="playMatch('DAZN Spain (Español)', 'https://embedindia.st/embed/wc/2026-06-26/uru-esp/dazn')">
+                    <div class="match-teams">DAZN Spain</div>
+                    <div class="match-status live">ES</div>
+                </div>
+                <div class="match-card" onclick="playMatch('Peacock 4K (Inglés)', 'https://embedindia.st/embed/wc/2026-06-26/uru-esp/peacock-4k')">
+                    <div class="match-teams">Peacock 4K</div>
+                    <div class="match-status">EN | HEVC</div>
+                </div>
+                <div class="match-card" onclick="playMatch('FOX (Inglés)', 'https://embedindia.st/embed/wc/2026-06-26/uru-esp/fox')">
+                    <div class="match-teams">FOX</div>
+                    <div class="match-status">EN</div>
+                </div>
+                <div class="match-card" onclick="playMatch('Fussball UHD', 'https://embedindia.st/embed/wc/2026-06-26/uru-esp/fussball-uhd')">
+                    <div class="match-teams">Fussball.TV</div>
+                    <div class="match-status">UHD | DE</div>
                 </div>
             </div>
         </section>
