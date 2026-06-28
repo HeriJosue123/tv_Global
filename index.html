@@ -382,10 +382,12 @@ body {
 
 <div id="mobile-menu" class="hidden absolute right-0 top-12 bg-black rounded-lg p-2 w-44 shadow-2xl z-50" style="border:1px solid #bea67a">
 <button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="home">HOME</button>
-
 <div style="height:1px;background:#bea67a;margin:4px 0;"></div>
-
-<button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="vip">VIP 👑</button>
+<button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="eventos">EVENTOS</button>
+<div style="height:1px;background:#bea67a;margin:4px 0;"></div>
+<button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="nacional">NACIONAL 🇸🇻</button>
+<div style="height:1px;background:#bea67a;margin:4px 0;"></div>
+<button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="premium">PREMIUM 👑</button>
 </div>
 </div>
 
@@ -395,7 +397,9 @@ body {
 
 <div class="menu">
 <button class="menu-btn active" data-page="home">HOME</button>
-<button class="menu-btn" data-page="vip" style="color: gold; text-shadow: 0 0 5px gold;">VIP 👑</button>
+<button class="menu-btn" data-page="eventos">EVENTOS</button>
+<button class="menu-btn" data-page="nacional">NACIONAL 🇸🇻</button>
+<button class="menu-btn" data-page="premium" style="color: gold; text-shadow: 0 0 5px gold;">PREMIUM 👑</button>
 
 <div class="search-box">
 <input type="text" id="searchInput" class="search-input" placeholder="Buscar canal...">
@@ -416,51 +420,6 @@ body {
     </div>
     <div style="text-align:center; margin-top:10px;">
         <button onclick="closePlayer()" class="close-btn">Volver al Inicio</button>
-    </div>
-</div>
-
-<div id="vip-filters" style="display:none; background: rgba(0,0,0,0.5); padding: 15px; border-radius: 10px; margin-bottom: 20px; border: 1px solid rgba(207,168,94,0.3); display: flex; flex-wrap: wrap; gap: 15px; align-items: center;">
-    <div style="flex: 1; min-width: 200px;">
-        <label style="color: gold; font-weight: bold; font-size: 14px; margin-bottom: 5px; display: block;">🌍 País:</label>
-        <select id="vip-country-filter" style="width: 100%; padding: 10px; background: #111; color: white; border: 1px solid #333; border-radius: 5px;">
-            <option value="ALL">Todos los Países</option>
-            <option value="SV" selected>🇸🇻 El Salvador (Prioridad)</option>
-            <option value="MX">🇲🇽 México</option>
-            <option value="AR">🇦🇷 Argentina</option>
-            <option value="CO">🇨🇴 Colombia</option>
-            <option value="ES">🇪🇸 España</option>
-            <option value="US">🇺🇸 Estados Unidos</option>
-            <option value="CL">🇨🇱 Chile</option>
-            <option value="PE">🇵🇪 Perú</option>
-            <option value="VE">🇻🇪 Venezuela</option>
-            <option value="EC">🇪🇨 Ecuador</option>
-            <option value="GT">🇬🇹 Guatemala</option>
-            <option value="CU">🇨🇺 Cuba</option>
-            <option value="DO">🇩🇴 Rep. Dominicana</option>
-            <option value="HN">🇭🇳 Honduras</option>
-            <option value="PY">🇵🇾 Paraguay</option>
-            <option value="NI">🇳🇮 Nicaragua</option>
-            <option value="CR">🇨🇷 Costa Rica</option>
-            <option value="PA">🇵🇦 Panamá</option>
-            <option value="UY">🇺🇾 Uruguay</option>
-            <option value="BR">🇧🇷 Brasil</option>
-            <option value="PR">🇵🇷 Puerto Rico</option>
-        </select>
-    </div>
-    <div style="flex: 1; min-width: 200px;">
-        <label style="color: gold; font-weight: bold; font-size: 14px; margin-bottom: 5px; display: block;">📺 Categoría:</label>
-        <select id="vip-category-filter" style="width: 100%; padding: 10px; background: #111; color: white; border: 1px solid #333; border-radius: 5px;">
-            <option value="ALL" selected>Todas las Categorías</option>
-            <option value="Noticias">📰 Noticias</option>
-            <option value="Deportes">⚽ Deportes</option>
-            <option value="Música">🎵 Música</option>
-            <option value="Religioso">🙏 Religioso</option>
-            <option value="Películas">🎬 Películas</option>
-            <option value="Entretenimiento">🎭 Entretenimiento</option>
-            <option value="Infantil">🧸 Infantil</option>
-            <option value="Documentales">🌍 Documentales</option>
-            <option value="Educación">📚 Educación</option>
-        </select>
     </div>
 </div>
 
@@ -975,12 +934,13 @@ btn.classList.add("active")
 const page = btn.dataset.page
 
 if(page==="home"){
-document.getElementById("vip-filters").style.display = "none";
 grid.innerHTML = originalHome
 }
-if(page==="vip"){
-document.getElementById("vip-filters").style.display = "flex";
-renderVipChannels();
+if(page==="nacional"){
+renderNacionalChannels();
+}
+if(page==="premium"){
+renderPremiumChannels();
 }
 
 
@@ -1151,34 +1111,18 @@ function toggleChat() {
         window.scrollTo({ top: lastScrollPosition, behavior: 'smooth' });
     }
 
-function renderVipChannels() {
-    if (typeof vipDatabase === 'undefined') {
-        grid.innerHTML = '<h3 style="color:red; text-align:center; width:100%;">Error: No se pudo cargar la base de datos VIP.</h3>';
+
+function renderNacionalChannels() {
+    if (typeof vipDatabase === 'undefined' || vipDatabase.length === 0) {
+        grid.innerHTML = '<h3 style="color:red; text-align:center; width:100%;">No hay canales nacionales disponibles.</h3>';
         return;
     }
-    
-    const country = document.getElementById("vip-country-filter").value;
-    const category = document.getElementById("vip-category-filter").value;
-    
-    let filtered = vipDatabase.filter(c => {
-        let matchCountry = (country === 'ALL' || c.country === country);
-        let matchCategory = (category === 'ALL' || c.category === category);
-        return matchCountry && matchCategory;
-    });
-
-    if (filtered.length === 0) {
-        grid.innerHTML = '<h3 style="color:gray; text-align:center; width:100%; padding: 20px;">No se encontraron canales para esta combinación.</h3>';
-        return;
-    }
-
-    // Limit to 500 max to avoid crashing
-    filtered = filtered.slice(0, 500);
 
     let html = '';
-    filtered.forEach(c => {
+    vipDatabase.forEach(c => {
         html += `
         <a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('${c.url}')">
-          <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+          <div class="live"><span class="live-dot"></span>EN VIVO</div>
           <img src="${c.logo}" alt="${c.name}" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
           <p class="channel-name">${c.name}</p>
         </a>`;
@@ -1188,8 +1132,15 @@ function renderVipChannels() {
     animateCards();
 }
 
-document.getElementById("vip-country-filter").addEventListener('change', renderVipChannels);
-document.getElementById("vip-category-filter").addEventListener('change', renderVipChannels);
+function renderPremiumChannels() {
+    grid.innerHTML = `
+        <div style="width: 100%; text-align: center; padding: 50px 20px;">
+            <h2 style="color: gold; margin-bottom: 15px;">👑 Sección Premium Vacía 👑</h2>
+            <p style="color: #ccc; font-size: 16px;">Próximamente: Enlaces a HBO, FOX, Star+ y más canales de pago.</p>
+        </div>
+    `;
+}
+
 </script>
 </body>
 </html>
