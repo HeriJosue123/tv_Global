@@ -859,30 +859,756 @@ const originalHome = grid.innerHTML;
 
 
 const vipChannels = `
-<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://rbmn-live.akamaized.net/hls/live/590964/BoRB-AT/master.m3u8')">
+
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://www.streaming101tv.es:19360/axarquia/axarquia.m3u8')">
   <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
-  <img src="https://ui-avatars.com/api/?name=RB&background=ffd700&color=000&size=128" alt="Red Bull TV" style="border-radius:10px;">
-  <p class="channel-name">Red Bull TV</p>
+  <img src="https://ui-avatars.com/api/?name=101tv%20Axarquia&background=ffd700&color=000&size=128" alt="101tv Axarquia" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">101tv Axarquia</p>
 </a>
-<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://dwamdstream104.akamaized.net/hls/live/2015530/dwstream104/index.m3u8')">
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://streaming101tv.es:19360/cadiz/cadiz.m3u8')">
   <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
-  <img src="https://ui-avatars.com/api/?name=DW&background=ffd700&color=000&size=128" alt="DW Español" style="border-radius:10px;">
-  <p class="channel-name">DW Español</p>
+  <img src="https://ui-avatars.com/api/?name=101tv%20Cadiz&background=ffd700&color=000&size=128" alt="101tv Cadiz" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">101tv Cadiz</p>
 </a>
-<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://static.france24.com/live/F24_ES_HI_HLS/live_web.m3u8')">
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://liveingesta318.cdnmedia.tv/101weblive/smil:malaga.smil/playlist.m3u8')">
   <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
-  <img src="https://ui-avatars.com/api/?name=F24&background=ffd700&color=000&size=128" alt="France 24 Español" style="border-radius:10px;">
-  <p class="channel-name">France 24 Español</p>
+  <img src="https://ui-avatars.com/api/?name=101tv%20Malaga&background=ffd700&color=000&size=128" alt="101tv Malaga" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">101tv Malaga</p>
 </a>
-<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://rtve-live-hls-tve.akamaized.net/hls/live/2021464/24h/master.m3u8')">
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://liveingesta318.cdnmedia.tv/101weblive/smil:sevilla.smil/playlist.m3u8')">
   <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
-  <img src="https://ui-avatars.com/api/?name=24H&background=ffd700&color=000&size=128" alt="RTVE 24h" style="border-radius:10px;">
-  <p class="channel-name">RTVE 24h</p>
+  <img src="https://ui-avatars.com/api/?name=101tv%20Sevilla&background=ffd700&color=000&size=128" alt="101tv Sevilla" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">101tv Sevilla</p>
 </a>
-<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://bcovlive-a.akamaihd.net/19b535b7499a4719a5c09ec4d7651aeb/us-east-1/6276922619001/playlist.m3u8')">
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://cloud.streamingconnect.tv/hls/12tv/12tv2.m3u8')">
   <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
-  <img src="https://ui-avatars.com/api/?name=NTN&background=ffd700&color=000&size=128" alt="NTN24" style="border-radius:10px;">
-  <p class="channel-name">NTN24</p>
+  <img src="https://ui-avatars.com/api/?name=12tv&background=ffd700&color=000&size=128" alt="12tv" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">12tv</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://origin.dpsgo.com/ssai/event/GI-9cp_bT8KcerLpZwkuhw/master.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=13C&background=ffd700&color=000&size=128" alt="13C" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">13C</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://origin.dpsgo.com/ssai/event/BBp0VeP6QtOOlH8nu3bWTg/master.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=13E&background=ffd700&color=000&size=128" alt="13E" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">13E</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://origin.dpsgo.com/ssai/event/Nftd0fM2SXasfDlRphvUsg/master.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=13%20Festival&background=ffd700&color=000&size=128" alt="13 Festival" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">13 Festival</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://origin.dpsgo.com/ssai/event/cKWySXKgSK-SzlJmESkOWw/master.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=13%20Humor&background=ffd700&color=000&size=128" alt="13 Humor" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">13 Humor</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://origin.dpsgo.com/ssai/event/LhHrVtyeQkKZ-Ye_xEU75g/master.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=13%20Kids&background=ffd700&color=000&size=128" alt="13 Kids" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">13 Kids</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://origin.dpsgo.com/ssai/event/p4mmBxEzSmKAxY1GusOHrw/master.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=13P&background=ffd700&color=000&size=128" alt="13P" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">13P</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://origin.dpsgo.com/ssai/event/g7_JOM0ORki9SR5RKHe-Kw/master.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=13%20Realities&background=ffd700&color=000&size=128" alt="13 Realities" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">13 Realities</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('http://45.4.1.201:8000/play/a11i/index.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=13Rec&background=ffd700&color=000&size=128" alt="13Rec" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">13Rec</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://origin.dpsgo.com/ssai/event/f4TrySe8SoiGF8Lu3EIq1g/master.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=13T&background=ffd700&color=000&size=128" alt="13T" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">13T</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://v2.tustreaming.cl/enlacebpbtv/index.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=15.1%20BPB&background=ffd700&color=000&size=128" alt="15.1 BPB" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">15.1 BPB</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://cdn.fastocloud.com/leonel.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=15TV&background=ffd700&color=000&size=128" alt="15TV" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">15TV</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://jmp2.uk/plu-60940a07d88ba90007b9cb71.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=16%20Anni%20e%20Incinta&background=ffd700&color=000&size=128" alt="16 Anni e Incinta" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">16 Anni e Incinta</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://panel.host-live.com:19360/cn247tv/cn247tv.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=24%2F7%20Canal%20de%20Noticias&background=ffd700&color=000&size=128" alt="24/7 Canal de Noticias" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">24/7 Canal de Noticias</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://master.tucableip.com/eldebertv/index.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=24%2F7%20TV&background=ffd700&color=000&size=128" alt="24/7 TV" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">24/7 TV</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://ztnr.rtve.es/ztnr/1694255.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=24%20Horas&background=ffd700&color=000&size=128" alt="24 Horas" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">24 Horas</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://ztnr.rtve.es/ztnr/5473142.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=24%20Horas%20Canarias&background=ffd700&color=000&size=128" alt="24 Horas Canarias" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">24 Horas Canarias</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://ztnr.rtve.es/ztnr/4952053.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=24%20Horas%20Catalunya&background=ffd700&color=000&size=128" alt="24 Horas Catalunya" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">24 Horas Catalunya</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://d1b5mlajbmvkjv.cloudfront.net/v1/master/9d062541f2ff39b5c0f48b743c6411d25f62fc25/UDU-DistroTV/145.m3u8?ads.vf=7FhdsxqVxOi')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=24%20Hour%20Free%20Movies&background=ffd700&color=000&size=128" alt="24 Hour Free Movies" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">24 Hour Free Movies</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('http://91.132.74.5:8000/play/a00a')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=24Kitchen&background=ffd700&color=000&size=128" alt="24Kitchen" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">24Kitchen</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://streaming.28kanala.eus/hls/z.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=28%20kanala&background=ffd700&color=000&size=128" alt="28 kanala" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">28 kanala</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://30a-tv.com/darcizzle.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=30A%20Darcizzle%20Offshore&background=ffd700&color=000&size=128" alt="30A Darcizzle Offshore" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">30A Darcizzle Offshore</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://30a-tv.com/gh.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=30A%20Georgia%20Hollywood%20Review&background=ffd700&color=000&size=128" alt="30A Georgia Hollywood Review" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">30A Georgia Hollywood Review</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://30a-tv.com/feeds/vidaa/golf.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=30A%20Golf%20Kingdom&background=ffd700&color=000&size=128" alt="30A Golf Kingdom" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">30A Golf Kingdom</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://30a-tv.com/feeds/xodglobal/30atv.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=30A%20Investment%20Pitch&background=ffd700&color=000&size=128" alt="30A Investment Pitch" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">30A Investment Pitch</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://30a-tv.com/ln.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=30A%20Lionel%20Nation&background=ffd700&color=000&size=128" alt="30A Lionel Nation" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">30A Lionel Nation</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://30a-tv.com/loomer.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=30A%20Loomered%20TV&background=ffd700&color=000&size=128" alt="30A Loomered TV" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">30A Loomered TV</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://30a-tv.com/feeds/vidaa/luxelife.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=30A%20Luxe%20Life%20Discovered&background=ffd700&color=000&size=128" alt="30A Luxe Life Discovered" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">30A Luxe Life Discovered</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://30a-tv.com/music.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=30A%20Music&background=ffd700&color=000&size=128" alt="30A Music" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">30A Music</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://30a-tv.com/feeds/720p/63.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=30A%20Ridiculous%20TV&background=ffd700&color=000&size=128" alt="30A Ridiculous TV" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">30A Ridiculous TV</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://30a-tv.com/sidewalks.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=30A%20Sidewalks&background=ffd700&color=000&size=128" alt="30A Sidewalks" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">30A Sidewalks</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://30a-tv.com/feeds/masters/30atv.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=30A%20Television%20Channel&background=ffd700&color=000&size=128" alt="30A Television Channel" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">30A Television Channel</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://30a-tv.com/beachy.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=30A%20The%20Beach%20Show&background=ffd700&color=000&size=128" alt="30A The Beach Show" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">30A The Beach Show</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://30a-tv.com/feeds/pzaz/30atvmovies.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=30A%20TV%20Classic%20Movies&background=ffd700&color=000&size=128" alt="30A TV Classic Movies" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">30A TV Classic Movies</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://30a-tv.com/feeds/vidaa/cars.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=30A%20We%20Love%20Cars&background=ffd700&color=000&size=128" alt="30A We Love Cars" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">30A We Love Cars</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://acceso.mediosdecostarica.com:3638/live/360rftvcrlive.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=360%20RFTV&background=ffd700&color=000&size=128" alt="360 RFTV" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">360 RFTV</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://live-evg10.tv360.bitel.com.pe/bitel/36tvSRT/playlist.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=36%20TV%20Huacho&background=ffd700&color=000&size=128" alt="36 TV Huacho" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">36 TV Huacho</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://3abn.bozztv.com/3abn2/3abn_live/smil:3abn_live.smil/playlist.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=3ABN%20English&background=ffd700&color=000&size=128" alt="3ABN English" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">3ABN English</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://3abn.bozztv.com/3abn2/Fre_live/smil:Fre_live.smil/playlist.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=3ABN%20French&background=ffd700&color=000&size=128" alt="3ABN French" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">3ABN French</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://3abn.bozztv.com/3abn2/Int_live/smil:Int_live.smil/playlist.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=3ABN%20International&background=ffd700&color=000&size=128" alt="3ABN International" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">3ABN International</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://3abn.bozztv.com/3abn2/Kids_live/smil:Kids_live.smil/playlist.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=3ABN%20Kids&background=ffd700&color=000&size=128" alt="3ABN Kids" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">3ABN Kids</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://3abn.bozztv.com/3abn2/Lat_live/smil:Lat_live.smil/playlist.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=3ABN%20Latino&background=ffd700&color=000&size=128" alt="3ABN Latino" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">3ABN Latino</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://3abn.bozztv.com/3abn1/PraiseHim/smil:PraiseHim.smil/playlist.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=3ABN%20Praise%20Him%20Music%20Network&background=ffd700&color=000&size=128" alt="3ABN Praise Him Music Network" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">3ABN Praise Him Music Network</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://3abn.bozztv.com/3abn2/Pro_live/smil:Pro_live.smil/playlist.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=3ABN%20Proclaim!%20Network&background=ffd700&color=000&size=128" alt="3ABN Proclaim! Network" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">3ABN Proclaim! Network</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://directes-tv-int.3catdirectes.cat/live-content/beauties-hls/master.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=3Cat%20Cameres%20del%20temps&background=ffd700&color=000&size=128" alt="3Cat Cameres del temps" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">3Cat Cameres del temps</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://fast-tailor.3catdirectes.cat/v1/channel/bunquer/hls.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=3Cat%20El%20bunquer&background=ffd700&color=000&size=128" alt="3Cat El bunquer" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">3Cat El bunquer</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://directes-tv-cat.3catdirectes.cat/live-content/oca1-hls/master.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=3Cat%20Exclusiu%201&background=ffd700&color=000&size=128" alt="3Cat Exclusiu 1" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">3Cat Exclusiu 1</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://directes-tv-cat.3catdirectes.cat/live-content/oca2-hls/master.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=3Cat%20Exclusiu%202&background=ffd700&color=000&size=128" alt="3Cat Exclusiu 2" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">3Cat Exclusiu 2</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://directes-tv-cat.3catdirectes.cat/live-content/oca3-hls/master.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=3Cat%20Exclusiu%203&background=ffd700&color=000&size=128" alt="3Cat Exclusiu 3" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">3Cat Exclusiu 3</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://directes-tv-int.3catdirectes.cat/live-origin/canal324-hls/master.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=3CatInfo&background=ffd700&color=000&size=128" alt="3CatInfo" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">3CatInfo</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://fast-tailor.3catdirectes.cat/v1/channel/ccma-channel2/hls.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=3Cat%20Plats%20bruts&background=ffd700&color=000&size=128" alt="3Cat Plats bruts" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">3Cat Plats bruts</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://jmp2.uk/plu-62e925bc68d18a00077bb990.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=48%20Hours&background=ffd700&color=000&size=128" alt="48 Hours" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">48 Hours</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://rds3.desdeparaguay.net/4dmasnoticiastv/4dmasnoticiastv/playlist.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=4Dmas%20Noticias%20TV&background=ffd700&color=000&size=128" alt="4Dmas Noticias TV" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">4Dmas Noticias TV</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://jmp2.uk/plu-68487fb3f212bedacf5a53e3.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=50%20Cent%20Action&background=ffd700&color=000&size=128" alt="50 Cent Action" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">50 Cent Action</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://jmp2.uk/plu-5d2c571faeb3e2738ae27933.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=5%20Cops&background=ffd700&color=000&size=128" alt="5 Cops" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">5 Cops</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('http://www.coninfo.net:1935/tvcinco/live1/playlist.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=5tv&background=ffd700&color=000&size=128" alt="5tv" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">5tv</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://live.enhdtv.com:8081/8150/index.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=6%20Wise%20Tv&background=ffd700&color=000&size=128" alt="6 Wise Tv" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">6 Wise Tv</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://jmp2.uk/plu-5f4d878d3d19b30007d2e782.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=70s%20Cinema&background=ffd700&color=000&size=128" alt="70s Cinema" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">70s Cinema</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://jmp2.uk/plu-5ca525b650be2571e3943c63.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=80s%20Rewind&background=ffd700&color=000&size=128" alt="80s Rewind" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">80s Rewind</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('http://k3.usastreams.com/CableLatino/88stereo/playlist.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=88%20Stereo&background=ffd700&color=000&size=128" alt="88 Stereo" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">88 Stereo</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://streaming005.gestec-video.com/hls/canal24.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=8%20La%20Marina%20TV&background=ffd700&color=000&size=128" alt="8 La Marina TV" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">8 La Marina TV</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://60417ddeaf0d9.streamlock.net/ntv/videontv/playlist.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=8NTV&background=ffd700&color=000&size=128" alt="8NTV" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">8NTV</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://jmp2.uk/plu-65a67dd13af63d0008257f17.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=90210&background=ffd700&color=000&size=128" alt="90210" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">90210</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://jmp2.uk/plu-5f4d86f519358a00072b978e.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=90s%20Throwback&background=ffd700&color=000&size=128" alt="90s Throwback" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">90s Throwback</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://9laloma.tv/live.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=9%20la%20Loma%20TV&background=ffd700&color=000&size=128" alt="9 la Loma TV" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">9 la Loma TV</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://g5.vxral-slo.transport.edge-access.net/a12/ngrp:a24-100056_all/playlist.m3u8?sense=true')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=A24&background=ffd700&color=000&size=128" alt="A24" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">A24</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('http://45.184.109.10/live/69393EAE6ADBC65A68F942022362A202/6.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=A24%20Paraguay&background=ffd700&color=000&size=128" alt="A24 Paraguay" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">A24 Paraguay</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://5ff3d9babae13.streamlock.net/ynfpncxxjg/ynfpncxxjg/playlist.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=Abajo%20e'%20La%20Linea%20TV&background=ffd700&color=000&size=128" alt="Abajo e' La Linea TV" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">Abajo e' La Linea TV</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('http://41.205.93.154/ABC/index.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=ABC&background=ffd700&color=000&size=128" alt="ABC" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">ABC</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://jmp2.uk/plu-6508be683a0d700008c534e4.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=ABC%20News%20Live&background=ffd700&color=000&size=128" alt="ABC News Live" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">ABC News Live</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://abcnews-streams.akamaized.net/hls/live/2023560/abcnewshudson1/master.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=ABC%20News%20Live%201&background=ffd700&color=000&size=128" alt="ABC News Live 1" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">ABC News Live 1</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://abcnews-streams.akamaized.net/hls/live/2023569/abcnewshudson10/master.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=ABC%20News%20Live%2010&background=ffd700&color=000&size=128" alt="ABC News Live 10" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">ABC News Live 10</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://abcnews-streams.akamaized.net/hls/live/2023561/abcnewshudson2/master.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=ABC%20News%20Live%202&background=ffd700&color=000&size=128" alt="ABC News Live 2" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">ABC News Live 2</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://abcnews-streams.akamaized.net/hls/live/2023562/abcnewshudson3/master.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=ABC%20News%20Live%203&background=ffd700&color=000&size=128" alt="ABC News Live 3" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">ABC News Live 3</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://abcnews-streams.akamaized.net/hls/live/2023563/abcnewshudson4/master.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=ABC%20News%20Live%204&background=ffd700&color=000&size=128" alt="ABC News Live 4" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">ABC News Live 4</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://abcnews-streams.akamaized.net/hls/live/2023564/abcnewshudson5/master.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=ABC%20News%20Live%205&background=ffd700&color=000&size=128" alt="ABC News Live 5" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">ABC News Live 5</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://abcnews-streams.akamaized.net/hls/live/2023565/abcnewshudson6/master.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=ABC%20News%20Live%206&background=ffd700&color=000&size=128" alt="ABC News Live 6" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">ABC News Live 6</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://abcnews-streams.akamaized.net/hls/live/2023566/abcnewshudson7/master.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=ABC%20News%20Live%207&background=ffd700&color=000&size=128" alt="ABC News Live 7" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">ABC News Live 7</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://abcnews-streams.akamaized.net/hls/live/2023567/abcnewshudson8/master.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=ABC%20News%20Live%208&background=ffd700&color=000&size=128" alt="ABC News Live 8" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">ABC News Live 8</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://abcnews-streams.akamaized.net/hls/live/2023568/abcnewshudson9/master.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=ABC%20News%20Live%209&background=ffd700&color=000&size=128" alt="ABC News Live 9" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">ABC News Live 9</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://live-evg10.tv360.bitel.com.pe/bitel/abctv/playlist.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=ABC%20Teleshow&background=ffd700&color=000&size=128" alt="ABC Teleshow" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">ABC Teleshow</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('http://45.184.109.10/live/69393EAE6ADBC65A68F942022362A202/7.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=ABC-TV%20Paraguay&background=ffd700&color=000&size=128" alt="ABC-TV Paraguay" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">ABC-TV Paraguay</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://mediaserver.abnvideos.com/streams/abnafghanistan.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=ABN%20Afghanistan&background=ffd700&color=000&size=128" alt="ABN Afghanistan" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">ABN Afghanistan</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://mediaserver.abnvideos.com/streams/abnafrica.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=ABN%20Africa&background=ffd700&color=000&size=128" alt="ABN Africa" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">ABN Africa</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://mediaserver.abnvideos.com/streams/abnbiblemovies.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=ABN%20Bible%20Movies%20Channel&background=ffd700&color=000&size=128" alt="ABN Bible Movies Channel" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">ABN Bible Movies Channel</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://mediaserver.abnvideos.com/streams/abnchina.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=ABN%20China&background=ffd700&color=000&size=128" alt="ABN China" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">ABN China</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://mediaserver.abnvideos.com/streams/abntvindia.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=ABN%20TV%20India&background=ffd700&color=000&size=128" alt="ABN TV India" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">ABN TV India</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://mediaserver.abnvideos.com/streams/abnurdu.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=ABN%20Urdu&background=ffd700&color=000&size=128" alt="ABN Urdu" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">ABN Urdu</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://amc-absolutereality-1-us.plex.wurl.tv/playlist.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=Absolute%20Reality%20by%20WE%20TV&background=ffd700&color=000&size=128" alt="Absolute Reality by WE TV" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">Absolute Reality by WE TV</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://live-evg8.tv360.bitel.com.pe/bitel/abctelevisionSRT/playlist.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=ABTelevision&background=ffd700&color=000&size=128" alt="ABTelevision" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">ABTelevision</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://videostream.shockmedia.com.ar/hls/abtvbariloche/abtvbariloche.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=ABTV%20Bariloche&background=ffd700&color=000&size=128" alt="ABTV Bariloche" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">ABTV Bariloche</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://seo.tv.bo/tv/LIpSEO-TV-8.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=Abya%20Yala%20TV&background=ffd700&color=000&size=128" alt="Abya Yala TV" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">Abya Yala TV</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://jmp2.uk/plu-61a52615cbef2500072876e2.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=Acapulco%20Shore&background=ffd700&color=000&size=128" alt="Acapulco Shore" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">Acapulco Shore</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://raycom-accdn-firetv.amagi.tv/playlist.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=ACC%20Digital%20Network&background=ffd700&color=000&size=128" alt="ACC Digital Network" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">ACC Digital Network</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://reflect-montgomerycommunitymedia.cablecast.tv/live-8/live/stream-3/live.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=Access%2019&background=ffd700&color=000&size=128" alt="Access 19" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">Access 19</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://reflect-channel18vod-springfield-il-us.cablecast.tv/live-16/live/stream-4/live.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=Access%204%20PAC&background=ffd700&color=000&size=128" alt="Access 4 PAC" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">Access 4 PAC</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://rtmp-live-ingest-ap-northeast-2-universe-dacast-com.akamaized.net/transmuxv1/streams/f08fcd45-1d04-9a8c-39ca-f56091820e5c.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=Access%20Humboldt&background=ffd700&color=000&size=128" alt="Access Humboldt" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">Access Humboldt</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://livestream.telvue.com/nashuanh1/f7b44cfafd5c52223d5498196c8a2e7b.sdp/playlist.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=Access%20Nashua&background=ffd700&color=000&size=128" alt="Access Nashua" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">Access Nashua</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://reflect-access-sacramento.cablecast.tv/live-7/live/live.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=Access%20Sacramento%20Channel%2017&background=ffd700&color=000&size=128" alt="Access Sacramento Channel 17" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">Access Sacramento Channel 17</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://reflect-tuolumne.cablecast.tv/live-3/live/stream-1/live.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=Access%20Tuolumne&background=ffd700&color=000&size=128" alt="Access Tuolumne" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">Access Tuolumne</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://livestream.telvue.com/accvision1/f7b44cfafd5c52223d5498196c8a2e7b.sdp/playlist.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=AccessVision%20Channel%2016&background=ffd700&color=000&size=128" alt="AccessVision Channel 16" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">AccessVision Channel 16</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://livestream.telvue.com/accvision2/f7b44cfafd5c52223d5498196c8a2e7b.sdp/playlist.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=AccessVision%20Channel%2017&background=ffd700&color=000&size=128" alt="AccessVision Channel 17" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">AccessVision Channel 17</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('http://23.239.31.26:8989/accuweather/index.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=AccuWeather%20NOW&background=ffd700&color=000&size=128" alt="AccuWeather NOW" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">AccuWeather NOW</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://acentotv01.streamprolive.com/hls/live.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=Acento%20TV&background=ffd700&color=000&size=128" alt="Acento TV" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">Acento TV</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://d35j504z0x2vu2.cloudfront.net/v1/master/0bc8e8376bd8417a1b6761138aa41c26c7309312/acl-cornhole-tv/aclco.m3u8?ads.vf=Sl3XhzpgcOy')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=ACL%20Cornhole%20TV&background=ffd700&color=000&size=128" alt="ACL Cornhole TV" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">ACL Cornhole TV</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://streamtv.mediasector.es/hls/activatv/index.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=Activa%20TV&background=ffd700&color=000&size=128" alt="Activa TV" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">Activa TV</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://videoserver.tmcreativos.com:19360/mbcrtzxnxd/mbcrtzxnxd.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=Activa%20TV&background=ffd700&color=000&size=128" alt="Activa TV" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">Activa TV</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://amg01821-lovetv-amg01821c27-lg-es-6726.playouts.now.amagi.tv/playlist/amg01821-lovetvfast-lovenews-lges/playlist.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=Actualidad%20360&background=ffd700&color=000&size=128" alt="Actualidad 360" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">Actualidad 360</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://castus-vod-dev.s3.amazonaws.com/vod_clients/athens/live/ch2/video.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=ACTV&background=ffd700&color=000&size=128" alt="ACTV" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">ACTV</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://mdstrm.com/live-stream-playlist/60b578b060947317de7b57ac.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=ADN%2040&background=ffd700&color=000&size=128" alt="ADN 40" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">ADN 40</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://live20.bozztv.com/giatv/giatv-adoram/adoram/chunks.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=Adoram%20TV&background=ffd700&color=000&size=128" alt="Adoram TV" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">Adoram TV</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://jmp2.uk/plu-61b790b985706b00072cb797.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=Adrenalina%20Pura%20TV&background=ffd700&color=000&size=128" alt="Adrenalina Pura TV" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">Adrenalina Pura TV</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('http://23.239.31.26:8989/aande/index.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=A%26E&background=ffd700&color=000&size=128" alt="A&E" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">A&E</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('http://138.121.15.230:9002/A&E/index.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=A%26E%20Latin%20America&background=ffd700&color=000&size=128" alt="A&E Latin America" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">A&E Latin America</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://tls-cl.cdnz.cl/aeradio/live/playlist.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=AE%20Radio%20TV&background=ffd700&color=000&size=128" alt="AE Radio TV" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">AE Radio TV</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://alt-al.otteravision.com/alt/al/al.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=AfroLandTV&background=ffd700&color=000&size=128" alt="AfroLandTV" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">AfroLandTV</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://livestream.telvue.com/accframingham1/f7b44cfafd5c52223d5498196c8a2e7b.sdp/playlist.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=AFTV&background=ffd700&color=000&size=128" alt="AFTV" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">AFTV</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://linear-12.frequency.stream/dist/plex/12/hls/master/playlist.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=AFV&background=ffd700&color=000&size=128" alt="AFV" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">AFV</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://linear-46.frequency.stream/dist/plex/46/hls/master/playlist.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=AFV%20Espanol&background=ffd700&color=000&size=128" alt="AFV Espanol" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">AFV Espanol</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://5fc584f3f19c9.streamlock.net/agape/smil:agape.smil/playlist.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=Agape%20TV&background=ffd700&color=000&size=128" alt="Agape TV" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">Agape TV</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://stv2.boliviaplay.com.bo/hls/stream.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=Agenda%20Minera%20TV&background=ffd700&color=000&size=128" alt="Agenda Minera TV" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">Agenda Minera TV</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://5b622f07944df.streamlock.net/aghapykids.tv/aghapykids2/playlist.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=Aghapy%20Kids&background=ffd700&color=000&size=128" alt="Aghapy Kids" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">Aghapy Kids</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://tigocloud.desdeparaguay.net/agrtv/agrtv/playlist.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=AGR%20FM%20TV&background=ffd700&color=000&size=128" alt="AGR FM TV" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">AGR FM TV</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://5fc584f3f19c9.streamlock.net/agrotendencia/videoagrotendencia_hls1/playlist.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=Agrotendencia%20TV&background=ffd700&color=000&size=128" alt="Agrotendencia TV" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">Agrotendencia TV</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://live-evg8.tv360.bitel.com.pe/bitel/agroSRT/playlist.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=Agro%20TV&background=ffd700&color=000&size=128" alt="Agro TV" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">Agro TV</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://streamtv.intervenhosting.net:3040/hybrid/play.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=Aguacate%20TV&background=ffd700&color=000&size=128" alt="Aguacate TV" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">Aguacate TV</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://fox.hostlagarto.com:8081/aguilatv/playlist.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=Aguila%20TV&background=ffd700&color=000&size=128" alt="Aguila TV" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">Aguila TV</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://stream.haislin.com/ahoratv/index.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=Ahora%20TV&background=ffd700&color=000&size=128" alt="Ahora TV" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">Ahora TV</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://edge.essastream.com/aiontelevision/playlist.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=AION%20TV&background=ffd700&color=000&size=128" alt="AION TV" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">AION TV</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://unlimited1-us.dps.live/airedesantafetv/airedesantafetv.smil/playlist.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=Aire%20de%20Santa%20Fe&background=ffd700&color=000&size=128" alt="Aire de Santa Fe" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">Aire de Santa Fe</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://castus-vod-dev.s3.amazonaws.com/vod_clients/akaku/live/ch1/video.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=Akaku%2053&background=ffd700&color=000&size=128" alt="Akaku 53" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">Akaku 53</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://castus-vod-dev.s3.amazonaws.com/vod_clients/akaku/live/ch2/video.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=Akaku%2054&background=ffd700&color=000&size=128" alt="Akaku 54" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">Akaku 54</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://castus-vod-dev.s3.amazonaws.com/vod_clients/akaku/live/ch3/video.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=Akaku%2055&background=ffd700&color=000&size=128" alt="Akaku 55" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">Akaku 55</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://broadcast.blivenyc.com/speed/broadcast/22/desktop-playlist.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=AKC%20TV&background=ffd700&color=000&size=128" alt="AKC TV" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">AKC TV</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://install.akctvcontrol.com/speed/broadcast/139/desktop-playlist.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=AKC%20TV%20Meet%20the%20Breeds&background=ffd700&color=000&size=128" alt="AKC TV Meet the Breeds" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">AKC TV Meet the Breeds</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://install.akctvcontrol.com/speed/broadcast/140/desktop-playlist.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=AKC%20TV%20Puppies&background=ffd700&color=000&size=128" alt="AKC TV Puppies" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">AKC TV Puppies</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://streaming01.gestec-video.com/hls/artequatreAlacanti.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=Alacanti%20TV&background=ffd700&color=000&size=128" alt="Alacanti TV" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">Alacanti TV</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('http://live.albavision.net:1123/live/albdreams.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=Albdreams%20TV&background=ffd700&color=000&size=128" alt="Albdreams TV" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">Albdreams TV</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://live-evg10.tv360.bitel.com.pe/bitel/albriciastv/playlist.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=Albricias%20TV&background=ffd700&color=000&size=128" alt="Albricias TV" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">Albricias TV</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://video.wilohosting.com:19360/alcancefmtv/alcancefmtv.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=Alcance%20FM%20PLAY%20TV&background=ffd700&color=000&size=128" alt="Alcance FM PLAY TV" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">Alcance FM PLAY TV</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://5bf8041cb3fed.streamlock.net/AlcanceTV/AlcanceTV/playlist.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=Alcance%20TV&background=ffd700&color=000&size=128" alt="Alcance TV" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">Alcance TV</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://rv100.globalhost1.com:3516/live/tjjqdqurlive.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=Alcance%20TV&background=ffd700&color=000&size=128" alt="Alcance TV" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">Alcance TV</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('http://217.182.77.27/live/alcarriatv-livestream.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=Alcarria%20TV&background=ffd700&color=000&size=128" alt="Alcarria TV" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">Alcarria TV</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://5790d294af2dc.streamlock.net/alcarrizostv/alcarrizostv/playlist.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=Alcarrizos%20TV&background=ffd700&color=000&size=128" alt="Alcarrizos TV" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">Alcarrizos TV</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://streamunoapp.com:3149/live/alegretvlive.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=Alegre%20TV%20RD&background=ffd700&color=000&size=128" alt="Alegre TV RD" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">Alegre TV RD</p>
+</a>
+<a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('https://lbgo.bozztv.com/ssh101/ssh101/confirmatv/playlist.m3u8')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div><div class="new-badge">PREMIUM</div>
+  <img src="https://ui-avatars.com/api/?name=Alegria%20TV&background=ffd700&color=000&size=128" alt="Alegria TV" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+  <p class="channel-name">Alegria TV</p>
 </a>
 `;
 
