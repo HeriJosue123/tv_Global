@@ -350,6 +350,76 @@ body {
 
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
   <script src="vip_database.js"></script>
+
+
+<style>
+@media (max-width: 600px) {
+    #channels {
+        padding: 0 5px;
+        gap: 12px !important;
+    }
+    .channel-card {
+        height: 100px !important; /* Shorter cards since they are full width */
+        flex-direction: row !important; /* Image on left, text on right */
+        justify-content: flex-start !important;
+        padding: 10px 15px !important;
+        gap: 20px;
+    }
+    .channel-card img {
+        width: 65px !important;
+        height: 65px !important;
+    }
+    .channel-name {
+        margin-top: 0 !important;
+        text-align: left;
+        font-size: 15px !important;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 60%;
+    }
+    .live {
+        top: auto !important;
+        bottom: 10px !important;
+        left: 105px !important;
+    }
+    .new-badge {
+        top: 10px !important;
+        right: 10px !important;
+    }
+    #player-wrapper {
+        margin: 0 !important;
+        max-width: 100% !important;
+    }
+    #player-wrapper > div {
+        border-radius: 0 !important;
+    }
+    .layout {
+        padding: 0 !important;
+    }
+    /* Horizontal scrolling menu for mobile */
+    .menu {
+        display: flex;
+        overflow-x: auto;
+        width: 100%;
+        padding: 10px;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+    }
+    .menu::-webkit-scrollbar {
+        display: none;
+    }
+    .menu-btn {
+        margin-bottom: 0 !important;
+        flex-shrink: 0;
+    }
+    .site-header {
+        padding: 10px;
+    }
+}
+</style>
+
+
 </head>
 
 <body>
@@ -423,7 +493,7 @@ body {
     </div>
 </div>
 
-<div id="channels" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
+<div id="channels" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
 
 <a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://latamvidzfy.org/tudnmx.php')">
   <div class="live"><span class="live-dot"></span>EN VIVO</div>
