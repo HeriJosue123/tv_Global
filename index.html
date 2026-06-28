@@ -310,6 +310,42 @@ body {
   .logo span.title { font-size: 20px; }
 }
 
+
+.menu-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-right: 10px;
+  margin-bottom: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.menu-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(207, 168, 94, 0.5);
+}
+
+.menu-btn.active {
+  background: rgba(207, 168, 94, 0.15);
+  border-color: #cfa85e;
+  color: #cfa85e;
+  box-shadow: 0 0 10px rgba(207, 168, 94, 0.3);
+}
+
+/* For mobile menu */
+#mobile-menu .menu-btn {
+  display: block;
+  width: 100%;
+  margin-right: 0;
+  margin-bottom: 5px;
+}
+
 </style>
 
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
@@ -348,8 +384,6 @@ body {
 
 <div style="height:1px;background:#bea67a;margin:4px 0;"></div>
 
-<button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="shows">EVENTOS</button>
-<div style="height:1px;background:#bea67a;margin:4px 0;"></div>
 <button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="vip">VIP 👑</button>
 </div>
 </div>
@@ -360,7 +394,6 @@ body {
 
 <div class="menu">
 <button class="menu-btn active" data-page="home">HOME</button>
-<button class="menu-btn" data-page="shows">EVENTOS</button>
 <button class="menu-btn" data-page="vip" style="color: gold; text-shadow: 0 0 5px gold;">VIP 👑</button>
 
 <div class="search-box">
@@ -1649,9 +1682,6 @@ if(page==="home"){
 grid.innerHTML = originalHome
 }
 
-if(page==="shows"){
-grid.innerHTML = showChannels
-}
 if(page==="vip"){
 grid.innerHTML = vipChannels
 }
