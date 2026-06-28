@@ -350,6 +350,7 @@ body {
 
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
   <script src="vip_database.js"></script>
+<script src="eventos_database.js"></script>
 
 
 <style>
@@ -1006,6 +1007,9 @@ const page = btn.dataset.page
 if(page==="home"){
 grid.innerHTML = originalHome
 }
+if(page==="eventos"){
+renderEventosChannels();
+}
 if(page==="nacional"){
 renderNacionalChannels();
 }
@@ -1194,6 +1198,27 @@ function renderNacionalChannels() {
         <a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('${c.url}')">
           <div class="live"><span class="live-dot"></span>EN VIVO</div>
           <img src="${c.logo}" alt="${c.name}" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+          <p class="channel-name">${c.name}</p>
+        </a>`;
+    });
+    
+    grid.innerHTML = html;
+    animateCards();
+}
+
+
+function renderEventosChannels() {
+    if (typeof eventosDatabase === 'undefined' || eventosDatabase.length === 0) {
+        grid.innerHTML = '<h3 style="color:red; text-align:center; width:100%;">No hay eventos deportivos disponibles en este momento.</h3>';
+        return;
+    }
+
+    let html = '';
+    eventosDatabase.forEach(c => {
+        html += `
+        <a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('${c.url}')">
+          <div class="live"><span class="live-dot"></span>EN VIVO</div>
+          <img src="${c.logo}" alt="${c.name}" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=SPORTS&background=ff2a2a&color=fff&size=128'">
           <p class="channel-name">${c.name}</p>
         </a>`;
     });
