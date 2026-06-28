@@ -1761,12 +1761,52 @@ function toggleChat() {
 
 <script>
     let lastScrollPosition = 0;
+    let hls = null;
     
     function playChannel(url) {
         lastScrollPosition = window.scrollY || document.documentElement.scrollTop;
         const wrapper = document.getElementById('player-wrapper');
         const player = document.getElementById('main-player');
+        const video = document.getElementById('native-player');
+        
+        if (video) video.style.display = 'none';
+        if(hls) { hls.destroy(); }
+        if (video) video.pause();
+        
+        player.style.display = 'block';
         player.src = url;
+        
+        wrapper.style.display = 'block';
+        wrapper.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    
+    function playVipChannel(url) {
+        lastScrollPosition = window.scrollY || document.documentElement.scrollTop;
+        const wrapper = document.getElementById('player-wrapper');
+        const player = document.getElementById('main-player');
+        const video = document.getElementById('native-player');
+        
+        player.style.display = 'none';
+        player.src = '';
+        
+        video.style.display = 'block';
+        
+        if (typeof Hls !== 'undefined' && Hls.isSupported()) {
+            if(hls) hls.destroy();
+            hls = new Hls();
+            hls.loadSource(url);
+            hls.attachMedia(video);
+            hls.on(Hls.Events.MANIFEST_PARSED, function() {
+                video.play();
+            });
+        }
+        else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+            video.src = url;
+            video.addEventListener('loadedmetadata', function() {
+                video.play();
+            });
+        }
+        
         wrapper.style.display = 'block';
         wrapper.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
@@ -1774,6 +1814,12 @@ function toggleChat() {
     function closePlayer() {
         document.getElementById('player-wrapper').style.display = 'none';
         document.getElementById('main-player').src = '';
+        const video = document.getElementById('native-player');
+        if (video) {
+            video.pause();
+            video.src = '';
+        }
+        if(hls) hls.destroy();
         window.scrollTo({ top: lastScrollPosition, behavior: 'smooth' });
     }
 </script></body></html>
