@@ -36,204 +36,283 @@
 
 <style>
 
-body{
-background:#0b0b0b;
-font-family:Arial;
-color:#f5f1e8;
-min-height:100vh;
-overflow-x:hidden;
-overflow-y:auto;
-scrollbar-width:thin;
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
+
+:root {
+  --bg-dark: #07070a;
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.05);
+  --glass-hover: rgba(255, 255, 255, 0.08);
+  --neon-accent: #cfa85e; /* Premium Gold */
+  --neon-glow: rgba(207, 168, 94, 0.3);
+  --text-main: #f5f5f7;
+  --text-muted: #a1a1a6;
 }
 
-::-webkit-scrollbar{width:10px;}
-::-webkit-scrollbar-thumb{
-background: linear-gradient(135deg,#8c7a5a,#bfa77a,#e8d8b0);
-border-radius:10px;
-border:2px solid #0b0b0b;
-}
-::-webkit-scrollbar-track{background:#0b0b0b;}
-
-.site-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px 30px;
-position:fixed;
-top:0;
-left:0;
-right:0;
-background:#0b0b0b;
-z-index:9999;
-border-bottom:1px solid #3a3428;
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-dark);
+  background-image: 
+    radial-gradient(circle at 15% 50%, rgba(207, 168, 94, 0.08), transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(138, 43, 226, 0.05), transparent 25%);
+  background-attachment: fixed;
+  font-family: 'Outfit', sans-serif;
+  color: var(--text-main);
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--neon-accent) var(--bg-dark);
 }
 
-.logo-title{
-font-size:20px;
-font-weight:bold;
-background: linear-gradient(135deg,#cbb58c,#e8d8b0,#fff3d6);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-dark); }
+::-webkit-scrollbar-thumb { 
+  background: var(--neon-accent); 
+  border-radius: 4px;
 }
 
-.layout{margin-top:70px;display:flex;gap:30px;padding:20px 30px;}
-
-.menu{
-width:220px;
-flex-shrink:0;
-position:sticky;
-top:90px;
-height:fit-content;
-z-index:999;
+/* HEADER PREMIUM */
+.site-header {
+  position: sticky;
+  top: 0;
+  background: rgba(7, 7, 10, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
+  padding: 15px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
 }
 
-.menu button{
-background:#111;
-color:#e8d8b0;
-border-radius:10px;
-transition:.3s;
-width:100%;
-padding:12px;
-margin-bottom:10px;
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-.menu button.active{color:white;}
-
-.menu button:hover{
-background: linear-gradient(135deg,#8c7a5a,#bfa77a);
-color:white;
-box-shadow:0 0 15px rgba(232,216,176,0.45);
+.logo span.title {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, #fff, var(--neon-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
 }
 
-.search-input{
-width:100%;
-padding:10px;
-border-radius:8px;
-background:#111;
-border:1px solid #8c7a5a;
-color:white;
-outline:none;
+.logo span.subtitle {
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--neon-accent);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  display: block;
 }
 
-.channels-container{flex:1;min-width:0;}
-
-.channel-card{
-background:#111;
-border-radius:14px;
-padding:22px 15px 20px;
-text-align:center;
-border:1px solid #1f1f1f;
-position:relative;
-z-index:1;
-transition:all .35s;
-opacity:0;
-transform:translateY(40px);
+.search-box {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 8px 16px;
+  color: var(--text-main);
+  font-family: 'Outfit', sans-serif;
+  outline: none;
+  width: 250px;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+.search-box:focus {
+  background: rgba(255,255,255,0.06);
+  border-color: var(--neon-accent);
+  box-shadow: 0 0 15px var(--neon-glow);
 }
 
-.channel-card.show{opacity:1;transform:translateY(0);}
-
-.channel-card:hover{
-transform:scale(1.06);
-background:#161616;
-border-color:#cbb58c;
-box-shadow:0 10px 30px rgba(232,216,176,0.35);
+/* LAYOUT */
+.layout {
+  display: flex;
+  padding: 30px;
+  gap: 30px;
+  max-width: 1600px;
+  margin: 0 auto;
 }
 
-.channel-card img{
-max-height:55px;
-margin:auto;
-object-fit:contain;
-margin-top:14px;
+.main-content {
+  flex: 1;
 }
 
-.channel-card p{
-color:#ffffff;
-margin-top:10px;
-font-size:13px;
-font-weight:500;
+/* GRID DE CANALES */
+#channels {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
 }
 
-.live{
-position:absolute;
-top:8px;
-left:8px;
-background: linear-gradient(135deg,#8c7a5a,#bfa77a,#e8d8b0);
-color:#111;
-font-size:10px;
-padding:4px 8px;
-border-radius:6px;
-font-weight:bold;
-display:flex;
-align-items:center;
-gap:6px;
-z-index:2;
-box-shadow:0 0 8px rgba(232,216,176,0.45);
+/* TARJETAS GLASSMORPHISM */
+.channel-card {
+  position: relative;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 15px;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 160px;
 }
 
-.live-dot{
-width:7px;height:7px;
-background:#fff3d6;
-border-radius:50%;
-animation:blink 1s infinite;
-box-shadow:0 0 10px rgba(255,243,214,0.55);
+.channel-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 50%; height: 100%;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.03) 50%, rgba(255,255,255,0) 100%);
+  transform: skewX(-25deg);
+  transition: all 0.6s ease;
 }
 
-@keyframes blink{
-0%{opacity:1}
-50%{opacity:.2}
-100%{opacity:1}
+.channel-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  background: var(--glass-hover);
+  border-color: rgba(207, 168, 94, 0.3);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.4), 0 0 20px var(--neon-glow);
 }
 
-.footer{
-margin-top:40px;
-padding:20px;
-text-align:center;
-border-top:1px solid #3a3428;
-color:#e8d8b0;
-font-size:13px;
+.channel-card:hover::before {
+  left: 200%;
 }
 
-.mobile-search{display:none;}
-
-@media(max-width:768px){
-
-.layout{flex-direction:column;padding:15px;gap:15px;}
-
-.menu{display:none !important;}
-.streaming-text{display:none;}
-
-.mobile-search{
-display:block;
-margin-bottom:15px;
-text-align:center;
+.channel-card img {
+  max-width: 90px;
+  max-height: 90px;
+  object-fit: contain;
+  transition: transform 0.4s ease;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
 }
 
-.live{
-top:1px;
-left:1px;
+.channel-card:hover img {
+  transform: scale(1.1);
 }
 
+.channel-name {
+  color: var(--text-main);
+  margin-top: 15px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 
-@media (min-width: 768px) {
-  .search-box {
-    margin-top: 12px;
-  }
+/* BADGES (EN VIVO / NUEVO) */
+.live {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid var(--neon-accent);
+  color: var(--neon-accent);
+  font-size: 9px;
+  padding: 4px 8px;
+  border-radius: 20px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 2;
+  letter-spacing: 1px;
 }
 
+.live-dot {
+  width: 6px; height: 6px;
+  background: var(--neon-accent);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--neon-accent);
+  animation: pulse-glow 1.5s infinite;
+}
+
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 0 0 rgba(207, 168, 94, 0.7); }
+  70% { box-shadow: 0 0 0 6px rgba(207, 168, 94, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(207, 168, 94, 0); }
+}
 
 .new-badge {
-  position:absolute;
-  top:8px;
-  right:8px;
-  background:#ff3b30;
-  color:#fff;
-  font-size:10px;
-  padding:4px 8px;
-  border-radius:6px;
-  font-weight:bold;
-  z-index:2;
-  box-shadow:0 0 8px rgba(255,59,48,0.45);
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: linear-gradient(135deg, #ff2a2a, #ff5e5e);
+  color: #fff;
+  font-size: 9px;
+  padding: 4px 8px;
+  border-radius: 20px;
+  font-weight: 800;
+  z-index: 2;
+  box-shadow: 0 0 10px rgba(255, 42, 42, 0.4);
+  letter-spacing: 1px;
+}
+
+/* REPRODUCTOR CINEMATOGRAFICO */
+#player-wrapper {
+  background: #000;
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 30px var(--neon-glow);
+  border: 1px solid var(--glass-border);
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+
+.close-btn {
+  background: linear-gradient(135deg, #2a2a35, #1a1a24);
+  color: white;
+  border: 1px solid var(--glass-border);
+  padding: 12px 25px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+
+.close-btn:hover {
+  background: linear-gradient(135deg, #ff2a2a, #d41414);
+  border-color: #ff2a2a;
+  box-shadow: 0 0 15px rgba(255, 42, 42, 0.4);
+}
+
+.footer {
+  margin-top: 50px;
+  padding: 30px;
+  text-align: center;
+  border-top: 1px solid var(--glass-border);
+  color: var(--text-muted);
+  font-size: 13px;
+  background: rgba(0,0,0,0.2);
+}
+
+.mobile-search { display: none; }
+
+@media (max-width: 768px) {
+  .layout { flex-direction: column; padding: 15px; }
+  .site-header { padding: 15px; flex-direction: column; gap: 15px; }
+  .search-box { width: 100%; }
+  #channels { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+  .channel-card { height: 140px; padding: 10px; }
+  .channel-card img { max-width: 70px; max-height: 70px; }
+  .logo span.title { font-size: 20px; }
 }
 
 </style>
@@ -305,10 +384,95 @@ left:1px;
         <iframe id="main-player" src="" frameborder="0" allowfullscreen="" allow="autoplay; encrypted-media" style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
     </div>
     <div style="text-align:center; margin-top:10px;">
-        <button onclick="closePlayer()" style="background:#ff3b30; color:white; border:none; padding:10px 20px; border-radius:5px; cursor:pointer; font-weight:bold;">Cerrar Reproductor</button>
+        <button onclick="closePlayer()" class="close-btn">Volver al Inicio</button>
     </div>
 </div>
 <div id="channels" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
+
+<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://telelibree.com/mpd2.php?id=tve24h')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div>
+  <div class="new-badge">NUEVO</div>
+  <img src="https://ui-avatars.com/api/?name=TV&background=cfa85e&color=fff&size=128&font-size=0.4" alt="TVE 24h" style="border-radius:10px;">
+  <p class="channel-name">TVE 24h</p>
+</a>
+
+<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://telelibree.com/html/cvatt.html?get=SFRW')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div>
+  <div class="new-badge">NUEVO</div>
+  <img src="https://ui-avatars.com/api/?name=HTV&background=cfa85e&color=fff&size=128&font-size=0.4" alt="HTV" style="border-radius:10px;">
+  <p class="channel-name">HTV</p>
+</a>
+
+<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://telelibree.com/html/cvatt.html?get=SW52ZXN0aWdhY2lvbl9QZXJpb2Rpc3RpY2E=')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div>
+  <div class="new-badge">NUEVO</div>
+  <img src="https://ui-avatars.com/api/?name=IP&background=cfa85e&color=fff&size=128&font-size=0.4" alt="Investigación Periodística" style="border-radius:10px;">
+  <p class="channel-name">Investigación Periodística</p>
+</a>
+
+<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://telelibree.com/html/cvatt.html?get=Q2FuYWxfZGVfbGFfY2l1ZGFk')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div>
+  <div class="new-badge">NUEVO</div>
+  <img src="https://ui-avatars.com/api/?name=CDLC&background=cfa85e&color=fff&size=128&font-size=0.4" alt="Canal de la Ciudad" style="border-radius:10px;">
+  <p class="channel-name">Canal de la Ciudad</p>
+</a>
+
+<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://telelibree.com/html/cvatt.html?get=QWR1bHRfU3dpbQ==')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div>
+  <div class="new-badge">NUEVO</div>
+  <img src="https://ui-avatars.com/api/?name=AS&background=cfa85e&color=fff&size=128&font-size=0.4" alt="Adult Swim" style="border-radius:10px;">
+  <p class="channel-name">Adult Swim</p>
+</a>
+
+<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://telelibree.com/html/cvatt.html?get=R29sZGVu')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div>
+  <div class="new-badge">NUEVO</div>
+  <img src="https://ui-avatars.com/api/?name=GLD&background=cfa85e&color=fff&size=128&font-size=0.4" alt="Golden" style="border-radius:10px;">
+  <p class="channel-name">Golden</p>
+</a>
+
+<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://telelibree.com/html/cvatt.html?get=UlBDX0M0')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div>
+  <div class="new-badge">NUEVO</div>
+  <img src="https://ui-avatars.com/api/?name=RPC&background=cfa85e&color=fff&size=128&font-size=0.4" alt="RPC C4" style="border-radius:10px;">
+  <p class="channel-name">RPC C4</p>
+</a>
+
+<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://telelibree.com/html/cvatt.html?get=VW5pdmVyc2FsX0NpbmVtYQ==')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div>
+  <div class="new-badge">NUEVO</div>
+  <img src="https://ui-avatars.com/api/?name=UC&background=cfa85e&color=fff&size=128&font-size=0.4" alt="Universal Cinema" style="border-radius:10px;">
+  <p class="channel-name">Universal Cinema</p>
+</a>
+
+<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://telelibree.com/html/cvatt.html?get=VW5pdmVyc2FsX0NvbWVkeQ==')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div>
+  <div class="new-badge">NUEVO</div>
+  <img src="https://ui-avatars.com/api/?name=UCO&background=cfa85e&color=fff&size=128&font-size=0.4" alt="Universal Comedy" style="border-radius:10px;">
+  <p class="channel-name">Universal Comedy</p>
+</a>
+
+<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://telelibree.com/html/cvatt.html?get=VW5pdmVyc2FsX1ByZW1pZXJl')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div>
+  <div class="new-badge">NUEVO</div>
+  <img src="https://ui-avatars.com/api/?name=UP&background=cfa85e&color=fff&size=128&font-size=0.4" alt="Universal Premiere" style="border-radius:10px;">
+  <p class="channel-name">Universal Premiere</p>
+</a>
+
+<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://telelibree.com/html/cvatt.html?get=VW5pdmVyc2FsX1JlYWxpdHk=')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div>
+  <div class="new-badge">NUEVO</div>
+  <img src="https://ui-avatars.com/api/?name=UR&background=cfa85e&color=fff&size=128&font-size=0.4" alt="Universal Reality" style="border-radius:10px;">
+  <p class="channel-name">Universal Reality</p>
+</a>
+
+<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://telelibree.com/html/cvatt.html?get=dW5pdmVyc2FsX0NyaW1l')">
+  <div class="live"><span class="live-dot"></span>EN VIVO</div>
+  <div class="new-badge">NUEVO</div>
+  <img src="https://ui-avatars.com/api/?name=UCR&background=cfa85e&color=fff&size=128&font-size=0.4" alt="Universal Crime" style="border-radius:10px;">
+  <p class="channel-name">Universal Crime</p>
+</a>
+
 
 <a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://latamvidzfy.org/tudnmx.php')">
   <div class="live"><span class="live-dot"></span>EN VIVO</div>
