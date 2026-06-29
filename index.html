@@ -1280,7 +1280,7 @@ if(document.getElementById("searchInputMobile")) document.getElementById("search
 
         if (isRawTs && typeof mpegts !== 'undefined' && mpegts.getFeatureList().mseLivePlayback) {
             mpegtsPlayer = mpegts.createPlayer({
-                type: 'mse',
+                type: 'm2ts',
                 isLive: true,
                 url: proxyUrl
             });
