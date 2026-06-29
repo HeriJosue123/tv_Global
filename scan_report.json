@@ -1,0 +1,511 @@
+{
+  "total": 2032,
+  "working": 1907,
+  "failed_404": 0,
+  "failed_403": 0,
+  "failed_500": 125,
+  "failed_timeout": 0,
+  "failed_other": 0,
+  "brokenChannels": [
+    {
+      "name": "Naruto Clássico",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "24H DIGIMON",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "24H JONNY QUEST",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "24H JASPION",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "24H APENAS UM SHOW",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "24H AS AVENTURAS DE TOM & JERRY",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "Black clover",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "24H AS TARTARUGAS NINJA (2012)",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "24H PATRULHA CANINA T01",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "24H A TURMA DA PANTERA COR DE ROSA",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "24H CAVERNA DO DRAGÃO",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "24H O SHOW DO GARFIELD",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "24H DRAGONBALL SUPER H265",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "24H CHAVES MULTISHOW",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "24H PEPE LEGAL",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "24H O PEQUENO SCOOBY-DOO",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "24H A VACA E O FRANGO",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "24H BEYBLADE",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "24H DORA AVENTUREIRA",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "24H GASPARZINHO",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "24H A PANTERA COR DE ROSA",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "24H CORAGEM O CAO COVARDE",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "24H CAVALO DE FOGO",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "24H LADY BUG",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "24H LARGADOS E PELADOS",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "TICO E TECO DEFENSORES DA LEI",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "24H CHAPOLIN COLORADO",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "24H BREAKING BAD",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "24H MASTER CHEF - PROFISSIONAIS",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "Tres Espias Demais",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "4 Contra o Apocalipse",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "X-Men  Evolution",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "4K Tnt",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "AMAZON PRIME 02",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "4K TC Pipoca",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "Death Note",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "Boku No Hero Academia ( Alter )",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "Blue Lock",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "Chainsaw Man",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "Dragon Ball Saga Sayajin ( Alter )",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "Dragon Ball GT",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "Dragon Ball Daima ( Alter )",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "Dragon Ball GT ( Alter )",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "Dragon Ball Super ( Alter )",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "Dragon Ball Saga Cell",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "Neon Genesis Evangelion",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "Record Of Ragnarok ( Alter )",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "Solo Leveling",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "Rezero Starting Life In Another World",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "Sin Nanatsu No Taizai ( Alter )",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "Shaman King",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "Sin Nanatsu No Taizai",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "BAND CE HD",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "TNT SERIES 4K",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "GLOBO RJ 4K",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "TC PIPOCA 4K",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "JP NEWS 4K",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "MULTISHOW 4K",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "GLOBO NEWS 4K",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "PREMIERE 2 4K",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "TNT 4K",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "Discovery H&H 4K",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "BAND SD",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "GLOBO MINAS 4K",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "RECORD SP 4K",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "TV SENADO SD",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "CANAL RURAL SD",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "REDE TV HD",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "CANAL DO BOI SD",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "BAND SPORTS 4K",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "TERRA VIVA SD",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "CANAL BRASIL SD",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "FUTURA HD",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "Caze TV 06 ( Alter )",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "CAZÉ TV 01",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "DISCOVERY WORLD HD",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "History2 ( Alter )",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "History Channel ( Alter )",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "Flograppliing Eventos",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "Furacao Play 01",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "Mlb Network Baseball ( Alter )",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "Mls 01 ( Alter )",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "F Sports 03 ( Alter )",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "Mls 02 Columbus Crew Vs DC United 7 30 PM ET Sat",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "Lnf 03 ( Alter )",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "Lnf 01",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "Nsports 01 SC",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "Nsports 01",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "Paulistao YT 02",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "Paulistao Play 03",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "Paulistao YT 03",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "Paulistao YT 04",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "TV ANHANGUERA PALMAS HD",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "(17)",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "(25)",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "(09)",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "(18)",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "(16)",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "(22)",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "(20)",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "(23)",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "(26)",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "(15)",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "NBA | CHANNEL",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "NBA PASS 10 [USA]",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "NBA PASS 03 [USA]",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "Paramount+ 2",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "Paramount+ 1",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "REDE MAIS FAMILIA FHD",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "REDE GOSPEL HD",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "REDE GOSPEL FHD H264",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "TV APARECIDA FHD",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "Cine Sky 09 ( Alter )",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "Futura ( Alter )",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "Canal DO Boi",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "Fashiontv Brasil",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "Rede TV ( Alter )",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "Record TV SC",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "Rede Minas ( Alter )",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "TV Diario ( Alter )",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "PAULISTÃO PLAY 02 HD",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "COPINHA 04",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "NBA Pass 02",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "US NBA ( Alter )",
+      "reason": "503 Server Error"
+    },
+    {
+      "name": "PREMIERE 5 HD",
+      "reason": "503 Server Error"
+    }
+  ]
+}

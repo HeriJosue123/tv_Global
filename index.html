@@ -516,34 +516,7 @@ body {
 <div style="height:1px;background:#bea67a;margin:4px 0;"></div>
 <button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="nacional">NACIONAL 🇸🇻</button>
 <div style="height:1px;background:#bea67a;margin:4px 0;"></div>
-<button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="cat__24H__ANIMES">24H  ANIMES</button>
-<div style="height:1px;background:#bea67a;margin:4px 0;"></div>
-<button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="cat__24H__CANAIS">24H  CANAIS</button>
-<div style="height:1px;background:#bea67a;margin:4px 0;"></div>
-<button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="cat__4K">4K</button>
-<div style="height:1px;background:#bea67a;margin:4px 0;"></div>
-<button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="cat__ANIMAÇÃO">ANIMAÇÃO</button>
-<div style="height:1px;background:#bea67a;margin:4px 0;"></div>
-<button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="cat__DOCUMENTARIOS">DOCUMENTARIOS</button>
-<div style="height:1px;background:#bea67a;margin:4px 0;"></div>
-<button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="cat__DORAMAS">DORAMAS</button>
-<div style="height:1px;background:#bea67a;margin:4px 0;"></div>
-<button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="cat__ESPORTES_ESTADUAIS">ESPORTES ESTADUAIS</button>
-<div style="height:1px;background:#bea67a;margin:4px 0;"></div>
-<button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="cat__JOGOS_DO_DIA">JOGOS DO DIA</button>
-<div style="height:1px;background:#bea67a;margin:4px 0;"></div>
-<button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="cat__PREMIERE">PREMIERE</button>
-<div style="height:1px;background:#bea67a;margin:4px 0;"></div>
-<button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="cat__REALITY_SHOW_-_A_CASA_DO_PATRÃO">REALITY SHOW - A CASA DO PATRÃO</button>
-<div style="height:1px;background:#bea67a;margin:4px 0;"></div>
-<button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="cat__RECORD">RECORD</button>
-<div style="height:1px;background:#bea67a;margin:4px 0;"></div>
-<button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="cat__SBT">SBT</button>
-<div style="height:1px;background:#bea67a;margin:4px 0;"></div>
-<button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="cat__TV_ABERTA">TV ABERTA</button>
-<div style="height:1px;background:#bea67a;margin:4px 0;"></div>
-<button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="cat__VARIEDADES">VARIEDADES</button>
-<div style="height:1px;background:#bea67a;margin:4px 0;"></div>
+<div id="mobile-categories-container"></div>
 </div>
 </div>
 
@@ -1099,8 +1072,30 @@ document.querySelectorAll(".channel-card").forEach(card=>observer.observe(card))
 
 animateCards()
 
-document.querySelectorAll(".menu-btn").forEach(btn=>{
-btn.onclick = ()=>{
+
+// DYNAMIC CATEGORY INJECTION
+if (typeof premiumDatabase !== 'undefined') {
+    const desktopCatContainer = document.getElementById('desktop-categories-container');
+    const mobileCatContainer = document.getElementById('mobile-categories-container');
+    const cats = Array.from(new Set(premiumDatabase.map(c => c.category))).sort();
+    let desktopHtml = '';
+    let mobileHtml = '';
+    cats.forEach(cat => {
+        if (!cat) return;
+        let catID = 'cat_' + cat.replace(/ /g, '_');
+        desktopHtml += `<button class="menu-btn" data-page="${catID}" style="font-size:12px;">${cat}</button>\n`;
+        mobileHtml += `<button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="${catID}">${cat}</button>\n<div style="height:1px;background:#bea67a;margin:4px 0;"></div>\n`;
+    });
+    if (desktopCatContainer) desktopCatContainer.innerHTML = desktopHtml;
+    if (mobileCatContainer) mobileCatContainer.innerHTML = mobileHtml;
+}
+
+// EVENT DELEGATION INSTEAD OF QUERY SELECTOR
+document.body.addEventListener("click", function(e) {
+let btn = e.target.closest(".menu-btn");
+if(!btn) return;
+
+
 document.querySelectorAll(".menu-btn").forEach(b=>b.classList.remove("active"))
 btn.classList.add("active")
 
@@ -1124,7 +1119,7 @@ renderCategory(page.replace("cat_", "").replace(/_/g, " "));
 animateCards()
 document.getElementById("mobile-menu").classList.add("hidden")
 filterChannels()
-}
+
 })
 
 
@@ -1375,7 +1370,7 @@ function renderMovies() {
         return;
     }
     let html = '';
-    moviesDatabase.forEach(c => {
+    moviesDatabase.slice(0, 1000).forEach(c => {
         html += `
         <a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('${c.url}')">
           <div class="new-badge" style="background: linear-gradient(135deg, #1a1a24, #000); color: #fff; border: 1px solid #333;">VOD</div>
@@ -1393,7 +1388,7 @@ function renderSeries() {
         return;
     }
     let html = '';
-    seriesDatabase.forEach(c => {
+    seriesDatabase.slice(0, 1000).forEach(c => {
         html += `
         <a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('${c.url}')">
           <div class="new-badge" style="background: linear-gradient(135deg, #0044ff, #00aaff);">SERIE</div>
