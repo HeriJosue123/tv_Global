@@ -1346,6 +1346,7 @@ function renderNacionalChannels() {
 
 
 function renderCategory(catName) {
+    catName = catName.trim().toUpperCase();
     if (typeof premiumDatabase === 'undefined' || premiumDatabase.length === 0) {
         grid.innerHTML = '<h3 style="color:red; text-align:center; width:100%;">Base de datos vacía.</h3>';
         return;
