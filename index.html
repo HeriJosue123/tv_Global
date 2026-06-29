@@ -27,7 +27,6 @@
     
     :root {
       --bg-color: #07070a; /* Dark sleek background */
-      --accent: #e50914; /* Netflix red, but we can use Claro Video blue or Gold */
       --accent-gold: #cfa85e; /* Premium Gold from old design */
       --text-main: #f5f5f7;
     }
@@ -164,7 +163,7 @@
       gap: 12px;
       overflow-x: auto;
       overflow-y: hidden;
-      padding: 15px 0 25px 0; /* padding for hover scale */
+      padding: 15px 0 25px 0;
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
     }
@@ -181,14 +180,11 @@
       transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s, border-color 0.3s;
       border: 1px solid rgba(255,255,255,0.05);
     }
-    /* 16:9 for TV/Channels */
     .card-tv { width: 260px; aspect-ratio: 16/9; }
-    /* 2:3 for Movies/Series */
     .card-vod { width: 180px; aspect-ratio: 2/3; }
 
     .card img {
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       object-fit: cover;
       transition: transform 0.3s;
     }
@@ -202,7 +198,6 @@
       transform: scale(1.05);
     }
     
-    /* Info Overlay */
     .card-info {
       position: absolute;
       bottom: 0; left: 0; width: 100%;
@@ -214,43 +209,29 @@
       flex-direction: column;
       justify-content: flex-end;
     }
-    .card:hover .card-info {
-      opacity: 1;
-    }
+    .card:hover .card-info { opacity: 1; }
     .card-title {
-      font-size: 0.9rem;
-      font-weight: 600;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      font-size: 0.9rem; font-weight: 600;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
     .live-badge {
-      position: absolute;
-      top: 8px; right: 8px;
+      position: absolute; top: 8px; right: 8px;
       background: rgba(229, 9, 20, 0.8);
-      color: white;
-      font-size: 0.6rem;
-      font-weight: bold;
-      padding: 2px 6px;
-      border-radius: 4px;
-      display: flex;
-      align-items: center;
-      gap: 4px;
+      color: white; font-size: 0.6rem; font-weight: bold;
+      padding: 2px 6px; border-radius: 4px;
+      display: flex; align-items: center; gap: 4px;
       backdrop-filter: blur(4px);
     }
     .live-badge .dot {
-      width: 6px; height: 6px;
-      background: white;
-      border-radius: 50%;
+      width: 6px; height: 6px; background: white; border-radius: 50%;
       animation: pulse 1.5s infinite;
     }
 
-    /* Grid Layout for full pages */
+    /* Grid Layout */
     .grid-container {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: 15px;
-      padding: 100px 4% 40px;
+      gap: 15px; padding: 100px 4% 40px;
     }
     @media (max-width: 600px) {
       .grid-container { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
@@ -261,54 +242,51 @@
     /* Page Transitions */
     .fade-content {
       transition: opacity 0.4s ease, transform 0.4s ease;
-      opacity: 1;
-      transform: translateY(0);
+      opacity: 1; transform: translateY(0);
     }
     .fade-out {
-      opacity: 0;
-      transform: translateY(20px);
+      opacity: 0; transform: translateY(20px);
     }
 
-    /* Cinematic Player Overlay */
+    /* ------------------------------------------------
+       CINEMATIC PLAYER MODAL
+       ------------------------------------------------ */
     #player-modal {
       position: fixed;
       top: 0; left: 0; width: 100vw; height: 100vh;
       background: #000;
       z-index: 9999;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.5s ease;
     }
     #player-modal.active {
-      opacity: 1;
-      pointer-events: all;
+      opacity: 1; pointer-events: all;
+    }
+    #modal-bg {
+      position: absolute; top: -10%; left: -10%; width: 120%; height: 120%;
+      background-size: cover; background-position: center;
+      filter: blur(30px) brightness(0.6);
+      z-index: 0;
+    }
+    .modal-overlay-gradient {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(to right, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.4) 100%);
+      z-index: 1;
     }
     .player-header {
-      position: absolute;
-      top: 0; left: 0; width: 100%;
-      padding: 20px 4%;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 50;
+      position: absolute; top: 0; left: 0; width: 100%;
+      padding: 20px 4%; z-index: 50;
     }
+    
     .player-wrapper {
       width: 100%;
-      max-width: 1200px;
       aspect-ratio: 16/9;
+      background: #000;
+      box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
       position: relative;
-      background: #07070a;
-      box-shadow: 0 0 50px rgba(207, 168, 94, 0.1);
     }
-    video, iframe {
-      width: 100%; height: 100%;
-      border: none;
-    }
+    video, iframe { width: 100%; height: 100%; border: none; }
 
     @keyframes pulse {
       0% { transform: scale(0.95); opacity: 0.5; }
@@ -316,39 +294,19 @@
       100% { transform: scale(0.95); opacity: 0.5; }
     }
     
-    /* Search Bar Input */
+    /* Search Bar */
     .search-input {
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      padding: 6px 12px 6px 35px;
-      border-radius: 20px;
-      color: white;
-      font-size: 0.9rem;
-      width: 0;
-      opacity: 0;
+      background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 6px 12px 6px 35px; border-radius: 20px; color: white;
+      font-size: 0.9rem; width: 0; opacity: 0;
       transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
-    .search-box {
-      position: relative;
-      display: flex;
-      align-items: center;
-    }
-    .search-box i {
-      position: absolute;
-      left: 10px;
-      color: rgba(255,255,255,0.7);
-      cursor: pointer;
-      z-index: 10;
-    }
+    .search-box { position: relative; display: flex; align-items: center; }
+    .search-box i { position: absolute; left: 10px; color: rgba(255,255,255,0.7); cursor: pointer; z-index: 10; }
     .search-box:hover .search-input, .search-input:focus {
-      width: 200px;
-      opacity: 1;
-      background: rgba(0, 0, 0, 0.5);
-      border-color: var(--accent-gold);
+      width: 200px; opacity: 1; background: rgba(0, 0, 0, 0.5); border-color: var(--accent-gold);
     }
-    @media (max-width: 768px) {
-      .nav-links { display: none; } /* Mobile menu toggle needed */
-    }
+    @media (max-width: 768px) { .nav-links { display: none; } }
   </style>
 </head>
 <body>
@@ -371,9 +329,8 @@
     <div class="flex items-center gap-4">
       <div class="search-box">
         <i class="fas fa-search" onclick="document.getElementById('searchInput').focus()"></i>
-        <input type="text" id="searchInput" class="search-input outline-none" placeholder="Títulos, personas, géneros">
+        <input type="text" id="searchInput" class="search-input outline-none" placeholder="Buscar contenido...">
       </div>
-      <!-- Mobile Menu Toggle -->
       <button class="md:hidden text-white" onclick="toggleMobileMenu()">
         <i class="fas fa-bars text-xl"></i>
       </button>
@@ -391,23 +348,48 @@
 
   <!-- Main View Container -->
   <div id="app-view" class="fade-content">
-    
-    <!-- Dynamic Content gets injected here by JS -->
     <div id="content-container"></div>
-
   </div>
 
-  <!-- Cinematic Player Modal -->
+  <!-- CINEMATIC PLAYER MODAL -->
   <div id="player-modal">
+    <!-- Backgrounds -->
+    <div id="modal-bg"></div>
+    <div class="modal-overlay-gradient"></div>
+    
+    <!-- Top Bar -->
     <div class="player-header">
-      <button class="text-white hover:text-[#cfa85e] transition text-lg flex items-center gap-2" onclick="closePlayer()">
-        <i class="fas fa-arrow-left"></i> Regresar
+      <button class="text-white hover:text-[#cfa85e] transition text-lg flex items-center gap-2 font-bold drop-shadow-md" onclick="closePlayer()">
+        <i class="fas fa-arrow-left"></i> VOLVER
       </button>
-      <div class="text-sm font-bold text-gray-300" id="player-title">TV GLOBAL STREAMING</div>
     </div>
-    <div class="player-wrapper">
-      <video id="native-player" controls class="hidden"></video>
-      <iframe id="main-player" src="" frameborder="0" allowfullscreen sandbox="allow-scripts allow-same-origin" class="hidden"></iframe>
+
+    <!-- Modal Content -->
+    <div class="relative z-10 flex flex-col lg:flex-row items-center justify-center h-full w-full px-4 lg:px-16 gap-8 lg:gap-16 pt-16 lg:pt-0">
+      
+      <!-- Info Section (Left) -->
+      <div class="flex flex-col items-center lg:items-start text-center lg:text-left max-w-sm lg:max-w-md w-full shrink-0">
+        <img id="modal-poster" src="" class="rounded-xl shadow-2xl mb-6 w-32 lg:w-56 object-cover border border-white/20" style="aspect-ratio: 2/3;">
+        <h1 id="modal-title" class="text-2xl lg:text-4xl font-black mb-3 text-white drop-shadow-lg leading-tight">Título</h1>
+        <span id="modal-category" class="px-3 py-1 bg-[#cfa85e] text-black text-[10px] lg:text-xs font-bold rounded mb-6 tracking-widest uppercase shadow-md">Categoría</span>
+        <p class="text-gray-300 text-sm mb-8 leading-relaxed hidden lg:block">Disfruta de este contenido en alta definición. Transmisión optimizada sin interrupciones directamente en tu pantalla.</p>
+        
+        <button class="btn-premium btn-gold w-full lg:w-auto justify-center text-lg py-3 px-8 shadow-xl shadow-yellow-900/50" onclick="startPlayback()">
+          <i class="fas fa-play"></i> INICIAR VIDEO
+        </button>
+        <input type="hidden" id="current-url" value="">
+      </div>
+
+      <!-- Video Section (Right) -->
+      <div class="player-wrapper w-full max-w-5xl rounded-xl overflow-hidden border border-white/10 hidden lg:block" id="video-container">
+        <!-- Player is hidden by default until "Iniciar Video" is clicked, or we can auto-play -->
+        <div id="video-placeholder" class="absolute inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm z-20">
+            <i class="fas fa-play-circle text-6xl text-white/50"></i>
+        </div>
+        <video id="native-player" controls class="hidden"></video>
+        <iframe id="main-player" src="" frameborder="0" allowfullscreen sandbox="allow-scripts allow-same-origin" class="hidden"></iframe>
+      </div>
+
     </div>
   </div>
 
@@ -419,14 +401,10 @@
     let hls = null;
     let mpegtsPlayer = null;
 
-    // Listen to Scroll for Navbar
     window.addEventListener('scroll', () => {
       const nav = document.getElementById('navbar');
-      if (window.scrollY > 50) {
-        nav.classList.add('scrolled');
-      } else {
-        nav.classList.remove('scrolled');
-      }
+      if (window.scrollY > 50) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
     });
 
     function toggleMobileMenu() {
@@ -435,7 +413,6 @@
       menu.classList.toggle('flex');
     }
 
-    // Initialize App
     document.addEventListener("DOMContentLoaded", () => {
       loadPage('home', document.getElementById('nav-home'));
       setupSearch();
@@ -466,14 +443,18 @@
       }, 400);
     }
 
+    // Helper to safely pass objects to HTML attributes
+    function generateClickAttr(c) {
+      // Encode the object to Base64 to prevent quote escaping issues in HTML
+      const b64 = btoa(encodeURIComponent(JSON.stringify(c)));
+      return `onclick="openPlayerModal('${b64}')"`;
+    }
+
     // ----------------------------------------------------
     // TEMPLATES
     // ----------------------------------------------------
     function renderHome(container) {
       let html = '';
-      
-      // HERO SECTION
-      // Pick a random popular movie or channel for the hero
       let heroItem = null;
       let bgImg = 'https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&q=80&w=2070';
       
@@ -482,8 +463,6 @@
         if (heroItem.logo && heroItem.logo.includes('tmdb')) {
           bgImg = heroItem.logo.replace('w600_and_h900_bestv2', 'original');
         }
-      } else if (typeof premiumDatabase !== 'undefined' && premiumDatabase.length > 0) {
-        heroItem = premiumDatabase[0];
       }
 
       html += `
@@ -491,22 +470,17 @@
           <div class="hero-vignette"></div>
           <div class="hero-content">
             <h1 class="hero-title">${heroItem ? heroItem.name : 'TV GLOBAL PREMIUM'}</h1>
-            <p class="hero-desc">Disfruta de la mejor televisión en vivo, miles de películas y series en alta definición. Contenido ilimitado 24/7 sin interrupciones.</p>
+            <p class="hero-desc">Disfruta de la mejor televisión en vivo, miles de películas y series en alta definición.</p>
             <div class="flex gap-4">
-              <button class="btn-premium btn-gold" onclick="playVipChannel('${heroItem ? heroItem.url : ''}')">
+              <button class="btn-premium btn-gold" ${heroItem ? generateClickAttr(heroItem) : ''}>
                 <i class="fas fa-play"></i> Reproducir
-              </button>
-              <button class="btn-premium">
-                <i class="fas fa-info-circle"></i> Más Información
               </button>
             </div>
           </div>
         </div>
       `;
 
-      // ROWS SECTION
       if (typeof premiumDatabase !== 'undefined') {
-        // Group by category, pick top 10 categories that have the most channels
         const catMap = {};
         premiumDatabase.forEach(c => {
           let cat = (c.category || 'OTROS').toUpperCase().trim();
@@ -517,14 +491,14 @@
         const sortedCats = Object.keys(catMap).sort((a, b) => catMap[b].length - catMap[a].length).slice(0, 15);
 
         sortedCats.forEach(catName => {
-          const channels = catMap[catName].slice(0, 30); // Max 30 per row to prevent lag
+          const channels = catMap[catName].slice(0, 30);
           if (channels.length >= 4) {
             html += `
               <div class="row-container">
                 <h2 class="row-title">${catName}</h2>
                 <div class="row-inner" onwheel="horizontalScroll(event, this)">
                   ${channels.map(c => `
-                    <div class="card card-tv" onclick="playVipChannel('${c.url}')" data-name="${c.name.toLowerCase()}">
+                    <div class="card card-tv" ${generateClickAttr(c)} data-name="${c.name.toLowerCase()}">
                       <div class="live-badge"><div class="dot"></div>EN VIVO</div>
                       <img src="${c.logo}" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=141414&color=cfa85e&size=300'" loading="lazy">
                       <div class="card-info">
@@ -538,7 +512,6 @@
           }
         });
       }
-
       container.innerHTML = html;
     }
 
@@ -547,9 +520,8 @@
         container.innerHTML = `<div class="pt-32 text-center text-xl text-gray-500">No hay contenido disponible.</div>`;
         return;
       }
-
       const isTv = type === 'tv';
-      const items = db.slice(0, 500); // Limit to 500 for grid performance
+      const items = db.slice(0, 500);
 
       let html = `
         <div class="pt-24 px-4 md:px-8 pb-4">
@@ -558,7 +530,7 @@
         </div>
         <div class="grid-container pt-4">
           ${items.map(c => `
-            <div class="card ${isTv ? 'card-tv w-full' : 'card-vod w-full'}" onclick="playVipChannel('${c.url}')" data-name="${c.name.toLowerCase()}">
+            <div class="card ${isTv ? 'card-tv w-full' : 'card-vod w-full'}" ${generateClickAttr(c)} data-name="${c.name.toLowerCase()}">
               ${isTv ? '<div class="live-badge"><div class="dot"></div>EN VIVO</div>' : ''}
               <img src="${c.logo}" onerror="this.src='https://ui-avatars.com/api/?name=${isTv?'TV':'CINE'}&background=141414&color=cfa85e&size=300'" loading="lazy">
               <div class="card-info">
@@ -571,30 +543,19 @@
       container.innerHTML = html;
     }
 
-    // ----------------------------------------------------
-    // UTILS & EVENTS
-    // ----------------------------------------------------
-    // Allow horizontal scroll with mouse wheel on rows
     function horizontalScroll(event, element) {
       event.preventDefault();
       element.scrollLeft += event.deltaY > 0 ? 300 : -300;
     }
 
-    // Search functionality
     function setupSearch() {
       const input = document.getElementById('searchInput');
       input.addEventListener('keyup', (e) => {
         const val = e.target.value.toLowerCase();
         document.querySelectorAll('.card').forEach(card => {
           const name = card.dataset.name || "";
-          if (name.includes(val)) {
-            card.style.display = "";
-          } else {
-            card.style.display = "none";
-          }
+          card.style.display = name.includes(val) ? "" : "none";
         });
-        
-        // Hide empty rows
         document.querySelectorAll('.row-container').forEach(row => {
           const hasVisible = Array.from(row.querySelectorAll('.card')).some(c => c.style.display !== 'none');
           row.style.display = hasVisible ? '' : 'none';
@@ -603,19 +564,42 @@
     }
 
     // ----------------------------------------------------
-    // PLAYER LOGIC
+    // NEW PLAYER LOGIC & MODAL
     // ----------------------------------------------------
-    function playVipChannel(url) {
+    function openPlayerModal(b64Data) {
+      // Decode data safely
+      const item = JSON.parse(decodeURIComponent(atob(b64Data)));
+      
+      // Update Modal UI
+      const bgImg = (item.logo && item.logo.includes('tmdb')) ? item.logo.replace('w600_and_h900_bestv2', 'original') : item.logo;
+      document.getElementById('modal-bg').style.backgroundImage = `url('${bgImg}')`;
+      document.getElementById('modal-poster').src = item.logo;
+      document.getElementById('modal-title').innerText = item.name;
+      document.getElementById('modal-category').innerText = item.category || 'Streaming';
+      document.getElementById('current-url').value = item.url;
+      
+      // Show Modal
+      const modal = document.getElementById('player-modal');
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      
+      // Reset Player State
+      document.getElementById('video-placeholder').classList.remove('hidden');
+      document.getElementById('video-container').classList.remove('hidden'); // Ensure visible on mobile
+      
+      // Auto-start playback for a truly seamless experience
+      startPlayback();
+    }
+
+    function startPlayback() {
+      const url = document.getElementById('current-url').value;
       if (!url) return;
       
-      const modal = document.getElementById('player-modal');
+      document.getElementById('video-placeholder').classList.add('hidden');
+      
       const video = document.getElementById('native-player');
       const iframe = document.getElementById('main-player');
       
-      modal.classList.add('active');
-      document.body.style.overflow = 'hidden'; // prevent background scroll
-
-      // Reset
       video.classList.add('hidden');
       iframe.classList.add('hidden');
       video.pause();
@@ -623,9 +607,14 @@
       if(hls) { hls.destroy(); hls = null; }
       if(mpegtsPlayer) { mpegtsPlayer.destroy(); mpegtsPlayer = null; }
 
+      // SMART PROXY LOGIC
       let proxyUrl = url;
-      if (url.startsWith('http://') || url.startsWith('https://')) {
+      if (url.startsWith('http://')) {
+          // Solamente pasamos por proxy los HTTP inseguros por problema de Mixed Content
           proxyUrl = '/api/proxy?url=' + encodeURIComponent(url);
+      } else if (url.startsWith('https://')) {
+          // BYPASS: Reproducir nativamente saltando Vercel Proxy para evitar timeout y rotura de M3U8
+          proxyUrl = url;
       }
 
       let isRawTs = url.includes('.ts') || url.includes('attbr.fun') || url.includes('cloudmail.site');
@@ -639,7 +628,7 @@
           });
           mpegtsPlayer.attachMediaElement(video);
           mpegtsPlayer.load();
-          mpegtsPlayer.play();
+          mpegtsPlayer.play().catch(e => console.log('Autoplay blocked:', e));
       } 
       else if (typeof Hls !== 'undefined' && Hls.isSupported() && url.includes(".m3u8")) {
           video.classList.remove('hidden');
@@ -647,17 +636,17 @@
           hls.loadSource(proxyUrl);
           hls.attachMedia(video);
           hls.on(Hls.Events.MANIFEST_PARSED, function() {
-              video.play();
+              video.play().catch(e => console.log('Autoplay blocked:', e));
           });
       }
       else if (video.canPlayType('application/vnd.apple.mpegurl')) {
           video.classList.remove('hidden');
           video.src = proxyUrl;
           video.addEventListener('loadedmetadata', function() {
-              video.play();
+              video.play().catch(e => console.log('Autoplay blocked:', e));
           });
       } else {
-          // Fallback to iframe for external players
+          // iFrame Fallback
           iframe.classList.remove('hidden');
           iframe.src = url;
       }
@@ -669,13 +658,17 @@
       const iframe = document.getElementById('main-player');
       
       modal.classList.remove('active');
-      document.body.style.overflow = 'auto'; // restore scroll
+      document.body.style.overflow = 'auto'; 
       
       video.pause();
       video.src = '';
       iframe.src = '';
       if(hls) { hls.destroy(); hls = null; }
       if(mpegtsPlayer) { mpegtsPlayer.destroy(); mpegtsPlayer = null; }
+      
+      // Hide video container on mobile after close so it doesn't block the UI if they open modal again
+      document.getElementById('video-container').classList.add('hidden');
+      document.getElementById('video-container').classList.add('lg:block');
     }
   </script>
 </body>
