@@ -515,7 +515,24 @@ body {
 <div style="height:1px;background:#bea67a;margin:4px 0;"></div>
 <button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="nacional">NACIONAL 🇸🇻</button>
 <div style="height:1px;background:#bea67a;margin:4px 0;"></div>
-<button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="premium">PREMIUM 👑</button>
+<button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="cat_DEPORTES">DEPORTES</button>
+<div style="height:1px;background:#bea67a;margin:4px 0;"></div>
+<button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="cat_CANALES_DE_SERIE">CANALES DE SERIE</button>
+<div style="height:1px;background:#bea67a;margin:4px 0;"></div>
+<button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="cat_INFANTILES">INFANTILES</button>
+<div style="height:1px;background:#bea67a;margin:4px 0;"></div>
+<button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="cat_URUGUAY">URUGUAY</button>
+<div style="height:1px;background:#bea67a;margin:4px 0;"></div>
+<button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="cat_COPA_DEL_MUNDO_2026">COPA DEL MUNDO 2026</button>
+<div style="height:1px;background:#bea67a;margin:4px 0;"></div>
+<button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="cat_ARGENTINA">ARGENTINA</button>
+<div style="height:1px;background:#bea67a;margin:4px 0;"></div>
+<button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="cat_BRASIL">BRASIL</button>
+<div style="height:1px;background:#bea67a;margin:4px 0;"></div>
+<button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="cat_EVENTOS_DEL_DIA">EVENTOS DEL DIA</button>
+<div style="height:1px;background:#bea67a;margin:4px 0;"></div>
+<button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="cat_DEPORTES_MEXICO">DEPORTES MEXICO</button>
+<div style="height:1px;background:#bea67a;margin:4px 0;"></div>
 </div>
 </div>
 
@@ -524,16 +541,26 @@ body {
 <div class="layout">
 
 <div class="menu">
+<div class="premium-search" style="margin-bottom: 20px;">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="searchInput" class="premium-search-input" placeholder="Buscar canal, película...">
+    </div>
 <button class="menu-btn active" data-page="home">HOME</button>
 <button class="menu-btn" data-page="peliculas">PELÍCULAS 🎬</button>
 <button class="menu-btn" data-page="series">SERIES 📺</button>
 <button class="menu-btn" data-page="nacional">NACIONAL 🇸🇻</button>
-<button class="menu-btn" data-page="premium" style="color: gold; text-shadow: 0 0 5px gold;">PREMIUM 👑</button>
+<button class="menu-btn" data-page="cat_DEPORTES">DEPORTES</button>
+<button class="menu-btn" data-page="cat_CANALES_DE_SERIE">CANALES DE SERIE</button>
+<button class="menu-btn" data-page="cat_INFANTILES">INFANTILES</button>
+<button class="menu-btn" data-page="cat_URUGUAY">URUGUAY</button>
+<button class="menu-btn" data-page="cat_COPA_DEL_MUNDO_2026">COPA DEL MUNDO 2026</button>
+<button class="menu-btn" data-page="cat_ARGENTINA">ARGENTINA</button>
+<button class="menu-btn" data-page="cat_BRASIL">BRASIL</button>
+<button class="menu-btn" data-page="cat_EVENTOS_DEL_DIA">EVENTOS DEL DIA</button>
+<button class="menu-btn" data-page="cat_DEPORTES_MEXICO">DEPORTES MEXICO</button>
 
-<div class="premium-search">
-        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        <input type="text" id="searchInput" class="premium-search-input" placeholder="Buscar canal, película...">
-    </div>
+
+
 
 </div>
 
@@ -1063,21 +1090,19 @@ btn.classList.add("active")
 
 const page = btn.dataset.page
 
+
 if(page==="home"){
 grid.innerHTML = originalHome
-}
-if(page==="peliculas"){
+} else if(page==="peliculas"){
 renderMovies();
-}
-if(page==="series"){
+} else if(page==="series"){
 renderSeries();
-}
-if(page==="nacional"){
+} else if(page==="nacional"){
 renderNacionalChannels();
+} else if(page.startsWith("cat_")){
+renderCategory(page.replace("cat_", "").replace(/_/g, " "));
 }
-if(page==="premium"){
-renderPremiumChannels();
-}
+
 
 
 animateCards()
@@ -1274,40 +1299,23 @@ function renderNacionalChannels() {
 }
 
 
-function renderPremiumChannels() {
+function renderCategory(catName) {
     if (typeof premiumDatabase === 'undefined' || premiumDatabase.length === 0) {
-        grid.innerHTML = '<h3 style="color:red; text-align:center; width:100%;">No hay canales premium disponibles.</h3>';
+        grid.innerHTML = '<h3 style="color:red; text-align:center; width:100%;">Base de datos vacía.</h3>';
         return;
     }
     
-    // Group by category
-    const grouped = {};
-    premiumDatabase.forEach(c => {
-        let cat = (c.category || 'OTROS').toUpperCase().trim();
-        if(cat === '') cat = 'OTROS';
-        if (!grouped[cat]) grouped[cat] = [];
-        grouped[cat].push(c);
-    });
-
     let html = '';
-    const categories = Object.keys(grouped).sort();
-    
-    categories.forEach(cat => {
-        html += `<div class="category-header-wrap" style="width: 100%; margin-top: 40px; margin-bottom: 20px; grid-column: 1 / -1;">
-            <h2 class="category-header" style="color: #cfa85e; border-bottom: 1px solid rgba(207,168,94,0.3); padding-bottom: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; font-size: 20px; display: flex; align-items: center; gap: 10px;">
-                <span style="display:inline-block; width:8px; height:8px; background:var(--neon-accent); border-radius:50%; box-shadow:0 0 10px var(--neon-accent);"></span>
-                ${cat}
-            </h2>
-        </div>`;
-        
-        grouped[cat].forEach(c => {
+    premiumDatabase.forEach(c => {
+        let currentCat = (c.category || 'OTROS').toUpperCase().trim();
+        if(currentCat === catName) {
             html += `
             <a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('${c.url}')" data-name="${c.name.toLowerCase()}">
-              <div class="live"><span class="live-dot"></span>VIP</div>
-              <img src="${c.logo}" alt="${c.name}" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=VIP&background=ffd700&color=000&size=128'">
-              <p class="channel-name" style="color: gold;">${c.name}</p>
+              <div class="live"><span class="live-dot"></span>EN VIVO</div>
+              <img src="${c.logo}" alt="${c.name}" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
+              <p class="channel-name">${c.name}</p>
             </a>`;
-        });
+        }
     });
     
     grid.innerHTML = html;
