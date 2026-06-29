@@ -1,1392 +1,682 @@
-<!DOCTYPE html><html lang="es"><head>
-        <link rel="shortcut icon" href="https://www.cablevisionhd.com/imge/cablevisionhd.png">  
-        
+<!DOCTYPE html>
+<html lang="es">
+<head>
   <meta charset="UTF-8">
   <meta name="referrer" content="no-referrer">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TV GLOBAL - Mundial 2026</title>
-<script src="https://cdn.jsdelivr.net/npm/mpegts.js@1.7.3/dist/mpegts.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="description" content="Ver Cable Vision HD ✅ disfruta de una de las mejores plataformas de television por internet con canales online totalmente gratis y en alta definicion. Contamos con señales estables y optimizadas al 100% para celulares Android, iPhone, Smart TV, PC, tablets y diferentes dispositivos. En Cable Vision HD podras disfrutar de deportes en vivo, peliculas, series, entretenimiento, noticias, canales internacionales y contenido 24/7 para todo el publico en general. Vive la mejor experiencia en tv online HD con reproduccion fluida, compatibilidad total y una amplia variedad de señales disponibles las 24 horas del dia.">
-<link rel="canonical" href="https://www.cablevisionhd.com">
-<link rel="next" href="https://www.cablevisionhd.com">
-<meta property="og:locale" content="es">
-<meta property="og:type" content="TV GLOBAL | TELEVISION POR INTERNET | TV ONLINE HD">
-<meta property="og:title" content="TV GLOBAL | TELEVISION POR INTERNET | TV ONLINE HD">
-<meta property="og:description" content="Ver Cable Vision HD ✅ disfruta de una de las mejores plataformas de television por internet con canales online totalmente gratis y en alta definicion. Contamos con señales estables y optimizadas al 100% para celulares Android, iPhone, Smart TV, PC, tablets y diferentes dispositivos. En Cable Vision HD podras disfrutar de deportes en vivo, peliculas, series, entretenimiento, noticias, canales internacionales y contenido 24/7 para todo el publico en general. Vive la mejor experiencia en tv online HD con reproduccion fluida, compatibilidad total y una amplia variedad de señales disponibles las 24 horas del dia.">
-<meta property="og:url" content="https://www.cablevisionhd.com/">
-<meta name="og:image" content="https://www.cablevisionhd.com/imge/cablevisionhd.jpg">
-<meta property="og:site_name" content="TV GLOBAL | TELEVISION POR INTERNET | TV ONLINE HD">
-<meta name="twitter:description" content="Ver Cable Vision HD ✅ disfruta de una de las mejores plataformas de television por internet con canales online totalmente gratis y en alta definicion. Contamos con señales estables y optimizadas al 100% para celulares Android, iPhone, Smart TV, PC, tablets y diferentes dispositivos. En Cable Vision HD podras disfrutar de deportes en vivo, peliculas, series, entretenimiento, noticias, canales internacionales y contenido 24/7 para todo el publico en general. Vive la mejor experiencia en tv online HD con reproduccion fluida, compatibilidad total y una amplia variedad de señales disponibles las 24 horas del dia.">
-<meta name="twitter:title" content="TV GLOBAL | TELEVISION POR INTERNET | TV ONLINE HD">
-<meta name="google-site-verification" content="qDbHQYHMysQ7PMK5V_6g6Pu393VbqCJcHgxqms6kPU8">
-
-<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-
-<style>
-
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
-
-:root {
-  --bg-dark: #07070a;
-  --glass-bg: rgba(255, 255, 255, 0.03);
-  --glass-border: rgba(255, 255, 255, 0.05);
-  --glass-hover: rgba(255, 255, 255, 0.08);
-  --neon-accent: #cfa85e; /* Premium Gold */
-  --neon-glow: rgba(207, 168, 94, 0.3);
-  --text-main: #f5f5f7;
-  --text-muted: #a1a1a6;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  background: var(--bg-dark);
-  background-image: 
-    radial-gradient(circle at 15% 50%, rgba(207, 168, 94, 0.08), transparent 25%),
-    radial-gradient(circle at 85% 30%, rgba(138, 43, 226, 0.05), transparent 25%);
-  background-attachment: fixed;
-  font-family: 'Outfit', sans-serif;
-  color: var(--text-main);
-  min-height: 100vh;
-  overflow-x: hidden;
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: var(--neon-accent) var(--bg-dark);
-}
-
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: var(--bg-dark); }
-::-webkit-scrollbar-thumb { 
-  background: var(--neon-accent); 
-  border-radius: 4px;
-}
-
-/* HEADER PREMIUM */
-.site-header {
-  position: sticky;
-  top: 0;
-  background: rgba(7, 7, 10, 0.75);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--glass-border);
-  padding: 15px 25px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 100;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.logo span.title {
-  font-size: 24px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  background: linear-gradient(135deg, #fff, var(--neon-accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-transform: uppercase;
-}
-
-.logo span.subtitle {
-  font-size: 11px;
-  font-weight: 300;
-  color: var(--neon-accent);
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  display: block;
-}
-
-.search-box {
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  border-radius: 20px;
-  padding: 8px 16px;
-  color: var(--text-main);
-  font-family: 'Outfit', sans-serif;
-  outline: none;
-  width: 250px;
-  transition: all 0.3s ease;
-  font-size: 14px;
-}
-.search-box:focus {
-  background: rgba(255,255,255,0.06);
-  border-color: var(--neon-accent);
-  box-shadow: 0 0 15px var(--neon-glow);
-}
-
-/* LAYOUT */
-.layout {
-  display: flex;
-  padding: 30px;
-  gap: 30px;
-  max-width: 1600px;
-  margin: 0 auto;
-}
-
-.menu {
-  width: 250px;
-  flex-shrink: 0;
-}
-
-.channels-container {
-  flex: 1;
-  width: 100%;
-}
-
-/* GRID DE CANALES */
-#channels {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 20px;
-}
-
-/* TARJETAS GLASSMORPHISM */
-.channel-card {
-  position: relative;
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  border-radius: 16px;
-  padding: 15px;
-  text-align: center;
-  cursor: pointer;
-  text-decoration: none;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 160px;
-}
-
-.channel-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: -100%;
-  width: 50%; height: 100%;
-  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.03) 50%, rgba(255,255,255,0) 100%);
-  transform: skewX(-25deg);
-  transition: all 0.6s ease;
-}
-
-.channel-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  background: var(--glass-hover);
-  border-color: rgba(207, 168, 94, 0.3);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.4), 0 0 20px var(--neon-glow);
-}
-
-.channel-card:hover::before {
-  left: 200%;
-}
-
-.channel-card img {
-  width: 90px;
-  height: 90px;
-  object-fit: contain;
-  transition: transform 0.4s ease;
-  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
-}
-
-.channel-card:hover img {
-  transform: scale(1.1);
-}
-
-.channel-name {
-  color: var(--text-main);
-  margin-top: 15px;
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-}
-
-/* BADGES (EN VIVO / NUEVO) */
-.live {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background: rgba(0, 0, 0, 0.6);
-  border: 1px solid var(--neon-accent);
-  color: var(--neon-accent);
-  font-size: 9px;
-  padding: 4px 8px;
-  border-radius: 20px;
-  font-weight: 800;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  z-index: 2;
-  letter-spacing: 1px;
-}
-
-.live-dot {
-  width: 6px; height: 6px;
-  background: var(--neon-accent);
-  border-radius: 50%;
-  box-shadow: 0 0 8px var(--neon-accent);
-  animation: pulse-glow 1.5s infinite;
-}
-
-@keyframes pulse-glow {
-  0% { box-shadow: 0 0 0 0 rgba(207, 168, 94, 0.7); }
-  70% { box-shadow: 0 0 0 6px rgba(207, 168, 94, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(207, 168, 94, 0); }
-}
-
-.new-badge {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: linear-gradient(135deg, #ff2a2a, #ff5e5e);
-  color: #fff;
-  font-size: 9px;
-  padding: 4px 8px;
-  border-radius: 20px;
-  font-weight: 800;
-  z-index: 2;
-  box-shadow: 0 0 10px rgba(255, 42, 42, 0.4);
-  letter-spacing: 1px;
-}
-
-/* REPRODUCTOR CINEMATOGRAFICO */
-#player-wrapper {
-  background: #000;
-  border-radius: 16px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 30px var(--neon-glow);
-  border: 1px solid var(--glass-border);
-  overflow: hidden;
-  transition: all 0.5s ease;
-}
-
-.close-btn {
-  background: linear-gradient(135deg, #2a2a35, #1a1a24);
-  color: white;
-  border: 1px solid var(--glass-border);
-  padding: 12px 25px;
-  border-radius: 30px;
-  cursor: pointer;
-  font-weight: 600;
-  font-family: 'Outfit', sans-serif;
-  letter-spacing: 1px;
-  transition: all 0.3s ease;
-  margin-top: 20px;
-}
-
-.close-btn:hover {
-  background: linear-gradient(135deg, #ff2a2a, #d41414);
-  border-color: #ff2a2a;
-  box-shadow: 0 0 15px rgba(255, 42, 42, 0.4);
-}
-
-.footer {
-  margin-top: 50px;
-  padding: 30px;
-  text-align: center;
-  border-top: 1px solid var(--glass-border);
-  color: var(--text-muted);
-  font-size: 13px;
-  background: rgba(0,0,0,0.2);
-}
-
-.mobile-search { display: none; }
-
-@media (max-width: 768px) {
-  .layout { flex-direction: column; padding: 15px; }
-  .site-header { padding: 15px; flex-direction: column; gap: 15px; }
-  .search-box { width: 100%; }
-  #channels { grid-template-columns: repeat(2, 1fr); gap: 15px; }
-  .channel-card { height: 140px; padding: 10px; }
-  .channel-card img { max-width: 70px; max-height: 70px; }
-  .logo span.title { font-size: 20px; }
-}
-
-
-.menu-btn {
-  display: inline-block;
-  padding: 10px 20px;
-  margin-right: 10px;
-  margin-bottom: 15px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #fff;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(5px);
-}
-
-.menu-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(207, 168, 94, 0.5);
-}
-
-.menu-btn.active {
-  background: rgba(207, 168, 94, 0.15);
-  border-color: #cfa85e;
-  color: #cfa85e;
-  box-shadow: 0 0 10px rgba(207, 168, 94, 0.3);
-}
-
-/* For mobile menu */
-#mobile-menu .menu-btn {
-  display: block;
-  width: 100%;
-  margin-right: 0;
-  margin-bottom: 5px;
-}
-
-</style>
-
+  <title>TV GLOBAL - Premium Experience</title>
+  <meta name="description" content="Ver Cable Vision HD ✅ disfruta de una de las mejores plataformas de television por internet con canales online totalmente gratis y en alta definicion.">
+  <link rel="shortcut icon" href="https://www.cablevisionhd.com/imge/cablevisionhd.png">  
+  
+  <!-- Tailwind & Icons -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Video Players -->
+  <script src="https://cdn.jsdelivr.net/npm/mpegts.js@1.7.3/dist/mpegts.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
+  <!-- Databases -->
   <script src="vip_database.js"></script>
-<script src="premium_database.js"></script>
-<script src="movies_database.js"></script>
-<script src="series_database.js"></script>
+  <script src="premium_database.js"></script>
+  <script src="movies_database.js"></script>
+  <script src="series_database.js"></script>
 
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&display=swap');
+    
+    :root {
+      --bg-color: #07070a; /* Dark sleek background */
+      --accent: #e50914; /* Netflix red, but we can use Claro Video blue or Gold */
+      --accent-gold: #cfa85e; /* Premium Gold from old design */
+      --text-main: #f5f5f7;
+    }
 
-<style>
-@media (max-width: 600px) {
-    #channels {
-        padding: 0 5px;
-        gap: 12px !important;
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: 'Outfit', sans-serif;
+      overflow-x: hidden;
     }
-    .channel-card {
-        height: 100px !important; /* Shorter cards since they are full width */
-        flex-direction: row !important; /* Image on left, text on right */
-        justify-content: flex-start !important;
-        padding: 10px 15px !important;
-        gap: 20px;
-    }
-    .channel-card img {
-        width: 65px !important;
-        height: 65px !important;
-    }
-    .channel-name {
-        margin-top: 0 !important;
-        text-align: left;
-        font-size: 15px !important;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 60%;
-    }
-    .live {
-        top: auto !important;
-        bottom: 10px !important;
-        left: 105px !important;
-    }
-    .new-badge {
-        top: 10px !important;
-        right: 10px !important;
-    }
-    #player-wrapper {
-        margin: 0 !important;
-        max-width: 100% !important;
-    }
-    #player-wrapper > div {
-        border-radius: 0 !important;
-    }
-    .layout {
-        padding: 0 !important;
-    }
-    /* Horizontal scrolling menu for mobile */
-    .menu {
-        display: flex;
-        overflow-x: auto;
-        width: 100%;
-        padding: 10px;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-    }
-    .menu::-webkit-scrollbar {
-        display: none;
-    }
-    .menu-btn {
-        margin-bottom: 0 !important;
-        flex-shrink: 0;
-    }
-    .site-header {
-        padding: 10px;
-    }
-}
-</style>
 
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent-gold); }
 
+    /* Navbar Transitions */
+    #navbar {
+      transition: background-color 0.4s ease, backdrop-filter 0.4s ease;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, transparent 100%);
+    }
+    #navbar.scrolled {
+      background-color: rgba(7, 7, 10, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    }
+    .nav-link {
+      transition: color 0.3s;
+      position: relative;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: white;
+      font-weight: 500;
+    }
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--accent-gold);
+      box-shadow: 0 0 10px var(--accent-gold);
+    }
 
-<style>
-/* PREMIUM SEARCH BAR */
-.premium-search {
-  position: relative;
-  margin-top: 20px;
-  width: 100%;
-}
-.premium-search .search-icon {
-  position: absolute;
-  top: 50%;
-  left: 15px;
-  transform: translateY(-50%);
-  width: 18px;
-  height: 18px;
-  color: var(--neon-accent);
-  pointer-events: none;
-}
-.premium-search-input {
-  width: 100%;
-  background: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(207, 168, 94, 0.3);
-  border-radius: 30px;
-  padding: 12px 15px 12px 45px;
-  color: #fff;
-  font-family: 'Outfit', sans-serif;
-  font-size: 14px;
-  outline: none;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-}
-.premium-search-input:focus {
-  border-color: var(--neon-accent);
-  box-shadow: 0 0 20px rgba(207, 168, 94, 0.4);
-  background: rgba(0, 0, 0, 0.6);
-}
-.premium-search-input::placeholder {
-  color: rgba(255, 255, 255, 0.4);
-}
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 75vh;
+      width: 100%;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: 50px;
+      transition: background-image 1s ease-in-out;
+    }
+    .hero-vignette {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(to top, var(--bg-color) 0%, transparent 50%, rgba(0,0,0,0.6) 100%),
+                  linear-gradient(to right, rgba(7,7,10,0.8) 0%, transparent 50%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      padding: 0 4%;
+      max-width: 800px;
+    }
+    .hero-title {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 15px rgba(0,0,0,0.8);
+    }
+    .hero-desc {
+      font-size: 1.1rem;
+      font-weight: 300;
+      margin-bottom: 25px;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
+      opacity: 0.9;
+    }
+    .btn-premium {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      padding: 10px 24px;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-premium:hover {
+      background: white;
+      color: black;
+      transform: scale(1.05);
+    }
+    .btn-gold {
+      background: var(--accent-gold);
+      color: black;
+      border: none;
+    }
+    .btn-gold:hover {
+      background: #e6be6f;
+      box-shadow: 0 0 15px rgba(207, 168, 94, 0.5);
+    }
 
-/* DESKTOP SIDEBAR COLLAPSE */
-.menu {
-  transition: width 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease, margin 0.3s ease, padding 0.3s ease;
-  overflow: hidden;
-}
-.menu.collapsed {
-  width: 0 !important;
-  opacity: 0;
-  margin-right: -30px; /* pull layout tightly */
-  padding: 0;
-}
-</style>
+    /* Content Rows (Netflix Style) */
+    .row-container {
+      margin-top: -3vw;
+      position: relative;
+      z-index: 20;
+      padding: 0 4%;
+      margin-bottom: 40px;
+    }
+    .row-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .row-inner {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 15px 0 25px 0; /* padding for hover scale */
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+    .row-inner::-webkit-scrollbar { display: none; }
+    
+    /* Cards */
+    .card {
+      flex: 0 0 auto;
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      background: #141414;
+      transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s, border-color 0.3s;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    /* 16:9 for TV/Channels */
+    .card-tv { width: 260px; aspect-ratio: 16/9; }
+    /* 2:3 for Movies/Series */
+    .card-vod { width: 180px; aspect-ratio: 2/3; }
+
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: scale(1.08) translateY(-5px);
+      z-index: 50;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.8);
+      border-color: var(--accent-gold);
+    }
+    .card:hover img {
+      transform: scale(1.05);
+    }
+    
+    /* Info Overlay */
+    .card-info {
+      position: absolute;
+      bottom: 0; left: 0; width: 100%;
+      padding: 20px 10px 10px;
+      background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 60%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    .card:hover .card-info {
+      opacity: 1;
+    }
+    .card-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .live-badge {
+      position: absolute;
+      top: 8px; right: 8px;
+      background: rgba(229, 9, 20, 0.8);
+      color: white;
+      font-size: 0.6rem;
+      font-weight: bold;
+      padding: 2px 6px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      backdrop-filter: blur(4px);
+    }
+    .live-badge .dot {
+      width: 6px; height: 6px;
+      background: white;
+      border-radius: 50%;
+      animation: pulse 1.5s infinite;
+    }
+
+    /* Grid Layout for full pages */
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 15px;
+      padding: 100px 4% 40px;
+    }
+    @media (max-width: 600px) {
+      .grid-container { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+      .card-vod { width: 140px; }
+      .card-tv { width: 200px; }
+    }
+
+    /* Page Transitions */
+    .fade-content {
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fade-out {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    /* Cinematic Player Overlay */
+    #player-modal {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: #000;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+    #player-modal.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .player-header {
+      position: absolute;
+      top: 0; left: 0; width: 100%;
+      padding: 20px 4%;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 50;
+    }
+    .player-wrapper {
+      width: 100%;
+      max-width: 1200px;
+      aspect-ratio: 16/9;
+      position: relative;
+      background: #07070a;
+      box-shadow: 0 0 50px rgba(207, 168, 94, 0.1);
+    }
+    video, iframe {
+      width: 100%; height: 100%;
+      border: none;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.95); opacity: 0.5; }
+      50% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(0.95); opacity: 0.5; }
+    }
+    
+    /* Search Bar Input */
+    .search-input {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 6px 12px 6px 35px;
+      border-radius: 20px;
+      color: white;
+      font-size: 0.9rem;
+      width: 0;
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .search-box {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .search-box i {
+      position: absolute;
+      left: 10px;
+      color: rgba(255,255,255,0.7);
+      cursor: pointer;
+      z-index: 10;
+    }
+    .search-box:hover .search-input, .search-input:focus {
+      width: 200px;
+      opacity: 1;
+      background: rgba(0, 0, 0, 0.5);
+      border-color: var(--accent-gold);
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; } /* Mobile menu toggle needed */
+    }
+  </style>
 </head>
-
 <body>
 
-<header class="site-header">
-<div class="logo">
-<div class="flex items-center gap-3">
-<button id="desktop-menu-toggle" style="color:var(--neon-accent); font-size: 26px; cursor: pointer; background: transparent; border: none; outline: none; transition: transform 0.3s ease; display: block;" class="hidden md:block hover:scale-110">☰</button>
+  <!-- Navbar -->
+  <nav id="navbar" class="fixed top-0 left-0 w-full z-50 px-4 py-4 md:px-8 flex items-center justify-between">
+    <div class="flex items-center gap-8">
+      <div class="logo cursor-pointer" onclick="loadPage('home', document.getElementById('nav-home'))">
+        <span class="text-xl md:text-2xl font-black tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-white to-[#cfa85e]">
+          TV GLOBAL
+        </span>
+      </div>
+      <div class="nav-links hidden md:flex items-center gap-6 text-sm text-gray-400 font-light">
+        <a href="#" id="nav-home" class="nav-link active" onclick="loadPage('home', this)">Inicio</a>
+        <a href="#" class="nav-link" onclick="loadPage('nacional', this)">Nacional</a>
+        <a href="#" class="nav-link" onclick="loadPage('peliculas', this)">Películas</a>
+        <a href="#" class="nav-link" onclick="loadPage('series', this)">Series</a>
+      </div>
+    </div>
+    <div class="flex items-center gap-4">
+      <div class="search-box">
+        <i class="fas fa-search" onclick="document.getElementById('searchInput').focus()"></i>
+        <input type="text" id="searchInput" class="search-input outline-none" placeholder="Títulos, personas, géneros">
+      </div>
+      <!-- Mobile Menu Toggle -->
+      <button class="md:hidden text-white" onclick="toggleMobileMenu()">
+        <i class="fas fa-bars text-xl"></i>
+      </button>
+    </div>
+  </nav>
 
-<div class="leading-tight pr-1">
-  <a href="https://www.cablevisionhd.com" class="font-bold text-base sm:text-xl tracking-wide inline-block">
+  <!-- Mobile Menu Overlay -->
+  <div id="mobile-menu" class="fixed inset-0 bg-black/95 z-40 hidden flex-col items-center justify-center gap-8 text-2xl font-bold transition-opacity">
+    <button class="absolute top-6 right-6 text-white text-3xl" onclick="toggleMobileMenu()">&times;</button>
+    <a href="#" class="nav-link" onclick="loadPage('home', this); toggleMobileMenu()">Inicio</a>
+    <a href="#" class="nav-link" onclick="loadPage('nacional', this); toggleMobileMenu()">Nacional</a>
+    <a href="#" class="nav-link" onclick="loadPage('peliculas', this); toggleMobileMenu()">Películas</a>
+    <a href="#" class="nav-link" onclick="loadPage('series', this); toggleMobileMenu()">Series</a>
+  </div>
+
+  <!-- Main View Container -->
+  <div id="app-view" class="fade-content">
     
-    <span style="background:linear-gradient(135deg,#ffffff,#ffffff);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;">
-      TV GLOBAL
-    </span>
-
-    <span style="color:#bea67a; font-weight:900;"> HD</span>
-
-  </a>
-</div>
+    <!-- Dynamic Content gets injected here by JS -->
+    <div id="content-container"></div>
 
   </div>
-</div>
 
-<div class="flex items-center gap-3 relative">
-<div class="text-gray-400 text-sm streaming-text">Streaming en vivo</div>
-
-<button id="menu-toggle" style="color:#bea67a !important;" class="text-2xl md:hidden">☰</button>
-
-<div id="mobile-menu" class="hidden absolute right-0 top-12 bg-black rounded-lg p-2 w-44 shadow-2xl z-50" style="border:1px solid #bea67a">
-<button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="home">HOME</button>
-<div style="height:1px;background:#bea67a;margin:4px 0;"></div>
-<button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="peliculas">PELÍCULAS 🎬</button>
-<div style="height:1px;background:#bea67a;margin:4px 0;"></div>
-<button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="series">SERIES 📺</button>
-<div style="height:1px;background:#bea67a;margin:4px 0;"></div>
-<button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="nacional">NACIONAL 🇸🇻</button>
-<div style="height:1px;background:#bea67a;margin:4px 0;"></div>
-<div id="mobile-categories-container"></div>
-</div>
-</div>
-
-</header>
-
-<div class="layout">
-
-<div class="menu">
-<div class="premium-search" style="margin-bottom: 20px;">
-        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        <input type="text" id="searchInput" class="premium-search-input" placeholder="Buscar canal, película...">
+  <!-- Cinematic Player Modal -->
+  <div id="player-modal">
+    <div class="player-header">
+      <button class="text-white hover:text-[#cfa85e] transition text-lg flex items-center gap-2" onclick="closePlayer()">
+        <i class="fas fa-arrow-left"></i> Regresar
+      </button>
+      <div class="text-sm font-bold text-gray-300" id="player-title">TV GLOBAL STREAMING</div>
     </div>
-<button class="menu-btn active" data-page="home">HOME</button>
-<button class="menu-btn" data-page="peliculas">PELÍCULAS 🎬</button>
-<button class="menu-btn" data-page="series">SERIES 📺</button>
-<button class="menu-btn" data-page="nacional">NACIONAL 🇸🇻</button>
-<div id="desktop-categories-container"></div>
-
-
-
-
-</div>
-
-<div class="channels-container">
-
-<div class="mobile-search">
-<input type="text" id="searchInputMobile" class="search-input" placeholder="Buscar canal...">
-</div>
-
-<div id="player-wrapper" style="display:none; width:100%; max-width:900px; margin: 0 auto 30px auto;">
-    <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; background:#000; border-radius:10px; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
-        <video id="native-player" controls style="position:absolute; top:0; left:0; width:100%; height:100%; display:none; background:#000; border-radius:10px;"></video>
-        <iframe id="main-player" src="" frameborder="0" allowfullscreen="" allow="autoplay; encrypted-media" sandbox="allow-scripts allow-same-origin" style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
+    <div class="player-wrapper">
+      <video id="native-player" controls class="hidden"></video>
+      <iframe id="main-player" src="" frameborder="0" allowfullscreen sandbox="allow-scripts allow-same-origin" class="hidden"></iframe>
     </div>
-    <div style="text-align:center; margin-top:10px;">
-        <button onclick="closePlayer()" class="close-btn">Volver al Inicio</button>
-    </div>
-</div>
-
-<div id="channels" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://latamvidzfy.org/tudnmx.php')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <div class="new-badge">NUEVO</div>
-  <img src="https://www.cablevisionhd.com/imge/tudn.webp" alt="TUDN" style="border-radius:10px;">
-  <p class="channel-name">TUDN</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://latamvidzfy.org/canal5mx.php')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <div class="new-badge">NUEVO</div>
-  <img src="https://www.cablevisionhd.com/imge/canal5.webp" alt="CANAL 5" style="border-radius:10px;">
-  <p class="channel-name">CANAL 5</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://latamvidzfy.org/dsports.php')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <div class="new-badge">NUEVO</div>
-  <img src="https://cdn.futbol-libres.su/img/dsports.webp" alt="DIRECTV SPORTS" style="border-radius:10px;">
-  <p class="channel-name">DIRECTV SPORTS</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://latamvidzfy.org/dsports2.php')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <div class="new-badge">NUEVO</div>
-  <img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.directvgo.com&size=128" alt="DIRECTV SPORTS 2" style="border-radius:10px;">
-  <p class="channel-name">DIRECTV SPORTS 2</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://latamvidzfy.org/dsportsar.php')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <div class="new-badge">NUEVO</div>
-  <img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.directvgo.com&size=128" alt="DIRECTV SPORTS AR" style="border-radius:10px;">
-  <p class="channel-name">DIRECTV SPORTS AR</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://esvidzy99.co/teleamz.php')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <div class="new-badge">NUEVO</div>
-  <img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.teleamazonas.com&size=128" alt="TELEAMAZONAS" style="border-radius:10px;">
-  <p class="channel-name">TELEAMAZONAS</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://latamvidzfy.org/caze1.php')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <div class="new-badge">NUEVO</div>
-  <img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://cazetv.com.br&size=128" alt="CAZE 1" style="border-radius:10px;">
-  <p class="channel-name">CAZE 1</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://latamvidzfy.org/caze2.php')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <div class="new-badge">NUEVO</div>
-  <img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://cazetv.com.br&size=128" alt="CAZE 2" style="border-radius:10px;">
-  <p class="channel-name">CAZE 2</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://latamvidzfy.org/ctv.php')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <div class="new-badge">NUEVO</div>
-  <img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.ctv.ca&size=128" alt="CTV" style="border-radius:10px;">
-  <p class="channel-name">CTV</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://latamvidzfy.org/fox1.php')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <div class="new-badge">NUEVO</div>
-  <img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.foxsports.com&size=128" alt="FOX 1" style="border-radius:10px;">
-  <p class="channel-name">FOX 1</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://latamvidzfy.org/fox1us.php')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <div class="new-badge">NUEVO</div>
-  <img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.foxsports.com&size=128" alt="FOX 1 US" style="border-radius:10px;">
-  <p class="channel-name">FOX 1 US</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://latamvidzfy.org/rpc.php')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <div class="new-badge">NUEVO</div>
-  <img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.rpctv.com&size=128" alt="RPC" style="border-radius:10px;">
-  <p class="channel-name">RPC</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://latamvidzfy.org/tsn1.php')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <div class="new-badge">NUEVO</div>
-  <img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.tsn.ca&size=128" alt="TSN 1" style="border-radius:10px;">
-  <p class="channel-name">TSN 1</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://latamvidzfy.org/tvc.php')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <div class="new-badge">NUEVO</div>
-  <img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://tvcnetworks.mx&size=128" alt="TVC" style="border-radius:10px;">
-  <p class="channel-name">TVC</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://latamvidzfy.org/tvela1.php')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <div class="new-badge">NUEVO</div>
-  <img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.rtve.es&size=128" alt="TVELA 1" style="border-radius:10px;">
-  <p class="channel-name">TVELA 1</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://latamvidzfy.org/unicanal.php')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <div class="new-badge">NUEVO</div>
-  <img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.unicanal.com.py&size=128" alt="UNICANAL" style="border-radius:10px;">
-  <p class="channel-name">UNICANAL</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://latamvidzfy.org/zdfpr.php')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <div class="new-badge">NUEVO</div>
-  <img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.zdf.de&size=128" alt="ZDF PR" style="border-radius:10px;">
-  <p class="channel-name">ZDF PR</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://deportes.ksdjugfsddeports.com/stream.php?canal=tntsportsar&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/tntsports.webp" alt="TNT SPORTS">
-  <p>TNT SPORTS</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://deportes.ksdjugfsddeports.com/stream.php?canal=foxsportspremium&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/foxsportspremium.webp" alt="FOX SPORTS PREMIUM">
-  <p>FOX SPORTS PREMIUM</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://deportes.ksdjugfsddeports.com/stream.php?canal=tycsports&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/tycsports.webp" alt="TYC SPORTS">
-  <p>TYC SPORTS</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://deportes.ksdjugfsddeports.com/stream.php?canal=movistarlaliga&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/movistarlaliga.webp" alt="MOVISTAR LA LIGA">
-  <p>MOVISTAR LA LIGA</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://deportes.ksdjugfsddeports.com/stream.php?canal=movistarligadecampeones&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/movistarligadecampeones.webp" alt="MOVISTAR LIGA DE CAMPEONES">
-  <p>MOVISTAR LIGA DE CAMPEONES</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://deportes.ksdjugfsddeports.com/stream.php?canal=daznf1&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/daznf1.jpg" alt="DAZN F1">
-  <p>DAZN F1</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://deportes.ksdjugfsddeports.com/stream.php?canal=daznlaliga&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/daznlaliga1.webp" alt="DAZN LA LIGA">
-  <p>DAZN LA LIGA</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://deportes.ksdjugfsddeports.com/stream.php?canal=espnpremiumlat&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/espnpremium.webp" alt="ESPN PREMIUM">
-  <p>ESPN PREMIUM</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://deportes.ksdjugfsddeports.com/stream.php?canal=espn4&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/espn4.webp" alt="ESPN 4">
-  <p>ESPN 4</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://deportes.ksdjugfsddeports.com/stream.php?canal=espn5&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/espn5.webp" alt="ESPN 5">
-  <p>ESPN 5</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://deportes.ksdjugfsddeports.com/stream.php?canal=espn6&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/espn6.webp" alt="ESPN 6">
-  <p>ESPN 6</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://deportes.ksdjugfsddeports.com/stream.php?canal=espn7&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/espn7.webp" alt="ESPN 7">
-  <p>ESPN 7</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://deportes.ksdjugfsddeports.com/stream.php?canal=espn2mexico&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/espn2.webp" alt="ESPN 2 MEXICO">
-  <p>ESPN 2 MEXICO</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://deportes.ksdjugfsddeports.com/stream.php?canal=espn3mexico&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/espn3.webp" alt="ESPN 3 MEXICO">
-  <p>ESPN 3 MEXICO</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://deportes.ksdjugfsddeports.com/stream.php?canal=foxsports&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/foxsports.webp" alt="FOX SPORTS">
-  <p>FOX SPORTS</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://deportes.ksdjugfsddeports.com/stream.php?canal=foxsports2&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/foxsports2.webp" alt="FOX SPORTS 2">
-  <p>FOX SPORTS 2</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://deportes.ksdjugfsddeports.com/stream.php?canal=foxsportsmexico&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/foxsportsmx.webp" alt="FOX SPORTS MEXICO">
-  <p>FOX SPORTS MEXICO</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://deportes.ksdjugfsddeports.com/stream.php?canal=foxsports3mexico&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/foxsports3mexico.webp" alt="FOX SPORTS 3 MEXICO">
-  <p>FOX SPORTS 3 MEXICO</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=telefe&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/telefe.webp" alt="TELEFE">
-  <p>TELEFE</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=eltrece&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/eltrece.webp" alt="EL TRECE">
-  <p>EL TRECE</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=telemundo51&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/telemundo51.webp" alt="TELEMUNDO 51">
-  <p>TELEMUNDO 51</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=pasiones&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/pasiones.webp" alt="PASIONES">
-  <p>PASIONES</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=caracol&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/caracol.webp" alt="CARACOL">
-  <p>CARACOL</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=latina&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/latina.webp" alt="LATINA">
-  <p>LATINA</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://www.cablevisionhd.com/stream/lasestrellas.php')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/lasestrellas.webp" alt="LAS ESTRELLAS">
-  <p>LAS ESTRELLAS</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=tlnovelas&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/tlnovelas.webp" alt="TLNOVELAS">
-  <p>TLNOVELAS</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=azteca7&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/azteca7.webp" alt="AZTECA 7">
-  <p>AZTECA 7</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=aztecauno&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/aztecauno.webp" alt="AZTECA UNO">
-  <p>AZTECA UNO</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=cartoonnetwork&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/cartoonnetwork.webp" alt="CARTOON NETWORK">
-  <p>CARTOON NETWORK</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=tooncast&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/tooncast.webp" alt="TOONCAST">
-  <p>TOONCAST</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=disneychannel&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/disneychannel.webp" alt="DISNEY CHANNEL">
-  <p>DISNEY CHANNEL</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=history&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/history.webp" alt="HISTORY">
-  <p>HISTORY</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=history2&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/history2.webp" alt="HISTORY 2">
-  <p>HISTORY 2</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=animalplanet&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/animalplanet.webp" alt="ANIMAL PLANET">
-  <p>ANIMAL PLANET</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=discoverychannel&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/discoverychannel.webp" alt="Discovery Channel">
-  <p>DISCOVERY CHANNEL</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=universaltv&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/universalchannel.webp" alt="UNIVERSAL CHANNEL">
-  <p>UNIVERSAL CHANNEL</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=tnt&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/tnt.webp" alt="TNT">
-  <p>TNT</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=tntseries&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/tntseries.webp" alt="TNT SERIES">
-  <p>TNT SERIES</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=starchannel&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/star.webp" alt="STAR CHANNEL">
-  <p>STAR CHANNEL</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=cinemax&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/cinemax.webp" alt="CINEMAX">
-  <p>CINEMAX</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=space&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/space.webp" alt="SPACE">
-  <p>SPACE</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=usa&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/usa.webp" alt="SYFY">
-  <p>SYFY</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=warnerchannel&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/warner.webp" alt="WARNER CHANNEL">
-  <p>WARNER CHANNEL</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=warnerchannel&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/warner.webp" alt="WARNER CHANNEL MEXICO">
-  <p>WARNER CHANNEL MEXICO</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=cinecanal&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/cinecanal.webp" alt="CINECANAL">
-  <p>CINECANAL</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=fx&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/fx.webp" alt="FX">
-  <p>FX</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=axn&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/axn.webp" alt="AXN">
-  <p>AXN</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=amc&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/amc.webp" alt="AMC">
-  <p>AMC</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=studiouniversal&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/studiouniversal.webp" alt="STUDIO UNIVERSAL">
-  <p>STUDIO UNIVERSAL</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=goldenplus&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/goldenplus.webp" alt="GOLDEN PLUS">
-  <p>GOLDEN PLUS</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=goldenedge&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/goldenedge.webp" alt="GOLDEN EDGE">
-  <p>GOLDEN EDGE</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=goldenpremier&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/goldenpremier.webp" alt="GOLDEN PREMIER">
-  <p>GOLDEN PREMIER</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=multipremier&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/multipremier.webp" alt="MULTIPREMIER">
-  <p>MULTIPREMIER</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=canalsony&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/canalsony.webp" alt="CANAL SONY">
-  <p>CANAL SONY</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=extrematv&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/extrematv.webp" alt="Extrema TV">
-  <p>EXTREMA TV</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=distritocomedia&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/distritocomedia.webp" alt="DISTRITO COMEDIA">
-  <p>DISTRITO COMEDIA</p>
-</a>
-</div>
-
-<br><br>
-<div class="sharethis-inline-share-buttons"></div>
-
-<div class="footer">
-TV GLOBAL HD © Todos los derechos reservados.
-</div>
-
-</div>
-</div>
-
-<script>
-
-const grid = document.getElementById("channels");
-const originalHome = grid.innerHTML;
-
-
-
-
-const showChannels = `
-
-<a href="https://www.cablevisionhd.com/solo-eventos-en-vivo-por-internet.php" class="channel-card">
-<div class="live"><span class="live-dot"></span>EN VIVO</div>
-<img src="https://www.cablevisionhd.com/imge/soloeventos.webp">
-<p>Solo Eventos</p>
-</a>
-
-<a href="https://www.cablevisionhd.com/mlb-network-en-vivo-por-internet.php" class="channel-card">
-<div class="live"><span class="live-dot"></span>EN VIVO</div>
-<img src="https://www.cablevisionhd.com/imge/mlbnetwork.webp">
-<p>MLB Network</p>
-</a>
-
-`;
-
-function animateCards(){
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){entry.target.classList.add("show")}
-})
-})
-document.querySelectorAll(".channel-card").forEach(card=>observer.observe(card))
-}
-
-animateCards()
-
-
-// DYNAMIC CATEGORY INJECTION
-if (typeof premiumDatabase !== 'undefined') {
-    const desktopCatContainer = document.getElementById('desktop-categories-container');
-    const mobileCatContainer = document.getElementById('mobile-categories-container');
-    const cats = Array.from(new Set(premiumDatabase.map(c => c.category))).sort();
-    let desktopHtml = '';
-    let mobileHtml = '';
-    cats.forEach(cat => {
-        if (!cat) return;
-        let catID = 'cat_' + cat.replace(/ /g, '_');
-        desktopHtml += `<button class="menu-btn" data-page="${catID}" style="font-size:12px;">${cat}</button>\n`;
-        mobileHtml += `<button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="${catID}">${cat}</button>\n<div style="height:1px;background:#bea67a;margin:4px 0;"></div>\n`;
-    });
-    if (desktopCatContainer) desktopCatContainer.innerHTML = desktopHtml;
-    if (mobileCatContainer) mobileCatContainer.innerHTML = mobileHtml;
-}
-
-// EVENT DELEGATION INSTEAD OF QUERY SELECTOR
-document.body.addEventListener("click", function(e) {
-let btn = e.target.closest(".menu-btn");
-if(!btn) return;
-
-
-document.querySelectorAll(".menu-btn").forEach(b=>b.classList.remove("active"))
-btn.classList.add("active")
-
-const page = btn.dataset.page
-
-
-if(page==="home"){
-grid.innerHTML = originalHome
-} else if(page==="peliculas"){
-renderMovies();
-} else if(page==="series"){
-renderSeries();
-} else if(page==="nacional"){
-renderNacionalChannels();
-} else if(page.startsWith("cat_")){
-renderCategory(page.replace("cat_", "").replace(/_/g, " "));
-}
-
-
-
-animateCards()
-document.getElementById("mobile-menu").classList.add("hidden")
-filterChannels()
-
-})
-
-
-document.getElementById("menu-toggle").onclick = ()=>{
-document.getElementById("mobile-menu").classList.toggle("hidden")
-}
-
-const dtToggle = document.getElementById("desktop-menu-toggle");
-if(dtToggle) {
-    dtToggle.onclick = () => {
-        document.querySelector(".menu").classList.toggle("collapsed");
-    };
-}
-
-
-function filterChannels(){
-let value = (document.getElementById("searchInput")?.value || document.getElementById("searchInputMobile")?.value || "").toLowerCase();
-
-document.querySelectorAll(".channel-card").forEach(card=>{
-    let text = card.innerText.toLowerCase() + " " + (card.dataset.name || "");
-    card.style.display = text.includes(value) ? "" : "none";
-});
-
-// Hide category headers if no visible items below them
-document.querySelectorAll(".category-header-wrap").forEach(wrap => {
-    let hasVisible = false;
-    let next = wrap.nextElementSibling;
-    while(next && next.classList.contains('channel-card')) {
-        if(next.style.display !== 'none') {
-            hasVisible = true;
-            break;
-        }
-        next = next.nextElementSibling;
-    }
-    wrap.style.display = hasVisible ? 'block' : 'none';
-});
-}
-
-if(document.getElementById("searchInput")) document.getElementById("searchInput").addEventListener("keyup",filterChannels);
-if(document.getElementById("searchInputMobile")) document.getElementById("searchInputMobile").addEventListener("keyup",filterChannels);
-
-</script>
-
-<style>
-#chat-floating-root {
-  all: initial;
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 2147483647;
-  font-family: Arial, sans-serif;
-  pointer-events: none;
-}
-
-#chat-toggle {
-  pointer-events: auto;
-  background: #0d0d0d;
-  border: 2px solid rgba(255,255,255,.2);
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 12px rgba(255,255,255,.3);
-  transition: transform .25s ease;
-}
-
-#chat-toggle:hover {
-  transform: scale(1.1);
-}
-
-#chat-toggle svg {
-  width: 28px;
-  height: 28px;
-  fill: #fff;
-}
-
-#chat-iframe {
-  pointer-events: auto;
-  position: fixed;
-  bottom: 95px;
-  right: 20px;
-  width: 360px;
-  height: 480px;
-  border: none;
-  border-radius: 14px;
-  display: none;
-  box-shadow: 0 0 25px rgba(0,0,0,.6);
-  background: #000;
-}
-
-@media (max-width: 480px) {
-  #chat-iframe {
-    width: calc(100vw - 20px);
-    right: 10px;
-    height: 420px;
-  }
-}
-</style>
-
-
-
-<script>
-    let lastScrollPosition = 0;
+  </div>
+
+  <script>
+    // ----------------------------------------------------
+    // STATE & INITIALIZATION
+    // ----------------------------------------------------
+    let currentPage = 'home';
     let hls = null;
-    
-    function playChannel(url) {
-        lastScrollPosition = window.scrollY || document.documentElement.scrollTop;
-        const wrapper = document.getElementById('player-wrapper');
-        const player = document.getElementById('main-player');
-        const video = document.getElementById('native-player');
-        
-        if (video) video.style.display = 'none';
-        if(hls) { hls.destroy(); }
-        if (video) video.pause();
-        
-        player.style.display = 'block';
-        player.src = url;
-        
-        wrapper.style.display = 'block';
-        wrapper.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    let mpegtsPlayer = null;
+
+    // Listen to Scroll for Navbar
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+      menu.classList.toggle('flex');
     }
-    
+
+    // Initialize App
+    document.addEventListener("DOMContentLoaded", () => {
+      loadPage('home', document.getElementById('nav-home'));
+      setupSearch();
+    });
+
+    // ----------------------------------------------------
+    // ROUTER & RENDERER
+    // ----------------------------------------------------
+    function loadPage(page, element) {
+      if (element) {
+        document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
+        element.classList.add('active');
+      }
+
+      const view = document.getElementById('app-view');
+      view.classList.add('fade-out');
+
+      setTimeout(() => {
+        const container = document.getElementById('content-container');
+        window.scrollTo(0, 0);
+
+        if (page === 'home') renderHome(container);
+        else if (page === 'nacional') renderGrid(container, 'Nacional', vipDatabase, 'tv');
+        else if (page === 'peliculas') renderGrid(container, 'Películas', moviesDatabase, 'vod');
+        else if (page === 'series') renderGrid(container, 'Series', seriesDatabase, 'vod');
+        
+        view.classList.remove('fade-out');
+      }, 400);
+    }
+
+    // ----------------------------------------------------
+    // TEMPLATES
+    // ----------------------------------------------------
+    function renderHome(container) {
+      let html = '';
+      
+      // HERO SECTION
+      // Pick a random popular movie or channel for the hero
+      let heroItem = null;
+      let bgImg = 'https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&q=80&w=2070';
+      
+      if (typeof moviesDatabase !== 'undefined' && moviesDatabase.length > 0) {
+        heroItem = moviesDatabase[Math.floor(Math.random() * Math.min(50, moviesDatabase.length))];
+        if (heroItem.logo && heroItem.logo.includes('tmdb')) {
+          bgImg = heroItem.logo.replace('w600_and_h900_bestv2', 'original');
+        }
+      } else if (typeof premiumDatabase !== 'undefined' && premiumDatabase.length > 0) {
+        heroItem = premiumDatabase[0];
+      }
+
+      html += `
+        <div class="hero" id="hero-section" style="background-image: url('${bgImg}');">
+          <div class="hero-vignette"></div>
+          <div class="hero-content">
+            <h1 class="hero-title">${heroItem ? heroItem.name : 'TV GLOBAL PREMIUM'}</h1>
+            <p class="hero-desc">Disfruta de la mejor televisión en vivo, miles de películas y series en alta definición. Contenido ilimitado 24/7 sin interrupciones.</p>
+            <div class="flex gap-4">
+              <button class="btn-premium btn-gold" onclick="playVipChannel('${heroItem ? heroItem.url : ''}')">
+                <i class="fas fa-play"></i> Reproducir
+              </button>
+              <button class="btn-premium">
+                <i class="fas fa-info-circle"></i> Más Información
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+
+      // ROWS SECTION
+      if (typeof premiumDatabase !== 'undefined') {
+        // Group by category, pick top 10 categories that have the most channels
+        const catMap = {};
+        premiumDatabase.forEach(c => {
+          let cat = (c.category || 'OTROS').toUpperCase().trim();
+          if(!catMap[cat]) catMap[cat] = [];
+          catMap[cat].push(c);
+        });
+
+        const sortedCats = Object.keys(catMap).sort((a, b) => catMap[b].length - catMap[a].length).slice(0, 15);
+
+        sortedCats.forEach(catName => {
+          const channels = catMap[catName].slice(0, 30); // Max 30 per row to prevent lag
+          if (channels.length >= 4) {
+            html += `
+              <div class="row-container">
+                <h2 class="row-title">${catName}</h2>
+                <div class="row-inner" onwheel="horizontalScroll(event, this)">
+                  ${channels.map(c => `
+                    <div class="card card-tv" onclick="playVipChannel('${c.url}')" data-name="${c.name.toLowerCase()}">
+                      <div class="live-badge"><div class="dot"></div>EN VIVO</div>
+                      <img src="${c.logo}" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=141414&color=cfa85e&size=300'" loading="lazy">
+                      <div class="card-info">
+                        <h3 class="card-title">${c.name}</h3>
+                      </div>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+            `;
+          }
+        });
+      }
+
+      container.innerHTML = html;
+    }
+
+    function renderGrid(container, title, db, type) {
+      if (!db || db.length === 0) {
+        container.innerHTML = `<div class="pt-32 text-center text-xl text-gray-500">No hay contenido disponible.</div>`;
+        return;
+      }
+
+      const isTv = type === 'tv';
+      const items = db.slice(0, 500); // Limit to 500 for grid performance
+
+      let html = `
+        <div class="pt-24 px-4 md:px-8 pb-4">
+          <h1 class="text-3xl font-bold mb-2">${title}</h1>
+          <div class="w-16 h-1 bg-[#cfa85e] rounded"></div>
+        </div>
+        <div class="grid-container pt-4">
+          ${items.map(c => `
+            <div class="card ${isTv ? 'card-tv w-full' : 'card-vod w-full'}" onclick="playVipChannel('${c.url}')" data-name="${c.name.toLowerCase()}">
+              ${isTv ? '<div class="live-badge"><div class="dot"></div>EN VIVO</div>' : ''}
+              <img src="${c.logo}" onerror="this.src='https://ui-avatars.com/api/?name=${isTv?'TV':'CINE'}&background=141414&color=cfa85e&size=300'" loading="lazy">
+              <div class="card-info">
+                <h3 class="card-title">${c.name}</h3>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+      container.innerHTML = html;
+    }
+
+    // ----------------------------------------------------
+    // UTILS & EVENTS
+    // ----------------------------------------------------
+    // Allow horizontal scroll with mouse wheel on rows
+    function horizontalScroll(event, element) {
+      event.preventDefault();
+      element.scrollLeft += event.deltaY > 0 ? 300 : -300;
+    }
+
+    // Search functionality
+    function setupSearch() {
+      const input = document.getElementById('searchInput');
+      input.addEventListener('keyup', (e) => {
+        const val = e.target.value.toLowerCase();
+        document.querySelectorAll('.card').forEach(card => {
+          const name = card.dataset.name || "";
+          if (name.includes(val)) {
+            card.style.display = "";
+          } else {
+            card.style.display = "none";
+          }
+        });
+        
+        // Hide empty rows
+        document.querySelectorAll('.row-container').forEach(row => {
+          const hasVisible = Array.from(row.querySelectorAll('.card')).some(c => c.style.display !== 'none');
+          row.style.display = hasVisible ? '' : 'none';
+        });
+      });
+    }
+
+    // ----------------------------------------------------
+    // PLAYER LOGIC
+    // ----------------------------------------------------
     function playVipChannel(url) {
-        let proxyUrl = url;
-        if (url.startsWith('http://') || url.startsWith('https://')) {
-            proxyUrl = '/api/proxy?url=' + encodeURIComponent(url);
-        }
+      if (!url) return;
+      
+      const modal = document.getElementById('player-modal');
+      const video = document.getElementById('native-player');
+      const iframe = document.getElementById('main-player');
+      
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden'; // prevent background scroll
 
-        lastScrollPosition = window.scrollY || document.documentElement.scrollTop;
-        const wrapper = document.getElementById('player-wrapper');
-        const player = document.getElementById('main-player');
-        const video = document.getElementById('native-player');
-        
-        player.style.display = 'none';
-        player.src = '';
-        video.style.display = 'block';
-        
-        // Clean up old players
-        if(typeof hls !== 'undefined' && hls) {
-            hls.destroy();
-            hls = null;
-        }
-        if(typeof mpegtsPlayer !== 'undefined' && mpegtsPlayer) {
-            mpegtsPlayer.destroy();
-            mpegtsPlayer = null;
-        }
+      // Reset
+      video.classList.add('hidden');
+      iframe.classList.add('hidden');
+      video.pause();
+      iframe.src = '';
+      if(hls) { hls.destroy(); hls = null; }
+      if(mpegtsPlayer) { mpegtsPlayer.destroy(); mpegtsPlayer = null; }
 
-        // Check format: attbr.fun fakes m3u8 but returns raw TS streams
-        let isRawTs = url.includes('.ts') || url.includes('attbr.fun') || url.includes('cloudmail.site');
+      let proxyUrl = url;
+      if (url.startsWith('http://') || url.startsWith('https://')) {
+          proxyUrl = '/api/proxy?url=' + encodeURIComponent(url);
+      }
 
-        if (isRawTs && typeof mpegts !== 'undefined' && mpegts.getFeatureList().mseLivePlayback) {
-            mpegtsPlayer = mpegts.createPlayer({
-                type: 'm2ts',
-                isLive: true,
-                url: proxyUrl
-            });
-            mpegtsPlayer.attachMediaElement(video);
-            mpegtsPlayer.load();
-            mpegtsPlayer.play();
-        } 
-        else if (typeof Hls !== 'undefined' && Hls.isSupported() && url.includes(".m3u8")) {
-            hls = new Hls();
-            hls.loadSource(proxyUrl);
-            hls.attachMedia(video);
-            hls.on(Hls.Events.MANIFEST_PARSED, function() {
-                video.play();
-            });
-        }
-        else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-            video.src = proxyUrl;
-            video.addEventListener('loadedmetadata', function() {
-                video.play();
-            });
-        } else {
-            video.src = proxyUrl;
-            video.play();
-        }
-        
-        wrapper.style.display = 'block';
-        wrapper.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      let isRawTs = url.includes('.ts') || url.includes('attbr.fun') || url.includes('cloudmail.site');
+
+      if (isRawTs && typeof mpegts !== 'undefined' && mpegts.getFeatureList().mseLivePlayback) {
+          video.classList.remove('hidden');
+          mpegtsPlayer = mpegts.createPlayer({
+              type: 'm2ts',
+              isLive: true,
+              url: proxyUrl
+          });
+          mpegtsPlayer.attachMediaElement(video);
+          mpegtsPlayer.load();
+          mpegtsPlayer.play();
+      } 
+      else if (typeof Hls !== 'undefined' && Hls.isSupported() && url.includes(".m3u8")) {
+          video.classList.remove('hidden');
+          hls = new Hls();
+          hls.loadSource(proxyUrl);
+          hls.attachMedia(video);
+          hls.on(Hls.Events.MANIFEST_PARSED, function() {
+              video.play();
+          });
+      }
+      else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+          video.classList.remove('hidden');
+          video.src = proxyUrl;
+          video.addEventListener('loadedmetadata', function() {
+              video.play();
+          });
+      } else {
+          // Fallback to iframe for external players
+          iframe.classList.remove('hidden');
+          iframe.src = url;
+      }
     }
 
     function closePlayer() {
-        document.getElementById('player-wrapper').style.display = 'none';
-        document.getElementById('main-player').src = '';
-        const video = document.getElementById('native-player');
-        if (video) {
-            video.pause();
-            video.src = '';
-        }
-        if(typeof hls !== 'undefined' && hls) { hls.destroy(); hls = null; }
-        if(typeof mpegtsPlayer !== 'undefined' && mpegtsPlayer) { mpegtsPlayer.destroy(); mpegtsPlayer = null; }
-        window.scrollTo({ top: lastScrollPosition, behavior: 'smooth' });
+      const modal = document.getElementById('player-modal');
+      const video = document.getElementById('native-player');
+      const iframe = document.getElementById('main-player');
+      
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto'; // restore scroll
+      
+      video.pause();
+      video.src = '';
+      iframe.src = '';
+      if(hls) { hls.destroy(); hls = null; }
+      if(mpegtsPlayer) { mpegtsPlayer.destroy(); mpegtsPlayer = null; }
     }
-
-
-function renderNacionalChannels() {
-    if (typeof vipDatabase === 'undefined' || vipDatabase.length === 0) {
-        grid.innerHTML = '<h3 style="color:red; text-align:center; width:100%;">No hay canales nacionales disponibles.</h3>';
-        return;
-    }
-
-    let html = '';
-    vipDatabase.forEach(c => {
-        html += `
-        <a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('${c.url}')">
-          <div class="live"><span class="live-dot"></span>EN VIVO</div>
-          <img src="${c.logo}" alt="${c.name}" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
-          <p class="channel-name">${c.name}</p>
-        </a>`;
-    });
-    
-    grid.innerHTML = html;
-    animateCards();
-}
-
-
-function renderCategory(catName) {
-    catName = catName.trim().toUpperCase();
-    if (typeof premiumDatabase === 'undefined' || premiumDatabase.length === 0) {
-        grid.innerHTML = '<h3 style="color:red; text-align:center; width:100%;">Base de datos vacía.</h3>';
-        return;
-    }
-    
-    let html = '';
-    premiumDatabase.forEach(c => {
-        let currentCat = (c.category || 'OTROS').toUpperCase().trim();
-        if(currentCat === catName) {
-            html += `
-            <a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('${c.url}')" data-name="${c.name.toLowerCase()}">
-              <div class="live"><span class="live-dot"></span>EN VIVO</div>
-              <img src="${c.logo}" alt="${c.name}" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=TV&background=ffd700&color=000&size=128'">
-              <p class="channel-name">${c.name}</p>
-            </a>`;
-        }
-    });
-    
-    grid.innerHTML = html;
-    animateCards();
-}
-
-function renderMovies() {
-    if (typeof moviesDatabase === 'undefined' || moviesDatabase.length === 0) {
-        grid.innerHTML = '<h3 style="color:red; text-align:center; width:100%;">No hay películas disponibles.</h3>';
-        return;
-    }
-    let html = '';
-    moviesDatabase.slice(0, 1000).forEach(c => {
-        html += `
-        <a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('${c.url}')">
-          <div class="new-badge" style="background: linear-gradient(135deg, #1a1a24, #000); color: #fff; border: 1px solid #333;">VOD</div>
-          <img src="${c.logo}" alt="${c.name}" style="border-radius:10px; width: 100px; height: 140px; object-fit: cover;" onerror="this.src='https://ui-avatars.com/api/?name=CINE&background=ff2a2a&color=fff&size=200'">
-          <p class="channel-name" style="font-size: 12px;">${c.name}</p>
-        </a>`;
-    });
-    grid.innerHTML = html;
-    animateCards();
-}
-
-function renderSeries() {
-    if (typeof seriesDatabase === 'undefined' || seriesDatabase.length === 0) {
-        grid.innerHTML = '<h3 style="color:red; text-align:center; width:100%;">No hay series disponibles.</h3>';
-        return;
-    }
-    let html = '';
-    seriesDatabase.slice(0, 1000).forEach(c => {
-        html += `
-        <a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('${c.url}')">
-          <div class="new-badge" style="background: linear-gradient(135deg, #0044ff, #00aaff);">SERIE</div>
-          <img src="${c.logo}" alt="${c.name}" style="border-radius:10px; width: 100px; height: 140px; object-fit: cover;" onerror="this.src='https://ui-avatars.com/api/?name=SERIE&background=0044ff&color=fff&size=200'">
-          <p class="channel-name" style="font-size: 12px;">${c.name}</p>
-        </a>`;
-    });
-    grid.innerHTML = html;
-    animateCards();
-}
-
-</script>
+  </script>
 </body>
 </html>
