@@ -423,6 +423,58 @@ body {
 </style>
 
 
+
+<style>
+/* PREMIUM SEARCH BAR */
+.premium-search {
+  position: relative;
+  margin-top: 20px;
+  width: 100%;
+}
+.premium-search .search-icon {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  color: var(--neon-accent);
+  pointer-events: none;
+}
+.premium-search-input {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(207, 168, 94, 0.3);
+  border-radius: 30px;
+  padding: 12px 15px 12px 45px;
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+.premium-search-input:focus {
+  border-color: var(--neon-accent);
+  box-shadow: 0 0 20px rgba(207, 168, 94, 0.4);
+  background: rgba(0, 0, 0, 0.6);
+}
+.premium-search-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* DESKTOP SIDEBAR COLLAPSE */
+.menu {
+  transition: width 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease, margin 0.3s ease, padding 0.3s ease;
+  overflow: hidden;
+}
+.menu.collapsed {
+  width: 0 !important;
+  opacity: 0;
+  margin-right: -30px; /* pull layout tightly */
+  padding: 0;
+}
+</style>
 </head>
 
 <body>
@@ -430,6 +482,7 @@ body {
 <header class="site-header">
 <div class="logo">
 <div class="flex items-center gap-3">
+<button id="desktop-menu-toggle" style="color:var(--neon-accent); font-size: 26px; cursor: pointer; background: transparent; border: none; outline: none; transition: transform 0.3s ease; display: block;" class="hidden md:block hover:scale-110">☰</button>
 
 <div class="leading-tight pr-1">
   <a href="https://www.cablevisionhd.com" class="font-bold text-base sm:text-xl tracking-wide inline-block">
@@ -477,9 +530,10 @@ body {
 <button class="menu-btn" data-page="nacional">NACIONAL 🇸🇻</button>
 <button class="menu-btn" data-page="premium" style="color: gold; text-shadow: 0 0 5px gold;">PREMIUM 👑</button>
 
-<div class="search-box">
-<input type="text" id="searchInput" class="search-input" placeholder="Buscar canal...">
-</div>
+<div class="premium-search">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="searchInput" class="premium-search-input" placeholder="Buscar canal, película...">
+    </div>
 
 </div>
 
@@ -1032,21 +1086,44 @@ filterChannels()
 }
 })
 
+
 document.getElementById("menu-toggle").onclick = ()=>{
 document.getElementById("mobile-menu").classList.toggle("hidden")
 }
 
+const dtToggle = document.getElementById("desktop-menu-toggle");
+if(dtToggle) {
+    dtToggle.onclick = () => {
+        document.querySelector(".menu").classList.toggle("collapsed");
+    };
+}
+
+
 function filterChannels(){
-let value = (document.getElementById("searchInput").value || document.getElementById("searchInputMobile").value).toLowerCase();
+let value = (document.getElementById("searchInput")?.value || document.getElementById("searchInputMobile")?.value || "").toLowerCase();
 
 document.querySelectorAll(".channel-card").forEach(card=>{
-let text = card.innerText.toLowerCase();
-card.style.display = text.includes(value) ? "block" : "none";
+    let text = card.innerText.toLowerCase() + " " + (card.dataset.name || "");
+    card.style.display = text.includes(value) ? "" : "none";
+});
+
+// Hide category headers if no visible items below them
+document.querySelectorAll(".category-header-wrap").forEach(wrap => {
+    let hasVisible = false;
+    let next = wrap.nextElementSibling;
+    while(next && next.classList.contains('channel-card')) {
+        if(next.style.display !== 'none') {
+            hasVisible = true;
+            break;
+        }
+        next = next.nextElementSibling;
+    }
+    wrap.style.display = hasVisible ? 'block' : 'none';
 });
 }
 
-document.getElementById("searchInput").addEventListener("keyup",filterChannels);
-document.getElementById("searchInputMobile").addEventListener("keyup",filterChannels);
+if(document.getElementById("searchInput")) document.getElementById("searchInput").addEventListener("keyup",filterChannels);
+if(document.getElementById("searchInputMobile")) document.getElementById("searchInputMobile").addEventListener("keyup",filterChannels);
 
 </script>
 
@@ -1109,25 +1186,7 @@ document.getElementById("searchInputMobile").addEventListener("keyup",filterChan
 }
 </style>
 
-<div id="chat-floating-root">
 
-  <div id="chat-toggle" onclick="toggleChat()">
-    <svg viewBox="0 0 24 24">
-      <path d="M12 3C6.48 3 2 6.81 2 11c0 1.93.88 3.68 2.35 5.02L3 21l5.12-1.71C9.34 19.75 10.65 20 12 20c5.52 0 10-3.81 10-9s-4.48-8-10-8z"></path>
-    </svg>
-  </div>
-
-  <iframe id="chat-iframe" src="https://www.cablevisionhd.com/chat.php" allow="camera; microphone">
-  </iframe>
-
-</div>
-
-<script>
-function toggleChat() {
-  const iframe = document.getElementById("chat-iframe");
-  iframe.style.display = iframe.style.display === "block" ? "none" : "block";
-}
-</script>
 
 <script>
     let lastScrollPosition = 0;
@@ -1220,15 +1279,37 @@ function renderPremiumChannels() {
         grid.innerHTML = '<h3 style="color:red; text-align:center; width:100%;">No hay canales premium disponibles.</h3>';
         return;
     }
-    let html = '';
+    
+    // Group by category
+    const grouped = {};
     premiumDatabase.forEach(c => {
-        html += `
-        <a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('${c.url}')">
-          <div class="live"><span class="live-dot"></span>VIP</div>
-          <img src="${c.logo}" alt="${c.name}" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=VIP&background=ffd700&color=000&size=128'">
-          <p class="channel-name" style="color: gold;">${c.name}</p>
-        </a>`;
+        let cat = (c.category || 'OTROS').toUpperCase().trim();
+        if(cat === '') cat = 'OTROS';
+        if (!grouped[cat]) grouped[cat] = [];
+        grouped[cat].push(c);
     });
+
+    let html = '';
+    const categories = Object.keys(grouped).sort();
+    
+    categories.forEach(cat => {
+        html += `<div class="category-header-wrap" style="width: 100%; margin-top: 40px; margin-bottom: 20px; grid-column: 1 / -1;">
+            <h2 class="category-header" style="color: #cfa85e; border-bottom: 1px solid rgba(207,168,94,0.3); padding-bottom: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; font-size: 20px; display: flex; align-items: center; gap: 10px;">
+                <span style="display:inline-block; width:8px; height:8px; background:var(--neon-accent); border-radius:50%; box-shadow:0 0 10px var(--neon-accent);"></span>
+                ${cat}
+            </h2>
+        </div>`;
+        
+        grouped[cat].forEach(c => {
+            html += `
+            <a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('${c.url}')" data-name="${c.name.toLowerCase()}">
+              <div class="live"><span class="live-dot"></span>VIP</div>
+              <img src="${c.logo}" alt="${c.name}" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=VIP&background=ffd700&color=000&size=128'">
+              <p class="channel-name" style="color: gold;">${c.name}</p>
+            </a>`;
+        });
+    });
+    
     grid.innerHTML = html;
     animateCards();
 }
