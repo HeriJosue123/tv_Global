@@ -1215,22 +1215,6 @@ function renderNacionalChannels() {
 }
 
 
-
-    let html = '';
-    eventosDatabase.forEach(c => {
-        html += `
-        <a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('${c.url}')">
-          <div class="live"><span class="live-dot"></span>EN VIVO</div>
-          <img src="${c.logo}" alt="${c.name}" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=SPORTS&background=ff2a2a&color=fff&size=128'">
-          <p class="channel-name">${c.name}</p>
-        </a>`;
-    });
-    
-    grid.innerHTML = html;
-    animateCards();
-}
-
-
 function renderPremiumChannels() {
     if (typeof premiumDatabase === 'undefined' || premiumDatabase.length === 0) {
         grid.innerHTML = '<h3 style="color:red; text-align:center; width:100%;">No hay canales premium disponibles.</h3>';
