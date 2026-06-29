@@ -350,7 +350,9 @@ body {
 
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
   <script src="vip_database.js"></script>
-<script src="eventos_database.js"></script>
+<script src="premium_database.js"></script>
+<script src="movies_database.js"></script>
+<script src="series_database.js"></script>
 
 
 <style>
@@ -454,7 +456,9 @@ body {
 <div id="mobile-menu" class="hidden absolute right-0 top-12 bg-black rounded-lg p-2 w-44 shadow-2xl z-50" style="border:1px solid #bea67a">
 <button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="home">HOME</button>
 <div style="height:1px;background:#bea67a;margin:4px 0;"></div>
-<button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="eventos">EVENTOS</button>
+<button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="peliculas">PELÍCULAS 🎬</button>
+<div style="height:1px;background:#bea67a;margin:4px 0;"></div>
+<button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="series">SERIES 📺</button>
 <div style="height:1px;background:#bea67a;margin:4px 0;"></div>
 <button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="nacional">NACIONAL 🇸🇻</button>
 <div style="height:1px;background:#bea67a;margin:4px 0;"></div>
@@ -468,7 +472,8 @@ body {
 
 <div class="menu">
 <button class="menu-btn active" data-page="home">HOME</button>
-<button class="menu-btn" data-page="eventos">EVENTOS</button>
+<button class="menu-btn" data-page="peliculas">PELÍCULAS 🎬</button>
+<button class="menu-btn" data-page="series">SERIES 📺</button>
 <button class="menu-btn" data-page="nacional">NACIONAL 🇸🇻</button>
 <button class="menu-btn" data-page="premium" style="color: gold; text-shadow: 0 0 5px gold;">PREMIUM 👑</button>
 
@@ -1007,8 +1012,11 @@ const page = btn.dataset.page
 if(page==="home"){
 grid.innerHTML = originalHome
 }
-if(page==="eventos"){
-renderEventosChannels();
+if(page==="peliculas"){
+renderMovies();
+}
+if(page==="series"){
+renderSeries();
 }
 if(page==="nacional"){
 renderNacionalChannels();
@@ -1153,7 +1161,7 @@ function toggleChat() {
         
         video.style.display = 'block';
         
-        if (typeof Hls !== 'undefined' && Hls.isSupported()) {
+        if (typeof Hls !== 'undefined' && Hls.isSupported() && (url.includes(".m3u8") || url.includes(".ts"))) {
             if(hls) hls.destroy();
             hls = new Hls();
             hls.loadSource(url);
@@ -1207,11 +1215,6 @@ function renderNacionalChannels() {
 }
 
 
-function renderEventosChannels() {
-    if (typeof eventosDatabase === 'undefined' || eventosDatabase.length === 0) {
-        grid.innerHTML = '<h3 style="color:red; text-align:center; width:100%;">No hay eventos deportivos disponibles en este momento.</h3>';
-        return;
-    }
 
     let html = '';
     eventosDatabase.forEach(c => {
@@ -1227,13 +1230,59 @@ function renderEventosChannels() {
     animateCards();
 }
 
+
 function renderPremiumChannels() {
-    grid.innerHTML = `
-        <div style="width: 100%; text-align: center; padding: 50px 20px;">
-            <h2 style="color: gold; margin-bottom: 15px;">👑 Sección Premium Vacía 👑</h2>
-            <p style="color: #ccc; font-size: 16px;">Próximamente: Enlaces a HBO, FOX, Star+ y más canales de pago.</p>
-        </div>
-    `;
+    if (typeof premiumDatabase === 'undefined' || premiumDatabase.length === 0) {
+        grid.innerHTML = '<h3 style="color:red; text-align:center; width:100%;">No hay canales premium disponibles.</h3>';
+        return;
+    }
+    let html = '';
+    premiumDatabase.forEach(c => {
+        html += `
+        <a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('${c.url}')">
+          <div class="live"><span class="live-dot"></span>VIP</div>
+          <img src="${c.logo}" alt="${c.name}" style="border-radius:10px;" onerror="this.src='https://ui-avatars.com/api/?name=VIP&background=ffd700&color=000&size=128'">
+          <p class="channel-name" style="color: gold;">${c.name}</p>
+        </a>`;
+    });
+    grid.innerHTML = html;
+    animateCards();
+}
+
+function renderMovies() {
+    if (typeof moviesDatabase === 'undefined' || moviesDatabase.length === 0) {
+        grid.innerHTML = '<h3 style="color:red; text-align:center; width:100%;">No hay películas disponibles.</h3>';
+        return;
+    }
+    let html = '';
+    moviesDatabase.forEach(c => {
+        html += `
+        <a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('${c.url}')">
+          <div class="new-badge" style="background: linear-gradient(135deg, #1a1a24, #000); color: #fff; border: 1px solid #333;">VOD</div>
+          <img src="${c.logo}" alt="${c.name}" style="border-radius:10px; width: 100px; height: 140px; object-fit: cover;" onerror="this.src='https://ui-avatars.com/api/?name=CINE&background=ff2a2a&color=fff&size=200'">
+          <p class="channel-name" style="font-size: 12px;">${c.name}</p>
+        </a>`;
+    });
+    grid.innerHTML = html;
+    animateCards();
+}
+
+function renderSeries() {
+    if (typeof seriesDatabase === 'undefined' || seriesDatabase.length === 0) {
+        grid.innerHTML = '<h3 style="color:red; text-align:center; width:100%;">No hay series disponibles.</h3>';
+        return;
+    }
+    let html = '';
+    seriesDatabase.forEach(c => {
+        html += `
+        <a href="javascript:void(0)" class="channel-card" onclick="playVipChannel('${c.url}')">
+          <div class="new-badge" style="background: linear-gradient(135deg, #0044ff, #00aaff);">SERIE</div>
+          <img src="${c.logo}" alt="${c.name}" style="border-radius:10px; width: 100px; height: 140px; object-fit: cover;" onerror="this.src='https://ui-avatars.com/api/?name=SERIE&background=0044ff&color=fff&size=200'">
+          <p class="channel-name" style="font-size: 12px;">${c.name}</p>
+        </a>`;
+    });
+    grid.innerHTML = html;
+    animateCards();
 }
 
 </script>
