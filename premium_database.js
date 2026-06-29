@@ -48,12 +48,6 @@ const premiumDatabase = [
     "category": "24H  ANIMES"
   },
   {
-    "name": "Shaman King",
-    "logo": "https://i.postimg.cc/brVjRYPB/Shaman-King.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836398.m3u8",
-    "category": "24H  ANIMES"
-  },
-  {
     "name": "SAKAMOTO DAYS",
     "logo": "https://i.postimg.cc/sxvLsYFH/SAKAMOTO-DAYS.png",
     "url": "http://attbr.fun/live/149988699/047237831/836399.m3u8",
@@ -75,12 +69,6 @@ const premiumDatabase = [
     "name": "Record of Ragnarok",
     "logo": "https://i.postimg.cc/0QJXbp2t/Record-of-Ragnarok.png",
     "url": "http://attbr.fun/live/149988699/047237831/836402.m3u8",
-    "category": "24H  ANIMES"
-  },
-  {
-    "name": "Neon Genesis Evangelion",
-    "logo": "https://i.postimg.cc/mrRCvLRL/Neon-Genesis-Evangelion.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836403.m3u8",
     "category": "24H  ANIMES"
   },
   {
@@ -156,12 +144,6 @@ const premiumDatabase = [
     "category": "24H  ANIMES"
   },
   {
-    "name": "Blue Lock",
-    "logo": "https://i.postimg.cc/FR4030DZ/Blue-Lock.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836416.m3u8",
-    "category": "24H  ANIMES"
-  },
-  {
     "name": "Beyblade Burst",
     "logo": "https://i.postimg.cc/NMCfBc9F/Beyblade-Burst.png",
     "url": "http://attbr.fun/live/149988699/047237831/836417.m3u8",
@@ -234,12 +216,6 @@ const premiumDatabase = [
     "category": "24H  ANIMES"
   },
   {
-    "name": "Solo Leveling",
-    "logo": "https://i.postimg.cc/wjrhQt0F/Solo-Leveling.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836429.m3u8",
-    "category": "24H  ANIMES"
-  },
-  {
     "name": "Sin  Nanatsu no Taizai",
     "logo": "https://i.postimg.cc/66z4h2Qv/Sin-Nanatsu-no-Taizai.png",
     "url": "http://attbr.fun/live/149988699/047237831/836430.m3u8",
@@ -300,12 +276,6 @@ const premiumDatabase = [
     "category": "24H  ANIMES"
   },
   {
-    "name": "Naruto Clássico",
-    "logo": "https://i.postimg.cc/nrRMPxkP/NARUTO.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836440.m3u8",
-    "category": "24H  ANIMES"
-  },
-  {
     "name": "Mob Psycho 100",
     "logo": "https://i.postimg.cc/rpJRYKJw/Mob-Psycho-100.png",
     "url": "http://attbr.fun/live/149988699/047237831/836441.m3u8",
@@ -360,18 +330,6 @@ const premiumDatabase = [
     "category": "24H  ANIMES"
   },
   {
-    "name": "Dragon Ball Saga Cell",
-    "logo": "https://i.postimg.cc/X7YZpj4G/Dragon-Ball-Saga-Sayajin.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836450.m3u8",
-    "category": "24H  ANIMES"
-  },
-  {
-    "name": "Dragon Ball GT",
-    "logo": "https://i.postimg.cc/X7YZpj4G/Dragon-Ball-Saga-Sayajin.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836451.m3u8",
-    "category": "24H  ANIMES"
-  },
-  {
     "name": "Dragon Ball Classico",
     "logo": "https://i.postimg.cc/X7YZpj4G/Dragon-Ball-Saga-Sayajin.png",
     "url": "http://attbr.fun/live/149988699/047237831/836452.m3u8",
@@ -414,27 +372,9 @@ const premiumDatabase = [
     "category": "24H  ANIMES"
   },
   {
-    "name": "Death Note",
-    "logo": "https://i.postimg.cc/HLcvH1rg/Death-Note.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836459.m3u8",
-    "category": "24H  ANIMES"
-  },
-  {
-    "name": "Chainsaw Man",
-    "logo": "https://i.postimg.cc/HnB9X6rF/Chainsaw-Man.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836460.m3u8",
-    "category": "24H  ANIMES"
-  },
-  {
     "name": "Boku no Hero Academia",
     "logo": "https://i.postimg.cc/0Q9Snp1k/Boku-no-Hero-Academia.png",
     "url": "http://attbr.fun/live/149988699/047237831/836461.m3u8",
-    "category": "24H  ANIMES"
-  },
-  {
-    "name": "Black clover",
-    "logo": "https://i.postimg.cc/pyMRQJ3r/Black-clover.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836462.m3u8",
     "category": "24H  ANIMES"
   },
   {
@@ -442,12 +382,6 @@ const premiumDatabase = [
     "logo": "https://i.postimg.cc/vB6mWTcF/attaque-des-Ataque-dos-Titas.png",
     "url": "http://attbr.fun/live/149988699/047237831/836463.m3u8",
     "category": "24H  ANIMES"
-  },
-  {
-    "name": "24H APENAS UM SHOW",
-    "logo": "",
-    "url": "http://attbr.fun/live/149988699/047237831/836464.m3u8",
-    "category": "24H  CANAIS"
   },
   {
     "name": "24H Os Flintstones",
@@ -486,27 +420,9 @@ const premiumDatabase = [
     "category": "24H  CANAIS"
   },
   {
-    "name": "24H JASPION",
-    "logo": "",
-    "url": "http://attbr.fun/live/149988699/047237831/836471.m3u8",
-    "category": "24H  CANAIS"
-  },
-  {
-    "name": "24H JONNY QUEST",
-    "logo": "",
-    "url": "http://attbr.fun/live/149988699/047237831/836472.m3u8",
-    "category": "24H  CANAIS"
-  },
-  {
     "name": "24H OS JETSONS",
     "logo": "",
     "url": "http://attbr.fun/live/149988699/047237831/836473.m3u8",
-    "category": "24H  CANAIS"
-  },
-  {
-    "name": "24H BREAKING BAD",
-    "logo": "https://i.ibb.co/f4zdxcb/image.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836474.m3u8",
     "category": "24H  CANAIS"
   },
   {
@@ -522,21 +438,9 @@ const premiumDatabase = [
     "category": "24H  CANAIS"
   },
   {
-    "name": "24H DIGIMON",
-    "logo": "https://i.postimg.cc/N0cB2DmP/Digimon-Zero-Two.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836477.m3u8",
-    "category": "24H  CANAIS"
-  },
-  {
     "name": "24H DESENHOS BIBLICOS",
     "logo": "",
     "url": "http://attbr.fun/live/149988699/047237831/836478.m3u8",
-    "category": "24H  CANAIS"
-  },
-  {
-    "name": "24H AS AVENTURAS DE TOM & JERRY",
-    "logo": "https://i.postimg.cc/Pxf4JGxK/O-Show-de-Tom-e-Jerry.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836479.m3u8",
     "category": "24H  CANAIS"
   },
   {
@@ -564,12 +468,6 @@ const premiumDatabase = [
     "category": "24H  CANAIS"
   },
   {
-    "name": "24H DRAGONBALL SUPER H265",
-    "logo": "https://i.postimg.cc/8PCBzqq2/SUPER-DRAGONBALL-HEROES.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836484.m3u8",
-    "category": "24H  CANAIS"
-  },
-  {
     "name": "24H A TURMA DO ZÉ COLMÉIA",
     "logo": "",
     "url": "http://attbr.fun/live/149988699/047237831/836485.m3u8",
@@ -594,21 +492,9 @@ const premiumDatabase = [
     "category": "24H  CANAIS"
   },
   {
-    "name": "24H O PEQUENO SCOOBY-DOO",
-    "logo": "",
-    "url": "http://attbr.fun/live/149988699/047237831/836489.m3u8",
-    "category": "24H  CANAIS"
-  },
-  {
     "name": "24H PICA- PAU",
     "logo": "",
     "url": "http://attbr.fun/live/149988699/047237831/836490.m3u8",
-    "category": "24H  CANAIS"
-  },
-  {
-    "name": "24H CHAVES MULTISHOW",
-    "logo": "https://i.postimg.cc/wBhgQ8W6/CHAVES-PNG.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836491.m3u8",
     "category": "24H  CANAIS"
   },
   {
@@ -642,12 +528,6 @@ const premiumDatabase = [
     "category": "24H  CANAIS"
   },
   {
-    "name": "24H A VACA E O FRANGO",
-    "logo": "",
-    "url": "http://attbr.fun/live/149988699/047237831/836497.m3u8",
-    "category": "24H  CANAIS"
-  },
-  {
     "name": "24H FUTURAMA",
     "logo": "",
     "url": "http://attbr.fun/live/149988699/047237831/836498.m3u8",
@@ -660,27 +540,9 @@ const premiumDatabase = [
     "category": "24H  CANAIS"
   },
   {
-    "name": "24H A TURMA DA PANTERA COR DE ROSA",
-    "logo": "",
-    "url": "http://attbr.fun/live/149988699/047237831/836500.m3u8",
-    "category": "24H  CANAIS"
-  },
-  {
     "name": "24H OS TRAPALHÕES",
     "logo": "",
     "url": "http://attbr.fun/live/149988699/047237831/836501.m3u8",
-    "category": "24H  CANAIS"
-  },
-  {
-    "name": "24H CAVERNA DO DRAGÃO",
-    "logo": "https://i.postimg.cc/ydWdtdQ9/Caverna.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836502.m3u8",
-    "category": "24H  CANAIS"
-  },
-  {
-    "name": "24H PATRULHA CANINA T01",
-    "logo": "",
-    "url": "http://attbr.fun/live/149988699/047237831/836503.m3u8",
     "category": "24H  CANAIS"
   },
   {
@@ -696,27 +558,9 @@ const premiumDatabase = [
     "category": "24H  CANAIS"
   },
   {
-    "name": "24H PEPE LEGAL",
-    "logo": "",
-    "url": "http://attbr.fun/live/149988699/047237831/836506.m3u8",
-    "category": "24H  CANAIS"
-  },
-  {
-    "name": "24H O SHOW DO GARFIELD",
-    "logo": "",
-    "url": "http://attbr.fun/live/149988699/047237831/836507.m3u8",
-    "category": "24H  CANAIS"
-  },
-  {
     "name": "24H DOIS HOMENS E MEIO / TWO AND A HALF MEN",
     "logo": "http://k120.live:80/images/dsAt8cMDBjbP3mVNdeYR4WFW3cpGFJM5wshcbtfbTXWW8mymvD6MgndI7tWCExpL.png",
     "url": "http://attbr.fun/live/149988699/047237831/836508.m3u8",
-    "category": "24H  CANAIS"
-  },
-  {
-    "name": "24H AS TARTARUGAS NINJA (2012)",
-    "logo": "http://k120.live:80/images/dsAt8cMDBjbP3mVNdeYR4fGtKrlszk2L0r0KzcBB49XpcTFWTD_VH2o_gu1Heq0y.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836509.m3u8",
     "category": "24H  CANAIS"
   },
   {
@@ -756,27 +600,9 @@ const premiumDatabase = [
     "category": "24H  CANAIS"
   },
   {
-    "name": "24H CAVALO DE FOGO",
-    "logo": "https://i.postimg.cc/br7Tpqtn/CAVALO-DE-FOGO-png.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836516.m3u8",
-    "category": "24H  CANAIS"
-  },
-  {
-    "name": "24H CAVERNA DO DRAGÃO",
-    "logo": "https://i.postimg.cc/ydWdtdQ9/Caverna.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836517.m3u8",
-    "category": "24H  CANAIS"
-  },
-  {
     "name": "24H COCORICÓ",
     "logo": "https://i.postimg.cc/wBpGDQ3f/COCORICO-png.png",
     "url": "http://attbr.fun/live/149988699/047237831/836518.m3u8",
-    "category": "24H  CANAIS"
-  },
-  {
-    "name": "24H DORA AVENTUREIRA",
-    "logo": "https://i.postimg.cc/rp5LkpRj/AVENTUREIRA-png.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836519.m3u8",
     "category": "24H  CANAIS"
   },
   {
@@ -792,21 +618,9 @@ const premiumDatabase = [
     "category": "24H  CANAIS"
   },
   {
-    "name": "24H A PANTERA COR DE ROSA",
-    "logo": "http://k120.live:80/images/dsAt8cMDBjbP3mVNdeYR4apwR2xr0Co6T74MqfXmdy9s8MaK6AU5wr-sWiPX2bXI.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836522.m3u8",
-    "category": "24H  CANAIS"
-  },
-  {
     "name": "24H A PEQUENA SEREIA",
     "logo": "http://k120.live:80/images/dsAt8cMDBjbP3mVNdeYR4fPIyu3UnPVU0fYSsyqU9GyxVomIzrWrGSMFu-xYKUxq.png",
     "url": "http://attbr.fun/live/149988699/047237831/836523.m3u8",
-    "category": "24H  CANAIS"
-  },
-  {
-    "name": "24H GASPARZINHO",
-    "logo": "http://k120.live:80/images/dsAt8cMDBjbP3mVNdeYR4bcY3JClIk7W7AfpuXf0AWAeKfIE0QKayYkgmlRCpxm6.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836524.m3u8",
     "category": "24H  CANAIS"
   },
   {
@@ -828,21 +642,9 @@ const premiumDatabase = [
     "category": "24H  CANAIS"
   },
   {
-    "name": "24H BEYBLADE",
-    "logo": "http://k120.live:80/images/dsAt8cMDBjbP3mVNdeYR4RjynlHALvU3L9kaCztKzh2dIsJFFbCn3gr35Y0TYtvJ.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836528.m3u8",
-    "category": "24H  CANAIS"
-  },
-  {
     "name": "24H BOB ESPONJA",
     "logo": "http://k120.live:80/images/dsAt8cMDBjbP3mVNdeYR4ckf1JruqrcfdVVQ0wiJ5DqMnxg3NN4gTyDeonqATa-5.png",
     "url": "http://attbr.fun/live/149988699/047237831/836529.m3u8",
-    "category": "24H  CANAIS"
-  },
-  {
-    "name": "24H CORAGEM O CAO COVARDE",
-    "logo": "http://k120.live:80/images/dsAt8cMDBjbP3mVNdeYR4VB8chqrte3rIrU2OarFnepXUHqzGQczhIOc5hrT31nN.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836530.m3u8",
     "category": "24H  CANAIS"
   },
   {
@@ -873,12 +675,6 @@ const premiumDatabase = [
     "name": "24H MANDA CHUVA",
     "logo": "http://k120.live:80/images/dsAt8cMDBjbP3mVNdeYR4aHabRtSKdxNBG834_gK10zOYJVJuLzvpbwmWQRzz3ye.png",
     "url": "http://attbr.fun/live/149988699/047237831/836535.m3u8",
-    "category": "24H  CANAIS"
-  },
-  {
-    "name": "24H LADY BUG",
-    "logo": "http://k120.live:80/images/dsAt8cMDBjbP3mVNdeYR4bk08-XZj7-oS5l8V-TJ_K1Yya1aGUte5yZtsgbKApUx.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836536.m3u8",
     "category": "24H  CANAIS"
   },
   {
@@ -954,12 +750,6 @@ const premiumDatabase = [
     "category": "24H  CANAIS"
   },
   {
-    "name": "TICO E TECO DEFENSORES DA LEI",
-    "logo": "http://k120.live:80/images/dsAt8cMDBjbP3mVNdeYR4bDTp7JLu07ibLqtLZrB-RLPjp9cXoEn-JWwkLuE1IfJ.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836549.m3u8",
-    "category": "24H  CANAIS"
-  },
-  {
     "name": "TRES ESPIAS DE MAIS",
     "logo": "http://k120.live:80/images/dsAt8cMDBjbP3mVNdeYR4VJieZ9aDqq44iYl3TdC_laqUDNZuD74cZIaEzNqHW8O.png",
     "url": "http://attbr.fun/live/149988699/047237831/836550.m3u8",
@@ -1008,18 +798,6 @@ const premiumDatabase = [
     "category": "24H  CANAIS"
   },
   {
-    "name": "24H LARGADOS E PELADOS",
-    "logo": "http://k120.live:80/images/dsAt8cMDBjbP3mVNdeYR4SG3J6zBHqOIAEo3Ebm6RlbAYLEDa3mE5gGCqD3zm18T.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836558.m3u8",
-    "category": "24H  CANAIS"
-  },
-  {
-    "name": "24H MASTER CHEF - PROFISSIONAIS",
-    "logo": "http://k120.live:80/images/dsAt8cMDBjbP3mVNdeYR4c3sTnCTuyYa5wXVHitexMBy7us4OzwuC51FpH0Nts7I.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836559.m3u8",
-    "category": "24H  CANAIS"
-  },
-  {
     "name": "24H OPERAÇAO FRONTEIRA BRASIL",
     "logo": "http://k120.live:80/images/dsAt8cMDBjbP3mVNdeYR4Z3R7grd4HhTPrYljwe9ct6U6StucR3KOX9XfYNNaqvg.png",
     "url": "http://attbr.fun/live/149988699/047237831/836560.m3u8",
@@ -1035,18 +813,6 @@ const premiumDatabase = [
     "name": "24H ARQUIVO X",
     "logo": "http://k120.live:80/images/dsAt8cMDBjbP3mVNdeYR4e5lFC8FNFTfyerFCxPnPPeOlEeaR4UNF2XOlijvjosw.png",
     "url": "http://attbr.fun/live/149988699/047237831/836562.m3u8",
-    "category": "24H  CANAIS"
-  },
-  {
-    "name": "24H BREAKING BAD",
-    "logo": "http://k120.live:80/images/dsAt8cMDBjbP3mVNdeYR4V_AD8zMhp9QGrNK_yPFR4yyqKXVn6noi6kUNpBdAYUV.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836563.m3u8",
-    "category": "24H  CANAIS"
-  },
-  {
-    "name": "24H CHAPOLIN COLORADO",
-    "logo": "http://k120.live:80/images/dsAt8cMDBjbP3mVNdeYR4eGJaZSgSQ9SlH3ctz9h0xZeHNBlRRsTZASL39N_c3Bb.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836564.m3u8",
     "category": "24H  CANAIS"
   },
   {
@@ -1698,12 +1464,6 @@ const premiumDatabase = [
     "category": "24H  CANAIS"
   },
   {
-    "name": "4 Contra o Apocalipse",
-    "logo": "",
-    "url": "http://attbr.fun/live/149988699/047237831/836673.m3u8",
-    "category": "24H  CANAIS"
-  },
-  {
     "name": "3 Palavrinhas",
     "logo": "",
     "url": "http://attbr.fun/live/149988699/047237831/836674.m3u8",
@@ -1722,21 +1482,9 @@ const premiumDatabase = [
     "category": "24H  CANAIS"
   },
   {
-    "name": "X-Men  Evolution",
-    "logo": "https://i.postimg.cc/pT5667SC/X-Men-Evolution.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836677.m3u8",
-    "category": "24H  CANAIS"
-  },
-  {
     "name": "X Men",
     "logo": "https://i.postimg.cc/pT5667SC/X-Men-Evolution.png",
     "url": "http://attbr.fun/live/149988699/047237831/836678.m3u8",
-    "category": "24H  CANAIS"
-  },
-  {
-    "name": "Tres Espias Demais",
-    "logo": "https://i.ibb.co/y5Hzfsc/image.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836679.m3u8",
     "category": "24H  CANAIS"
   },
   {
@@ -2580,12 +2328,6 @@ const premiumDatabase = [
     "category": "4K"
   },
   {
-    "name": "4K TC Pipoca",
-    "logo": "http://32q0d.xyz/images/logos/3516bb396867e2cbe412d92f3a016496.png",
-    "url": "http://attbr.fun/live/149988699/047237831/844188.m3u8",
-    "category": "4K"
-  },
-  {
     "name": "4K TC Pipoca ( Alter )",
     "logo": "http://32q0d.xyz/images/logos/3516bb396867e2cbe412d92f3a016496.png",
     "url": "http://attbr.fun/live/149988699/047237831/844189.m3u8",
@@ -2601,12 +2343,6 @@ const premiumDatabase = [
     "name": "4K TC Premiun ( Alter )",
     "logo": "http://32q0d.xyz/images/876e229e5252d62ec26916d99fe14da6.png",
     "url": "http://attbr.fun/live/149988699/047237831/844191.m3u8",
-    "category": "4K"
-  },
-  {
-    "name": "4K Tnt",
-    "logo": "http://p2player.fun:80/images/dsAt8cMDBjbP3mVNdeYR4Q0nvZTV-_Xy7lao9A1yg1M.png",
-    "url": "http://attbr.fun/live/149988699/047237831/844192.m3u8",
     "category": "4K"
   },
   {
@@ -2649,12 +2385,6 @@ const premiumDatabase = [
     "name": "AMAZON PRIME 01",
     "logo": "",
     "url": "http://attbr.fun/live/149988699/047237831/838098.m3u8",
-    "category": "AMAZON PRIME"
-  },
-  {
-    "name": "AMAZON PRIME 02",
-    "logo": "",
-    "url": "http://attbr.fun/live/149988699/047237831/838099.m3u8",
     "category": "AMAZON PRIME"
   },
   {
@@ -2778,12 +2508,6 @@ const premiumDatabase = [
     "category": "ANIMAÇÃO"
   },
   {
-    "name": "Blue Lock",
-    "logo": "https://i.postimg.cc/FR4030DZ/Blue-Lock.png",
-    "url": "http://attbr.fun/live/149988699/047237831/844286.m3u8",
-    "category": "ANIMAÇÃO"
-  },
-  {
     "name": "Blue Lock ( Alter )",
     "logo": "https://i.postimg.cc/FR4030DZ/Blue-Lock.png",
     "url": "http://attbr.fun/live/149988699/047237831/844287.m3u8",
@@ -2793,12 +2517,6 @@ const premiumDatabase = [
     "name": "Boku No Hero Academia",
     "logo": "https://i.postimg.cc/0Q9Snp1k/Boku-no-Hero-Academia.png",
     "url": "http://attbr.fun/live/149988699/047237831/844288.m3u8",
-    "category": "ANIMAÇÃO"
-  },
-  {
-    "name": "Boku No Hero Academia ( Alter )",
-    "logo": "https://i.postimg.cc/0Q9Snp1k/Boku-no-Hero-Academia.png",
-    "url": "http://attbr.fun/live/149988699/047237831/844289.m3u8",
     "category": "ANIMAÇÃO"
   },
   {
@@ -2826,12 +2544,6 @@ const premiumDatabase = [
     "category": "ANIMAÇÃO"
   },
   {
-    "name": "Chainsaw Man",
-    "logo": "https://i.postimg.cc/HnB9X6rF/Chainsaw-Man.png",
-    "url": "http://attbr.fun/live/149988699/047237831/844294.m3u8",
-    "category": "ANIMAÇÃO"
-  },
-  {
     "name": "Chainsaw Man ( Alter )",
     "logo": "https://i.postimg.cc/HnB9X6rF/Chainsaw-Man.png",
     "url": "http://attbr.fun/live/149988699/047237831/844295.m3u8",
@@ -2847,12 +2559,6 @@ const premiumDatabase = [
     "name": "Cowboy Bebop ( Alter )",
     "logo": "https://i.postimg.cc/7LCKm13X/tartarugas-24hrs.png",
     "url": "http://attbr.fun/live/149988699/047237831/844297.m3u8",
-    "category": "ANIMAÇÃO"
-  },
-  {
-    "name": "Death Note",
-    "logo": "https://i.postimg.cc/HLcvH1rg/Death-Note.png",
-    "url": "http://attbr.fun/live/149988699/047237831/844298.m3u8",
     "category": "ANIMAÇÃO"
   },
   {
@@ -2940,30 +2646,6 @@ const premiumDatabase = [
     "category": "ANIMAÇÃO"
   },
   {
-    "name": "Dragon Ball Daima ( Alter )",
-    "logo": "https://i.postimg.cc/X7YZpj4G/Dragon-Ball-Saga-Sayajin.png",
-    "url": "http://attbr.fun/live/149988699/047237831/844313.m3u8",
-    "category": "ANIMAÇÃO"
-  },
-  {
-    "name": "Dragon Ball GT",
-    "logo": "https://i.postimg.cc/X7YZpj4G/Dragon-Ball-Saga-Sayajin.png",
-    "url": "http://attbr.fun/live/149988699/047237831/844314.m3u8",
-    "category": "ANIMAÇÃO"
-  },
-  {
-    "name": "Dragon Ball GT ( Alter )",
-    "logo": "https://i.postimg.cc/X7YZpj4G/Dragon-Ball-Saga-Sayajin.png",
-    "url": "http://attbr.fun/live/149988699/047237831/844315.m3u8",
-    "category": "ANIMAÇÃO"
-  },
-  {
-    "name": "Dragon Ball Saga Cell",
-    "logo": "https://i.postimg.cc/X7YZpj4G/Dragon-Ball-Saga-Sayajin.png",
-    "url": "http://attbr.fun/live/149988699/047237831/844316.m3u8",
-    "category": "ANIMAÇÃO"
-  },
-  {
     "name": "Dragon Ball Saga Cell ( Alter )",
     "logo": "https://i.postimg.cc/X7YZpj4G/Dragon-Ball-Saga-Sayajin.png",
     "url": "http://attbr.fun/live/149988699/047237831/844317.m3u8",
@@ -3000,21 +2682,9 @@ const premiumDatabase = [
     "category": "ANIMAÇÃO"
   },
   {
-    "name": "Dragon Ball Saga Sayajin ( Alter )",
-    "logo": "https://i.postimg.cc/X7YZpj4G/Dragon-Ball-Saga-Sayajin.png",
-    "url": "http://attbr.fun/live/149988699/047237831/844323.m3u8",
-    "category": "ANIMAÇÃO"
-  },
-  {
     "name": "Dragon Ball Super",
     "logo": "https://i.postimg.cc/9FbGngQC/Dragon-Ball-Super.png",
     "url": "http://attbr.fun/live/149988699/047237831/844324.m3u8",
-    "category": "ANIMAÇÃO"
-  },
-  {
-    "name": "Dragon Ball Super ( Alter )",
-    "logo": "https://i.postimg.cc/9FbGngQC/Dragon-Ball-Super.png",
-    "url": "http://attbr.fun/live/149988699/047237831/844325.m3u8",
     "category": "ANIMAÇÃO"
   },
   {
@@ -3210,12 +2880,6 @@ const premiumDatabase = [
     "category": "ANIMAÇÃO"
   },
   {
-    "name": "Neon Genesis Evangelion",
-    "logo": "https://i.postimg.cc/mrRCvLRL/Neon-Genesis-Evangelion.png",
-    "url": "http://attbr.fun/live/149988699/047237831/844358.m3u8",
-    "category": "ANIMAÇÃO"
-  },
-  {
     "name": "Neon Genesis Evangelion ( Alter )",
     "logo": "https://i.postimg.cc/mrRCvLRL/Neon-Genesis-Evangelion.png",
     "url": "http://attbr.fun/live/149988699/047237831/844359.m3u8",
@@ -3324,18 +2988,6 @@ const premiumDatabase = [
     "category": "ANIMAÇÃO"
   },
   {
-    "name": "Record Of Ragnarok ( Alter )",
-    "logo": "https://i.postimg.cc/0QJXbp2t/Record-of-Ragnarok.png",
-    "url": "http://attbr.fun/live/149988699/047237831/844377.m3u8",
-    "category": "ANIMAÇÃO"
-  },
-  {
-    "name": "Rezero Starting Life In Another World",
-    "logo": "https://i.postimg.cc/d3pf54H2/Rezero-Starting-Life-in.png",
-    "url": "http://attbr.fun/live/149988699/047237831/844378.m3u8",
-    "category": "ANIMAÇÃO"
-  },
-  {
     "name": "Rezero Starting Life In Another World ( Alter )",
     "logo": "https://i.postimg.cc/d3pf54H2/Rezero-Starting-Life-in.png",
     "url": "http://attbr.fun/live/149988699/047237831/844379.m3u8",
@@ -3378,33 +3030,9 @@ const premiumDatabase = [
     "category": "ANIMAÇÃO"
   },
   {
-    "name": "Shaman King",
-    "logo": "https://i.postimg.cc/brVjRYPB/Shaman-King.png",
-    "url": "http://attbr.fun/live/149988699/047237831/844386.m3u8",
-    "category": "ANIMAÇÃO"
-  },
-  {
     "name": "Shaman King ( Alter )",
     "logo": "https://i.postimg.cc/brVjRYPB/Shaman-King.png",
     "url": "http://attbr.fun/live/149988699/047237831/844387.m3u8",
-    "category": "ANIMAÇÃO"
-  },
-  {
-    "name": "Sin Nanatsu No Taizai",
-    "logo": "https://i.postimg.cc/66z4h2Qv/Sin-Nanatsu-no-Taizai.png",
-    "url": "http://attbr.fun/live/149988699/047237831/844388.m3u8",
-    "category": "ANIMAÇÃO"
-  },
-  {
-    "name": "Sin Nanatsu No Taizai ( Alter )",
-    "logo": "https://i.postimg.cc/66z4h2Qv/Sin-Nanatsu-no-Taizai.png",
-    "url": "http://attbr.fun/live/149988699/047237831/844389.m3u8",
-    "category": "ANIMAÇÃO"
-  },
-  {
-    "name": "Solo Leveling",
-    "logo": "https://i.postimg.cc/wjrhQt0F/Solo-Leveling.png",
-    "url": "http://attbr.fun/live/149988699/047237831/844390.m3u8",
     "category": "ANIMAÇÃO"
   },
   {
@@ -3588,12 +3216,6 @@ const premiumDatabase = [
     "category": "BAND"
   },
   {
-    "name": "BAND CE HD",
-    "logo": "https://i.ibb.co/RD2DkLz/HD.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836745.m3u8",
-    "category": "BAND"
-  },
-  {
     "name": "BAND CE FHD HD264",
     "logo": "https://i.ibb.co/Jpnc0yT/FHD.png",
     "url": "http://attbr.fun/live/149988699/047237831/836746.m3u8",
@@ -3666,39 +3288,9 @@ const premiumDatabase = [
     "category": "BAND"
   },
   {
-    "name": "BAND SD",
-    "logo": "https://i.ibb.co/27ttRjw/SD.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836758.m3u8",
-    "category": "BAND"
-  },
-  {
-    "name": "JP NEWS 4K",
-    "logo": "https://i.ibb.co/mVT7LgNq/Logo-Nova-2.png",
-    "url": "http://attbr.fun/live/149988699/047237831/837854.m3u8",
-    "category": "CANAIS 4K"
-  },
-  {
-    "name": "TNT SERIES 4K",
-    "logo": "http://32q0d.xyz/images/33e1d5417c9d76d74f31a82e8e81f712.png",
-    "url": "http://attbr.fun/live/149988699/047237831/837856.m3u8",
-    "category": "CANAIS 4K"
-  },
-  {
-    "name": "TNT 4K",
-    "logo": "http://32q0d.xyz/images/be5bfe94570a31b3728b4c2dff9425fa.png",
-    "url": "http://attbr.fun/live/149988699/047237831/837857.m3u8",
-    "category": "CANAIS 4K"
-  },
-  {
     "name": "TC PREMIUN 4K",
     "logo": "http://32q0d.xyz/images/876e229e5252d62ec26916d99fe14da6.png",
     "url": "http://attbr.fun/live/149988699/047237831/837858.m3u8",
-    "category": "CANAIS 4K"
-  },
-  {
-    "name": "TC PIPOCA 4K",
-    "logo": "http://32q0d.xyz/images/logos/3516bb396867e2cbe412d92f3a016496.png",
-    "url": "http://attbr.fun/live/149988699/047237831/837859.m3u8",
     "category": "CANAIS 4K"
   },
   {
@@ -3723,18 +3315,6 @@ const premiumDatabase = [
     "name": "PREMIERE CLUBES 4K",
     "logo": "http://32q0d.xyz/images/logos/d593312c282b4342f59b1c54b25c426b.png",
     "url": "http://attbr.fun/live/149988699/047237831/837865.m3u8",
-    "category": "CANAIS 4K"
-  },
-  {
-    "name": "PREMIERE 2 4K",
-    "logo": "http://32q0d.xyz/images/logos/4f02df7b2aedca9a4a55c65178d3b013.png",
-    "url": "http://attbr.fun/live/149988699/047237831/837866.m3u8",
-    "category": "CANAIS 4K"
-  },
-  {
-    "name": "MULTISHOW 4K",
-    "logo": "http://32q0d.xyz/images/e0f541a353b0c195c043a2ecbdc70a07.png",
-    "url": "http://attbr.fun/live/149988699/047237831/837867.m3u8",
     "category": "CANAIS 4K"
   },
   {
@@ -3774,27 +3354,9 @@ const premiumDatabase = [
     "category": "CANAIS 4K"
   },
   {
-    "name": "GLOBO RJ 4K",
-    "logo": "http://32q0d.xyz/images/logos/eccf7d732d94464e73dab755d7fe8bbb.png",
-    "url": "http://attbr.fun/live/149988699/047237831/837874.m3u8",
-    "category": "CANAIS 4K"
-  },
-  {
     "name": "GLOBO RBS TV 4K",
     "logo": "http://32q0d.xyz/images/logos/eccf7d732d94464e73dab755d7fe8bbb.png",
     "url": "http://attbr.fun/live/149988699/047237831/837875.m3u8",
-    "category": "CANAIS 4K"
-  },
-  {
-    "name": "GLOBO NEWS 4K",
-    "logo": "http://32q0d.xyz/images/logos/62916a2736a2876d97ef570ef05d7dff.png",
-    "url": "http://attbr.fun/live/149988699/047237831/837876.m3u8",
-    "category": "CANAIS 4K"
-  },
-  {
-    "name": "GLOBO MINAS 4K",
-    "logo": "http://32q0d.xyz/images/logos/eccf7d732d94464e73dab755d7fe8bbb.png",
-    "url": "http://attbr.fun/live/149988699/047237831/837877.m3u8",
     "category": "CANAIS 4K"
   },
   {
@@ -3807,12 +3369,6 @@ const premiumDatabase = [
     "name": "GLOBO BAHIA 4K",
     "logo": "http://32q0d.xyz/images/logos/eccf7d732d94464e73dab755d7fe8bbb.png",
     "url": "http://attbr.fun/live/149988699/047237831/837879.m3u8",
-    "category": "CANAIS 4K"
-  },
-  {
-    "name": "Discovery H&H 4K",
-    "logo": "http://32q0d.xyz/images/logos/discovery-home-and-health-logo2.png",
-    "url": "http://attbr.fun/live/149988699/047237831/837881.m3u8",
     "category": "CANAIS 4K"
   },
   {
@@ -3858,18 +3414,6 @@ const premiumDatabase = [
     "category": "CANAIS 4K"
   },
   {
-    "name": "TNT 4K",
-    "logo": "https://i.ibb.co/7Sb0Qcd/4K.png",
-    "url": "http://attbr.fun/live/149988699/047237831/837890.m3u8",
-    "category": "CANAIS 4K"
-  },
-  {
-    "name": "BAND SPORTS 4K",
-    "logo": "https://i.ibb.co/Wk9wTDG/band-Sports-4k.png",
-    "url": "http://attbr.fun/live/149988699/047237831/837891.m3u8",
-    "category": "CANAIS 4K"
-  },
-  {
     "name": "BAND RS 4K",
     "logo": "https://i.ibb.co/YdyBQDc/4K.png",
     "url": "http://attbr.fun/live/149988699/047237831/837892.m3u8",
@@ -3894,39 +3438,15 @@ const premiumDatabase = [
     "category": "CANAIS 4K"
   },
   {
-    "name": "RECORD SP 4K",
-    "logo": "https://i.ibb.co/LYrsrjk/4K.png",
-    "url": "http://attbr.fun/live/149988699/047237831/837896.m3u8",
-    "category": "CANAIS 4K"
-  },
-  {
     "name": "RBS TV 4K",
     "logo": "https://i.ibb.co/qLkqpC7R/Logo-Nova-2.png",
     "url": "http://attbr.fun/live/149988699/047237831/837897.m3u8",
     "category": "CANAIS 4K"
   },
   {
-    "name": "TV SENADO SD",
-    "logo": "https://i.ibb.co/zx08QV4/HD.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836759.m3u8",
-    "category": "CANAIS ABERTOS"
-  },
-  {
     "name": "TV BRASIL 2 SD",
     "logo": "https://i.ibb.co/QYfdhv4/HD.png",
     "url": "http://attbr.fun/live/149988699/047237831/836760.m3u8",
-    "category": "CANAIS ABERTOS"
-  },
-  {
-    "name": "CANAL RURAL SD",
-    "logo": "https://i.ibb.co/3RVWd2T/SD.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836761.m3u8",
-    "category": "CANAIS ABERTOS"
-  },
-  {
-    "name": "CANAL DO BOI SD",
-    "logo": "https://i.ibb.co/74L3Sby/SD.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836762.m3u8",
     "category": "CANAIS ABERTOS"
   },
   {
@@ -3948,39 +3468,15 @@ const premiumDatabase = [
     "category": "CANAIS ABERTOS"
   },
   {
-    "name": "REDE TV HD",
-    "logo": "https://i.ibb.co/G0gLPxj/HD.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836766.m3u8",
-    "category": "CANAIS ABERTOS"
-  },
-  {
     "name": "REDE TV FHD",
     "logo": "https://i.ibb.co/48Lxs71/H265.png",
     "url": "http://attbr.fun/live/149988699/047237831/836767.m3u8",
     "category": "CANAIS ABERTOS"
   },
   {
-    "name": "FUTURA HD",
-    "logo": "https://i.ibb.co/0KBKRrL/HD.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836768.m3u8",
-    "category": "CANAIS ABERTOS"
-  },
-  {
     "name": "REDE TV SD",
     "logo": "https://i.ibb.co/nNzQZWtm/Logo-Nova-6.png",
     "url": "http://attbr.fun/live/149988699/047237831/836769.m3u8",
-    "category": "CANAIS ABERTOS"
-  },
-  {
-    "name": "TERRA VIVA SD",
-    "logo": "https://i.ibb.co/1QbGTtH/SD.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836770.m3u8",
-    "category": "CANAIS ABERTOS"
-  },
-  {
-    "name": "CANAL BRASIL SD",
-    "logo": "https://i.ibb.co/GT74wNh/SD.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836771.m3u8",
     "category": "CANAIS ABERTOS"
   },
   {
@@ -4098,18 +3594,6 @@ const premiumDatabase = [
     "category": "CAZE TV"
   },
   {
-    "name": "Caze TV 06 ( Alter )",
-    "logo": "",
-    "url": "http://attbr.fun/live/149988699/047237831/844425.m3u8",
-    "category": "CAZE TV"
-  },
-  {
-    "name": "CAZÉ TV 01",
-    "logo": "https://i.ibb.co/hyJhtBM/caze-TV-1.png",
-    "url": "http://attbr.fun/live/149988699/047237831/837283.m3u8",
-    "category": "CAZÉ TV"
-  },
-  {
     "name": "CAZÉ TV 02",
     "logo": "https://i.ibb.co/hyJhtBM/caze-TV-1.png",
     "url": "http://attbr.fun/live/149988699/047237831/837361.m3u8",
@@ -4155,12 +3639,6 @@ const premiumDatabase = [
     "name": "DISCOVERY SCIENCE SD",
     "logo": "https://i.ibb.co/d758HHc/Logo-Nova-1.png",
     "url": "http://attbr.fun/live/149988699/047237831/836784.m3u8",
-    "category": "DISCOVERY"
-  },
-  {
-    "name": "DISCOVERY WORLD HD",
-    "logo": "https://i.ibb.co/GcJ7bMJ/Logo-Nova-2.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836785.m3u8",
     "category": "DISCOVERY"
   },
   {
@@ -4506,21 +3984,9 @@ const premiumDatabase = [
     "category": "DOCUMENTARIOS"
   },
   {
-    "name": "History2 ( Alter )",
-    "logo": "https://i.ibb.co/R0X1Q6n/history-2-FHD.png",
-    "url": "http://attbr.fun/live/149988699/047237831/844475.m3u8",
-    "category": "DOCUMENTARIOS"
-  },
-  {
     "name": "History Channel",
     "logo": "https://i.ibb.co/4m6vgRW/History-Channel-HD.png",
     "url": "http://attbr.fun/live/149988699/047237831/844476.m3u8",
-    "category": "DOCUMENTARIOS"
-  },
-  {
-    "name": "History Channel ( Alter )",
-    "logo": "https://i.ibb.co/4m6vgRW/History-Channel-HD.png",
-    "url": "http://attbr.fun/live/149988699/047237831/844477.m3u8",
     "category": "DOCUMENTARIOS"
   },
   {
@@ -5214,21 +4680,9 @@ const premiumDatabase = [
     "category": "ESPORTES ESTADUAIS"
   },
   {
-    "name": "Flograppliing Eventos",
-    "logo": "http://img.robott.top:8080/down/ZCizR1jfSA8B.top?fname=/flograppling.png",
-    "url": "http://attbr.fun/live/149988699/047237831/844586.m3u8",
-    "category": "ESPORTES ESTADUAIS"
-  },
-  {
     "name": "Flograppliing Eventos ( Alter )",
     "logo": "http://img.robott.top:8080/down/ZCizR1jfSA8B.top?fname=/flograppling.png",
     "url": "http://attbr.fun/live/149988699/047237831/844587.m3u8",
-    "category": "ESPORTES ESTADUAIS"
-  },
-  {
-    "name": "Furacao Play 01",
-    "logo": "",
-    "url": "http://attbr.fun/live/149988699/047237831/844588.m3u8",
     "category": "ESPORTES ESTADUAIS"
   },
   {
@@ -5292,12 +4746,6 @@ const premiumDatabase = [
     "category": "ESPORTES ESTADUAIS"
   },
   {
-    "name": "F Sports 03 ( Alter )",
-    "logo": "",
-    "url": "http://attbr.fun/live/149988699/047237831/844599.m3u8",
-    "category": "ESPORTES ESTADUAIS"
-  },
-  {
     "name": "F Sports 04",
     "logo": "",
     "url": "http://attbr.fun/live/149988699/047237831/844600.m3u8",
@@ -5319,12 +4767,6 @@ const premiumDatabase = [
     "name": "GE TV ( Alter )",
     "logo": "https://i.postimg.cc/RFWtKvgN/images-2.png",
     "url": "http://attbr.fun/live/149988699/047237831/844603.m3u8",
-    "category": "ESPORTES ESTADUAIS"
-  },
-  {
-    "name": "Lnf 01",
-    "logo": "https://i.postimg.cc/BnkNSQcD/LNF-PNG.png",
-    "url": "http://attbr.fun/live/149988699/047237831/844604.m3u8",
     "category": "ESPORTES ESTADUAIS"
   },
   {
@@ -5352,12 +4794,6 @@ const premiumDatabase = [
     "category": "ESPORTES ESTADUAIS"
   },
   {
-    "name": "Lnf 03 ( Alter )",
-    "logo": "https://i.postimg.cc/BnkNSQcD/LNF-PNG.png",
-    "url": "http://attbr.fun/live/149988699/047237831/844609.m3u8",
-    "category": "ESPORTES ESTADUAIS"
-  },
-  {
     "name": "Lnf 04",
     "logo": "https://i.postimg.cc/BnkNSQcD/LNF-PNG.png",
     "url": "http://attbr.fun/live/149988699/047237831/844610.m3u8",
@@ -5376,27 +4812,9 @@ const premiumDatabase = [
     "category": "ESPORTES ESTADUAIS"
   },
   {
-    "name": "Mlb Network Baseball ( Alter )",
-    "logo": "http://k120.live:80/images/Fbb8sIspB7bd-mWMJ_-ZZtlWVMc-aMZnDvqLVRmjsGbDUKO6Z3M2giqYNZLZmKarAWrdY4Htdd8eBCDslzy0-o_QOL3T1VmR_n911y0XW---CiJAEorQzkvohWKqLXpNxPujW6-sCM-lCYptOwa8bQrX1Eb2YwdjiGgKKfSXNe3qkaBHjs9ir4GPaJpPimOp.png",
-    "url": "http://attbr.fun/live/149988699/047237831/844613.m3u8",
-    "category": "ESPORTES ESTADUAIS"
-  },
-  {
     "name": "Mls 01",
     "logo": "https://i.postimg.cc/Kz5dWgZH/MLS-logo-png.png",
     "url": "http://attbr.fun/live/149988699/047237831/844614.m3u8",
-    "category": "ESPORTES ESTADUAIS"
-  },
-  {
-    "name": "Mls 01 ( Alter )",
-    "logo": "https://i.postimg.cc/Kz5dWgZH/MLS-logo-png.png",
-    "url": "http://attbr.fun/live/149988699/047237831/844615.m3u8",
-    "category": "ESPORTES ESTADUAIS"
-  },
-  {
-    "name": "Mls 02 Columbus Crew Vs DC United 7 30 PM ET Sat",
-    "logo": "",
-    "url": "http://attbr.fun/live/149988699/047237831/844616.m3u8",
     "category": "ESPORTES ESTADUAIS"
   },
   {
@@ -5598,21 +5016,9 @@ const premiumDatabase = [
     "category": "ESPORTES ESTADUAIS"
   },
   {
-    "name": "Nsports 01",
-    "logo": "https://i.postimg.cc/8Pr78p5h/logo-nsports-png.png",
-    "url": "http://attbr.fun/live/149988699/047237831/844650.m3u8",
-    "category": "ESPORTES ESTADUAIS"
-  },
-  {
     "name": "Nsports 01 ( Alter )",
     "logo": "https://i.postimg.cc/8Pr78p5h/logo-nsports-png.png",
     "url": "http://attbr.fun/live/149988699/047237831/844651.m3u8",
-    "category": "ESPORTES ESTADUAIS"
-  },
-  {
-    "name": "Nsports 01 SC",
-    "logo": "https://i.postimg.cc/8Pr78p5h/logo-nsports-png.png",
-    "url": "http://attbr.fun/live/149988699/047237831/844652.m3u8",
     "category": "ESPORTES ESTADUAIS"
   },
   {
@@ -5754,12 +5160,6 @@ const premiumDatabase = [
     "category": "ESPORTES ESTADUAIS"
   },
   {
-    "name": "Paulistao Play 03",
-    "logo": "",
-    "url": "http://attbr.fun/live/149988699/047237831/844676.m3u8",
-    "category": "ESPORTES ESTADUAIS"
-  },
-  {
     "name": "Paulistao Play 03 ( Alter )",
     "logo": "",
     "url": "http://attbr.fun/live/149988699/047237831/844677.m3u8",
@@ -5790,33 +5190,15 @@ const premiumDatabase = [
     "category": "ESPORTES ESTADUAIS"
   },
   {
-    "name": "Paulistao YT 02",
-    "logo": "",
-    "url": "http://attbr.fun/live/149988699/047237831/844682.m3u8",
-    "category": "ESPORTES ESTADUAIS"
-  },
-  {
     "name": "Paulistao YT 02 ( Alter )",
     "logo": "",
     "url": "http://attbr.fun/live/149988699/047237831/844683.m3u8",
     "category": "ESPORTES ESTADUAIS"
   },
   {
-    "name": "Paulistao YT 03",
-    "logo": "",
-    "url": "http://attbr.fun/live/149988699/047237831/844684.m3u8",
-    "category": "ESPORTES ESTADUAIS"
-  },
-  {
     "name": "Paulistao YT 03 ( Alter )",
     "logo": "",
     "url": "http://attbr.fun/live/149988699/047237831/844685.m3u8",
-    "category": "ESPORTES ESTADUAIS"
-  },
-  {
-    "name": "Paulistao YT 04",
-    "logo": "",
-    "url": "http://attbr.fun/live/149988699/047237831/844686.m3u8",
     "category": "ESPORTES ESTADUAIS"
   },
   {
@@ -6654,12 +6036,6 @@ const premiumDatabase = [
     "category": "GLOBOS"
   },
   {
-    "name": "TV ANHANGUERA PALMAS HD",
-    "logo": "https://i.postimg.cc/br68sfGJ/HD.png",
-    "url": "http://attbr.fun/live/149988699/047237831/838081.m3u8",
-    "category": "GLOBOS"
-  },
-  {
     "name": "CANAL GOAT 01 HD",
     "logo": "https://i.ibb.co/4Np8c02/HD.png",
     "url": "http://attbr.fun/live/149988699/047237831/837339.m3u8",
@@ -7092,12 +6468,6 @@ const premiumDatabase = [
     "category": "JOGOS DO DIA"
   },
   {
-    "name": "(09)",
-    "logo": "https://i.postimg.cc/hPJ3ZnTJ/JOGOS-DO-DIA.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836862.m3u8",
-    "category": "JOGOS DO DIA"
-  },
-  {
     "name": "(10)",
     "logo": "https://i.postimg.cc/hPJ3ZnTJ/JOGOS-DO-DIA.png",
     "url": "http://attbr.fun/live/149988699/047237831/836861.m3u8",
@@ -7128,39 +6498,9 @@ const premiumDatabase = [
     "category": "JOGOS DO DIA"
   },
   {
-    "name": "(15)",
-    "logo": "https://i.postimg.cc/hPJ3ZnTJ/JOGOS-DO-DIA.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836856.m3u8",
-    "category": "JOGOS DO DIA"
-  },
-  {
-    "name": "(16)",
-    "logo": "https://i.postimg.cc/hPJ3ZnTJ/JOGOS-DO-DIA.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836855.m3u8",
-    "category": "JOGOS DO DIA"
-  },
-  {
-    "name": "(17)",
-    "logo": "https://i.postimg.cc/hPJ3ZnTJ/JOGOS-DO-DIA.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836854.m3u8",
-    "category": "JOGOS DO DIA"
-  },
-  {
-    "name": "(18)",
-    "logo": "https://i.postimg.cc/hPJ3ZnTJ/JOGOS-DO-DIA.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836853.m3u8",
-    "category": "JOGOS DO DIA"
-  },
-  {
     "name": "(19)",
     "logo": "https://i.postimg.cc/hPJ3ZnTJ/JOGOS-DO-DIA.png",
     "url": "http://attbr.fun/live/149988699/047237831/836852.m3u8",
-    "category": "JOGOS DO DIA"
-  },
-  {
-    "name": "(20)",
-    "logo": "https://i.postimg.cc/hPJ3ZnTJ/JOGOS-DO-DIA.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836851.m3u8",
     "category": "JOGOS DO DIA"
   },
   {
@@ -7170,33 +6510,9 @@ const premiumDatabase = [
     "category": "JOGOS DO DIA"
   },
   {
-    "name": "(22)",
-    "logo": "https://i.postimg.cc/hPJ3ZnTJ/JOGOS-DO-DIA.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836849.m3u8",
-    "category": "JOGOS DO DIA"
-  },
-  {
-    "name": "(23)",
-    "logo": "https://i.postimg.cc/hPJ3ZnTJ/JOGOS-DO-DIA.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836848.m3u8",
-    "category": "JOGOS DO DIA"
-  },
-  {
     "name": "(24)",
     "logo": "https://i.postimg.cc/hPJ3ZnTJ/JOGOS-DO-DIA.png",
     "url": "http://attbr.fun/live/149988699/047237831/836847.m3u8",
-    "category": "JOGOS DO DIA"
-  },
-  {
-    "name": "(25)",
-    "logo": "https://i.postimg.cc/hPJ3ZnTJ/JOGOS-DO-DIA.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836846.m3u8",
-    "category": "JOGOS DO DIA"
-  },
-  {
-    "name": "(26)",
-    "logo": "https://i.postimg.cc/hPJ3ZnTJ/JOGOS-DO-DIA.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836845.m3u8",
     "category": "JOGOS DO DIA"
   },
   {
@@ -7482,12 +6798,6 @@ const premiumDatabase = [
     "category": "NBA"
   },
   {
-    "name": "NBA | CHANNEL",
-    "logo": "https://i.postimg.cc/sgmvPhSB/NBA-PASS-logo-png.png",
-    "url": "http://attbr.fun/live/149988699/047237831/837270.m3u8",
-    "category": "NBA"
-  },
-  {
     "name": "US: NBA HD",
     "logo": "http://k120.live:80/images/Kanmk96vTt-hjZj_mC4RcPttLMlmeeoOsTOSXqs4fWVxFgCqkV_CmLZUi2nGl5BvGCJ5fvPJlf63Fl8rJXRozP6w6i-dxFK9mm0jMW4yVgg2mhen9WvMGh4Kzo_jvBKu.png",
     "url": "http://attbr.fun/live/149988699/047237831/837334.m3u8",
@@ -7503,12 +6813,6 @@ const premiumDatabase = [
     "name": "NBA PASS 02 [USA]",
     "logo": "https://i.postimg.cc/sgmvPhSB/NBA-PASS-logo-png.png",
     "url": "http://attbr.fun/live/149988699/047237831/837344.m3u8",
-    "category": "NBA"
-  },
-  {
-    "name": "NBA PASS 03 [USA]",
-    "logo": "https://i.postimg.cc/sgmvPhSB/NBA-PASS-logo-png.png",
-    "url": "http://attbr.fun/live/149988699/047237831/837345.m3u8",
     "category": "NBA"
   },
   {
@@ -7548,12 +6852,6 @@ const premiumDatabase = [
     "category": "NBA"
   },
   {
-    "name": "NBA PASS 10 [USA]",
-    "logo": "https://i.postimg.cc/sgmvPhSB/NBA-PASS-logo-png.png",
-    "url": "http://attbr.fun/live/149988699/047237831/837352.m3u8",
-    "category": "NBA"
-  },
-  {
     "name": "NBA BRASIL 01 HD",
     "logo": "https://i.postimg.cc/sgmvPhSB/NBA-PASS-logo-png.png",
     "url": "http://attbr.fun/live/149988699/047237831/837358.m3u8",
@@ -7564,18 +6862,6 @@ const premiumDatabase = [
     "logo": "https://i.postimg.cc/sgmvPhSB/NBA-PASS-logo-png.png",
     "url": "http://attbr.fun/live/149988699/047237831/837359.m3u8",
     "category": "NBA"
-  },
-  {
-    "name": "Paramount+ 1",
-    "logo": "https://www.fontedecanais.tv/logos/canais/paramountplus.png",
-    "url": "http://attbr.fun/live/149988699/047237831/837972.m3u8",
-    "category": "PARAMOUNT ALTER"
-  },
-  {
-    "name": "Paramount+ 2",
-    "logo": "https://www.fontedecanais.tv/logos/canais/paramountplus.png",
-    "url": "http://attbr.fun/live/149988699/047237831/837973.m3u8",
-    "category": "PARAMOUNT ALTER"
   },
   {
     "name": "Paramount+ 3",
@@ -9252,12 +8538,6 @@ const premiumDatabase = [
     "category": "RELIGIOSOS"
   },
   {
-    "name": "TV APARECIDA FHD",
-    "logo": "https://i.ibb.co/RbDFJSd/TV-APARECIDA-1.png",
-    "url": "http://attbr.fun/live/149988699/047237831/836999.m3u8",
-    "category": "RELIGIOSOS"
-  },
-  {
     "name": "RIT SD",
     "logo": "",
     "url": "http://attbr.fun/live/149988699/047237831/837000.m3u8",
@@ -9270,24 +8550,6 @@ const premiumDatabase = [
     "category": "RELIGIOSOS"
   },
   {
-    "name": "REDE GOSPEL HD",
-    "logo": "https://i.postimg.cc/52FTqvjk/REDE-GOSPEL-HD-PNG.png",
-    "url": "http://attbr.fun/live/149988699/047237831/837002.m3u8",
-    "category": "RELIGIOSOS"
-  },
-  {
-    "name": "REDE GOSPEL FHD H264",
-    "logo": "https://i.ibb.co/NLmPh5B/rede-gospel-3.png",
-    "url": "http://attbr.fun/live/149988699/047237831/837003.m3u8",
-    "category": "RELIGIOSOS"
-  },
-  {
-    "name": "REDE MAIS FAMILIA FHD",
-    "logo": "https://i.ibb.co/FgmSJ5x/Logo-Nova.png",
-    "url": "http://attbr.fun/live/149988699/047237831/837004.m3u8",
-    "category": "RELIGIOSOS"
-  },
-  {
     "name": "RIT SD",
     "logo": "",
     "url": "http://attbr.fun/live/149988699/047237831/837005.m3u8",
@@ -9297,24 +8559,6 @@ const premiumDatabase = [
     "name": "RIT HD",
     "logo": "https://i.postimg.cc/zXqGQzT4/RIT-HD-PNG.png",
     "url": "http://attbr.fun/live/149988699/047237831/837006.m3u8",
-    "category": "RELIGIOSOS"
-  },
-  {
-    "name": "REDE GOSPEL HD",
-    "logo": "https://i.postimg.cc/52FTqvjk/REDE-GOSPEL-HD-PNG.png",
-    "url": "http://attbr.fun/live/149988699/047237831/837007.m3u8",
-    "category": "RELIGIOSOS"
-  },
-  {
-    "name": "REDE GOSPEL FHD H264",
-    "logo": "https://i.ibb.co/NLmPh5B/rede-gospel-3.png",
-    "url": "http://attbr.fun/live/149988699/047237831/837008.m3u8",
-    "category": "RELIGIOSOS"
-  },
-  {
-    "name": "REDE MAIS FAMILIA FHD",
-    "logo": "https://i.ibb.co/FgmSJ5x/Logo-Nova.png",
-    "url": "http://attbr.fun/live/149988699/047237831/837009.m3u8",
     "category": "RELIGIOSOS"
   },
   {
@@ -9762,12 +9006,6 @@ const premiumDatabase = [
     "category": "SKY"
   },
   {
-    "name": "Cine Sky 09 ( Alter )",
-    "logo": "https://i.postimg.cc/CK3m7c4w/cine-sky-24hrs.png",
-    "url": "http://attbr.fun/live/149988699/047237831/845285.m3u8",
-    "category": "SKY"
-  },
-  {
     "name": "Cine Sky 10",
     "logo": "https://i.postimg.cc/CK3m7c4w/cine-sky-24hrs.png",
     "url": "http://attbr.fun/live/149988699/047237831/845286.m3u8",
@@ -10140,12 +9378,6 @@ const premiumDatabase = [
     "category": "TV ABERTA"
   },
   {
-    "name": "Canal DO Boi",
-    "logo": "",
-    "url": "http://attbr.fun/live/149988699/047237831/845348.m3u8",
-    "category": "TV ABERTA"
-  },
-  {
     "name": "Canal DO Boi ( Alter )",
     "logo": "",
     "url": "http://attbr.fun/live/149988699/047237831/845349.m3u8",
@@ -10164,12 +9396,6 @@ const premiumDatabase = [
     "category": "TV ABERTA"
   },
   {
-    "name": "Fashiontv Brasil",
-    "logo": "https://i.ibb.co/jkG1DyV/HD.png",
-    "url": "http://attbr.fun/live/149988699/047237831/845352.m3u8",
-    "category": "TV ABERTA"
-  },
-  {
     "name": "Fashiontv Brasil ( Alter )",
     "logo": "https://i.ibb.co/jkG1DyV/HD.png",
     "url": "http://attbr.fun/live/149988699/047237831/845353.m3u8",
@@ -10179,12 +9405,6 @@ const premiumDatabase = [
     "name": "Futura",
     "logo": "https://i.ibb.co/0KBKRrL/HD.png",
     "url": "http://attbr.fun/live/149988699/047237831/845354.m3u8",
-    "category": "TV ABERTA"
-  },
-  {
-    "name": "Futura ( Alter )",
-    "logo": "https://i.ibb.co/0KBKRrL/HD.png",
-    "url": "http://attbr.fun/live/149988699/047237831/845355.m3u8",
     "category": "TV ABERTA"
   },
   {
@@ -10500,12 +9720,6 @@ const premiumDatabase = [
     "category": "TV ABERTA"
   },
   {
-    "name": "Record TV SC",
-    "logo": "https://i.ibb.co/bNbC6Rw/HD.png",
-    "url": "http://attbr.fun/live/149988699/047237831/845408.m3u8",
-    "category": "TV ABERTA"
-  },
-  {
     "name": "Record TV SC ( Alter )",
     "logo": "https://i.ibb.co/bNbC6Rw/HD.png",
     "url": "http://attbr.fun/live/149988699/047237831/845409.m3u8",
@@ -10530,21 +9744,9 @@ const premiumDatabase = [
     "category": "TV ABERTA"
   },
   {
-    "name": "Rede Minas ( Alter )",
-    "logo": "https://yt3.googleusercontent.com/cW2vMscjgd-likssTMx95b4OC2b_ZYSEnkVw4FST2hWvgayIa_wzjzfSrzmmYJnhAAbbbqmy=s160-c-k-c0x00ffffff-no-rj",
-    "url": "http://attbr.fun/live/149988699/047237831/845413.m3u8",
-    "category": "TV ABERTA"
-  },
-  {
     "name": "Rede TV",
     "logo": "https://i.ibb.co/G0gLPxj/HD.png",
     "url": "http://attbr.fun/live/149988699/047237831/845414.m3u8",
-    "category": "TV ABERTA"
-  },
-  {
-    "name": "Rede TV ( Alter )",
-    "logo": "https://i.ibb.co/G0gLPxj/HD.png",
-    "url": "http://attbr.fun/live/149988699/047237831/845415.m3u8",
     "category": "TV ABERTA"
   },
   {
@@ -10623,12 +9825,6 @@ const premiumDatabase = [
     "name": "TV Diario",
     "logo": "https://i.ibb.co/yXmV6b8/FHD.png",
     "url": "http://attbr.fun/live/149988699/047237831/845428.m3u8",
-    "category": "TV ABERTA"
-  },
-  {
-    "name": "TV Diario ( Alter )",
-    "logo": "https://i.ibb.co/yXmV6b8/FHD.png",
-    "url": "http://attbr.fun/live/149988699/047237831/845429.m3u8",
     "category": "TV ABERTA"
   },
   {
@@ -11172,12 +10368,6 @@ const premiumDatabase = [
     "category": "ESPORTES ESTADUAIS"
   },
   {
-    "name": "PAULISTÃO PLAY 02 HD",
-    "logo": "http://img.robott.top:8080/down/ZCizR1jfSA8B.top?fname=/paulistao-play.png",
-    "url": "http://attbr.fun/live/149988699/047237831/837594.m3u8",
-    "category": "ESPORTES ESTADUAIS"
-  },
-  {
     "name": "PAULISTÃO PLAY 01 HD",
     "logo": "http://img.robott.top:8080/down/ZCizR1jfSA8B.top?fname=/paulistao-play.png",
     "url": "http://attbr.fun/live/149988699/047237831/837595.m3u8",
@@ -11235,12 +10425,6 @@ const premiumDatabase = [
     "name": "FURACÃO PLAY 01 HD",
     "logo": "http://img.robott.top:8080/down/ZCizR1jfSA8B.top?fname=/rede-furacao.png",
     "url": "http://attbr.fun/live/149988699/047237831/837604.m3u8",
-    "category": "ESPORTES ESTADUAIS"
-  },
-  {
-    "name": "COPINHA 04",
-    "logo": "http://img.robott.top:8080/down/ZCizR1jfSA8B.top?fname=/copinha.png",
-    "url": "http://attbr.fun/live/149988699/047237831/837605.m3u8",
     "category": "ESPORTES ESTADUAIS"
   },
   {
@@ -11832,12 +11016,6 @@ const premiumDatabase = [
     "category": "NBA"
   },
   {
-    "name": "NBA Pass 02",
-    "logo": "",
-    "url": "http://attbr.fun/live/149988699/047237831/844980.m3u8",
-    "category": "NBA"
-  },
-  {
     "name": "NBA Pass 02 ( Alter )",
     "logo": "",
     "url": "http://attbr.fun/live/149988699/047237831/844981.m3u8",
@@ -12006,12 +11184,6 @@ const premiumDatabase = [
     "category": "NBA"
   },
   {
-    "name": "US NBA ( Alter )",
-    "logo": "http://k120.live:80/images/Kanmk96vTt-hjZj_mC4RcPttLMlmeeoOsTOSXqs4fWVxFgCqkV_CmLZUi2nGl5BvGCJ5fvPJlf63Fl8rJXRozP6w6i-dxFK9mm0jMW4yVgg2mhen9WvMGh4Kzo_jvBKu.png",
-    "url": "http://attbr.fun/live/149988699/047237831/845009.m3u8",
-    "category": "NBA"
-  },
-  {
     "name": "PREMIERE CLUBES HD",
     "logo": "https://i.ibb.co/rMpy4pR/HD.png",
     "url": "http://attbr.fun/live/149988699/047237831/837612.m3u8",
@@ -12027,12 +11199,6 @@ const premiumDatabase = [
     "name": "PREMIERE 7 HD",
     "logo": "https://i.ibb.co/rMpy4pR/HD.png",
     "url": "http://attbr.fun/live/149988699/047237831/837614.m3u8",
-    "category": "PREMIERE"
-  },
-  {
-    "name": "PREMIERE 5 HD",
-    "logo": "https://i.ibb.co/rMpy4pR/HD.png",
-    "url": "http://attbr.fun/live/149988699/047237831/837615.m3u8",
     "category": "PREMIERE"
   },
   {
