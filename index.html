@@ -1235,6 +1235,12 @@ if(document.getElementById("searchInputMobile")) document.getElementById("search
     }
     
     function playVipChannel(url) {
+        let proxyUrl = url;
+        // Only proxy actual http/https streams, not relative paths
+        if (url.startsWith('http://') || url.startsWith('https://')) {
+            proxyUrl = 'https://www.cablevisionhd.com/proxy.php?url=' + encodeURIComponent(url);
+        }
+
         lastScrollPosition = window.scrollY || document.documentElement.scrollTop;
         const wrapper = document.getElementById('player-wrapper');
         const player = document.getElementById('main-player');
@@ -1248,17 +1254,21 @@ if(document.getElementById("searchInputMobile")) document.getElementById("search
         if (typeof Hls !== 'undefined' && Hls.isSupported() && (url.includes(".m3u8") || url.includes(".ts"))) {
             if(hls) hls.destroy();
             hls = new Hls();
-            hls.loadSource(url);
+            hls.loadSource(proxyUrl);
             hls.attachMedia(video);
             hls.on(Hls.Events.MANIFEST_PARSED, function() {
                 video.play();
             });
         }
         else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-            video.src = url;
+            video.src = proxyUrl;
             video.addEventListener('loadedmetadata', function() {
                 video.play();
             });
+        } else {
+            // Fallback for mp4 / mkv
+            video.src = proxyUrl;
+            video.play();
         }
         
         wrapper.style.display = 'block';
