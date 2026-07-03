@@ -509,13 +509,6 @@ body {
 
 <div id="mobile-menu" class="hidden absolute right-0 top-12 bg-black rounded-lg p-2 w-44 shadow-2xl z-50" style="border:1px solid #bea67a">
 <button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="home">HOME</button>
-<div style="height:1px;background:#bea67a;margin:4px 0;"></div>
-<button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="peliculas">PELÍCULAS 🎬</button>
-<div style="height:1px;background:#bea67a;margin:4px 0;"></div>
-<button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="series">SERIES 📺</button>
-<div style="height:1px;background:#bea67a;margin:4px 0;"></div>
-<button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="nacional">NACIONAL 🇸🇻</button>
-<div style="height:1px;background:#bea67a;margin:4px 0;"></div>
 <div id="mobile-categories-container"></div>
 </div>
 </div>
@@ -530,9 +523,6 @@ body {
         <input type="text" id="searchInput" class="premium-search-input" placeholder="Buscar canal, película...">
     </div>
 <button class="menu-btn active" data-page="home">HOME</button>
-<button class="menu-btn" data-page="peliculas">PELÍCULAS 🎬</button>
-<button class="menu-btn" data-page="series">SERIES 📺</button>
-<button class="menu-btn" data-page="nacional">NACIONAL 🇸🇻</button>
 <div id="desktop-categories-container"></div>
 
 
@@ -1234,7 +1224,9 @@ if(document.getElementById("searchInputMobile")) document.getElementById("search
     
     function playVipChannel(url) {
         let proxyUrl = url;
-        if (url.startsWith('http://') || url.startsWith('https://')) {
+        // Solo enviar por proxy los enlaces HTTP para evitar Mixed Content.
+        // Los HTTPS se reproducen de forma nativa para evitar los cortes de 10s de Vercel.
+        if (url.startsWith('http://')) {
             proxyUrl = '/api/proxy?url=' + encodeURIComponent(url);
         }
 
