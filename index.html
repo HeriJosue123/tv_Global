@@ -350,10 +350,7 @@ body {
 </style>
 
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-  <script src="vip_database.js"></script>
-<script src="premium_database.js"></script>
-<script src="movies_database.js"></script>
-<script src="series_database.js"></script>
+  
 
 
 <style>
@@ -509,7 +506,7 @@ body {
 
 <div id="mobile-menu" class="hidden absolute right-0 top-12 bg-black rounded-lg p-2 w-44 shadow-2xl z-50" style="border:1px solid #bea67a">
 <button class="menu-btn block w-full text-left p-2 hover:bg-[#129505] rounded" data-page="home">HOME</button>
-<div id="mobile-categories-container"></div>
+
 </div>
 </div>
 
@@ -523,7 +520,7 @@ body {
         <input type="text" id="searchInput" class="premium-search-input" placeholder="Buscar canal, película...">
     </div>
 <button class="menu-btn active" data-page="home">HOME</button>
-<div id="desktop-categories-container"></div>
+
 
 
 
@@ -548,460 +545,39 @@ body {
 
 <div id="channels" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
 
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://latamvidzfy.org/tudnmx.php')">
+<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://mdstrm.com/live-stream-playlist/61dd4dc6fdf243081e7d0a28.m3u8')">
   <div class="live"><span class="live-dot"></span>EN VIVO</div>
   <div class="new-badge">NUEVO</div>
-  <img src="https://www.cablevisionhd.com/imge/tudn.webp" alt="TUDN" style="border-radius:10px;">
-  <p class="channel-name">TUDN</p>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Azteca_Uno.png" alt="CANAL 11 MX" style="border-radius:10px;">
+  <p class="channel-name">CANAL 11 MX</p>
 </a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://latamvidzfy.org/canal5mx.php')">
+<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://telesur-us.nedmedia.io/cmng_0000000_128/master.m3u8')">
   <div class="live"><span class="live-dot"></span>EN VIVO</div>
   <div class="new-badge">NUEVO</div>
-  <img src="https://www.cablevisionhd.com/imge/canal5.webp" alt="CANAL 5" style="border-radius:10px;">
-  <p class="channel-name">CANAL 5</p>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Telesur_Logo.svg" alt="TELESUR" style="border-radius:10px; background:white;">
+  <p class="channel-name">TELESUR</p>
 </a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://latamvidzfy.org/dsports.php')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <div class="new-badge">NUEVO</div>
-  <img src="https://cdn.futbol-libres.su/img/dsports.webp" alt="DIRECTV SPORTS" style="border-radius:10px;">
-  <p class="channel-name">DIRECTV SPORTS</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://latamvidzfy.org/dsports2.php')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <div class="new-badge">NUEVO</div>
-  <img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.directvgo.com&size=128" alt="DIRECTV SPORTS 2" style="border-radius:10px;">
-  <p class="channel-name">DIRECTV SPORTS 2</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://latamvidzfy.org/dsportsar.php')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <div class="new-badge">NUEVO</div>
-  <img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.directvgo.com&size=128" alt="DIRECTV SPORTS AR" style="border-radius:10px;">
-  <p class="channel-name">DIRECTV SPORTS AR</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://esvidzy99.co/teleamz.php')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <div class="new-badge">NUEVO</div>
-  <img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.teleamazonas.com&size=128" alt="TELEAMAZONAS" style="border-radius:10px;">
-  <p class="channel-name">TELEAMAZONAS</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://latamvidzfy.org/caze1.php')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <div class="new-badge">NUEVO</div>
-  <img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://cazetv.com.br&size=128" alt="CAZE 1" style="border-radius:10px;">
-  <p class="channel-name">CAZE 1</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://latamvidzfy.org/caze2.php')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <div class="new-badge">NUEVO</div>
-  <img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://cazetv.com.br&size=128" alt="CAZE 2" style="border-radius:10px;">
-  <p class="channel-name">CAZE 2</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://latamvidzfy.org/ctv.php')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <div class="new-badge">NUEVO</div>
-  <img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.ctv.ca&size=128" alt="CTV" style="border-radius:10px;">
-  <p class="channel-name">CTV</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://latamvidzfy.org/fox1.php')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <div class="new-badge">NUEVO</div>
-  <img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.foxsports.com&size=128" alt="FOX 1" style="border-radius:10px;">
-  <p class="channel-name">FOX 1</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://latamvidzfy.org/fox1us.php')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <div class="new-badge">NUEVO</div>
-  <img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.foxsports.com&size=128" alt="FOX 1 US" style="border-radius:10px;">
-  <p class="channel-name">FOX 1 US</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://latamvidzfy.org/rpc.php')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <div class="new-badge">NUEVO</div>
-  <img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.rpctv.com&size=128" alt="RPC" style="border-radius:10px;">
-  <p class="channel-name">RPC</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://latamvidzfy.org/tsn1.php')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <div class="new-badge">NUEVO</div>
-  <img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.tsn.ca&size=128" alt="TSN 1" style="border-radius:10px;">
-  <p class="channel-name">TSN 1</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://latamvidzfy.org/tvc.php')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <div class="new-badge">NUEVO</div>
-  <img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://tvcnetworks.mx&size=128" alt="TVC" style="border-radius:10px;">
-  <p class="channel-name">TVC</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://latamvidzfy.org/tvela1.php')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <div class="new-badge">NUEVO</div>
-  <img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.rtve.es&size=128" alt="TVELA 1" style="border-radius:10px;">
-  <p class="channel-name">TVELA 1</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://latamvidzfy.org/unicanal.php')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <div class="new-badge">NUEVO</div>
-  <img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.unicanal.com.py&size=128" alt="UNICANAL" style="border-radius:10px;">
-  <p class="channel-name">UNICANAL</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://latamvidzfy.org/zdfpr.php')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <div class="new-badge">NUEVO</div>
-  <img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.zdf.de&size=128" alt="ZDF PR" style="border-radius:10px;">
-  <p class="channel-name">ZDF PR</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://deportes.ksdjugfsddeports.com/stream.php?canal=tntsportsar&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/tntsports.webp" alt="TNT SPORTS">
-  <p>TNT SPORTS</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://deportes.ksdjugfsddeports.com/stream.php?canal=foxsportspremium&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/foxsportspremium.webp" alt="FOX SPORTS PREMIUM">
-  <p>FOX SPORTS PREMIUM</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://deportes.ksdjugfsddeports.com/stream.php?canal=tycsports&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/tycsports.webp" alt="TYC SPORTS">
-  <p>TYC SPORTS</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://deportes.ksdjugfsddeports.com/stream.php?canal=movistarlaliga&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/movistarlaliga.webp" alt="MOVISTAR LA LIGA">
-  <p>MOVISTAR LA LIGA</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://deportes.ksdjugfsddeports.com/stream.php?canal=movistarligadecampeones&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/movistarligadecampeones.webp" alt="MOVISTAR LIGA DE CAMPEONES">
-  <p>MOVISTAR LIGA DE CAMPEONES</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://deportes.ksdjugfsddeports.com/stream.php?canal=daznf1&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/daznf1.jpg" alt="DAZN F1">
-  <p>DAZN F1</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://deportes.ksdjugfsddeports.com/stream.php?canal=daznlaliga&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/daznlaliga1.webp" alt="DAZN LA LIGA">
-  <p>DAZN LA LIGA</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://deportes.ksdjugfsddeports.com/stream.php?canal=espnpremiumlat&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/espnpremium.webp" alt="ESPN PREMIUM">
-  <p>ESPN PREMIUM</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://deportes.ksdjugfsddeports.com/stream.php?canal=espn4&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/espn4.webp" alt="ESPN 4">
-  <p>ESPN 4</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://deportes.ksdjugfsddeports.com/stream.php?canal=espn5&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/espn5.webp" alt="ESPN 5">
-  <p>ESPN 5</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://deportes.ksdjugfsddeports.com/stream.php?canal=espn6&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/espn6.webp" alt="ESPN 6">
-  <p>ESPN 6</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://deportes.ksdjugfsddeports.com/stream.php?canal=espn7&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/espn7.webp" alt="ESPN 7">
-  <p>ESPN 7</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://deportes.ksdjugfsddeports.com/stream.php?canal=espn2mexico&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/espn2.webp" alt="ESPN 2 MEXICO">
-  <p>ESPN 2 MEXICO</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://deportes.ksdjugfsddeports.com/stream.php?canal=espn3mexico&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/espn3.webp" alt="ESPN 3 MEXICO">
-  <p>ESPN 3 MEXICO</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://deportes.ksdjugfsddeports.com/stream.php?canal=foxsports&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/foxsports.webp" alt="FOX SPORTS">
-  <p>FOX SPORTS</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://deportes.ksdjugfsddeports.com/stream.php?canal=foxsports2&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/foxsports2.webp" alt="FOX SPORTS 2">
-  <p>FOX SPORTS 2</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://deportes.ksdjugfsddeports.com/stream.php?canal=foxsportsmexico&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/foxsportsmx.webp" alt="FOX SPORTS MEXICO">
-  <p>FOX SPORTS MEXICO</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://deportes.ksdjugfsddeports.com/stream.php?canal=foxsports3mexico&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/foxsports3mexico.webp" alt="FOX SPORTS 3 MEXICO">
-  <p>FOX SPORTS 3 MEXICO</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=telefe&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/telefe.webp" alt="TELEFE">
-  <p>TELEFE</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=eltrece&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/eltrece.webp" alt="EL TRECE">
-  <p>EL TRECE</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=telemundo51&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/telemundo51.webp" alt="TELEMUNDO 51">
-  <p>TELEMUNDO 51</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=pasiones&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/pasiones.webp" alt="PASIONES">
-  <p>PASIONES</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=caracol&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/caracol.webp" alt="CARACOL">
-  <p>CARACOL</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=latina&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/latina.webp" alt="LATINA">
-  <p>LATINA</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://www.cablevisionhd.com/stream/lasestrellas.php')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/lasestrellas.webp" alt="LAS ESTRELLAS">
-  <p>LAS ESTRELLAS</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=tlnovelas&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/tlnovelas.webp" alt="TLNOVELAS">
-  <p>TLNOVELAS</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=azteca7&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/azteca7.webp" alt="AZTECA 7">
-  <p>AZTECA 7</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=aztecauno&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/aztecauno.webp" alt="AZTECA UNO">
-  <p>AZTECA UNO</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=cartoonnetwork&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/cartoonnetwork.webp" alt="CARTOON NETWORK">
-  <p>CARTOON NETWORK</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=tooncast&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/tooncast.webp" alt="TOONCAST">
-  <p>TOONCAST</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=disneychannel&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/disneychannel.webp" alt="DISNEY CHANNEL">
-  <p>DISNEY CHANNEL</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=history&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/history.webp" alt="HISTORY">
-  <p>HISTORY</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=history2&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/history2.webp" alt="HISTORY 2">
-  <p>HISTORY 2</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=animalplanet&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/animalplanet.webp" alt="ANIMAL PLANET">
-  <p>ANIMAL PLANET</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=discoverychannel&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/discoverychannel.webp" alt="Discovery Channel">
-  <p>DISCOVERY CHANNEL</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=universaltv&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/universalchannel.webp" alt="UNIVERSAL CHANNEL">
-  <p>UNIVERSAL CHANNEL</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=tnt&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/tnt.webp" alt="TNT">
-  <p>TNT</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=tntseries&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/tntseries.webp" alt="TNT SERIES">
-  <p>TNT SERIES</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=starchannel&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/star.webp" alt="STAR CHANNEL">
-  <p>STAR CHANNEL</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=cinemax&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/cinemax.webp" alt="CINEMAX">
-  <p>CINEMAX</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=space&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/space.webp" alt="SPACE">
-  <p>SPACE</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=usa&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/usa.webp" alt="SYFY">
-  <p>SYFY</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=warnerchannel&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/warner.webp" alt="WARNER CHANNEL">
-  <p>WARNER CHANNEL</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=warnerchannel&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/warner.webp" alt="WARNER CHANNEL MEXICO">
-  <p>WARNER CHANNEL MEXICO</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=cinecanal&amp;target=1')">
+<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://rt-esp.secure.footprint.net/1105.m3u8')">
   <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/cinecanal.webp" alt="CINECANAL">
-  <p>CINECANAL</p>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/RT_en_espa%C3%B1ol_logo.svg" alt="RT ESPAÑOL" style="border-radius:10px; background:white;">
+  <p class="channel-name">RT ESPAÑOL</p>
 </a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=fx&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/fx.webp" alt="FX">
-  <p>FX</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=axn&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/axn.webp" alt="AXN">
-  <p>AXN</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=amc&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/amc.webp" alt="AMC">
-  <p>AMC</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=studiouniversal&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/studiouniversal.webp" alt="STUDIO UNIVERSAL">
-  <p>STUDIO UNIVERSAL</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=goldenplus&amp;target=1')">
+<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://rbmn-live.akamaized.net/hls/live/590964/BoRB-AT/master.m3u8')">
   <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/goldenplus.webp" alt="GOLDEN PLUS">
-  <p>GOLDEN PLUS</p>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Red_Bull_TV_logo.svg" alt="RED BULL TV" style="border-radius:10px; background:white;">
+  <p class="channel-name">RED BULL TV</p>
 </a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=goldenedge&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/goldenedge.webp" alt="GOLDEN EDGE">
-  <p>GOLDEN EDGE</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=goldenpremier&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/goldenpremier.webp" alt="GOLDEN PREMIER">
-  <p>GOLDEN PREMIER</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=multipremier&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/multipremier.webp" alt="MULTIPREMIER">
-  <p>MULTIPREMIER</p>
-</a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=canalsony&amp;target=1')">
+<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://ntv1.akamaized.net/hls/live/2014075/NASA-NTV1-HLS/master.m3u8')">
   <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/canalsony.webp" alt="CANAL SONY">
-  <p>CANAL SONY</p>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/e/e5/NASA_logo.svg" alt="NASA TV" style="border-radius:10px;">
+  <p class="channel-name">NASA TV</p>
 </a>
-
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=extrematv&amp;target=1')">
+<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://mdstrm.com/live-stream-playlist/5a5e3f36a83e0c0a525f0532.m3u8')">
   <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/extrematv.webp" alt="Extrema TV">
-  <p>EXTREMA TV</p>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Milenio_Televisi%C3%B3n_logo.svg" alt="MILENIO" style="border-radius:10px; background:white;">
+  <p class="channel-name">MILENIO</p>
 </a>
 
-<a href="javascript:void(0)" class="channel-card" onclick="playChannel('https://regionales.saohgdasregions.fun/stream.php?canal=distritocomedia&amp;target=1')">
-  <div class="live"><span class="live-dot"></span>EN VIVO</div>
-  <img src="https://www.cablevisionhd.com/imge/distritocomedia.webp" alt="DISTRITO COMEDIA">
-  <p>DISTRITO COMEDIA</p>
-</a>
 </div>
 
 <br><br>
