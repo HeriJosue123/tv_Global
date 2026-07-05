@@ -211,24 +211,10 @@
       <div class="brand">IPTV <span class="r">GLOBAL HD</span></div>
       <p>Tu plataforma de streaming personal</p>
     </div>
-    <div class="login-tabs">
-      <button class="ltab active" id="tab-xtream-btn">📡 Xtream Codes</button>
-      <button class="ltab" id="tab-m3u-btn">📋 URL M3U</button>
-      <button class="ltab" id="tab-vault-btn" style="color:gold;">🎁 Bóveda</button>
-    </div>
     <div id="panel-xtream">
       <div class="lfield"><label>Servidor (URL:Puerto)</label><input type="text" id="inp-server" placeholder="http://servidor.com:8080"></div>
       <div class="lfield"><label>Usuario</label><input type="text" id="inp-user" placeholder="tu_usuario"></div>
       <div class="lfield"><label>Contraseña</label><input type="password" id="inp-pass" placeholder="tu_contraseña"></div>
-    </div>
-    <div id="panel-m3u" style="display:none">
-      <div class="lfield"><label>URL de lista M3U</label><input type="url" id="inp-m3u" placeholder="http://servidor.com/lista.m3u?user=..."></div>
-      <div class="lfield"><label>O pega el contenido M3U aquí</label><textarea id="inp-m3u-text" rows="5" placeholder="#EXTM3U&#10;#EXTINF:-1 tvg-name=&quot;Canal&quot; group-title=&quot;Cat&quot;,Canal&#10;http://..."></textarea></div>
-    </div>
-    <div id="panel-vault" style="display:none">
-      <div id="vault-content"></div>
-      <input type="file" id="inp-gift-file" accept=".txt" style="display:none;">
-      <button class="btn-upload" onclick="document.getElementById('inp-gift-file').click()">+ Cargar Lista de Regalo (.txt)</button>
     </div>
     <div class="remember-row">
       <input type="checkbox" id="inp-remember" checked>
@@ -474,104 +460,14 @@ function parseM3U(text) {
   return Object.values(cats);
 }
 
-// ---------- PESTAÑAS ----------
-$('tab-xtream-btn').onclick=()=>{
-  $('tab-xtream-btn').classList.add('active'); $('tab-m3u-btn').classList.remove('active'); $('tab-vault-btn').classList.remove('active');
-  $('panel-xtream').style.display='block'; $('panel-m3u').style.display='none'; $('panel-vault').style.display='none';
-  S.mode='xtream';
-};
-$('tab-m3u-btn').onclick=()=>{
-  $('tab-xtream-btn').classList.remove('active'); $('tab-m3u-btn').classList.add('active'); $('tab-vault-btn').classList.remove('active');
-  $('panel-xtream').style.display='none'; $('panel-m3u').style.display='block'; $('panel-vault').style.display='none';
-  S.mode='m3u';
-};
-$('tab-vault-btn').onclick=()=>{
-  $('tab-xtream-btn').classList.remove('active'); $('tab-m3u-btn').classList.remove('active'); $('tab-vault-btn').classList.add('active');
-  $('panel-xtream').style.display='none'; $('panel-m3u').style.display='none'; $('panel-vault').style.display='block';
-  renderVault();
-  S.mode='vault';
-};
-
-// ---------- SISTEMA DE BÓVEDA ----------
-function renderVault() {
-  const vaultRaw = localStorage.getItem('iptv_gift_vault');
-  let accounts = [];
-  try { accounts = JSON.parse(vaultRaw)||[]; } catch(e){}
-  
-  const cont = $('vault-content');
-  if(accounts.length === 0) {
-    cont.innerHTML = '<div class="vault-empty">Tu bóveda está vacía.<br>Sube el archivo .txt de regalo para llenarla de servidores premium instantáneos.</div>';
-    return;
-  }
-  
-  let html = '<div class="vault-grid">';
-  accounts.forEach((acc, i) => {
-    const host = acc.server.replace(/^https?:\/\//,'');
-    html += `
-      <div class="vault-card" onclick="loginVault(${i})">
-        <div class="v-badge">PREMIUM</div>
-        <div class="v-host">${esc(host)}</div>
-        <div class="v-user">${esc(acc.user)}</div>
-      </div>
-    `;
-  });
-  html += '</div>';
-  cont.innerHTML = html;
-}
-
-$('inp-gift-file').onchange=function(e) {
-  const file = e.target.files[0];
-  if(!file) return;
-  const reader = new FileReader();
-  reader.onload = function(evt) {
-    const text = evt.target.result;
-    const regex = /(http[s]?:\/\/[^\/:]+(?::\d+)?).*?username=([^&]+)&password=([^&]+)/gi;
-    let match;
-    const accounts = [];
-    while ((match = regex.exec(text)) !== null) {
-      const server = match[1];
-      const user = match[2];
-      const pass = match[3];
-      if(!accounts.find(a=>a.server===server && a.user===user)) {
-        accounts.push({ server, user, pass });
-      }
-    }
-    if(accounts.length > 0) {
-      localStorage.setItem('iptv_gift_vault', JSON.stringify(accounts));
-      renderVault();
-      $('err-msg').style.color='#0f0';
-      $('err-msg').textContent = `¡Éxito! Bóveda cargada con ${accounts.length} cuentas premium.`;
-    } else {
-      $('err-msg').style.color='var(--red)';
-      $('err-msg').textContent = 'No se detectaron cuentas compatibles en el archivo.';
-    }
-    $('inp-gift-file').value = '';
-  };
-  reader.readAsText(file);
-};
-
-window.loginVault = function(index) {
-  const accounts = JSON.parse(localStorage.getItem('iptv_gift_vault')||'[]');
-  const acc = accounts[index];
-  if(!acc) return;
-  S.mode = 'xtream';
-  $('inp-server').value = acc.server;
-  $('inp-user').value = acc.user;
-  $('inp-pass').value = acc.pass;
-  $('inp-remember').checked = true;
-  $('btn-login').click();
-};
-
 // ---------- INICIO DE SESIÓN ----------
 $('btn-login').onclick=async()=>{
   const err=$('login-err'); err.textContent='';
-  const isXtream=$('tab-xtream-btn').classList.contains('active');
 
-  if(isXtream) {
-    const server=$('inp-server').value.trim().replace(/\/$/,'');
-    const user=$('inp-user').value.trim();
-    const pass=$('inp-pass').value.trim();
-    if(!server||!user||!pass){err.textContent='Completa todos los campos.';return;}
+  const server=$('inp-server').value.trim().replace(/\/$/,'');
+  const user=$('inp-user').value.trim();
+  const pass=$('inp-pass').value.trim();
+  if(!server||!user||!pass){err.textContent='Completa todos los campos.';return;}
     setLoginLoading(true);
     try {
       let r=await fetch(proxyUrl(`${server}/player_api.php?username=${encodeURIComponent(user)}&password=${encodeURIComponent(pass)}&action=get_live_categories`));
@@ -608,26 +504,6 @@ $('btn-login').onclick=async()=>{
       showView('home'); renderHistory(); renderCats(S.cats);
     } catch(e){ err.textContent='Error: '+e.message; }
     finally{ setLoginLoading(false); }
-  } else {
-    const m3uUrl=$('inp-m3u').value.trim();
-    const m3uText=$('inp-m3u-text').value.trim();
-    if(!m3uUrl&&!m3uText){err.textContent='Ingresa una URL o pega el contenido M3U.';return;}
-    setLoginLoading(true);
-    try {
-      let text=m3uText;
-      if(m3uUrl&&!text) { const r=await fetch(proxyUrl(m3uUrl)); if(!r.ok) throw new Error(`Error al descargar M3U: ${r.status}`); text=await r.text(); }
-      if(!text.includes('#EXTINF')) throw new Error('No es un archivo M3U válido.');
-      const cats=parseM3U(text);
-      if(!cats.length) throw new Error('No se encontraron canales.');
-      cats.forEach(cat=>{ S.channels[cat.category_id]=cat.channels; });
-      S.mode='m3u'; S.m3uUrl=m3uUrl;
-      S.cats=cats.map(c=>({category_id:c.category_id,category_name:c.category_name}));
-      if($('inp-remember').checked) saveStorage();
-      $('tb-user').textContent='📋 M3U';
-      showView('home'); renderHistory(); renderCats(S.cats);
-    } catch(e){ err.textContent='Error: '+e.message; }
-    finally{ setLoginLoading(false); }
-  }
 };
 
 function setLoginLoading(on) {
