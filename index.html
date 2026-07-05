@@ -42,30 +42,68 @@
   /* ====== LOGIN ====== */
   #v-login {
     height:100vh; align-items:center; justify-content:center;
-    background:radial-gradient(ellipse 80% 60% at 50% 0%, rgba(229,9,20,0.18) 0%, transparent 70%), var(--bg);
+    background: #040405;
     position:relative; overflow:hidden;
   }
-  .login-glow { position:absolute; top:-200px; left:50%; transform:translateX(-50%); width:700px; height:700px; background:radial-gradient(circle,rgba(229,9,20,0.12) 0%,transparent 70%); pointer-events:none; }
-  .login-card { position:relative; z-index:1; background:var(--surface); border:1px solid var(--border); border-radius:20px; padding:44px 40px; width:430px; box-shadow:0 25px 60px rgba(0,0,0,0.7); animation:slideUp 0.4s ease; }
-  .login-logo { text-align:center; margin-bottom:32px; }
-  .login-logo .brand { font-size:32px; letter-spacing:4px; }
-  .login-logo p { font-size:13px; color:var(--muted); margin-top:8px; letter-spacing:0.5px; }
-  .login-tabs { display:flex; background:var(--surface2); border-radius:8px; padding:3px; margin-bottom:24px; }
-  .ltab { flex:1; padding:9px; border:none; background:transparent; color:var(--muted); font-size:13px; font-weight:600; border-radius:6px; transition:all 0.2s; }
-  .ltab.active { background:var(--surface); color:var(--text); box-shadow:0 1px 4px rgba(0,0,0,0.3); }
-  .lfield { margin-bottom:14px; }
-  .lfield label { display:block; font-size:11px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:1.5px; margin-bottom:7px; }
-  .lfield input,.lfield textarea { width:100%; background:var(--surface2); border:1px solid var(--border); border-radius:8px; padding:11px 14px; color:var(--text); font-size:14px; outline:none; transition:border-color 0.2s,box-shadow 0.2s; resize:none; }
-  .lfield input:focus,.lfield textarea:focus { border-color:var(--red); box-shadow:0 0 0 3px rgba(229,9,20,0.12); }
-  .lfield input::placeholder,.lfield textarea::placeholder { color:var(--muted2); }
-  .remember-row { display:flex; align-items:center; gap:8px; margin-bottom:18px; }
-  .remember-row input[type=checkbox] { width:16px; height:16px; accent-color:var(--red); cursor:pointer; }
-  .remember-row label { font-size:13px; color:var(--muted); cursor:pointer; }
-  .btn-connect { width:100%; padding:14px; background:var(--red); border:none; border-radius:10px; color:white; font-size:15px; font-weight:700; display:flex; align-items:center; justify-content:center; gap:8px; transition:opacity 0.2s,transform 0.1s; }
-  .btn-connect:hover { opacity:0.9; }
+  .login-glow {
+    position:absolute; top:-20%; left:-10%; width:70vw; height:70vw;
+    background:radial-gradient(circle, rgba(229,9,20,0.12) 0%, transparent 60%);
+    border-radius:50%; filter:blur(60px); pointer-events:none; animation:float 10s ease-in-out infinite alternate;
+  }
+  .login-glow-2 {
+    position:absolute; bottom:-20%; right:-10%; width:60vw; height:60vw;
+    background:radial-gradient(circle, rgba(180,0,10,0.08) 0%, transparent 60%);
+    border-radius:50%; filter:blur(60px); pointer-events:none; animation:float 8s ease-in-out infinite alternate-reverse;
+  }
+  @keyframes float { 0% { transform:translate(0,0); } 100% { transform:translate(5%, 5%); } }
+  
+  .login-card {
+    position:relative; z-index:1; 
+    background:rgba(17, 17, 19, 0.4); backdrop-filter:blur(30px); -webkit-backdrop-filter:blur(30px);
+    border:1px solid rgba(255,255,255,0.06); border-top:1px solid rgba(255,255,255,0.12);
+    border-radius:24px; padding:48px 44px; width:440px; 
+    box-shadow:0 30px 80px rgba(0,0,0,0.9), inset 0 1px 0 rgba(255,255,255,0.05); 
+    animation:slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .login-logo { text-align:center; margin-bottom:40px; }
+  .login-logo .brand { font-size:34px; letter-spacing:5px; text-shadow:0 0 24px rgba(229,9,20,0.4); }
+  .login-logo p { font-size:13px; color:rgba(255,255,255,0.5); margin-top:10px; letter-spacing:1px; text-transform:uppercase; font-weight:600; }
+  
+  .lfield { position:relative; margin-bottom:24px; }
+  .lfield label { 
+    position:absolute; top:50%; left:16px; transform:translateY(-50%);
+    font-size:14px; font-weight:500; color:rgba(255,255,255,0.4); pointer-events:none;
+    transition:0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .lfield input { 
+    width:100%; background:rgba(0,0,0,0.25); 
+    border:1px solid rgba(255,255,255,0.08); border-radius:12px; 
+    padding:24px 16px 8px 16px; color:white; font-size:15px; outline:none; 
+    transition:all 0.3s ease;
+  }
+  .lfield input:focus, .lfield input:not(:placeholder-shown) { border-color:rgba(229,9,20,0.5); background:rgba(0,0,0,0.45); box-shadow:0 8px 24px rgba(0,0,0,0.4); }
+  .lfield input:focus ~ label, .lfield input:not(:placeholder-shown) ~ label {
+    top:14px; font-size:11px; color:var(--red); font-weight:700; letter-spacing:1px; text-transform:uppercase;
+  }
+  
+  .remember-row { display:flex; align-items:center; gap:10px; margin-bottom:28px; }
+  .remember-row input[type=checkbox] { width:18px; height:18px; accent-color:var(--red); cursor:pointer; }
+  .remember-row label { font-size:14px; color:rgba(255,255,255,0.6); cursor:pointer; transition:color 0.2s; }
+  .remember-row label:hover { color:white; }
+  
+  .btn-connect { 
+    width:100%; padding:16px; 
+    background:linear-gradient(135deg, #e50914, #b20710); 
+    border:1px solid rgba(255,255,255,0.1); border-radius:14px; 
+    color:white; font-size:16px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase;
+    display:flex; align-items:center; justify-content:center; gap:10px; 
+    transition:all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow:0 8px 24px rgba(229,9,20,0.3);
+  }
+  .btn-connect:hover { transform:translateY(-2px); box-shadow:0 12px 32px rgba(229,9,20,0.5); border-color:rgba(255,255,255,0.3); }
   .btn-connect:active { transform:scale(0.98); }
-  .btn-connect:disabled { opacity:0.5; cursor:not-allowed; }
-  .login-err { font-size:13px; color:#f87171; text-align:center; margin-top:12px; min-height:18px; line-height:1.4; }
+  .btn-connect:disabled { opacity:0.6; cursor:not-allowed; transform:none; }
+  .login-err { font-size:13px; color:#ff4b4b; text-align:center; margin-top:16px; min-height:18px; font-weight:600; }
 
   /* ====== TOPBAR ====== */
   #topbar { display:none; height:var(--header-h); background:rgba(9,9,11,0.96); border-bottom:1px solid var(--border); backdrop-filter:blur(20px); align-items:center; justify-content:space-between; padding:0 20px; flex-shrink:0; z-index:100; }
@@ -206,23 +244,33 @@
 <!-- ====== LOGIN ====== -->
 <div id="v-login" class="view">
   <div class="login-glow"></div>
+  <div class="login-glow-2"></div>
   <div class="login-card">
     <div class="login-logo">
       <div class="brand">IPTV <span class="r">GLOBAL HD</span></div>
-      <p>Tu plataforma de streaming personal</p>
+      <p>Premium Streaming Experience</p>
     </div>
     <div id="panel-xtream">
-      <div class="lfield"><label>Servidor (URL:Puerto)</label><input type="text" id="inp-server" placeholder="http://servidor.com:8080"></div>
-      <div class="lfield"><label>Usuario</label><input type="text" id="inp-user" placeholder="tu_usuario"></div>
-      <div class="lfield"><label>Contraseña</label><input type="password" id="inp-pass" placeholder="tu_contraseña"></div>
+      <div class="lfield">
+        <input type="text" id="inp-server" placeholder=" ">
+        <label>Servidor (URL:Puerto)</label>
+      </div>
+      <div class="lfield">
+        <input type="text" id="inp-user" placeholder=" ">
+        <label>Usuario</label>
+      </div>
+      <div class="lfield">
+        <input type="password" id="inp-pass" placeholder=" ">
+        <label>Contraseña</label>
+      </div>
     </div>
     <div class="remember-row">
       <input type="checkbox" id="inp-remember" checked>
-      <label for="inp-remember">Recordar mis datos al abrir la app</label>
+      <label for="inp-remember">Recordar credenciales</label>
     </div>
     <button class="btn-connect" id="btn-login">
       <span id="login-spin" class="spinner" style="display:none"></span>
-      <span id="login-txt">Conectar</span>
+      <span id="login-txt">Iniciar Sesión</span>
     </button>
     <div class="login-err" id="login-err"></div>
   </div>
