@@ -319,11 +319,10 @@
   .history-row { display:flex; gap:16px; overflow-x:auto; padding:0 40px 16px; scroll-behavior:smooth; }
   .history-row::-webkit-scrollbar { display:none; }
 
-  /* Category Carousel - Cinematic Rows */
-  .cat-grid { display:flex; gap:16px; overflow-x:auto; padding:0 40px 32px; scroll-behavior:smooth; }
-  .cat-grid::-webkit-scrollbar { display:none; }
+  /* Category Grid - Cinematic Cards */
+  .cat-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px; padding:0 40px 32px; }
   
-  .cat-card { position:relative; border-radius:var(--radius); overflow:hidden; cursor:pointer; width:220px; min-width:220px; aspect-ratio:16/9; border:1px solid var(--border); transition:transform var(--duration) var(--ease-spring),box-shadow var(--duration); background:var(--surface2); flex-shrink:0; }
+  .cat-card { position:relative; border-radius:var(--radius); overflow:hidden; cursor:pointer; aspect-ratio:16/9; border:1px solid var(--border); transition:transform var(--duration) var(--ease-spring),box-shadow var(--duration); background:var(--surface2); }
   .cat-card:hover { transform:translateY(-6px) scale(1.03); box-shadow:var(--shadow-md); border-color:var(--border-hover); z-index:5; }
   .cat-logos { position:absolute; inset:0; display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; gap:1px; pointer-events:none; }
   .cat-logo-slot { background:var(--surface3); display:flex; align-items:center; justify-content:center; overflow:hidden; font-size:26px; opacity:0.6; }
@@ -1579,18 +1578,56 @@ function addToHistory(ch){
   S.history.unshift(ch); S.history=S.history.slice(0,20); saveStorage();
 }
 
+let heroInterval = null;
 function setRandomHero(vodCats, seriesCats) {
   const hero = $('hero-banner');
   if(!hero) return;
-  // Intenta elegir una película o serie aleatoria para destacar
-  // Por ahora, como no tenemos endpoints rápidos de películas aleatorias sin ID,
-  // usaremos una imagen genérica premium de hero banner y un texto destacado.
-  // Podría mejorarse en el futuro si la API permite obtener 1 item al azar.
-  $('hero-bg').src = 'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?q=80&w=2069&auto=format&fit=crop';
-  $('hero-title').textContent = 'Bienvenido a IPTV GLOBAL HD';
-  $('hero-desc').textContent = 'Disfruta de la mejor experiencia premium de streaming. Miles de canales, películas y series te esperan. Navega por nuestro contenido exclusivo.';
+  
+  const banners = [
+    {
+      img: 'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?q=80&w=2069&auto=format&fit=crop',
+      title: 'Bienvenido a IPTV GLOBAL HD',
+      desc: 'Disfruta de la mejor experiencia premium de streaming. Miles de canales, películas y series te esperan. Navega por nuestro contenido exclusivo.',
+      tag: 'DESTACADO'
+    },
+    {
+      img: 'https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop',
+      title: 'Películas de Estreno',
+      desc: 'Los mejores blockbusters directamente en tu pantalla. Disfruta de la máxima calidad en imagen y sonido sin interrupciones.',
+      tag: 'NUEVO'
+    },
+    {
+      img: 'https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=2070&auto=format&fit=crop',
+      title: 'Vive la Pasión del Deporte',
+      desc: 'No te pierdas ni un solo partido. Todos los deportes en vivo, en HD y sin cortes. La mejor programación deportiva mundial.',
+      tag: 'EN VIVO'
+    }
+  ];
+
+  let currentIdx = 0;
+  
+  function updateHero() {
+    const data = banners[currentIdx];
+    $('hero-bg').style.opacity = '0';
+    setTimeout(() => {
+      $('hero-bg').src = data.img;
+      $('hero-title').textContent = data.title;
+      $('hero-desc').textContent = data.desc;
+      const tag = document.querySelector('.hero-tag');
+      if(tag) tag.textContent = data.tag;
+      $('hero-bg').style.opacity = '0.6';
+    }, 300);
+    
+    currentIdx = (currentIdx + 1) % banners.length;
+  }
+
+  updateHero();
+  
   $('hero-btn-play').onclick = () => { if($('sb-nav-movies')) $('sb-nav-movies').click(); };
   hero.style.display = 'block';
+
+  if(heroInterval) clearInterval(heroInterval);
+  heroInterval = setInterval(updateHero, 8000);
 }
 
 function renderHistory(){
