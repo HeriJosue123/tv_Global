@@ -1539,7 +1539,12 @@ async function playChannel(ch,streamUrl) {
   const vid=$('vid'); vid.pause(); vid.removeAttribute('src'); vid.load();
   
   if(streamUrl.includes('.m3u8') && Hls.isSupported()){
-    mainPlayer=new Hls({maxLiveSyncPlaybackRate:1.5});
+    mainPlayer=new Hls({
+      maxLiveSyncPlaybackRate: 2,
+      liveSyncDurationCount: 3,
+      enableWorker: true,
+      lowLatencyMode: true
+    });
     mainPlayer.loadSource(streamUrl); mainPlayer.attachMedia(vid);
     mainPlayer.on(Hls.Events.MANIFEST_PARSED,()=>vid.play().catch(()=>{}));
     mainPlayer.on(Hls.Events.ERROR,(e,d)=>{
@@ -1552,13 +1557,39 @@ async function playChannel(ch,streamUrl) {
     vid.src = streamUrl;
     vid.play().catch(()=>{});
   } else if (mpegts.getFeatureList().mseLivePlayback) {
-    mainPlayer=mpegts.createPlayer({type:streamUrl.includes('.ts')?'mpegts':'m2ts',isLive:true,url:streamUrl});
+    mainPlayer=mpegts.createPlayer({
+      type: streamUrl.includes('.ts') ? 'mpegts' : 'm2ts',
+      isLive: true,
+      url: streamUrl
+    }, {
+      enableWorker: true,
+      liveBufferLatencyChasing: true,
+      liveBufferLatencyMaxLatency: 2.5,
+      liveBufferLatencyMinRemain: 0.3
+    });
     mainPlayer.attachMediaElement(vid);
     mainPlayer.load();
     mainPlayer.play().catch(()=>{});
   } else if(vid.canPlayType('application/vnd.apple.mpegurl')){
     vid.src=streamUrl; vid.play().catch(()=>{});
   }
+  
+  // Anti-freeze Watchdog
+  if(window.antiFreeze) clearInterval(window.antiFreeze);
+  let lastTime = -1, freezeCount = 0;
+  window.antiFreeze = setInterval(() => {
+    if(!vid.paused && vid.readyState >= 2) {
+      if(vid.currentTime === lastTime) {
+        freezeCount++;
+        if(freezeCount >= 3) { // Frozen for ~3 seconds
+          vid.currentTime += 0.5; // Force frame skip
+          freezeCount = 0;
+        }
+      } else {
+        freezeCount = 0; lastTime = vid.currentTime;
+      }
+    }
+  }, 1000);
   addToHistory({...ch,streamUrl,ts:Date.now()});
   fetchChannelInfo(ch.name);
   setupPlayerUIHide();
