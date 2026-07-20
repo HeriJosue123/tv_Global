@@ -1,1 +1,0 @@
-const html = require('fs').readFileSync('index.html', 'utf8'); const script = html.split('<script>')[1]; const ids = [...script.matchAll(/\$\(\'([^\']+)\'\)/g)].map(m => m[1]); const missing = ids.filter(id => !html.includes('id=\"' + id + '\"')); console.log('Missing IDs:', [...new Set(missing)]);

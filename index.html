@@ -330,49 +330,86 @@
 <!-- ====== ADMIN ====== -->
 <div id="v-admin" class="view">
   <div class="home-content">
-    <div class="section-hd">
+    <div class="section-hd" style="display:flex; justify-content:space-between; align-items:center;">
       <h2>🛠️ Panel Maestro de Administración</h2>
+      <button class="tb-btn" style="color:#ff4b4b; border-color:rgba(255,75,75,0.3)" onclick="adminLogout()">Cerrar Sesión</button>
     </div>
     
-    <div style="background:rgba(255,255,255,0.05); padding:20px; border-radius:12px; margin-bottom:30px;">
-      <h3 style="margin-bottom:15px; color:#e50914">Crear Nuevo Acceso</h3>
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:15px; margin-bottom:15px;">
+    <div style="background:var(--surface); padding:30px; border-radius:16px; margin-bottom:30px; border:1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+      <h3 style="margin-bottom:20px; color:var(--text); font-size:18px; border-bottom:1px solid var(--border); padding-bottom:10px;">Crear Nuevo Acceso Cliente</h3>
+      
+      <!-- Selector de Proveedor -->
+      <div style="margin-bottom:25px;">
+        <label style="display:block; margin-bottom:10px; font-size:13px; color:var(--muted); font-weight:600;">Selecciona el Proveedor IPTV</label>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;" id="provider-buttons">
+          <button class="tb-btn provider-btn active-nav" onclick="selectProvider('papa', this)">📡 El Papa de Todos</button>
+          <button class="tb-btn provider-btn" onclick="selectProvider('starlatino', this)">⭐ StarLatino</button>
+          <button class="tb-btn provider-btn" onclick="selectProvider('custom', this)">⚙️ Personalizado</button>
+        </div>
+        <select id="starlatino-select" class="search-input" style="display:none; margin-top:15px; width:100%; padding:10px; background:#1a1a24; color:white;" onchange="applyStarLatinoAcc(this.value)">
+          <option value="">-- Selecciona una cuenta de StarLatino --</option>
+          <option value="184483|M7beC8q7CJyW">184483 (Vence 31/12/2026)</option>
+          <option value="Oflores25|H9swZmaYvPHz">Oflores25 (Vence 17/10/2026)</option>
+          <option value="fabian@9793|jz2KxxngVaXU">fabian@9793 (Vence 24/09/2026)</option>
+          <option value="flex42@xda|BWHckdxTgpPG">flex42@xda (Vence 02/09/2026)</option>
+          <option value="29cata17|ZPCLqyRneSV2">29cata17 (Vence 18/08/2026)</option>
+          <option value="jXBuzc5TtDkb|PUcbPRu6JzTG">jXBuzc5TtDkb (Vence 15/08/2026)</option>
+          <option value="Vxtream005|bThhYj3tXsNd">Vxtream005 (Vence 11/08/2026)</option>
+          <option value="66345148|6WjTVkZJs6NK">66345148 (Vence 11/08/2026)</option>
+          <option value="pandiuxstore|nhcyRJkJGTc5">pandiuxstore (Vence 05/08/2026)</option>
+          <option value="ninoska90days|w9JzQdUsSVMH">ninoska90days (Vence 04/08/2026)</option>
+          <option value="DSJYcjyHzYw9|ew7dcQp98vgP">DSJYcjyHzYw9 (Vence 23/07/2026)</option>
+        </select>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:20px; margin-bottom:25px;">
         <div>
-          <label style="display:block; margin-bottom:5px; font-size:12px; color:var(--muted)">Usuario (Para el cliente)</label>
-          <input type="text" id="adm-client-user" class="search-input" style="width:100%" placeholder="Ej: JuanPerez">
+          <label style="display:block; margin-bottom:8px; font-size:13px; color:var(--muted); font-weight:600;">Usuario Cliente</label>
+          <input type="text" id="adm-client-user" class="search-input" style="width:100%; padding:12px; font-size:15px; background:rgba(0,0,0,0.2)" placeholder="Ej: JuanPerez" autocomplete="off">
         </div>
         <div>
-          <label style="display:block; margin-bottom:5px; font-size:12px; color:var(--muted)">Contraseña (Para el cliente)</label>
-          <input type="password" id="adm-client-pass" class="search-input" style="width:100%" placeholder="Ej: juan123">
+          <label style="display:block; margin-bottom:8px; font-size:13px; color:var(--muted); font-weight:600;">Contraseña Cliente</label>
+          <input type="text" id="adm-client-pass" class="search-input" style="width:100%; padding:12px; font-size:15px; background:rgba(0,0,0,0.2)" placeholder="Ej: juan123" autocomplete="off">
         </div>
         <div>
-          <label style="display:block; margin-bottom:5px; font-size:12px; color:var(--muted)">Días de validez</label>
-          <input type="number" id="adm-days" class="search-input" style="width:100%" value="30">
+          <label style="display:block; margin-bottom:8px; font-size:13px; color:var(--muted); font-weight:600;">Días de validez</label>
+          <input type="number" id="adm-days" class="search-input" style="width:100%; padding:12px; font-size:15px; background:rgba(0,0,0,0.2)" value="30">
         </div>
       </div>
-      <h4 style="margin-bottom:10px; font-size:14px;">Credenciales IPTV Internas (Ocultas al cliente)</h4>
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:15px; margin-bottom:15px;">
-        <div>
-          <label style="display:block; margin-bottom:5px; font-size:12px; color:var(--muted)">Servidor IPTV</label>
-          <input type="text" id="adm-server" class="search-input" style="width:100%" placeholder="http://dominio.com:8080">
+
+      <!-- Credenciales Ocultas -->
+      <div id="admin-provider-fields" style="display:none; background:rgba(0,0,0,0.3); padding:20px; border-radius:12px; margin-bottom:25px; border:1px dashed var(--border);">
+        <h4 style="margin-bottom:15px; font-size:14px; color:var(--muted);">Credenciales IPTV Internas</h4>
+        
+        <div style="margin-bottom:15px; display:flex; gap:10px;">
+          <input type="text" id="adm-m3u-url" class="search-input" style="flex:1; background:rgba(0,0,0,0.2)" placeholder="Pega aquí la URL M3U completa para extraer datos...">
+          <button class="tb-btn" style="background:var(--primary); color:white;" onclick="parseAdminM3U()">Extraer</button>
         </div>
-        <div>
-          <label style="display:block; margin-bottom:5px; font-size:12px; color:var(--muted)">Usuario IPTV</label>
-          <input type="text" id="adm-user" class="search-input" style="width:100%" placeholder="Usuario">
-        </div>
-        <div>
-          <label style="display:block; margin-bottom:5px; font-size:12px; color:var(--muted)">Contraseña IPTV</label>
-          <input type="password" id="adm-pass" class="search-input" style="width:100%" placeholder="Contraseña">
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:15px;">
+          <div>
+            <label style="display:block; margin-bottom:5px; font-size:12px; color:var(--muted)">Servidor IPTV</label>
+            <input type="text" id="adm-server" class="search-input" style="width:100%" value="http://elpapadetodos.live:8080">
+          </div>
+          <div>
+            <label style="display:block; margin-bottom:5px; font-size:12px; color:var(--muted)">Usuario IPTV</label>
+            <input type="text" id="adm-user" class="search-input" style="width:100%" value="6user2825">
+          </div>
+          <div>
+            <label style="display:block; margin-bottom:5px; font-size:12px; color:var(--muted)">Contraseña IPTV</label>
+            <input type="text" id="adm-pass" class="search-input" style="width:100%" value="123456">
+          </div>
         </div>
       </div>
-      <button class="btn-connect" id="btn-admin-create" style="width:auto; padding:10px 20px;">+ Crear Usuario</button>
-      <div id="adm-msg" style="margin-top:10px; font-size:13px; font-weight:600;"></div>
+
+      <button class="btn-connect" id="btn-admin-create" style="width:100%; padding:14px 20px; font-size:16px; margin-top:10px; border-radius:10px;">➕ CREAR USUARIO</button>
+      <div id="adm-msg" style="margin-top:15px; font-size:14px; font-weight:600; text-align:center;"></div>
     </div>
 
     <h3>Usuarios Activos</h3>
-    <div style="overflow-x:auto; margin-top:15px;">
-      <table style="width:100%; text-align:left; border-collapse:collapse; background:var(--surface); border-radius:12px; overflow:hidden;">
-        <thead style="background:rgba(255,255,255,0.05); color:var(--muted);">
+    <div style="overflow-x:auto; margin-top:15px; border:1px solid var(--border); border-radius:12px;">
+      <table style="width:100%; text-align:left; border-collapse:collapse; background:var(--surface); overflow:hidden;">
+        <thead style="background:var(--surface2); color:var(--muted);">
           <tr>
             <th style="padding:15px;">Usuario Cliente</th>
             <th style="padding:15px;">Vence en</th>
@@ -452,8 +489,8 @@ const STORAGE_KEY = 'iptv_global_hd_v2';
 const $ = id => document.getElementById(id);
 
 const S = {
-  mode:'xtream', server:'', user:'', pass:'', m3uUrl:'',
-  cats:[], channels:{}, history:[], favorites:[],
+  mode:'xtream', server:'', user:'', pass:'', m3uUrl:'', clientUser:'', clientPass:'',
+  cats:[], vodCats:[], seriesCats:[], channels:{}, history:[], favorites:[],
   currentCat:null, currentChannels:[], infoOpen:false,
 };
 
@@ -462,7 +499,7 @@ const proxyUrl = url => `/proxy?url=${encodeURIComponent(url)}`;
 const getStreamUrl = url => `/stream?url=${encodeURIComponent(url)}`;
 
 // ---------- DOM ----------
-const vLogin=$('v-login'), vHome=$('v-home'), vChannels=$('v-channels'), vPlayer=$('v-player');
+const vLogin=$('v-login'), vHome=$('v-home'), vChannels=$('v-channels'), vPlayer=$('v-player'), vAdmin=$('v-admin'), vMovies=$('v-movies'), vSeries=$('v-series');
 const topbar=$('topbar');
 
 // Escapa caracteres especiales de HTML para evitar atributos rotos
@@ -492,12 +529,20 @@ function setLogo(imgEl, src, name) {
 }
 
 function showView(name) {
-  [vLogin,vHome,vChannels,vPlayer].forEach(v=>v.classList.remove('show'));
-  topbar.style.display = (name!=='login'&&name!=='player') ? 'flex' : 'none';
-  if(name==='login')    vLogin.classList.add('show');
-  if(name==='home')     vHome.classList.add('show');
-  if(name==='channels') vChannels.classList.add('show');
-  if(name==='player')   vPlayer.classList.add('show');
+  [vLogin,vHome,vChannels,vPlayer,vAdmin,vMovies,vSeries].forEach(v=>v?.classList.remove('show'));
+  topbar.style.display = (name!=='login' && name!=='player' && name!=='admin') ? 'flex' : 'none';
+  if(name==='login')    vLogin?.classList.add('show');
+  if(name==='home')     vHome?.classList.add('show');
+  if(name==='channels') vChannels?.classList.add('show');
+  if(name==='player')   vPlayer?.classList.add('show');
+  if(name==='movies')   vMovies?.classList.add('show');
+  if(name==='series')   vSeries?.classList.add('show');
+  if(name==='admin')    vAdmin?.classList.add('show');
+  
+  ['btn-nav-tv','btn-nav-movies','btn-nav-series'].forEach(id=>{if($(id)) $(id).classList.remove('active-nav')});
+  if(name==='home' && $('btn-nav-tv')) $('btn-nav-tv').classList.add('active-nav');
+  if(name==='movies' && $('btn-nav-movies')) $('btn-nav-movies').classList.add('active-nav');
+  if(name==='series' && $('btn-nav-series')) $('btn-nav-series').classList.add('active-nav');
 }
 
 function cleanCatName(raw) {
@@ -691,6 +736,54 @@ function renderCats(cats) {
     card.onclick=()=>openCategory(cat,cleanName);
     grid.appendChild(card);
     catObserver.observe(card);
+  });
+}
+
+function renderVodCats(cats) {
+  const grid=document.getElementById('vod-grid'); if(!grid) return;
+  grid.innerHTML='';
+  if(!cats.length){grid.innerHTML='<div class="state-box"><div class="icon">🎬</div><p>No hay películas</p></div>';return;}
+  cats.forEach((cat,idx)=>{
+    const card=document.createElement('div');
+    card.className='cat-card fade-in'; card.style.animationDelay=`${Math.min(idx*0.03,0.5)}s`;
+    card.dataset.catId=cat.category_id; card.dataset.name=cat.category_name;
+    const safeName = esc(cat.category_name);
+    card.innerHTML=`
+      <div class="cat-overlay"></div>
+      <div class="cat-color-bar" style="background:linear-gradient(90deg,#9c27b0,#9c27b055)"></div>
+      <div class="cat-info">
+        <div class="cat-name">${safeName}</div>
+        <div class="cat-bottom">
+          <span class="cat-badge">Películas</span>
+          <span class="cat-icon-label">🎬</span>
+        </div>
+      </div>`;
+    card.onclick=()=>openVodCategory(cat.category_id, cat.category_name);
+    grid.appendChild(card);
+  });
+}
+
+function renderSeriesCats(cats) {
+  const grid=document.getElementById('series-grid'); if(!grid) return;
+  grid.innerHTML='';
+  if(!cats.length){grid.innerHTML='<div class="state-box"><div class="icon">📺</div><p>No hay series</p></div>';return;}
+  cats.forEach((cat,idx)=>{
+    const card=document.createElement('div');
+    card.className='cat-card fade-in'; card.style.animationDelay=`${Math.min(idx*0.03,0.5)}s`;
+    card.dataset.catId=cat.category_id; card.dataset.name=cat.category_name;
+    const safeName = esc(cat.category_name);
+    card.innerHTML=`
+      <div class="cat-overlay"></div>
+      <div class="cat-color-bar" style="background:linear-gradient(90deg,#2196f3,#2196f355)"></div>
+      <div class="cat-info">
+        <div class="cat-name">${safeName}</div>
+        <div class="cat-bottom">
+          <span class="cat-badge">Series</span>
+          <span class="cat-icon-label">📺</span>
+        </div>
+      </div>`;
+    card.onclick=()=>openSeriesCategory(cat.category_id, cat.category_name);
+    grid.appendChild(card);
   });
 }
 
@@ -936,6 +1029,9 @@ async function playChannel(ch,streamUrl) {
         else if(d.type===Hls.ErrorTypes.MEDIA_ERROR) mainPlayer.recoverMediaError();
       }
     });
+  } else if (streamUrl.includes('.mp4') || streamUrl.includes('.mkv') || streamUrl.includes('.avi')) {
+    vid.src = streamUrl;
+    vid.play().catch(()=>{});
   } else if (mpegts.getFeatureList().mseLivePlayback) {
     mainPlayer=mpegts.createPlayer({type:streamUrl.includes('.ts')?'mpegts':'m2ts',isLive:true,url:streamUrl});
     mainPlayer.attachMediaElement(vid);
@@ -1031,23 +1127,142 @@ function toggleFavorite(ch,streamUrl){
 }
 
 // ---------- BOTONES DE BARRA SUPERIOR ----------
-$('btn-go-home').onclick=()=>{showView('home');renderHistory();};
-$('btn-favs').onclick=()=>{
-  if(!S.favorites.length){alert('Aún no tienes favoritos. Dale ★ a tus canales favoritos.');return;}
-  S.currentChannels=S.favorites;
-  $('ch-view-title').textContent='⭐ Favoritos';
-  $('ch-count-label').textContent=S.favorites.length+' canales';
-  renderChannels(S.favorites); showView('channels');
+if ($('btn-logout')) {
+  $('btn-logout').onclick=()=>{
+    if(!confirm('¿Cerrar sesión?')) return;
+    if(mainPlayer){mainPlayer.destroy();mainPlayer=null;}
+    clearStorage();
+    Object.assign(S,{mode:'xtream',server:'',user:'',pass:'',m3uUrl:'',cats:[],channels:{},history:[],favorites:[],currentCat:null,currentChannels:[],infoOpen:false});
+    if($('inp-user')) $('inp-user').value='';
+    if($('inp-pass')) $('inp-pass').value='';
+    showView('login'); 
+    topbar.style.display='none';
+  };
+}
+if ($('btn-back')) $('btn-back').onclick=()=>showView('home');
+
+// ---------- FUNCIONES ADMIN ----------
+window.parseAdminM3U = () => {
+  try {
+    const rawUrl = document.getElementById('adm-m3u-url').value.trim();
+    if(!rawUrl) return;
+    const url = new URL(rawUrl);
+    document.getElementById('adm-server').value = url.origin;
+    document.getElementById('adm-user').value = url.searchParams.get('username') || '';
+    document.getElementById('adm-pass').value = url.searchParams.get('password') || '';
+  } catch(e) {
+    alert('URL inválida. Asegúrate de que empiece con http:// o https://');
+  }
 };
-$('btn-logout').onclick=()=>{
-  if(!confirm('¿Cerrar sesión?')) return;
-  if(mainPlayer){mainPlayer.destroy();mainPlayer=null;}
-  clearStorage();
-  Object.assign(S,{mode:'xtream',server:'',user:'',pass:'',m3uUrl:'',cats:[],channels:{},history:[],favorites:[],currentCat:null,currentChannels:[],infoOpen:false});
-  ['inp-server','inp-user','inp-pass'].forEach(id=>$(id).value='');
-  showView('login'); topbar.style.display='none';
+
+window.applyStarLatinoAcc = (val) => {
+  if(!val) return;
+  const [u,p] = val.split('|');
+  document.getElementById('adm-user').value = u;
+  document.getElementById('adm-pass').value = p;
 };
-$('btn-back').onclick=()=>showView('home');
+
+window.selectProvider = (type, btn) => {
+  document.querySelectorAll('.provider-btn').forEach(b=>b.classList.remove('active-nav'));
+  btn.classList.add('active-nav');
+  const pFields = document.getElementById('admin-provider-fields');
+  const starSelect = document.getElementById('starlatino-select');
+  starSelect.style.display = (type === 'starlatino') ? 'block' : 'none';
+  
+  if (type === 'papa') {
+    pFields.style.display = 'none';
+    document.getElementById('adm-server').value = 'http://elpapadetodos.live:8080';
+    document.getElementById('adm-user').value = '6user2825';
+    document.getElementById('adm-pass').value = '123456';
+  } else if (type === 'starlatino') {
+    pFields.style.display = 'none';
+    document.getElementById('adm-server').value = 'http://starlatino.tv:8880';
+    document.getElementById('adm-user').value = '';
+    document.getElementById('adm-pass').value = '';
+    starSelect.value = ''; // Reset dropdown
+  } else {
+    pFields.style.display = 'block';
+    document.getElementById('adm-server').value = '';
+    document.getElementById('adm-user').value = '';
+    document.getElementById('adm-pass').value = '';
+  }
+};
+
+async function loadAdminTokens() {
+  try {
+    const r = await fetch('/admin/tokens');
+    const data = await r.json();
+    const tbody = document.getElementById('adm-tokens-tbody');
+    
+    if(!Array.isArray(data)) {
+      console.error('Expected array, got:', data);
+      return;
+    }
+    
+    tbody.innerHTML = data.map(t => `
+      <tr style="border-bottom:1px solid rgba(255,255,255,0.05)">
+        <td style="padding:15px; font-weight:600; font-size:15px;">${esc(t.clientUser)}</td>
+        <td style="padding:15px; font-size:14px; font-weight:500; color:${t.expiresAt<Date.now()?'#ff4b4b':'#00d26a'}">
+          ${new Date(t.expiresAt).toLocaleDateString()}
+        </td>
+        <td style="padding:15px; color:var(--muted); font-size:13px;">${esc(t.config?.user||'')}<br><span style="font-size:11px;opacity:0.7">${esc(t.config?.server||'')}</span></td>
+        <td style="padding:15px;">
+          <button class="tb-btn" style="color:#ff4b4b; border-color:rgba(255,75,75,0.3)" onclick="adminDeleteToken('${t.clientUser}')">Eliminar</button>
+        </td>
+      </tr>
+    `).join('');
+  } catch(e) { console.error(e); }
+}
+
+window.adminDeleteToken = async (clientUser) => {
+  if(!confirm(`¿Eliminar acceso de ${clientUser}?`)) return;
+  try {
+    const r=await fetch('/admin/tokens/'+encodeURIComponent(clientUser), {method:'DELETE'});
+    if(r.ok) loadAdminTokens();
+  } catch(e){ alert('Error al eliminar'); }
+};
+
+window.adminLogout = () => {
+  if(!confirm('¿Cerrar sesión de administrador?')) return;
+  if(document.getElementById('inp-user')) document.getElementById('inp-user').value='';
+  if(document.getElementById('inp-pass')) document.getElementById('inp-pass').value='';
+  showView('login');
+};
+
+if (document.getElementById('btn-admin-create')) {
+  document.getElementById('btn-admin-create').onclick = async () => {
+    const clientUser=document.getElementById('adm-client-user').value.trim();
+    const clientPass=document.getElementById('adm-client-pass').value.trim();
+    const days=parseInt(document.getElementById('adm-days').value)||30;
+    const server=document.getElementById('adm-server').value.trim();
+    const user=document.getElementById('adm-user').value.trim();
+    const pass=document.getElementById('adm-pass').value.trim();
+    const msg=document.getElementById('adm-msg');
+    
+    if(!clientUser||!clientPass||!server||!user||!pass){
+      msg.textContent='Faltan datos'; msg.style.color='#ff4b4b'; return;
+    }
+    
+    msg.textContent='Creando...'; msg.style.color='white';
+    try {
+      const r = await fetch('/admin/tokens', {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({ clientUser, clientPass, days, server, user, pass })
+      });
+      const data = await r.json();
+      if(r.ok && !data.error) {
+        msg.textContent='¡Usuario creado exitosamente!'; msg.style.color='#00d26a';
+        document.getElementById('adm-client-user').value=''; 
+        document.getElementById('adm-client-pass').value='';
+        loadAdminTokens();
+      } else {
+        msg.textContent=data.error||'Error al crear'; msg.style.color='#ff4b4b';
+      }
+    } catch(e) {
+      msg.textContent='Error de red'; msg.style.color='#ff4b4b';
+    }
+  };
+}
 
 // ---------- EVENTOS E UI ----------
 if($('btn-nav-tv')) $('btn-nav-tv').onclick=()=>showView('home');
@@ -1156,17 +1371,11 @@ document.addEventListener('keydown',e=>{
 // ---------- INICIO DE SESIÓN AUTOMÁTICO ----------
 loadStorage();
 showView('login');
-if (S.mode === 'xtream' && S.server && S.user && S.pass) {
-  $('inp-server').value = S.server;
-  $('inp-user').value = S.user;
-  $('inp-pass').value = S.pass;
-  $('inp-remember').checked = true;
-  $('btn-login').click(); // Auto-trigger login logic
-} else if (S.mode === 'm3u' && (S.m3uUrl || $('inp-m3u-text').value)) {
-  $('tab-m3u-btn').click();
-  if (S.m3uUrl) $('inp-m3u').value = S.m3uUrl;
-  $('inp-remember').checked = true;
-  $('btn-login').click();
+if (S.clientUser && S.clientPass) {
+  if ($('inp-user')) $('inp-user').value = S.clientUser;
+  if ($('inp-pass')) $('inp-pass').value = S.clientPass;
+  if ($('inp-remember')) $('inp-remember').checked = true;
+  if ($('btn-login')) $('btn-login').click(); // Auto-trigger login logic
 }
 </script>
 </body>

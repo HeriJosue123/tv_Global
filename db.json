@@ -1,15 +1,15 @@
 {
   "tokens": [
     {
-      "clientUser": "THEyosua",
-      "clientPass": "123456",
-      "expiresAt": 1784855738961,
-      "createdAt": 1784423738961,
+      "clientUser": "HOLA",
+      "clientPass": "HOLA",
+      "expiresAt": 1787170160417,
+      "createdAt": 1784578160417,
       "config": {
         "type": "xtream",
-        "server": "http://elpapadetodos.live:8080",
-        "user": "6user2825",
-        "pass": "123456"
+        "server": "http://starlatino.tv:8880",
+        "user": "184483",
+        "pass": "M7beC8q7CJyW"
       }
     }
   ]
