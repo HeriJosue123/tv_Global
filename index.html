@@ -1775,7 +1775,7 @@ window.playEpisode = (ep) => {
     series_id: S.currentSeries.info.series_id || '',
     stream_id: ep.id,
     container_extension: ep.container_extension || 'mp4'
-  }, proxyUrl(url));
+  }, getStreamUrl(url));
 };
 
 // ---------- FUNCIONES ADMIN ----------
