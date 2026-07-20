@@ -695,7 +695,7 @@ function svgFallback(name) {
 
 // ---------- ALMACENAMIENTO ----------
 function saveStorage() {
-  try { localStorage.setItem(STORAGE_KEY,JSON.stringify({mode:S.mode,server:S.server,user:S.user,pass:S.pass,m3uUrl:S.m3uUrl,history:S.history.slice(0,30),favorites:S.favorites.slice(0,50)})); } catch(e){}
+  try { localStorage.setItem(STORAGE_KEY,JSON.stringify({mode:S.mode,server:S.server,user:S.user,pass:S.pass,clientUser:S.clientUser,clientPass:S.clientPass,m3uUrl:S.m3uUrl,history:S.history.slice(0,30),favorites:S.favorites.slice(0,50)})); } catch(e){}
 }
 function loadStorage() {
   try { const d=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}'); Object.assign(S,d); } catch(e){}
