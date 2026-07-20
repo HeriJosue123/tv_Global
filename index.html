@@ -1539,12 +1539,7 @@ async function playChannel(ch,streamUrl) {
   const vid=$('vid'); vid.pause(); vid.removeAttribute('src'); vid.load();
   
   if(streamUrl.includes('.m3u8') && Hls.isSupported()){
-    mainPlayer=new Hls({
-      maxLiveSyncPlaybackRate: 2,
-      liveSyncDurationCount: 3,
-      enableWorker: true,
-      lowLatencyMode: true
-    });
+    mainPlayer=new Hls({maxLiveSyncPlaybackRate:1.5});
     mainPlayer.loadSource(streamUrl); mainPlayer.attachMedia(vid);
     mainPlayer.on(Hls.Events.MANIFEST_PARSED,()=>vid.play().catch(()=>{}));
     mainPlayer.on(Hls.Events.ERROR,(e,d)=>{
@@ -1557,16 +1552,7 @@ async function playChannel(ch,streamUrl) {
     vid.src = streamUrl;
     vid.play().catch(()=>{});
   } else if (mpegts.getFeatureList().mseLivePlayback) {
-    mainPlayer=mpegts.createPlayer({
-      type: streamUrl.includes('.ts') ? 'mpegts' : 'm2ts',
-      isLive: true,
-      url: streamUrl
-    }, {
-      enableWorker: true,
-      liveBufferLatencyChasing: true,
-      liveBufferLatencyMaxLatency: 2.5,
-      liveBufferLatencyMinRemain: 0.3
-    });
+    mainPlayer=mpegts.createPlayer({type:streamUrl.includes('.ts')?'mpegts':'m2ts',isLive:true,url:streamUrl});
     mainPlayer.attachMediaElement(vid);
     mainPlayer.load();
     mainPlayer.play().catch(()=>{});
