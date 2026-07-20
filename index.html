@@ -170,71 +170,99 @@
   .brand { font-size:22px; font-weight:900; letter-spacing:2px; line-height:1; }
   .brand .r { color:var(--red); }
 
-  /* ====== LOGIN ====== */
+  /* ====== LOGIN V2 ====== */
   #v-login {
     height:100vh; align-items:center; justify-content:center;
-    background: #040405;
+    background: radial-gradient(circle at center, var(--bg-elevated) 0%, var(--bg) 100%);
     position:relative; overflow:hidden;
   }
+  
+  /* Dynamic Background Orbs */
   .login-glow {
     position:absolute; top:-20%; left:-10%; width:70vw; height:70vw;
-    background:radial-gradient(circle, rgba(229,9,20,0.12) 0%, transparent 60%);
-    border-radius:50%; filter:blur(60px); pointer-events:none; animation:float 10s ease-in-out infinite alternate;
+    background:radial-gradient(circle, var(--red-glow) 0%, transparent 50%);
+    border-radius:50%; filter:blur(80px); pointer-events:none; 
+    animation:float 12s ease-in-out infinite alternate; opacity:0.6;
   }
   .login-glow-2 {
-    position:absolute; bottom:-20%; right:-10%; width:60vw; height:60vw;
-    background:radial-gradient(circle, rgba(180,0,10,0.08) 0%, transparent 60%);
-    border-radius:50%; filter:blur(60px); pointer-events:none; animation:float 8s ease-in-out infinite alternate-reverse;
+    position:absolute; bottom:-30%; right:-10%; width:80vw; height:80vw;
+    background:radial-gradient(circle, rgba(180,0,10,0.15) 0%, transparent 50%);
+    border-radius:50%; filter:blur(80px); pointer-events:none; 
+    animation:float 15s ease-in-out infinite alternate-reverse;
   }
-  @keyframes float { 0% { transform:translate(0,0); } 100% { transform:translate(5%, 5%); } }
-  
+  .login-grid-bg {
+    position:absolute; inset:0; pointer-events:none; opacity:0.3;
+    background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 40px 40px; mask-image: radial-gradient(circle at center, black 0%, transparent 80%);
+    -webkit-mask-image: radial-gradient(circle at center, black 0%, transparent 80%);
+  }
+
   .login-card {
     position:relative; z-index:1; 
-    background:rgba(17, 17, 19, 0.4); backdrop-filter:blur(30px); -webkit-backdrop-filter:blur(30px);
-    border:1px solid rgba(255,255,255,0.06); border-top:1px solid rgba(255,255,255,0.12);
-    border-radius:24px; padding:48px 44px; width:440px; 
-    box-shadow:0 30px 80px rgba(0,0,0,0.9), inset 0 1px 0 rgba(255,255,255,0.05); 
-    animation:slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    background:rgba(12,12,14,0.55); backdrop-filter:blur(40px); -webkit-backdrop-filter:blur(40px);
+    border:1px solid var(--border); border-top:1px solid rgba(255,255,255,0.15);
+    border-radius:var(--radius-xl); padding:48px; width:440px; 
+    box-shadow:var(--shadow-lg), inset 0 1px 0 rgba(255,255,255,0.05); 
+    animation:fadeInScale 0.7s var(--ease-spring);
   }
-  .login-logo { text-align:center; margin-bottom:40px; }
-  .login-logo .brand { font-size:34px; letter-spacing:5px; text-shadow:0 0 24px rgba(229,9,20,0.4); }
-  .login-logo p { font-size:13px; color:rgba(255,255,255,0.5); margin-top:10px; letter-spacing:1px; text-transform:uppercase; font-weight:600; }
   
-  .lfield { position:relative; margin-bottom:24px; }
+  .login-logo { text-align:center; margin-bottom:40px; }
+  .login-logo .brand { font-size:36px; letter-spacing:4px; text-shadow:0 0 30px var(--red-glow); }
+  .login-logo p { font-size:12px; color:var(--text-secondary); margin-top:8px; letter-spacing:2px; text-transform:uppercase; font-weight:700; }
+  
+  .lfield { position:relative; margin-bottom:20px; }
   .lfield label { 
-    position:absolute; top:50%; left:16px; transform:translateY(-50%);
-    font-size:14px; font-weight:500; color:rgba(255,255,255,0.4); pointer-events:none;
-    transition:0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    position:absolute; top:50%; left:20px; transform:translateY(-50%);
+    font-size:14px; font-weight:500; color:var(--muted); pointer-events:none;
+    transition:all var(--duration) var(--ease-out);
   }
   .lfield input { 
-    width:100%; background:rgba(0,0,0,0.25); 
-    border:1px solid rgba(255,255,255,0.08); border-radius:12px; 
-    padding:24px 16px 8px 16px; color:white; font-size:15px; outline:none; 
-    transition:all 0.3s ease;
+    width:100%; background:rgba(0,0,0,0.4); 
+    border:1px solid var(--border); border-radius:var(--radius); 
+    padding:26px 20px 10px 20px; color:white; font-size:15px; outline:none; 
+    transition:all var(--duration) var(--ease-out);
+    box-shadow:inset 0 2px 4px rgba(0,0,0,0.2);
   }
-  .lfield input:focus, .lfield input:not(:placeholder-shown) { border-color:rgba(229,9,20,0.5); background:rgba(0,0,0,0.45); box-shadow:0 8px 24px rgba(0,0,0,0.4); }
+  .lfield input:hover { border-color:var(--border-hover); background:rgba(0,0,0,0.6); }
+  .lfield input:focus, .lfield input:not(:placeholder-shown) { 
+    border-color:var(--red-subtle); background:rgba(0,0,0,0.8); 
+    box-shadow:0 0 0 1px var(--red-subtle), inset 0 2px 4px rgba(0,0,0,0.2); 
+  }
   .lfield input:focus ~ label, .lfield input:not(:placeholder-shown) ~ label {
-    top:14px; font-size:11px; color:var(--red); font-weight:700; letter-spacing:1px; text-transform:uppercase;
+    top:14px; font-size:10px; color:var(--red); font-weight:700; letter-spacing:1px; text-transform:uppercase;
   }
   
-  .remember-row { display:flex; align-items:center; gap:10px; margin-bottom:28px; }
-  .remember-row input[type=checkbox] { width:18px; height:18px; accent-color:var(--red); cursor:pointer; }
-  .remember-row label { font-size:14px; color:rgba(255,255,255,0.6); cursor:pointer; transition:color 0.2s; }
+  .remember-row { display:flex; align-items:center; gap:12px; margin-bottom:32px; padding:0 4px; }
+  .remember-row input[type=checkbox] { 
+    width:18px; height:18px; accent-color:var(--red); cursor:pointer; 
+    border-radius:4px; background:var(--surface); border:1px solid var(--border);
+  }
+  .remember-row label { font-size:13px; font-weight:500; color:var(--text-secondary); cursor:pointer; transition:color var(--duration); }
   .remember-row label:hover { color:white; }
   
   .btn-connect { 
     width:100%; padding:16px; 
-    background:linear-gradient(135deg, #e50914, #b20710); 
-    border:1px solid rgba(255,255,255,0.1); border-radius:14px; 
-    color:white; font-size:16px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase;
-    display:flex; align-items:center; justify-content:center; gap:10px; 
-    transition:all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow:0 8px 24px rgba(229,9,20,0.3);
+    background:var(--red-gradient); 
+    border:1px solid rgba(255,255,255,0.1); border-radius:var(--radius); 
+    color:white; font-size:15px; font-weight:800; letter-spacing:2px; text-transform:uppercase;
+    display:flex; align-items:center; justify-content:center; gap:12px; 
+    transition:all var(--duration) var(--ease-out);
+    box-shadow:0 8px 24px var(--red-glow); position:relative; overflow:hidden;
   }
-  .btn-connect:hover { transform:translateY(-2px); box-shadow:0 12px 32px rgba(229,9,20,0.5); border-color:rgba(255,255,255,0.3); }
+  .btn-connect::after {
+    content:''; position:absolute; top:0; left:-100%; width:50%; height:100%;
+    background:linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transform:skewX(-20deg); transition:all 0.5s;
+  }
+  .btn-connect:hover { 
+    transform:translateY(-2px); box-shadow:0 12px 32px var(--red-glow); border-color:rgba(255,255,255,0.3); 
+    background:linear-gradient(135deg, var(--red-hover), #e50914);
+  }
+  .btn-connect:hover::after { left:150%; }
   .btn-connect:active { transform:scale(0.98); }
   .btn-connect:disabled { opacity:0.6; cursor:not-allowed; transform:none; }
-  .login-err { font-size:13px; color:#ff4b4b; text-align:center; margin-top:16px; min-height:18px; font-weight:600; }
+  
+  .login-err { font-size:13px; color:#ff4b4b; text-align:center; margin-top:20px; min-height:18px; font-weight:600; animation:fadeIn 0.3s; }
 
   /* ====== TOPBAR (hidden — replaced by sidebar, preserved for JS compat) ====== */
   #topbar { display:none !important; height:0; overflow:hidden; visibility:hidden; }
@@ -457,6 +485,7 @@
 <div id="v-login" class="view">
   <div class="login-glow"></div>
   <div class="login-glow-2"></div>
+  <div class="login-grid-bg"></div>
   <div class="login-card">
     <div class="login-logo">
       <div class="brand">IPTV <span class="r">GLOBAL HD</span></div>
