@@ -528,24 +528,44 @@
   
   /* ====== RESPONSIVE DESIGN ====== */
   @media (max-width: 768px) {
+    /* Login */
     .login-card { width:90%; padding:32px 24px; }
-    #si-title { font-size:40px; }
-    .si-content { padding:0 20px 20px 20px; }
-    .player-info.open { width:100%; position:absolute; right:0; top:0; bottom:0; }
-    .cat-grid { padding:0 20px 20px; }
-    .hero-title { font-size:32px; }
+    
+    /* Series Info */
+    #si-title { font-size:28px !important; }
+    .si-content { padding:0 20px 20px 20px !important; }
+    .si-episodes-scroll { grid-template-columns:1fr !important; }
+    
+    /* Player */
+    .player-info.open { width:100%; position:absolute; right:0; top:0; bottom:0; z-index:100; }
+    .vid-title-overlay { font-size:16px; top:10px; left:10px; }
+    .player-controls { padding:10px; }
+    
+    /* Home */
+    .hero-title { font-size:28px; }
     .hero-content { left:20px; bottom:20px; right:20px; }
-    .hero-banner { height:50vh; min-height:300px; }
+    .hero-banner { height:40vh; min-height:250px; }
+    .cat-grid { padding:0 20px 20px !important; grid-template-columns:1fr 1fr !important; gap:12px !important; }
+    
+    /* Modals */
     .modal-box { width:90%; padding:24px; }
-    .ch-grid { grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:10px; }
-  }
-  @media (max-width: 480px) {
-    .sidebar { position:absolute; z-index:100; height:100vh; left:0; top:0; }
-    .sidebar.collapsed { transform:translateX(-100%); }
-    .sb-toggle { right:-40px; width:40px; height:40px; background:var(--red); color:white; border:none; }
+    
+    /* Channels Grid */
+    .ch-grid { grid-template-columns:repeat(auto-fill,minmax(130px,1fr)); gap:10px; }
+    .channels-content { padding: 12px; }
+    .channels-bar { padding: 12px; }
+    
+    /* Sidebar Mobile Drawer */
+    .sidebar { position:absolute; z-index:9000; height:100vh; left:0; top:0; width:280px !important; box-shadow: 20px 0 50px rgba(0,0,0,0.5); }
+    .sidebar.collapsed { transform:translateX(-100%); box-shadow:none; }
+    .sb-toggle { right:-44px; width:44px; height:44px; background:var(--red); color:white; border:none; border-radius:0 8px 8px 0; font-size:18px; }
     .sidebar.collapsed .sb-toggle { transform:translateX(100%); }
+    
+    /* Layout */
     .home-content { padding:0; }
-    .section-hd { margin:0 16px 12px; }
+    .section-hd { margin:0 20px 12px !important; }
+    .history-row { padding:0 20px 16px !important; }
+    .history-section h3 { margin: 0 20px 16px !important; }
   }
   </style>
 </head>
