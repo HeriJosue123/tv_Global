@@ -556,10 +556,10 @@
     .channels-bar { padding: 12px; }
     
     /* Sidebar Mobile Drawer */
-    .sidebar { position:absolute; z-index:9000; height:100vh; left:0; top:0; width:280px !important; box-shadow: 20px 0 50px rgba(0,0,0,0.5); }
+    .sidebar { position:absolute; z-index:9000; height:100vh; left:0; top:0; width:280px !important; box-shadow: 20px 0 50px rgba(0,0,0,0.5); overflow:visible !important; }
     .sidebar.collapsed { transform:translateX(-100%); box-shadow:none; }
     .sb-toggle { right:-44px; width:44px; height:44px; background:var(--red); color:white; border:none; border-radius:0 8px 8px 0; font-size:18px; }
-    .sidebar.collapsed .sb-toggle { transform:translateX(100%); }
+    .sidebar.collapsed .sb-toggle { transform:translateX(100%); right:-44px; }
     
     /* Layout */
     .home-content { padding:0; }
