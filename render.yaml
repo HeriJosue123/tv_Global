@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: iptv-global-hd
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    plan: free
+    envVars:
+      - key: NODE_VERSION
+        value: 18

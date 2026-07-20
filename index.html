@@ -110,6 +110,7 @@
   .tb-left,.tb-center,.tb-right { display:flex; align-items:center; gap:8px; }
   .tb-btn { display:flex; align-items:center; gap:5px; padding:7px 13px; border:none; border-radius:8px; background:var(--surface); color:var(--muted); font-size:13px; font-weight:600; transition:all 0.2s; border:1px solid var(--border); }
   .tb-btn:hover { background:var(--surface2); color:var(--text); }
+  .tb-btn.active-nav { background: rgba(229,9,20,0.2); border-color: rgba(229,9,20,0.6); color: white; }
   .tb-user { font-size:13px; color:var(--muted); padding:6px 12px; background:var(--surface); border-radius:20px; border:1px solid var(--border); }
 
   /* ====== HOME ====== */
@@ -252,15 +253,11 @@
     </div>
     <div id="panel-xtream">
       <div class="lfield">
-        <input type="text" id="inp-server" placeholder=" ">
-        <label>Servidor (URL:Puerto)</label>
-      </div>
-      <div class="lfield">
-        <input type="text" id="inp-user" placeholder=" ">
+        <input type="text" id="inp-user" placeholder=" " autocomplete="off">
         <label>Usuario</label>
       </div>
       <div class="lfield">
-        <input type="password" id="inp-pass" placeholder=" ">
+        <input type="password" id="inp-pass" placeholder=" " autocomplete="off">
         <label>Contraseña</label>
       </div>
     </div>
@@ -278,13 +275,17 @@
 
 <!-- ====== TOPBAR ====== -->
 <div id="topbar">
-  <div class="tb-left"><div class="brand">IPTV <span class="r">GLOBAL HD</span></div></div>
-  <div class="tb-center">
-    <button class="tb-btn" id="btn-go-home">🏠 Inicio</button>
-    <button class="tb-btn" id="btn-favs">⭐ Favoritos</button>
+  <div class="tb-left">
+    <div class="brand">IPTV <span class="r">GLOBAL HD</span></div>
+  </div>
+  <div class="tb-center" style="gap:15px; margin-left: 20px;">
+    <button class="tb-btn active-nav" id="btn-nav-tv">📺 TV en Vivo</button>
+    <button class="tb-btn" id="btn-nav-movies">🎬 Películas</button>
+    <button class="tb-btn" id="btn-nav-series">📺 Series</button>
   </div>
   <div class="tb-right">
-    <span class="tb-user" id="tb-user">●</span>
+    <button class="tb-btn" id="btn-favs">⭐ Favoritos</button>
+    <span class="tb-user" id="tb-user">👤</span>
     <button class="tb-btn" id="btn-logout">Salir</button>
   </div>
 </div>
@@ -293,7 +294,7 @@
 <div id="v-home" class="view">
   <div class="home-content">
     <div class="history-section" id="history-section">
-      <h3>🕐 Vistos recientemente</h3>
+      <h3>⏱️ Vistos recientemente</h3>
       <div class="history-row" id="history-row"></div>
     </div>
     <div class="section-hd">
@@ -301,6 +302,87 @@
       <input type="text" class="search-input" id="cat-search" placeholder="Buscar categoría...">
     </div>
     <div class="cat-grid" id="cat-grid"></div>
+  </div>
+</div>
+
+<!-- ====== MOVIES ====== -->
+<div id="v-movies" class="view">
+  <div class="home-content">
+    <div class="section-hd">
+      <h2>🎬 Películas</h2>
+      <input type="text" class="search-input" id="vod-search" placeholder="Buscar película...">
+    </div>
+    <div class="cat-grid" id="vod-grid"></div>
+  </div>
+</div>
+
+<!-- ====== SERIES ====== -->
+<div id="v-series" class="view">
+  <div class="home-content">
+    <div class="section-hd">
+      <h2>📺 Series</h2>
+      <input type="text" class="search-input" id="series-search" placeholder="Buscar serie...">
+    </div>
+    <div class="cat-grid" id="series-grid"></div>
+  </div>
+</div>
+
+<!-- ====== ADMIN ====== -->
+<div id="v-admin" class="view">
+  <div class="home-content">
+    <div class="section-hd">
+      <h2>🛠️ Panel Maestro de Administración</h2>
+    </div>
+    
+    <div style="background:rgba(255,255,255,0.05); padding:20px; border-radius:12px; margin-bottom:30px;">
+      <h3 style="margin-bottom:15px; color:#e50914">Crear Nuevo Acceso</h3>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:15px; margin-bottom:15px;">
+        <div>
+          <label style="display:block; margin-bottom:5px; font-size:12px; color:var(--muted)">Usuario (Para el cliente)</label>
+          <input type="text" id="adm-client-user" class="search-input" style="width:100%" placeholder="Ej: JuanPerez">
+        </div>
+        <div>
+          <label style="display:block; margin-bottom:5px; font-size:12px; color:var(--muted)">Contraseña (Para el cliente)</label>
+          <input type="password" id="adm-client-pass" class="search-input" style="width:100%" placeholder="Ej: juan123">
+        </div>
+        <div>
+          <label style="display:block; margin-bottom:5px; font-size:12px; color:var(--muted)">Días de validez</label>
+          <input type="number" id="adm-days" class="search-input" style="width:100%" value="30">
+        </div>
+      </div>
+      <h4 style="margin-bottom:10px; font-size:14px;">Credenciales IPTV Internas (Ocultas al cliente)</h4>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:15px; margin-bottom:15px;">
+        <div>
+          <label style="display:block; margin-bottom:5px; font-size:12px; color:var(--muted)">Servidor IPTV</label>
+          <input type="text" id="adm-server" class="search-input" style="width:100%" placeholder="http://dominio.com:8080">
+        </div>
+        <div>
+          <label style="display:block; margin-bottom:5px; font-size:12px; color:var(--muted)">Usuario IPTV</label>
+          <input type="text" id="adm-user" class="search-input" style="width:100%" placeholder="Usuario">
+        </div>
+        <div>
+          <label style="display:block; margin-bottom:5px; font-size:12px; color:var(--muted)">Contraseña IPTV</label>
+          <input type="password" id="adm-pass" class="search-input" style="width:100%" placeholder="Contraseña">
+        </div>
+      </div>
+      <button class="btn-connect" id="btn-admin-create" style="width:auto; padding:10px 20px;">+ Crear Usuario</button>
+      <div id="adm-msg" style="margin-top:10px; font-size:13px; font-weight:600;"></div>
+    </div>
+
+    <h3>Usuarios Activos</h3>
+    <div style="overflow-x:auto; margin-top:15px;">
+      <table style="width:100%; text-align:left; border-collapse:collapse; background:var(--surface); border-radius:12px; overflow:hidden;">
+        <thead style="background:rgba(255,255,255,0.05); color:var(--muted);">
+          <tr>
+            <th style="padding:15px;">Usuario Cliente</th>
+            <th style="padding:15px;">Vence en</th>
+            <th style="padding:15px;">Usuario IPTV</th>
+            <th style="padding:15px;">Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="adm-tokens-tbody"></tbody>
+      </table>
+    </div>
   </div>
 </div>
 
@@ -392,6 +474,12 @@ function esc(str) {
 function resolveStreamUrl(ch) {
   if(S.mode==='m3u') {
     return getStreamUrl(ch.stream_url||'');
+  }
+  if(ch.stream_type === 'movie' || ch.container_extension === 'mp4' || ch.container_extension === 'mkv') {
+    return getStreamUrl(`${S.server}/movie/${encodeURIComponent(S.user)}/${encodeURIComponent(S.pass)}/${ch.stream_id}.${ch.container_extension||'mp4'}`);
+  }
+  if(ch.stream_type === 'series' || ch.episode_num) {
+    return getStreamUrl(`${S.server}/series/${encodeURIComponent(S.user)}/${encodeURIComponent(S.pass)}/${ch.id||ch.stream_id}.${ch.container_extension||'mp4'}`);
   }
   return getStreamUrl(`${S.server}/live/${encodeURIComponent(S.user)}/${encodeURIComponent(S.pass)}/${ch.stream_id}.ts`);
 }
@@ -511,53 +599,54 @@ function parseM3U(text) {
 // ---------- INICIO DE SESIÓN ----------
 $('btn-login').onclick=async()=>{
   const err=$('login-err'); err.textContent='';
-
-  const server=$('inp-server').value.trim().replace(/\/$/,'');
   const user=$('inp-user').value.trim();
   const pass=$('inp-pass').value.trim();
-  if(!server||!user||!pass){err.textContent='Completa todos los campos.';return;}
-    setLoginLoading(true);
-    try {
-      let r=await fetch(proxyUrl(`${server}/player_api.php?username=${encodeURIComponent(user)}&password=${encodeURIComponent(pass)}&action=get_live_categories`));
+  if(!user||!pass){err.textContent='Ingresa tu usuario y contraseña.';return;}
+  
+  if(user==='ADMIN123' && pass==='ADMIN123') {
+    showView('admin');
+    loadAdminTokens();
+    return;
+  }
+  
+  setLoginLoading(true);
+  try {
+      const r = await fetch('/api/login', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({clientUser: user, clientPass: pass})
+      });
+      const data = await r.json();
+      if (!r.ok || !data.success) throw new Error(data.error || 'Credenciales inválidas');
       
-      let cats;
-      if(!r.ok || r.status === 404) {
-        // ¡Recae en M3U silenciosamente!
-        const m3uUrl = `${server}/get.php?username=${encodeURIComponent(user)}&password=${encodeURIComponent(pass)}&type=m3u_plus&output=ts`;
-        const r2 = await fetch(proxyUrl(m3uUrl));
-        if(!r2.ok) throw new Error(`Credenciales incorrectas o proveedor caído.`);
-        const text = await r2.text();
-        if(!text.includes('#EXTINF')) throw new Error('Respuesta del servidor no es válida.');
-        
-        cats = parseM3U(text);
-        if(!cats.length) throw new Error('No se encontraron canales en la cuenta.');
-        
-        // Configurar el modo M3U interno silenciosamente
-        cats.forEach(c => { S.channels[c.category_id] = c.channels; c.channel_count = c.channels.length; });
-        S.mode = 'm3u'; 
-        S.m3uUrl = m3uUrl;
-        S.server = server; S.user = user; S.pass = pass;
-        S.cats = cats.map(c => ({category_id: c.category_id, category_name: c.category_name, channel_count: c.channel_count}));
-      } else {
-        // Manejo estándar de Xtream
-        cats = await r.json();
-        if(!Array.isArray(cats)) throw new Error('Respuesta inválida de Xtream API.');
-        S.mode = 'xtream'; 
-        S.server = server; S.user = user; S.pass = pass;
-        S.cats = cats;
-      }
-
-      if($('inp-remember').checked) saveStorage();
+      const {server, user:iptvUser, pass:iptvPass} = data.config;
+      S.server=server; S.user=iptvUser; S.pass=iptvPass; S.mode='xtream'; S.clientUser=user; S.clientPass=pass;
+      saveStorage();
+      
+      const fetchApi = (act) => fetch(proxyUrl(`${server}/player_api.php?username=${encodeURIComponent(iptvUser)}&password=${encodeURIComponent(iptvPass)}&action=${act}`)).then(r=>r.json());
+      
+      const [cats, vodCats, seriesCats] = await Promise.all([
+        fetchApi('get_live_categories').catch(()=>[]), 
+        fetchApi('get_vod_categories').catch(()=>[]), 
+        fetchApi('get_series_categories').catch(()=>[])
+      ]);
+      
+      showView('home');
+      renderCats(cats); renderVodCats(vodCats); renderSeriesCats(seriesCats);
+      renderHistory();
       $('tb-user').textContent=`👤 ${user}`;
-      showView('home'); renderHistory(); renderCats(S.cats);
-    } catch(e){ err.textContent='Error: '+e.message; }
-    finally{ setLoginLoading(false); }
+      
+    } catch(e) {
+      err.textContent = `❌ ${e.message}`;
+    } finally {
+      setLoginLoading(false);
+    }
 };
 
 function setLoginLoading(on) {
   $('btn-login').disabled=on;
   $('login-spin').style.display=on?'inline-block':'none';
-  $('login-txt').textContent=on?'Conectando...':'Conectar';
+  $('login-txt').textContent=on?'Conectando...':'Iniciar Sesión';
 }
 
 // ---------- CATEGORÍAS ----------
@@ -959,6 +1048,101 @@ $('btn-logout').onclick=()=>{
   showView('login'); topbar.style.display='none';
 };
 $('btn-back').onclick=()=>showView('home');
+
+// ---------- EVENTOS E UI ----------
+if($('btn-nav-tv')) $('btn-nav-tv').onclick=()=>showView('home');
+if($('btn-nav-movies')) $('btn-nav-movies').onclick=()=>showView('movies');
+if($('btn-nav-series')) $('btn-nav-series').onclick=()=>showView('series');
+if($('btn-favs')) $('btn-favs').onclick=()=>showFavorites();
+
+function showFavorites() {
+  if(!S.favorites.length){alert('Aún no tienes favoritos.');return;}
+  S.currentChannels=S.favorites;
+  $('ch-view-title').textContent='⭐ Favoritos';
+  renderChannels(S.favorites); showView('channels');
+}
+
+// ---------- ABRIR VOD Y SERIES ----------
+async function openVodCategory(id, name) {
+  S.currentCat={category_id:id, category_name:name};
+  $('ch-view-title').textContent=name;
+  $('ch-search').value='';
+  $('ch-count-label').textContent='Cargando películas...';
+  $('ch-grid').innerHTML=`<div class="state-box"><div class="spinner" style="width:32px;height:32px;border-width:3px;"></div><p style="margin-top:16px">Cargando...</p></div>`;
+  showView('channels');
+  try {
+    const r=await fetch(proxyUrl(`${S.server}/player_api.php?username=${encodeURIComponent(S.user)}&password=${encodeURIComponent(S.pass)}&action=get_vod_streams&category_id=${id}`));
+    const channels=await r.json();
+    if(!Array.isArray(channels)) throw new Error('Respuesta inválida');
+    S.currentChannels=channels||[];
+    $('ch-count-label').textContent=(channels||[]).length+' películas';
+    renderChannels(channels||[]);
+  } catch(e){ $('ch-grid').innerHTML=`<div class="state-box"><div class="icon">⚠️</div><p>Error: ${e.message}</p></div>`; }
+}
+
+async function openSeriesCategory(id, name) {
+  S.currentCat={category_id:id, category_name:name};
+  $('ch-view-title').textContent=name;
+  $('ch-search').value='';
+  $('ch-count-label').textContent='Cargando series...';
+  $('ch-grid').innerHTML=`<div class="state-box"><div class="spinner" style="width:32px;height:32px;border-width:3px;"></div><p style="margin-top:16px">Cargando...</p></div>`;
+  showView('channels');
+  try {
+    const r=await fetch(proxyUrl(`${S.server}/player_api.php?username=${encodeURIComponent(S.user)}&password=${encodeURIComponent(S.pass)}&action=get_series&category_id=${id}`));
+    let channels=await r.json();
+    if(!Array.isArray(channels)) throw new Error('Respuesta inválida');
+    
+    // Mapear series a formato similar a canales/vod
+    channels = channels.map(s => ({
+      stream_type: 'series',
+      stream_id: s.series_id,
+      name: s.name,
+      stream_icon: s.cover
+    }));
+    
+    S.currentChannels=channels||[];
+    $('ch-count-label').textContent=(channels||[]).length+' series';
+    renderChannels(channels||[]);
+  } catch(e){ $('ch-grid').innerHTML=`<div class="state-box"><div class="icon">⚠️</div><p>Error: ${e.message}</p></div>`; }
+}
+
+// Modificar renderChannels para series (abrir capítulos en vez de reproducir directo)
+const oldPlayChannel = playChannel;
+window.playChannel = async (ch, streamUrl) => {
+  if (ch.stream_type === 'series' && ch.series_id) {
+    // Es una serie, cargar capítulos
+    $('ch-view-title').textContent = ch.name;
+    $('ch-count-label').textContent = 'Cargando temporadas...';
+    $('ch-grid').innerHTML = `<div class="state-box"><div class="spinner" style="width:32px;height:32px;border-width:3px;"></div><p style="margin-top:16px">Obteniendo capítulos...</p></div>`;
+    try {
+      const r = await fetch(proxyUrl(`${S.server}/player_api.php?username=${encodeURIComponent(S.user)}&password=${encodeURIComponent(S.pass)}&action=get_series_info&series_id=${ch.series_id}`));
+      const data = await r.json();
+      const episodes = [];
+      if (data && data.episodes) {
+        Object.keys(data.episodes).forEach(seasonNum => {
+          data.episodes[seasonNum].forEach(ep => {
+            episodes.push({
+              stream_type: 'episode',
+              id: ep.id,
+              stream_id: ep.id,
+              name: `T${seasonNum} E${ep.episode_num}: ${ep.title}`,
+              stream_icon: ep.info?.movie_image || ch.stream_icon,
+              container_extension: ep.container_extension || 'mp4',
+              episode_num: ep.episode_num
+            });
+          });
+        });
+      }
+      $('ch-count-label').textContent = episodes.length + ' episodios';
+      renderChannels(episodes);
+    } catch (e) {
+      $('ch-grid').innerHTML = `<div class="state-box"><div class="icon">⚠️</div><p>Error: ${e.message}</p></div>`;
+    }
+  } else {
+    // Película, episodio o canal en vivo normal
+    oldPlayChannel(ch, streamUrl);
+  }
+};
 
 // ---------- TECLADO ----------
 document.addEventListener('keydown',e=>{

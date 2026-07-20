@@ -3,9 +3,17 @@ const cors = require('cors');
 const http = require('http');
 const https = require('https');
 const path = require('path');
+const fs = require('fs');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+const dbPath = path.join(__dirname, 'db.json');
+let db = { tokens: [] };
+if (fs.existsSync(dbPath)) {
+    try { db = JSON.parse(fs.readFileSync(dbPath, 'utf8')); } catch(e) {}
+}
+function saveDb() { fs.writeFileSync(dbPath, JSON.stringify(db, null, 2)); }
 
 const c = {
     rst: "\x1b[0m", b: "\x1b[1m",
@@ -23,10 +31,53 @@ ${c.red}${c.b}██╗██████╗ ████████╗██�
 ██║██║        ██║    ╚████╔╝     ╚██████╔╝███████╗╚██████╔╝██████╔╝██║  ██║███████╗
 ╚═╝╚═╝        ╚═╝     ╚═══╝       ╚═════╝ ╚══════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝${c.rst}`;
 
-function ts() { return new Date().toLocaleTimeString(); }
+const ts = () => new Date().toLocaleTimeString();
 
 app.use(cors());
+app.use(express.json());
 app.use(express.static(path.join(__dirname)));
+
+// ====== RUTAS ADMINISTRATIVAS ======
+app.post('/admin/login', (req, res) => {
+    if (req.body.password === 'ADMIN123') return res.json({ success: true });
+    return res.status(401).json({ error: 'Contraseña incorrecta' });
+});
+
+app.get('/admin/tokens', (req, res) => {
+    res.json(db.tokens);
+});
+
+app.post('/admin/tokens', (req, res) => {
+    const { clientUser, clientPass, days, server, user, pass } = req.body;
+    if (!clientUser || !clientPass || !days || !server || !user || !pass) return res.status(400).json({ error: 'Datos incompletos' });
+    if (db.tokens.some(t => t.clientUser === clientUser)) return res.status(400).json({ error: 'El usuario ya existe' });
+    const expiresAt = Date.now() + (days * 24 * 60 * 60 * 1000);
+    const newToken = { clientUser, clientPass, expiresAt, createdAt: Date.now(), config: { type: 'xtream', server, user, pass } };
+    db.tokens.push(newToken);
+    saveDb();
+    res.json(newToken);
+});
+
+app.delete('/admin/tokens/:clientUser', (req, res) => {
+    db.tokens = db.tokens.filter(t => t.clientUser !== req.params.clientUser);
+    saveDb();
+    res.json({ success: true });
+});
+
+// ====== RUTA DE LOGIN DEL CLIENTE ======
+app.post('/api/login', (req, res) => {
+    const { clientUser, clientPass } = req.body;
+    const tData = db.tokens.find(t => t.clientUser === clientUser && t.clientPass === clientPass);
+    if (!tData) {
+        return res.status(401).json({ error: 'Credenciales inválidas' });
+    }
+    if (Date.now() > tData.expiresAt) {
+        return res.status(401).json({ error: 'Tu cuenta ha expirado' });
+    }
+    
+    res.json({ success: true, config: tData.config, expiresAt: tData.expiresAt });
+});
+
 
 let activeStreamReq = null;
 let streamTimeout = null;
