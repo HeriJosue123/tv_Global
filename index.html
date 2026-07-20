@@ -434,6 +434,25 @@
   <div class="channels-content"><div class="ch-grid" id="ch-grid"></div></div>
 </div>
 
+<!-- ====== INFO DE SERIES ====== -->
+<div id="v-series-info" class="view">
+  <div class="channels-bar">
+    <button class="btn-back" id="btn-back-series">  Volver</button>
+    <h2 id="si-view-title">Serie</h2>
+  </div>
+  <div class="channels-content" style="padding:20px; overflow-y:auto; display:flex; flex-direction:column; gap:20px;">
+    <div style="display:flex; gap:20px; flex-wrap:wrap;">
+      <img id="si-cover" src="" style="width:200px; border-radius:12px; background:#111; object-fit:cover;" onerror="this.style.display='none'">
+      <div style="flex:1;">
+        <h1 id="si-title" style="font-size:28px; margin-bottom:10px;">Cargando...</h1>
+        <div id="si-desc" style="color:var(--muted); font-size:15px; line-height:1.5; margin-bottom:15px; max-width:800px;"></div>
+        <select id="si-season-select" class="search-input" style="width:250px; padding:10px; background:#1a1a24; color:white; display:none;" onchange="renderEpisodes(this.value)"></select>
+      </div>
+    </div>
+    <div class="ch-grid" id="si-episodes-grid" style="margin-top:10px;"></div>
+  </div>
+</div>
+
 <!-- ====== PLAYER ====== -->
 <div id="v-player" class="view">
   <div class="player-main">
@@ -499,7 +518,7 @@ const proxyUrl = url => `/proxy?url=${encodeURIComponent(url)}`;
 const getStreamUrl = url => `/stream?url=${encodeURIComponent(url)}`;
 
 // ---------- DOM ----------
-const vLogin=$('v-login'), vHome=$('v-home'), vChannels=$('v-channels'), vPlayer=$('v-player'), vAdmin=$('v-admin'), vMovies=$('v-movies'), vSeries=$('v-series');
+const vLogin=$('v-login'), vHome=$('v-home'), vChannels=$('v-channels'), vSeriesInfo=$('v-series-info'), vPlayer=$('v-player'), vAdmin=$('v-admin'), vMovies=$('v-movies'), vSeries=$('v-series');
 const topbar=$('topbar');
 
 // Escapa caracteres especiales de HTML para evitar atributos rotos
@@ -993,7 +1012,10 @@ function renderChannels(channels) {
     const nameEl = document.createElement('div'); nameEl.className='ch-name'; nameEl.title=ch.name; nameEl.textContent=ch.name;
     card.appendChild(nameEl);
 
-    card.onclick=()=>playChannel(ch,streamUrl);
+    card.onclick=()=>{
+      if (ch.stream_type === 'series') fetchSeriesInfo(ch.stream_id);
+      else playChannel(ch,streamUrl);
+    };
     grid.appendChild(card);
   });
 }
@@ -1140,6 +1162,100 @@ if ($('btn-logout')) {
   };
 }
 if ($('btn-back')) $('btn-back').onclick=()=>showView('home');
+if ($('btn-back-series')) $('btn-back-series').onclick=()=>showView('channels');
+
+// ---------- LOGICA DE SERIES ----------
+window.fetchSeriesInfo = async (series_id) => {
+  $('si-view-title').textContent = 'Cargando...';
+  $('si-title').textContent = 'Cargando Serie...';
+  $('si-desc').textContent = '';
+  $('si-cover').style.display = 'none';
+  $('si-season-select').style.display = 'none';
+  $('si-episodes-grid').innerHTML = `<div class="state-box"><div class="spinner" style="width:32px;height:32px;border-width:3px;"></div></div>`;
+  showView('series-info');
+  
+  try {
+    const r = await fetch(proxyUrl(`${S.server}/player_api.php?username=${encodeURIComponent(S.user)}&password=${encodeURIComponent(S.pass)}&action=get_series_info&series_id=${series_id}`));
+    const data = await r.json();
+    if (!data.info) throw new Error('Información no encontrada');
+    
+    S.currentSeries = data;
+    $('si-view-title').textContent = data.info.name || 'Serie';
+    $('si-title').textContent = data.info.name || 'Serie';
+    $('si-desc').textContent = data.info.plot || '';
+    if (data.info.cover || data.info.movie_image) {
+      $('si-cover').src = proxyUrl(data.info.cover || data.info.movie_image);
+      $('si-cover').style.display = 'block';
+    }
+
+    const select = $('si-season-select');
+    select.innerHTML = '';
+    
+    if (data.seasons && data.seasons.length > 0) {
+      data.seasons.forEach(s => {
+        const opt = document.createElement('option');
+        opt.value = s.season_number;
+        opt.textContent = s.name || `Temporada ${s.season_number}`;
+        select.appendChild(opt);
+      });
+      select.style.display = 'block';
+      if (data.episodes) renderEpisodes(data.seasons[0].season_number);
+      else $('si-episodes-grid').innerHTML = '<p>No hay episodios</p>';
+    } else {
+      $('si-episodes-grid').innerHTML = '<p>No hay temporadas</p>';
+    }
+  } catch(e) {
+    $('si-episodes-grid').innerHTML = `<div class="state-box"><div class="icon">❌</div><p>Error: ${e.message}</p></div>`;
+  }
+};
+
+window.renderEpisodes = (seasonNumber) => {
+  const grid = $('si-episodes-grid');
+  grid.innerHTML = '';
+  const episodes = (S.currentSeries.episodes || {})[seasonNumber] || [];
+  
+  if (!episodes.length) {
+    grid.innerHTML = '<div class="state-box"><p>No hay capítulos en esta temporada</p></div>';
+    return;
+  }
+  
+  episodes.forEach((ep, idx) => {
+    const card = document.createElement('div');
+    card.className = 'ch-card fade-in';
+    card.style.animationDelay = `${Math.min(idx*0.015, 0.4)}s`;
+    
+    const wrap = document.createElement('div'); 
+    wrap.className = 'ch-logo-wrap';
+    
+    const img = document.createElement('img'); 
+    img.loading = 'lazy'; 
+    if (ep.info && ep.info.movie_image) img.src = proxyUrl(ep.info.movie_image);
+    else img.style.display = 'none';
+    wrap.appendChild(img);
+    
+    const badge = document.createElement('div'); 
+    badge.className = 'live-badge';
+    badge.style.background = 'rgba(0,0,0,0.8)';
+    badge.style.color = '#fff';
+    badge.innerHTML = (ep.info && ep.info.duration) ? ep.info.duration : `Episodio ${ep.episode_num}`;
+    wrap.appendChild(badge);
+    
+    card.appendChild(wrap);
+    
+    const nameEl = document.createElement('div'); 
+    nameEl.className = 'ch-name'; 
+    nameEl.title = ep.title; 
+    nameEl.textContent = ep.title || `Capítulo ${ep.episode_num}`;
+    card.appendChild(nameEl);
+    
+    card.onclick = () => {
+      const streamUrl = getStreamUrl(`${S.server}/series/${encodeURIComponent(S.user)}/${encodeURIComponent(S.pass)}/${ep.id}.${ep.container_extension||'mp4'}`);
+      const chMock = { name: ep.title, stream_icon: (ep.info&&ep.info.movie_image)?ep.info.movie_image:'' };
+      playChannel(chMock, streamUrl);
+    };
+    grid.appendChild(card);
+  });
+};
 
 // ---------- FUNCIONES ADMIN ----------
 window.parseAdminM3U = () => {
@@ -1190,7 +1306,7 @@ window.selectProvider = (type, btn) => {
 
 async function loadAdminTokens() {
   try {
-    const r = await fetch('/admin/tokens');
+    const r = await fetch('/admin/tokens?t=' + Date.now());
     const data = await r.json();
     const tbody = document.getElementById('adm-tokens-tbody');
     
