@@ -544,11 +544,15 @@ function resolveStreamUrl(ch) {
 function setLogo(imgEl, src, name) {
   const fallback = svgFallback(name);
   imgEl.onerror = () => { imgEl.onerror=null; imgEl.src = fallback; };
-  imgEl.src = src || fallback;
+  if (src && src.startsWith('http')) {
+    imgEl.src = proxyUrl(src);
+  } else {
+    imgEl.src = src || fallback;
+  }
 }
 
 function showView(name) {
-  [vLogin,vHome,vChannels,vPlayer,vAdmin,vMovies,vSeries].forEach(v=>v?.classList.remove('show'));
+  [vLogin,vHome,vChannels,vPlayer,vAdmin,vMovies,vSeries,vSeriesInfo].forEach(v=>v?.classList.remove('show'));
   topbar.style.display = (name!=='login' && name!=='player' && name!=='admin') ? 'flex' : 'none';
   if(name==='login')    vLogin?.classList.add('show');
   if(name==='home')     vHome?.classList.add('show');
@@ -557,6 +561,7 @@ function showView(name) {
   if(name==='movies')   vMovies?.classList.add('show');
   if(name==='series')   vSeries?.classList.add('show');
   if(name==='admin')    vAdmin?.classList.add('show');
+  if(name==='series-info') vSeriesInfo?.classList.add('show');
   
   ['btn-nav-tv','btn-nav-movies','btn-nav-series'].forEach(id=>{if($(id)) $(id).classList.remove('active-nav')});
   if(name==='home' && $('btn-nav-tv')) $('btn-nav-tv').classList.add('active-nav');
