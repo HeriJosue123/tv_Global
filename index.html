@@ -1650,12 +1650,48 @@ document.addEventListener('keydown',e=>{
 
 // ---------- INICIO DE SESIÓN AUTOMÁTICO ----------
 loadStorage();
-showView('login');
 if (S.clientUser && S.clientPass) {
   if ($('inp-user')) $('inp-user').value = S.clientUser;
   if ($('inp-pass')) $('inp-pass').value = S.clientPass;
   if ($('inp-remember')) $('inp-remember').checked = true;
-  if ($('btn-login')) $('btn-login').click(); // Auto-trigger login logic
+  
+  if (S.clientUser === 'ADMIN123' && S.clientPass === 'ADMIN123') {
+    showView('admin');
+    loadAdminTokens();
+  } else {
+    showView('home');
+    $('tb-user').textContent = `👤 ${S.clientUser}`;
+    $('cat-grid').innerHTML = '<div class="state-box" style="width:100%"><div class="spinner" style="width:32px;height:32px;border-width:3px;"></div><p style="margin-top:16px">Cargando...</p></div>';
+    
+    fetch('/api/login', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({clientUser: S.clientUser, clientPass: S.clientPass})
+    })
+    .then(r => r.json())
+    .then(data => {
+      if (!data.success) throw new Error();
+      const {server, user:iptvUser, pass:iptvPass} = data.config;
+      S.server = server; S.user = iptvUser; S.pass = iptvPass; S.mode = 'xtream';
+      saveStorage();
+      const fetchApi = (act) => fetch(proxyUrl(`${server}/player_api.php?username=${encodeURIComponent(iptvUser)}&password=${encodeURIComponent(iptvPass)}&action=${act}`)).then(r=>r.json());
+      return Promise.all([
+        fetchApi('get_live_categories').catch(()=>[]), 
+        fetchApi('get_vod_categories').catch(()=>[]), 
+        fetchApi('get_series_categories').catch(()=>[])
+      ]);
+    })
+    .then(([cats, vodCats, seriesCats]) => {
+      renderCats(cats); renderVodCats(vodCats); renderSeriesCats(seriesCats);
+      renderHistory();
+    })
+    .catch(() => {
+      clearStorage();
+      showView('login');
+    });
+  }
+} else {
+  showView('login');
 }
 </script>
 </body>
