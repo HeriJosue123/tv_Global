@@ -349,25 +349,34 @@
   .channels-content { flex:1; overflow-y:auto; padding:20px; }
 
   /* Channel Grid */
-  .ch-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(155px,1fr)); gap:12px; }
-  .ch-card { position:relative; background:var(--surface); border-radius:var(--radius); overflow:hidden; cursor:pointer; border:1px solid var(--border); transition:transform 0.25s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.25s,border-color 0.25s; animation:fadeIn 0.3s ease both; }
-  .ch-card:hover { transform:scale(1.09) translateY(-4px); border-color:var(--red); box-shadow:0 12px 32px rgba(229,9,20,0.22),0 4px 12px rgba(0,0,0,0.4); z-index:10; }
-  .ch-logo-wrap { width:100%; aspect-ratio:16/9; background:var(--surface2); display:flex; align-items:center; justify-content:center; overflow:hidden; position:relative; }
-  .ch-logo-wrap img { width:100%; height:100%; object-fit:contain; padding:8px; transition:transform 0.3s; }
-  .ch-card:hover .ch-logo-wrap img { transform:scale(1.06); }
+  .ch-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:16px; }
+  .ch-card { position:relative; background:var(--surface2); border-radius:var(--radius-lg); overflow:hidden; cursor:pointer; border:1px solid var(--border); transition:transform var(--duration-slow) var(--ease-spring), box-shadow var(--duration), border-color var(--duration); animation:fadeIn 0.3s ease both; aspect-ratio:16/9; }
+  .ch-card:hover { transform:scale(1.08) translateY(-6px); border-color:var(--border-active); box-shadow:var(--shadow-lg), 0 0 20px var(--red-subtle); z-index:10; }
+  
+  .ch-logo-wrap { width:100%; height:100%; background:radial-gradient(circle at center, var(--surface) 0%, #000 100%); display:flex; align-items:center; justify-content:center; overflow:hidden; position:relative; }
+  .ch-logo-wrap img { width:80%; height:80%; object-fit:contain; filter:drop-shadow(0 4px 12px rgba(0,0,0,0.5)); transition:transform var(--duration-slow) var(--ease-spring); }
+  .ch-card:hover .ch-logo-wrap img { transform:scale(1.15); }
+  
   .ch-fallback { font-size:20px; font-weight:900; opacity:0.5; display:none; }
-  .live-badge { position:absolute; top:6px; left:6px; display:flex; align-items:center; gap:4px; background:rgba(0,0,0,0.72); backdrop-filter:blur(4px); padding:3px 7px 3px 5px; border-radius:4px; font-size:10px; font-weight:700; letter-spacing:0.5px; pointer-events:none; }
-  .live-dot { width:7px; height:7px; border-radius:50%; background:var(--red); animation:pulse 1.5s infinite; flex-shrink:0; }
-  .ch-name { padding:9px 10px; font-size:12px; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; text-align:center; }
-  .ch-fav-btn { position:absolute; top:6px; right:6px; width:26px; height:26px; border:none; background:rgba(0,0,0,0.65); backdrop-filter:blur(4px); border-radius:50%; color:white; font-size:13px; display:flex; align-items:center; justify-content:center; opacity:0; transition:opacity 0.2s; z-index:5; }
+  
+  /* Live Badge */
+  .live-badge { position:absolute; top:8px; left:8px; display:flex; align-items:center; gap:6px; background:rgba(0,0,0,0.6); backdrop-filter:blur(8px); padding:4px 8px; border-radius:6px; font-size:10px; font-weight:800; letter-spacing:1px; color:white; border:1px solid rgba(255,255,255,0.1); pointer-events:none; z-index:5; }
+  .live-dot { width:6px; height:6px; border-radius:50%; background:var(--red); animation:glowPulse 1.5s infinite; flex-shrink:0; box-shadow:0 0 8px var(--red); }
+  
+  /* Channel Name Overlay */
+  .ch-name { position:absolute; bottom:0; left:0; right:0; padding:24px 12px 10px; background:linear-gradient(to top, rgba(0,0,0,0.95) 0%, transparent 100%); font-size:13px; font-weight:700; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; text-align:center; color:white; text-shadow:0 2px 4px rgba(0,0,0,0.8); z-index:5; pointer-events:none; }
+  
+  /* Favorite Button */
+  .ch-fav-btn { position:absolute; top:8px; right:8px; width:30px; height:30px; border:none; background:rgba(0,0,0,0.5); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.1); border-radius:50%; color:rgba(255,255,255,0.6); font-size:14px; display:flex; align-items:center; justify-content:center; opacity:0; transition:all var(--duration); z-index:10; }
   .ch-card:hover .ch-fav-btn { opacity:1; }
-  .ch-fav-btn.faved { opacity:1 !important; color:gold; }
+  .ch-fav-btn:hover { background:rgba(255,255,255,0.15); color:white; transform:scale(1.1); }
+  .ch-fav-btn.faved { opacity:1 !important; color:#ffb703; text-shadow:0 0 10px rgba(255,183,3,0.6); animation:pulseSoft 2s infinite; }
 
   /* Small cards for history */
-  .ch-card-sm { flex-shrink:0; width:130px; background:var(--surface); border-radius:8px; overflow:hidden; cursor:pointer; border:1px solid var(--border); transition:transform 0.2s,border-color 0.2s; }
-  .ch-card-sm:hover { transform:scale(1.05); border-color:var(--red); }
-  .ch-card-sm .ch-logo-wrap { aspect-ratio:16/9; }
-  .ch-card-sm .ch-name { font-size:11px; padding:6px 8px; }
+  .ch-card-sm { flex-shrink:0; width:160px; aspect-ratio:16/9; background:var(--surface2); border-radius:var(--radius-sm); overflow:hidden; cursor:pointer; border:1px solid var(--border); transition:transform var(--duration), border-color var(--duration); position:relative; }
+  .ch-card-sm:hover { transform:scale(1.05); border-color:var(--border-active); box-shadow:var(--shadow-md); z-index:2; }
+  .ch-card-sm .ch-logo-wrap { width:100%; height:100%; }
+  .ch-card-sm .ch-name { position:absolute; bottom:0; left:0; right:0; padding:16px 8px 6px; font-size:11px; }
 
   /* ====== HOVER PREVIEW ====== */
   #hover-preview { position:fixed; border-radius:10px; overflow:hidden; pointer-events:none; z-index:9999; box-shadow:0 20px 60px rgba(0,0,0,0.8); border:1px solid rgba(255,255,255,0.15); background:black; display:none; width:280px; aspect-ratio:16/9; }
