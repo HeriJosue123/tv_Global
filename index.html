@@ -1148,7 +1148,6 @@ async function playChannel(ch,streamUrl) {
   setupPlayerUIHide();
 }
 
-let uiHideTimer=null;
 function setupPlayerUIHide(){
   const ui=$('player-ui'); ui.classList.remove('hide');
   const ctrl=$('player-controls'); if(ctrl) ctrl.classList.remove('hide');
