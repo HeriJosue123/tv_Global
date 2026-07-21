@@ -1024,7 +1024,7 @@ function resolveStreamUrl(ch) {
   if(ch.stream_type === 'series' || ch.episode_num) {
     return getStreamUrl(`${S.server}/series/${encodeURIComponent(S.user)}/${encodeURIComponent(S.pass)}/${ch.id||ch.stream_id}.${ch.container_extension||'mp4'}`);
   }
-  return getStreamUrl(`${S.server}/live/${encodeURIComponent(S.user)}/${encodeURIComponent(S.pass)}/${ch.stream_id}.ts`);
+  return getStreamUrl(`${S.server}/live/${encodeURIComponent(S.user)}/${encodeURIComponent(S.pass)}/${ch.stream_id}.m3u8`);
 }
 
 // Carga la imagen del logo en un elemento img existente con SVG de respaldo
@@ -1560,16 +1560,19 @@ async function playChannel(ch,streamUrl) {
     vid.src=streamUrl; vid.play().catch(()=>{});
   }
   
-  // Anti-freeze Watchdog
+  // Anti-freeze Watchdog & Auto-Reconnect
   if(window.antiFreeze) clearInterval(window.antiFreeze);
   let lastTime = -1, freezeCount = 0;
   window.antiFreeze = setInterval(() => {
     if(!vid.paused && vid.readyState >= 2) {
       if(vid.currentTime === lastTime) {
         freezeCount++;
-        if(freezeCount >= 3) { // Frozen for ~3 seconds
+        if(freezeCount === 3) { // Frozen for 3 seconds
           vid.currentTime += 0.5; // Force frame skip
-          freezeCount = 0;
+        } else if(freezeCount >= 8) { // Frozen for 8 seconds, stream died or looped
+          console.warn('Stream permanently frozen. Auto-reconnecting...');
+          clearInterval(window.antiFreeze);
+          playChannel(ch, streamUrl); // Auto-reconnect seamlessly
         }
       } else {
         freezeCount = 0; lastTime = vid.currentTime;
