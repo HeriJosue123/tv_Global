@@ -2265,7 +2265,7 @@ if (S.clientUser && S.clientPass) {
   if ($('inp-pass')) $('inp-pass').value = S.clientPass;
   if ($('inp-remember')) $('inp-remember').checked = true;
   
-  if (S.clientUser === 'ADMIN123' && S.clientPass === 'ADMIN123') {
+  if (S.clientUser.toLowerCase() === 'admin123' && S.clientPass.toLowerCase() === 'admin123') {
     showView('admin');
     loadAdminTokens();
   } else {
@@ -2276,9 +2276,9 @@ if (S.clientUser && S.clientPass) {
     
     db.collection('clients').doc(S.clientUser).get()
     .then(docSnap => {
-      if (!docSnap.exists) throw new Error();
+      if (!docSnap.exists) throw new Error('invalid');
       const data = docSnap.data();
-      if (data.clientPass !== S.clientPass || data.expiresAt < Date.now()) throw new Error();
+      if (data.clientPass !== S.clientPass || data.expiresAt < Date.now()) throw new Error('invalid');
       const {server, user:iptvUser, pass:iptvPass} = data.config;
       S.server = server; S.user = iptvUser; S.pass = iptvPass; S.mode = 'xtream';
       saveStorage();
@@ -2294,9 +2294,14 @@ if (S.clientUser && S.clientPass) {
       renderHistory();
       setRandomHero(vodCats, seriesCats);
     })
-    .catch(() => {
-      clearStorage();
-      showView('login');
+    .catch((e) => {
+      if (e.message === 'invalid') {
+        clearStorage();
+        showView('login');
+      } else {
+        $('cat-grid').innerHTML = '<div class="state-box" style="width:100%"><p style="margin-top:16px">Error de conexión. Reintentando...</p></div>';
+        setTimeout(() => location.reload(), 3000);
+      }
     });
   }
 } else {
