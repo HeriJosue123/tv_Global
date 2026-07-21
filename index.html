@@ -576,6 +576,10 @@
     .history-section h3 { margin: 0 20px 16px !important; }
   }
   </style>
+  
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore-compat.js"></script>
 </head>
 <body>
 
@@ -990,7 +994,21 @@
 <script>
 // =================================================
 //  IPTV GLOBAL HD - v2.0 App Completa
+//  -> Base de Datos Firebase Inyectada
 // =================================================
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDTXvNULC6RS_qXW2W26pEj1fsjIe6K-Uc",
+  authDomain: "tv-global-81c46.firebaseapp.com",
+  projectId: "tv-global-81c46",
+  storageBucket: "tv-global-81c46.firebasestorage.app",
+  messagingSenderId: "29886128200",
+  appId: "1:29886128200:web:05c3e42d78776ca913b87d"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
+// ========== ESTADO ==========
 const STORAGE_KEY = 'iptv_global_hd_v2';
 const $ = id => document.getElementById(id);
 
@@ -1159,7 +1177,7 @@ $('btn-login').onclick=async()=>{
   const pass=$('inp-pass').value.trim();
   if(!user||!pass){err.textContent='Ingresa tu usuario y contraseña.';return;}
   
-  if(user==='ADMIN123' && pass==='ADMIN123') {
+  if(user==='admin123' && pass==='admin123') {
     S.clientUser = user;
     S.clientPass = pass;
     saveStorage();
@@ -1170,13 +1188,12 @@ $('btn-login').onclick=async()=>{
   
   setLoginLoading(true);
   try {
-      const r = await fetch('/api/login', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({clientUser: user, clientPass: pass})
-      });
-      const data = await r.json();
-      if (!r.ok || !data.success) throw new Error(data.error || 'Credenciales inválidas');
+      const docSnap = await db.collection('clients').doc(user).get();
+      if (!docSnap.exists) throw new Error('Credenciales inválidas');
+      
+      const data = docSnap.data();
+      if (data.clientPass !== pass) throw new Error('Credenciales inválidas');
+      if (data.expiresAt < Date.now()) throw new Error('Su suscripción ha expirado');
       
       const {server, user:iptvUser, pass:iptvPass} = data.config;
       S.server=server; S.user=iptvUser; S.pass=iptvPass; S.mode='xtream'; S.clientUser=user; S.clientPass=pass;
@@ -1959,8 +1976,8 @@ window.selectProvider = (type, btn) => {
 
 async function loadAdminTokens() {
   try {
-    const r = await fetch('/admin/tokens?t=' + Date.now());
-    const data = await r.json();
+    const snapshot = await db.collection('clients').get();
+    const data = snapshot.docs.map(doc => ({ clientUser: doc.id, ...doc.data() }));
     const tbody = document.getElementById('adm-tokens-tbody');
     
     if(!Array.isArray(data)) {
@@ -2039,8 +2056,8 @@ window.filterAdminUsers = (val) => {
 window.adminDeleteToken = async (clientUser) => {
   if(!confirm(`¿Eliminar acceso de ${clientUser}?`)) return;
   try {
-    const r=await fetch('/admin/tokens/'+encodeURIComponent(clientUser), {method:'DELETE'});
-    if(r.ok) loadAdminTokens();
+    await db.collection('clients').doc(clientUser).delete();
+    loadAdminTokens();
   } catch(e){ alert('Error al eliminar'); }
 };
 
@@ -2067,19 +2084,16 @@ if (document.getElementById('btn-admin-create')) {
     
     msg.textContent='Creando...'; msg.style.color='white';
     try {
-      const r = await fetch('/admin/tokens', {
-        method:'POST', headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({ clientUser, clientPass, days, server, user, pass })
+      await db.collection('clients').doc(clientUser).set({
+        clientPass,
+        config: { server, user, pass },
+        createdAt: Date.now(),
+        expiresAt: Date.now() + (days * 24 * 60 * 60 * 1000)
       });
-      const data = await r.json();
-      if(r.ok && !data.error) {
-        msg.textContent='¡Usuario creado exitosamente!'; msg.style.color='#00d26a';
-        document.getElementById('adm-client-user').value=''; 
-        document.getElementById('adm-client-pass').value='';
-        loadAdminTokens();
-      } else {
-        msg.textContent=data.error||'Error al crear'; msg.style.color='#ff4b4b';
-      }
+      msg.textContent='¡Usuario creado exitosamente!'; msg.style.color='#00d26a';
+      document.getElementById('adm-client-user').value=''; 
+      document.getElementById('adm-client-pass').value='';
+      loadAdminTokens();
     } catch(e) {
       msg.textContent='Error de red'; msg.style.color='#ff4b4b';
     }
@@ -2260,14 +2274,11 @@ if (S.clientUser && S.clientPass) {
     $('tb-user').textContent = `👤 ${S.clientUser}`;
     $('cat-grid').innerHTML = '<div class="state-box" style="width:100%"><div class="spinner" style="width:32px;height:32px;border-width:3px;"></div><p style="margin-top:16px">Cargando...</p></div>';
     
-    fetch('/api/login', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({clientUser: S.clientUser, clientPass: S.clientPass})
-    })
-    .then(r => r.json())
-    .then(data => {
-      if (!data.success) throw new Error();
+    db.collection('clients').doc(S.clientUser).get()
+    .then(docSnap => {
+      if (!docSnap.exists) throw new Error();
+      const data = docSnap.data();
+      if (data.clientPass !== S.clientPass || data.expiresAt < Date.now()) throw new Error();
       const {server, user:iptvUser, pass:iptvPass} = data.config;
       S.server = server; S.user = iptvUser; S.pass = iptvPass; S.mode = 'xtream';
       saveStorage();
