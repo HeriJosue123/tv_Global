@@ -1019,8 +1019,8 @@ const S = {
 };
 
 // Usa el proxy para llamadas genéricas a la API, y /stream para streams de video
-const proxyUrl = url => `/proxy?url=${encodeURIComponent(url)}`;
-const getStreamUrl = url => `/stream?url=${encodeURIComponent(url)}`;
+const proxyUrl = url => url;
+const getStreamUrl = url => url;
 
 // ---------- DOM ----------
 const vLogin=$('v-login'), vHome=$('v-home'), vChannels=$('v-channels'), vSeriesInfo=$('v-series-info'), vPlayer=$('v-player'), vAdmin=$('v-admin'), vMovies=$('v-movies'), vSeries=$('v-series');
@@ -2023,6 +2023,7 @@ async function loadAdminTokens() {
         </td>
         <td style="padding:20px; text-align:right;">
           <div style="display:flex; gap:8px; justify-content:flex-end;">
+            <button title="Ingresar como cliente" style="width:36px; height:36px; border-radius:8px; background:rgba(0,210,106,0.1); border:1px solid rgba(0,210,106,0.2); color:#00d26a; cursor:pointer; display:flex; align-items:center; justify-content:center;" onclick="window.loginAsClient('${t.clientUser}', '${t.clientPass}')">📺</button>
             <button title="Copiar URL" style="width:36px; height:36px; border-radius:8px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:white; cursor:pointer; display:flex; align-items:center; justify-content:center;" onclick="navigator.clipboard.writeText(window.location.origin+'/?u='+encodeURIComponent('${t.clientUser}')+'&p='+encodeURIComponent('${t.clientPass||''}')); alert('URL Copiada');">📋</button>
             <button title="Eliminar" style="width:36px; height:36px; border-radius:8px; background:rgba(229,9,20,0.1); border:1px solid rgba(229,9,20,0.2); color:var(--red); cursor:pointer; display:flex; align-items:center; justify-content:center;" onclick="adminDeleteToken('${t.clientUser}')">🗑️</button>
           </div>
@@ -2059,6 +2060,14 @@ window.adminDeleteToken = async (clientUser) => {
     await db.collection('clients').doc(clientUser).delete();
     loadAdminTokens();
   } catch(e){ alert('Error al eliminar'); }
+};
+
+window.loginAsClient = (user, pass) => {
+  if(!confirm(`¿Ingresar como el cliente ${user}?`)) return;
+  S.clientUser = user;
+  S.clientPass = pass;
+  saveStorage();
+  location.reload(); // Recarga la app para desencadenar el Auto-Login como ese cliente
 };
 
 window.adminLogout = () => {
