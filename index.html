@@ -837,6 +837,26 @@
           <input type="text" id="adm-m3u-url" class="login-input" style="flex:1; background:rgba(0,0,0,0.2); font-size:13px;" placeholder="Pega aquí la URL M3U completa para extraer datos...">
           <button class="tb-btn" style="background:white; color:black; padding:0 20px; font-weight:700; border-radius:8px; font-size:13px;" onclick="parseAdminM3U()">Extraer</button>
         </div>
+        <div style="margin-bottom:16px;">
+          <label style="display:block; margin-bottom:6px; font-size:12px; color:var(--text-secondary);">⚡ Cuentas Rápidas ZeusPro (Elige una para autocompletar)</label>
+          <select id="adm-zeus-select" class="login-input" style="width:100%; font-size:13px; padding:10px; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.1); color:white; border-radius:8px; cursor:pointer;" onchange="
+            if(this.value) {
+              const [u, p] = this.value.split('|');
+              document.getElementById('adm-server').value = 'http://tv.zeuspro.xyz:2052';
+              document.getElementById('adm-user').value = u;
+              document.getElementById('adm-pass').value = p;
+            }
+          ">
+            <option value="">-- Seleccionar cuenta ZeusPro --</option>
+            <option value="Ccolan4|dvdBkTSQXx">Ccolan4 (Vence: Marzo 2027 | 3 Conexiones)</option>
+            <option value="mariosiles|Z9CmvQ3g7p">mariosiles (Vence: Noviembre 2026 | 3 Conexiones)</option>
+            <option value="georgezorrilla2019|e95Nb2nEburf">georgezorrilla2019 (Vence: Octubre 2026 | 3 Conexiones)</option>
+            <option value="miguelmikey7|c09044e228d8">miguelmikey7 (Vence: Octubre 2026 | 3 Conexiones)</option>
+            <option value="DHGbcde200|3MbWfUx5fL">DHGbcde200 (Vence: Septiembre 2026 | 3 Conexiones)</option>
+            <option value="lorenabarreto23|c6d7e3d73de8">lorenabarreto23 (Vence: Agosto 2026 | 3 Conexiones)</option>
+            <option value="Yanisleydis2021|6514a390d9de">Yanisleydis2021 (Vence: Agosto 2026 | 3 Conexiones)</option>
+          </select>
+        </div>
         <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:16px;">
           <div><label style="display:block; margin-bottom:6px; font-size:12px; color:var(--text-secondary);">Servidor IPTV</label><input type="text" id="adm-server" class="login-input" style="width:100%; font-size:13px; padding:10px;" value="http://elpapadetodos.live:8080"></div>
           <div><label style="display:block; margin-bottom:6px; font-size:12px; color:var(--text-secondary);">Usuario IPTV</label><input type="text" id="adm-user" class="login-input" style="width:100%; font-size:13px; padding:10px;" value="6user2825"></div>
