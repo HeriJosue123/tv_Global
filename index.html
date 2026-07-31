@@ -795,8 +795,9 @@
       <div style="margin-bottom:24px;">
         <label style="display:block; margin-bottom:12px; font-size:13px; color:var(--text-secondary); font-weight:500;">Seleccionar Proveedor IPTV</label>
         <div style="display:flex; gap:12px; flex-wrap:wrap;" id="provider-buttons">
-          <button class="tb-btn provider-btn active-nav" style="padding:10px 20px; font-weight:600; border-radius:8px; border:1px solid var(--border); background:rgba(255,255,255,0.03); color:white; font-size:13px; transition:all 0.3s;" onclick="selectProvider('papa', this)">🚀 El Papa de Todos</button>
+          <button class="tb-btn provider-btn active-nav" style="padding:10px 20px; font-weight:600; border-radius:8px; border:1px solid var(--border); background:rgba(255,255,255,0.03); color:white; font-size:13px; transition:all 0.3s;" onclick="selectProvider('papa', this)">📺 El Papa de Todos</button>
           <button class="tb-btn provider-btn" style="padding:10px 20px; font-weight:600; border-radius:8px; border:1px solid var(--border); background:rgba(255,255,255,0.03); color:white; font-size:13px; transition:all 0.3s;" onclick="selectProvider('starlatino', this)">⭐ StarLatino</button>
+          <button class="tb-btn provider-btn" style="padding:10px 20px; font-weight:600; border-radius:8px; border:1px solid var(--border); background:rgba(255,255,255,0.03); color:white; font-size:13px; transition:all 0.3s;" onclick="selectProvider('zeus', this)">⚡ ZeusPro</button>
           <button class="tb-btn provider-btn" style="padding:10px 20px; font-weight:600; border-radius:8px; border:1px solid var(--border); background:rgba(255,255,255,0.03); color:white; font-size:13px; transition:all 0.3s;" onclick="selectProvider('custom', this)">⚙️ Personalizado</button>
         </div>
         <select id="starlatino-select" class="login-input" style="display:none; margin-top:20px; width:100%; padding:14px; font-size:15px; background:rgba(0,0,0,0.4); border:1px solid rgba(255,255,255,0.1); color:white; border-radius:8px; outline:none;" onchange="applyStarLatinoAcc(this.value)">
@@ -812,6 +813,16 @@
           <option value="pandiuxstore|nhcyRJkJGTc5">pandiuxstore (Vence 05/08/2026)</option>
           <option value="ninoska90days|w9JzQdUsSVMH">ninoska90days (Vence 04/08/2026)</option>
           <option value="DSJYcjyHzYw9|ew7dcQp98vgP">DSJYcjyHzYw9 (Vence 23/07/2026)</option>
+        </select>
+        <select id="zeus-select" class="login-input" style="display:none; margin-top:20px; width:100%; padding:14px; font-size:15px; background:rgba(0,0,0,0.4); border:1px solid rgba(255,255,255,0.1); color:white; border-radius:8px; outline:none;" onchange="applyZeusAcc(this.value)">
+          <option value="">-- Selecciona una cuenta de ZeusPro --</option>
+          <option value="Ccolan4|dvdBkTSQXx">Ccolan4 (Vence: Marzo 2027 | 3 Conexiones)</option>
+          <option value="mariosiles|Z9CmvQ3g7p">mariosiles (Vence: Noviembre 2026 | 3 Conexiones)</option>
+          <option value="georgezorrilla2019|e95Nb2nEburf">georgezorrilla2019 (Vence: Octubre 2026 | 3 Conexiones)</option>
+          <option value="miguelmikey7|c09044e228d8">miguelmikey7 (Vence: Octubre 2026 | 3 Conexiones)</option>
+          <option value="DHGbcde200|3MbWfUx5fL">DHGbcde200 (Vence: Septiembre 2026 | 3 Conexiones)</option>
+          <option value="lorenabarreto23|c6d7e3d73de8">lorenabarreto23 (Vence: Agosto 2026 | 3 Conexiones)</option>
+          <option value="Yanisleydis2021|6514a390d9de">Yanisleydis2021 (Vence: Agosto 2026 | 3 Conexiones)</option>
         </select>
       </div>
 
@@ -1968,12 +1979,21 @@ window.applyStarLatinoAcc = (val) => {
   document.getElementById('adm-pass').value = p;
 };
 
+window.applyZeusAcc = (val) => {
+  if(!val) return;
+  const [u,p] = val.split('|');
+  document.getElementById('adm-user').value = u;
+  document.getElementById('adm-pass').value = p;
+};
+
 window.selectProvider = (type, btn) => {
   document.querySelectorAll('.provider-btn').forEach(b=>b.classList.remove('active-nav'));
   btn.classList.add('active-nav');
   const pFields = document.getElementById('admin-provider-fields');
   const starSelect = document.getElementById('starlatino-select');
+  const zeusSelect = document.getElementById('zeus-select');
   starSelect.style.display = (type === 'starlatino') ? 'block' : 'none';
+  if (zeusSelect) zeusSelect.style.display = (type === 'zeus') ? 'block' : 'none';
   
   if (type === 'papa') {
     pFields.style.display = 'none';
@@ -1983,6 +2003,11 @@ window.selectProvider = (type, btn) => {
   } else if (type === 'starlatino') {
     pFields.style.display = 'none';
     document.getElementById('adm-server').value = 'http://starlatino.tv:8880';
+    document.getElementById('adm-user').value = '';
+    document.getElementById('adm-pass').value = '';
+  } else if (type === 'zeus') {
+    pFields.style.display = 'none';
+    document.getElementById('adm-server').value = 'http://tv.zeuspro.xyz:2052';
     document.getElementById('adm-user').value = '';
     document.getElementById('adm-pass').value = '';
     starSelect.value = ''; // Reset dropdown
