@@ -75,9 +75,9 @@
 
   /* ====== VIEW SYSTEM ====== */
   .app-layout { display:flex; height:100vh; overflow:hidden; }
-  .view { display:none; width:100%; flex-direction:column; opacity:0; transition:opacity var(--duration-slow) ease; }
+  .view { display:none; flex:1; min-width:0; width:100%; flex-direction:column; opacity:0; transition:opacity var(--duration-slow) ease; }
   .view.show { display:flex; opacity:1; }
-  .main-content { flex:1; display:flex; flex-direction:column; overflow:hidden; position:relative; }
+  .main-content { flex:1; min-width:0; width:100%; display:flex; flex-direction:column; overflow:hidden; position:relative; }
 
   /* ====== ANIMATIONS ====== */
   @keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:none} }
@@ -273,8 +273,8 @@
   .tb-user { font-size:13px; color:var(--muted); padding:6px 12px; background:var(--surface); border-radius:20px; border:1px solid var(--border); }
 
   /* ====== HOME ====== */
-  #v-home { height:100vh; overflow:hidden; }
-  .home-content { flex:1; overflow-y:auto; padding:0; height:100%; position:relative; }
+  #v-home { height:100vh; overflow:hidden; flex:1; min-width:0; width:100%; }
+  .home-content { flex:1; min-width:0; width:100%; overflow-y:auto; padding:0; height:100%; position:relative; }
   
   /* Hero Banner */
   .hero-banner {
