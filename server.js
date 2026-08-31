@@ -17,6 +17,29 @@ const sessions = new Map();
 const ts = () => new Date().toLocaleTimeString();
 const mask = (str) => str ? str.substring(0, 3) + '***' : '';
 
+
+// === TEMPORARY TEST MODE ===
+const TEST_MODE = true;
+let testSessionId = null;
+if (TEST_MODE) {
+    testSessionId = crypto.randomUUID();
+    sessions.set(testSessionId, {
+        server: 'http://redworld.pro:8880',
+        user: 'demop3814',
+        pass: 'eBKyum6YnxNm',
+        activeSockets: [],
+        streamTimeout: null,
+        lastActive: Date.now()
+    });
+    console.log('[TEST MODE] Auto-created session: ' + testSessionId);
+}
+
+app.get('/api/test_session', (req, res) => {
+    if (!TEST_MODE) return res.status(403).json({error: 'Not in test mode'});
+    res.json({ sessionId: testSessionId });
+});
+// ===========================
+
 // 1. Crear Sesión BYOC
 app.post('/api/session', (req, res) => {
     const { server, user, pass } = req.body;

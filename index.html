@@ -1081,8 +1081,13 @@ function esc(str) {
 // Construye la URL del stream
 
 function resolveStreamUrl(ch) {
-    if(!ch) return '';
-    // HLS.js requires .m3u8 extension to be correctly identified in some cases.
+    if (!ch) return '';
+    if (ch.stream_type === 'movie' || ch.container_extension === 'mp4' || ch.container_extension === 'mkv') {
+        return `/proxy/stream/movie/${ch.stream_id}?ext=${ch.container_extension || 'mp4'}&sid=${S.sessionId}`;
+    }
+    if (ch.stream_type === 'series' || ch.episode_num) {
+        return `/proxy/stream/series/${ch.id || ch.stream_id}?ext=${ch.container_extension || 'mp4'}&sid=${S.sessionId}`;
+    }
     return `/proxy/stream/live/${ch.stream_id}?sid=${S.sessionId}`;
 }
 
@@ -1609,10 +1614,10 @@ async function playChannel(ch,streamUrl) {
         else if(d.type===Hls.ErrorTypes.MEDIA_ERROR) mainPlayer.recoverMediaError();
       }
     });
-  } else if (streamUrl.includes('.mp4') || streamUrl.includes('.mkv') || streamUrl.includes('.avi')) {
+  } else if (ch.stream_type === 'movie' || ch.stream_type === 'episode' || streamUrl.includes('ext=')) {
     vid.src = streamUrl;
     vid.play().catch(()=>{});
-  } else if (mpegts.getFeatureList().mseLivePlayback) {
+  } else if (typeof mpegts !== 'undefined' && mpegts.getFeatureList().mseLivePlayback) {
     mainPlayer=mpegts.createPlayer({type:streamUrl.includes('.ts')?'mpegts':'m2ts',isLive:true,url:streamUrl});
     mainPlayer.attachMediaElement(vid);
     mainPlayer.load();
@@ -1985,114 +1990,67 @@ window.parseAdminM3U = () => {
   }
 };
 
-window.applyStarLatinoAcc = (val) => {
-  if(!val) return;
-  const [u,p] = val.split('|');
-  document.getElementById('adm-user').value = u;
-  document.getElementById('adm-pass').value = p;
-};
+// ---------- BOOT ----------
+loadStorage();
 
-window.applyZeusAcc = (val) => {
-  if(!val) return;
-  const [u,p] = val.split('|');
-  document.getElementById('adm-user').value = u;
-  document.getElementById('adm-pass').value = p;
-};
-
-window.selectProvider = (type, btn) => {
-  document.querySelectorAll('.provider-btn').forEach(b=>b.classList.remove('active-nav'));
-  btn.classList.add('active-nav');
-  const pFields = document.getElementById('admin-provider-fields');
-  const starSelect = document.getElementById('starlatino-select');
-  const zeusSelect = document.getElementById('zeus-select');
-  starSelect.style.display = (type === 'starlatino') ? 'block' : 'none';
-  if (zeusSelect) zeusSelect.style.display = (type === 'zeus') ? 'block' : 'none';
-  
-  if (type === 'papa') {
-    pFields.style.display = 'none';
-    document.getElementById('adm-server').value = 'http://elpapadetodos.live:8080';
-    document.getElementById('adm-user').value = '6user2825';
-    document.getElementById('adm-pass').value = '123456';
-  } else if (type === 'starlatino') {
-    pFields.style.display = 'none';
-    document.getElementById('adm-server').value = 'http://starlatino.tv:8880';
-    document.getElementById('adm-user').value = '';
-    document.getElementById('adm-pass').value = '';
-  } else if (type === 'zeus') {
-    pFields.style.display = 'none';
-    document.getElementById('adm-server').value = 'http://tv.zeuspro.xyz:2052';
-    document.getElementById('adm-user').value = '';
-    document.getElementById('adm-pass').value = '';
-    starSelect.value = ''; // Reset dropdown
-  } else {
-    pFields.style.display = 'block';
-    document.getElementById('adm-server').value = '';
-    document.getElementById('adm-user').value = '';
-    document.getElementById('adm-pass').value = '';
-  }
-};
-
-        
-        try {
-            $('byoc-btn').textContent = 'Conectando...';
-            const res = await fetch('/api/session', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({server, user, pass})
-            }).then(r => r.json());
-            
-            if (res.error) throw new Error(res.error);
-            
+async function boot() {
+    try {
+        // Modo de prueba temporal: Intentar obtener la sesión pre-creada del backend
+        let res = await fetch('/api/test_session').then(r => r.json()).catch(() => ({}));
+        if (res.sessionId) {
             S.sessionId = res.sessionId;
-            saveStorage();
-            
-            const fetchApi = (act) => fetch('/proxy/api?sid=' + S.sessionId + '&action=' + act).then(r=>r.json());
-            const [cats, vodCats, seriesCats] = await Promise.all([
-                fetchApi('get_live_categories').catch(()=>[]),
-                fetchApi('get_vod_categories').catch(()=>[]),
-                fetchApi('get_series_categories').catch(()=>[])
-            ]);
-            
-            showView("home");
-            renderCats(cats); 
-            renderVodCats(vodCats); 
-            renderSeriesCats(seriesCats);
-            setRandomHero(vodCats, seriesCats);
-        } catch(e) {
-            $('byoc-err').textContent = e.message;
-        } finally {
-            $('byoc-btn').textContent = 'Conectar';
+            console.log('TEST MODE: Loaded auto-session', S.sessionId);
         }
-    };
-}
 
-if (S.sessionId) {
-    // Si ya hay sesión intentamos cargar, pero como el backend pierde las sesiones al reiniciar, 
-    // mejor requerimos login siempre para desarrollo si falla.
-    const fetchApi = (act) => fetch('/proxy/api?sid=' + S.sessionId + '&action=' + act).then(r=>r.json());
-    fetchApi('get_live_categories')
-        .then(cats => {
-            if (cats.error) throw new Error(cats.error);
-            return Promise.all([
-                cats,
-                fetchApi('get_vod_categories').catch(()=>[]),
-                fetchApi('get_series_categories').catch(()=>[])
-            ]);
-        })
-        .then(([cats, vodCats, seriesCats]) => {
-            showView("home");
-            renderCats(cats); 
-            renderVodCats(vodCats); 
-            renderSeriesCats(seriesCats);
-            setRandomHero(vodCats, seriesCats);
-        }).catch(() => {
+        if (!S.sessionId) {
             showView("byoc");
-            startByocLogin();
-        });
-} else {
-    showView("byoc");
-    startByocLogin();
+            const btn = $('byoc-btn');
+            if (btn) {
+                btn.onclick = async () => {
+                    const server = $('byoc-server').value.trim();
+                    const user = $('byoc-user').value.trim();
+                    const pass = $('byoc-pass').value.trim();
+                    $('byoc-err').textContent = '';
+                    if(!server || !user || !pass) { $('byoc-err').textContent = 'Faltan datos'; return; }
+                    
+                    try {
+                        btn.textContent = 'Conectando...';
+                        const loginRes = await fetch('/api/session', {
+                            method: 'POST',
+                            headers: {'Content-Type': 'application/json'},
+                            body: JSON.stringify({server, user, pass})
+                        }).then(r => r.json());
+                        if (loginRes.error) throw new Error(loginRes.error);
+                        S.sessionId = loginRes.sessionId;
+                        saveStorage();
+                        window.location.reload();
+                    } catch(e) {
+                        $('byoc-err').textContent = e.message;
+                        btn.textContent = 'Conectar';
+                    }
+                };
+            }
+            return;
+        }
+
+        const fetchApi = (act) => fetch('/proxy/api?sid=' + S.sessionId + '&action=' + act).then(r=>r.json());
+        const [cats, vodCats, seriesCats] = await Promise.all([
+            fetchApi('get_live_categories').catch(()=>[]),
+            fetchApi('get_vod_categories').catch(()=>[]),
+            fetchApi('get_series_categories').catch(()=>[])
+        ]);
+        
+        showView("home");
+        renderCats(cats); 
+        renderVodCats(vodCats); 
+        renderSeriesCats(seriesCats);
+        setRandomHero(vodCats, seriesCats);
+    } catch(e) {
+        console.error(e);
+        showView("byoc");
+    }
 }
+boot();
 </script>
 </div><!-- /main-content -->
 </div><!-- /app-layout -->
