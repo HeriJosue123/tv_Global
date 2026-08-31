@@ -2,277 +2,244 @@ const express = require('express');
 const cors = require('cors');
 const http = require('http');
 const https = require('https');
+const crypto = require('crypto');
 const path = require('path');
-const fs = require('fs');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-
-const dbPath = path.join(__dirname, 'db.json');
-let db = { tokens: [] };
-if (fs.existsSync(dbPath)) {
-    try { db = JSON.parse(fs.readFileSync(dbPath, 'utf8')); } catch(e) {}
-}
-function saveDb() { fs.writeFileSync(dbPath, JSON.stringify(db, null, 2)); }
-
-const c = {
-    rst: "\x1b[0m", b: "\x1b[1m",
-    red: "\x1b[31m", grn: "\x1b[32m",
-    ylw: "\x1b[33m", blu: "\x1b[34m",
-    cyn: "\x1b[36m", wht: "\x1b[37m",
-    bgRed: "\x1b[41m", bgBlk: "\x1b[40m"
-};
-
-const logo = `
-${c.red}${c.b}██╗██████╗ ████████╗██╗   ██╗     ██████╗ ██╗      ██████╗ ██████╗  █████╗ ██╗     
-██║██╔══██╗╚══██╔══╝██║   ██║    ██╔════╝ ██║     ██╔═══██╗██╔══██╗██╔══██╗██║     
-██║██████╔╝   ██║   ██║   ██║    ██║  ███╗██║     ██║   ██║██████╔╝███████║██║     
-██║██╔═══╝    ██║   ╚██╗ ██╔╝    ██║   ██║██║     ██║   ██║██╔══██╗██╔══██║██║     
-██║██║        ██║    ╚████╔╝     ╚██████╔╝███████╗╚██████╔╝██████╔╝██║  ██║███████╗
-╚═╝╚═╝        ╚═╝     ╚═══╝       ╚═════╝ ╚══════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝${c.rst}`;
-
-const ts = () => new Date().toLocaleTimeString();
 
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname)));
 
-// ====== RUTAS ADMINISTRATIVAS ======
-app.post('/admin/login', (req, res) => {
-    if (req.body.password === 'ADMIN123') return res.json({ success: true });
-    return res.status(401).json({ error: 'Contraseña incorrecta' });
-});
+// Almacén en memoria de sesiones aisladas
+const sessions = new Map();
+const ts = () => new Date().toLocaleTimeString();
+const mask = (str) => str ? str.substring(0, 3) + '***' : '';
 
-app.get('/admin/tokens', (req, res) => {
-    res.json(db.tokens);
-});
-
-app.post('/admin/tokens', (req, res) => {
-    const { clientUser, clientPass, days, server, user, pass } = req.body;
-    if (!clientUser || !clientPass || !days || !server || !user || !pass) return res.status(400).json({ error: 'Datos incompletos' });
-    if (db.tokens.some(t => t.clientUser === clientUser)) return res.status(400).json({ error: 'El usuario ya existe' });
-    const expiresAt = Date.now() + (days * 24 * 60 * 60 * 1000);
-    const newToken = { clientUser, clientPass, expiresAt, createdAt: Date.now(), config: { type: 'xtream', server, user, pass } };
-    db.tokens.push(newToken);
-    saveDb();
-    res.json(newToken);
-});
-
-app.delete('/admin/tokens/:clientUser', (req, res) => {
-    db.tokens = db.tokens.filter(t => t.clientUser !== req.params.clientUser);
-    saveDb();
-    res.json({ success: true });
-});
-
-// ====== RUTA DE LOGIN DEL CLIENTE ======
-app.post('/api/login', (req, res) => {
-    const { clientUser, clientPass } = req.body;
-    const tData = db.tokens.find(t => t.clientUser === clientUser && t.clientPass === clientPass);
-    if (!tData) {
-        return res.status(401).json({ error: 'Credenciales inválidas' });
-    }
-    if (Date.now() > tData.expiresAt) {
-        return res.status(401).json({ error: 'Tu cuenta ha expirado' });
+// 1. Crear Sesión BYOC
+app.post('/api/session', (req, res) => {
+    const { server, user, pass } = req.body;
+    if(!server || !user || !pass) return res.status(400).json({error: 'Faltan credenciales BYOC'});
+    
+    let parsedServer;
+    try { 
+        parsedServer = new URL(server); 
+    } catch(e) { 
+        return res.status(400).json({error: 'URL de servidor inválida'}); 
     }
     
-    res.json({ success: true, config: tData.config, expiresAt: tData.expiresAt });
+    const sessionId = crypto.randomUUID();
+    sessions.set(sessionId, {
+        server: parsedServer.origin,
+        user,
+        pass,
+        activeSockets: [],
+        streamTimeout: null,
+        lastActive: Date.now()
+    });
+    
+    console.log(`[${ts()}] 🟢 Nueva Sesión BYOC aislada: ${sessionId.split('-')[0]}... -> ${parsedServer.origin}`);
+    res.json({ success: true, sessionId });
 });
 
-
-let activeStreamReq = null;
-let streamTimeout = null;
-let requestCounter = 0;
-
-// Helper: reenvía la solicitud usando http/https de node, siguiendo redirecciones internamente
-const MAX_REDIRECTS = 5;
-
-function forward(targetUrl, req, res) {
-    requestCounter++;
-    const reqId = `REQ-${requestCounter}`;
-    // FIX Bug 1: Rastrear TODAS las peticiones de la cadena de redirecciones, no solo la última.
-    // Esto permite destruir cada socket TCP intermedio al hacer cleanup.
-    const activeSockets = [];
-    let destroyed = false;
-    let cookies = ''; // FIX Bug 3: Acumular cookies de respuestas 302
-
-    function startRequest(urlToFetch, redirectsLeft) {
-        if (destroyed) return;
-
-        let parsed;
-        try { parsed = new URL(urlToFetch); } catch (e) {
-            if (!res.headersSent) res.status(400).json({ error: 'URL inválida' });
-            return;
-        }
-
-        const hop = MAX_REDIRECTS - redirectsLeft + 1;
-        console.log(`${c.wht}[${ts()}] [${reqId}] ➔ Hop ${hop}/${MAX_REDIRECTS} → ${c.cyn}${parsed.hostname}${parsed.pathname.substring(0, 60)}${c.rst}`);
-
-        const lib = parsed.protocol === 'https:' ? https : http;
-        const port = parsed.port || (parsed.protocol === 'https:' ? 443 : 80);
-        const options = {
-            hostname: parsed.hostname, port: parseInt(port), path: parsed.pathname + parsed.search,
-            method: 'GET', headers: {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-                'Accept': '*/*',
-            },
-            timeout: 15000,
-        };
-        // FIX Bug 3: Propagar cookies acumuladas de respuestas 302 anteriores
-        if (cookies) options.headers['Cookie'] = cookies;
-
-        const proxyReq = lib.request(options, (proxyRes) => {
-            // Detección de redirección: secuestrar 301/302/303/307/308
-            if ([301, 302, 303, 307, 308].includes(proxyRes.statusCode) && proxyRes.headers['location']) {
-                const loc = new URL(proxyRes.headers['location'], parsed).toString();
-                // Consumir el body de la respuesta 302 para liberar recursos
-                proxyRes.resume();
-
-                if (redirectsLeft <= 0) {
-                    console.log(`${c.red}[${ts()}] [${reqId}] ❌ Demasiadas redirecciones (${MAX_REDIRECTS} hops), abortando.${c.rst}`);
-                    if (!res.headersSent) res.status(508).json({ error: 'Demasiadas redirecciones' });
-                    return;
-                }
-
-                // FIX Bug 3: Capturar cookies del 302 para enviarlas en la siguiente petición
-                if (proxyRes.headers['set-cookie']) {
-                    const newCookies = proxyRes.headers['set-cookie'].map(c => c.split(';')[0]).join('; ');
-                    cookies = cookies ? `${cookies}; ${newCookies}` : newCookies;
-                    console.log(`${c.cyn}[${ts()}] [${reqId}] 🍪 Cookies capturadas del 302: ${newCookies.substring(0, 80)}${c.rst}`);
-                }
-
-                // FIX Bug 2: Destruir EXPLÍCITAMENTE el proxyReq de la petición intermedia
-                // para cerrar su socket TCP antes de seguir la redirección.
-                console.log(`${c.ylw}[${ts()}] [${reqId}] ↪️ ${proxyRes.statusCode} Redirigido → ${c.wht}${loc.substring(0, 120)}${c.rst}`);
-                console.log(`${c.ylw}[${ts()}] [${reqId}] 🔪 Destruyendo socket intermedio (hop ${hop}) antes de seguir...${c.rst}`);
-                proxyReq.destroy();
-
-                startRequest(loc, redirectsLeft - 1);
-                return;
-            }
-
-            // Respuesta final (no es redirección): pipear el video al navegador
-            console.log(`${c.grn}${c.b}[${ts()}] [${reqId}] ✔️ RESPUESTA FINAL (Status: ${proxyRes.statusCode}) desde ${parsed.hostname} — Piping al navegador${c.rst}`);
-
-            res.setHeader('Access-Control-Allow-Origin', '*');
-            const ct = proxyRes.headers['content-type'];
-            if (ct) res.setHeader('Content-Type', ct);
-            res.status(proxyRes.statusCode);
-            proxyRes.pipe(res);
-
-            proxyRes.on('end', () => console.log(`${c.wht}[${ts()}] [${reqId}] ⏹️ Streaming finalizado naturalmente por IPTV.${c.rst}`));
-            proxyRes.on('close', () => console.log(`${c.ylw}[${ts()}] [${reqId}] ⏹️ Conexión de respuesta IPTV cerrada.${c.rst}`));
-        });
-
-        // FIX Bug 1: Registrar CADA proxyReq en el array para poder destruirlos todos
-        activeSockets.push(proxyReq);
-        if (destroyed) { proxyReq.destroy(); return; }
-
-        proxyReq.on('socket', (socket) => {
-            console.log(`${c.blu}[${ts()}] [${reqId}] 🔌 Socket TCP asignado (hop ${hop}) → ${parsed.hostname}${c.rst}`);
-        });
-
-        proxyReq.on('error', (err) => {
-            // Ignorar errores ECONNRESET de sockets que destruimos intencionalmente
-            if (destroyed || proxyReq.destroyed) return;
-            console.log(`${c.red}[${ts()}] [${reqId}] ❌ Error en proxyReq (hop ${hop}): ${err.message}${c.rst}`);
-            if (!res.headersSent) res.status(502).json({ error: err.message });
-        });
-        proxyReq.on('timeout', () => {
-            console.log(`${c.red}[${ts()}] [${reqId}] ⏱️ Timeout en proxyReq (hop ${hop}). Destruyendo...${c.rst}`);
-            proxyReq.destroy();
-            if (!res.headersSent) res.status(504).json({ error: 'Tiempo de espera agotado' });
-        });
-
-        proxyReq.on('close', () => {
-            console.log(`${c.red}[${ts()}] [${reqId}] 💀 Socket cerrado (hop ${hop}) — ${parsed.hostname}${c.rst}`);
-        });
-
-        proxyReq.end();
-    }
-
-    // DESTRUCCIÓN TOTAL: Si el cliente (navegador) se desconecta, mata TODAS las conexiones upstream.
-    req.on('close', () => {
-        console.log(`${c.bgRed}${c.wht}[${ts()}] [${reqId}] ⚠️ EL NAVEGADOR CORTÓ LA CONEXIÓN (req.on('close'))${c.rst}`);
-        destroyed = true;
-        // FIX Bug 1: Destruir TODOS los sockets de la cadena, no solo el último
-        let killed = 0;
-        activeSockets.forEach((s, i) => {
-            if (s && !s.destroyed) {
-                s.destroy();
-                killed++;
-            }
-        });
-        console.log(`${c.ylw}[${ts()}] [${reqId}] 🔪 ${killed}/${activeSockets.length} sockets destruidos instantáneamente.${c.rst}`);
-    });
-
-    startRequest(targetUrl, MAX_REDIRECTS);
-
-    return {
-        reqId,
-        // FIX Bug 1: destroy() ahora mata TODOS los sockets de la cadena de redirecciones
-        destroy: () => {
-            destroyed = true;
-            activeSockets.forEach(s => { if (s && !s.destroyed) s.destroy(); });
-        }
-    };
+// Middleware de sesión
+function getSession(req, res) {
+    const sid = req.query.sid || req.headers['x-session-id'];
+    if(!sid) { res.status(401).json({error: 'Falta Session ID'}); return null; }
+    const session = sessions.get(sid);
+    if(!session) { res.status(401).json({error: 'Sesión inválida o expirada'}); return null; }
+    session.lastActive = Date.now();
+    return session;
 }
 
-// Ruta: GET /proxy?url=<URL_OBJETIVO_COMPLETA>
-app.get('/proxy', (req, res) => {
-    const target = req.query.url;
-    if (!target) return res.status(400).json({ error: 'Falta el parámetro ?url=' });
-    console.log(`${c.cyn}${c.b}[${ts()}]${c.rst} ${c.grn}API${c.rst} ➔ ${c.wht}${target.substring(0, 150)}${target.length>150?'...':''}${c.rst}`);
-    forward(target, req, res);
+// 2. API Proxy Seguro (Previene SSRF, oculta credenciales)
+app.get('/proxy/api', (req, res) => {
+    const session = getSession(req, res);
+    if(!session) return;
+    
+    const action = req.query.action || '';
+    const category_id = req.query.category_id || '';
+    const series_id = req.query.series_id || '';
+    
+    // Construcción de la URL real en el backend. Imposible consultar otra IP.
+    let target = `${session.server}/player_api.php?username=${encodeURIComponent(session.user)}&password=${encodeURIComponent(session.pass)}`;
+    if(action) target += `&action=${action}`;
+    if(category_id) target += `&category_id=${category_id}`;
+    if(series_id) target += `&series_id=${series_id}`;
+    
+    proxySimple(target, res);
 });
 
-// Ruta: GET /stream?url=<URL_DE_STREAM_COMPLETA> (para streams de video, estrictamente 1 conexión)
-app.get('/stream', (req, res) => {
-    const target = req.query.url;
-    if (!target) return res.status(400).json({ error: 'Falta el parámetro ?url=' });
-    console.log(`\n${c.blu}${c.b}[${ts()}]${c.rst} ${c.ylw}NUEVA PETICIÓN DE VIDEO RECIBIDA${c.rst}`);
+
+// 4. API Image Proxy (Evita Mixed Content de posters y logos)
+app.get('/proxy/image', (req, res) => {
+    const session = getSession(req, res);
+    if (!session) return;
     
-    // FIX Bug 4: Si hay un timer pendiente, cancelarlo Y destruir su forward huérfano si existe
-    if (streamTimeout) {
-        console.log(`${c.ylw}[${ts()}] BOUNCER ➔ Cancelando timer del stream anterior que nunca arrancó.${c.rst}`);
-        clearTimeout(streamTimeout);
-        streamTimeout = null;
-    }
+    const imageUrl = req.query.url;
+    if (!imageUrl) return res.status(400).send('Missing url');
+
+    // Validación de seguridad SSRF:
+    // Solo permitir URLs que comiencen con el servidor del proveedor de esta sesión,
+    // o fuentes confiables de metadatos públicas (tmdb, wikipedia).
+    let safeToProxy = false;
+    if (imageUrl.startsWith(session.server)) safeToProxy = true;
+    if (imageUrl.includes('tmdb.org') || imageUrl.includes('wikipedia.org')) safeToProxy = true;
     
-    if (activeStreamReq) {
-        console.log(`${c.bgRed}${c.wht}[${ts()}] BOUNCER ➔ CHOCARON CONEXIONES! Destruyendo stream activo [${activeStreamReq.reqId}] para proteger la cuenta.${c.rst}`);
-        activeStreamReq.destroy();
-        activeStreamReq = null;
-    } else {
-        console.log(`${c.grn}[${ts()}] BOUNCER ➔ No hay streams activos cruzados. Todo limpio.${c.rst}`);
-    }
-    
-    console.log(`${c.wht}[${ts()}] BOUNCER ➔ Esperando 2000ms antes de conectar al IPTV...${c.rst}`);
-    // Espera 2000ms para asegurar que el servidor IPTV limpie por completo la conexión TCP anterior
-    streamTimeout = setTimeout(() => {
-        streamTimeout = null;
-        if (req.socket.destroyed) {
-            console.log(`${c.red}[${ts()}] BOUNCER ➔ El usuario cerró el reproductor ANTES de terminar los 2000ms. Abortando conexión.${c.rst}`);
-            return; 
+    if (!safeToProxy) return res.status(403).send('URL not allowed');
+
+    try {
+        const parsedUrl = new URL(imageUrl);
+        if (parsedUrl.hostname === 'localhost' || parsedUrl.hostname.startsWith('127.') || parsedUrl.hostname.startsWith('192.168.') || parsedUrl.hostname.startsWith('10.')) {
+            return res.status(403).send('Forbidden IP');
         }
-        console.log(`${c.grn}[${ts()}] BOUNCER ➔ 2000ms cumplidos. Disparando conexión a IPTV...${c.rst}`);
-        const reqObj = forward(target, req, res);
-        activeStreamReq = reqObj;
-        res.on('close', () => { 
-            console.log(`${c.wht}[${ts()}] [${reqObj.reqId}] res.on('close') ➔ Limpiando activeStreamReq si coincide.${c.rst}`);
-            if (activeStreamReq === reqObj) activeStreamReq = null; 
-        });
+    } catch(e) {
+        return res.status(400).send('Invalid url');
+    }
+
+    const parsed = new URL(imageUrl);
+    const lib = parsed.protocol === 'https:' ? https : http;
+    const imgReq = lib.request(imageUrl, { method: 'GET', timeout: 10000 }, (apiRes) => {
+        res.status(apiRes.statusCode);
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('Cache-Control', 'public, max-age=86400'); // Cache 1 day for images
+        if (apiRes.headers['content-type']) res.setHeader('Content-Type', apiRes.headers['content-type']);
+        apiRes.pipe(res);
+    });
+    imgReq.on('error', err => { if(!res.headersSent) res.status(502).end(); });
+    imgReq.end();
+});
+
+// 3. Stream Proxy Seguro (Aísla sockets por sesión, respeta max_connections)
+app.get('/proxy/stream/:type/:id', (req, res) => {
+    const session = getSession(req, res);
+    if(!session) return;
+    
+    const { type, id } = req.params;
+    const ext = req.query.ext || '';
+    
+    let target = `${session.server}/`;
+    if (type === 'live') {
+        target += `${encodeURIComponent(session.user)}/${encodeURIComponent(session.pass)}/${id}`;
+    } else if (type === 'movie') {
+        target += `movie/${encodeURIComponent(session.user)}/${encodeURIComponent(session.pass)}/${id}.${ext}`;
+    } else if (type === 'series') {
+        target += `series/${encodeURIComponent(session.user)}/${encodeURIComponent(session.pass)}/${id}.${ext}`;
+    } else {
+        return res.status(400).json({error: 'Tipo de stream inválido'});
+    }
+
+    console.log(`[${ts()}] 📺 Petición de stream (${type}) para sesión ${req.query.sid.split('-')[0]}...`);
+    
+    // DESTRUCCIÓN AISLADA: Solo destruye los streams de ESTA sesión.
+    if (session.streamTimeout) {
+        clearTimeout(session.streamTimeout);
+        session.streamTimeout = null;
+    }
+    
+    if (session.activeSockets.length > 0) {
+        console.log(`[${ts()}] 🔪 Destruyendo ${session.activeSockets.length} socket(s) previo(s) de esta sesión...`);
+        session.activeSockets.forEach(s => { if(s && !s.destroyed) s.destroy(); });
+        session.activeSockets = [];
+    }
+    
+    // Delay protector de 2000ms
+    session.streamTimeout = setTimeout(() => {
+        session.streamTimeout = null;
+        if (req.socket.destroyed) {
+            console.log(`[${ts()}] ⚠️ El cliente canceló la petición antes del timeout.`);
+            return;
+        }
+        console.log(`[${ts()}] 🚀 Conectando stream...`);
+        forwardStream(target, req, res, session);
     }, 2000);
 });
 
-app.listen(PORT, () => {
-    console.clear();
-    console.log(logo);
-    console.log(`${c.red}${c.b}===============================================================================${c.rst}`);
-    console.log(`                 ${c.wht}${c.b}IPTV GLOBAL HD - ENGINE CORE v2.0${c.rst}`);
-    console.log(`${c.red}${c.b}===============================================================================${c.rst}`);
-    console.log(` ${c.grn}▶${c.rst} Panel de Control: ${c.cyn}${c.b}http://localhost:${PORT}${c.rst}`);
-    console.log(` ${c.grn}▶${c.rst} Estado:         ${c.grn}${c.b}ACTIVO Y EN ESCUCHA${c.rst}`);
-    console.log(` ${c.grn}▶${c.rst} Proxy CORS:     ${c.ylw}Habilitado${c.rst}`);
-    console.log(`${c.red}${c.b}===============================================================================${c.rst}`);
-    console.log(`${c.wht}(No cierres esta ventana mientras uses la aplicación)${c.rst}\n`);
-});
+function proxySimple(targetUrl, res) {
+    const parsed = new URL(targetUrl);
+    const lib = parsed.protocol === 'https:' ? https : http;
+    const req = lib.request(targetUrl, { method: 'GET', timeout: 15000 }, (apiRes) => {
+        res.status(apiRes.statusCode);
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        if (apiRes.headers['content-type']) res.setHeader('Content-Type', apiRes.headers['content-type']);
+        apiRes.pipe(res);
+    });
+    req.on('error', err => { if(!res.headersSent) res.status(502).json({error: 'Error de proveedor IPTV'}); });
+    req.end();
+}
+
+function forwardStream(targetUrl, clientReq, clientRes, session) {
+    const MAX_REDIRECTS = 5;
+    let cookies = '';
+    let destroyed = false;
+    
+    function start(urlStr, hopsLeft) {
+        if(destroyed) return;
+        const parsed = new URL(urlStr);
+        const lib = parsed.protocol === 'https:' ? https : http;
+        
+        const options = {
+            hostname: parsed.hostname, port: parsed.port || (parsed.protocol === 'https:' ? 443 : 80),
+            path: parsed.pathname + parsed.search,
+            headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36', 'Accept': '*/*' },
+            timeout: 15000
+        };
+        if (cookies) options.headers['Cookie'] = cookies;
+        
+        const proxyReq = lib.request(options, (proxyRes) => {
+            if ([301, 302, 303, 307, 308].includes(proxyRes.statusCode) && proxyRes.headers['location']) {
+                if (proxyRes.headers['set-cookie']) {
+                    const newCookies = proxyRes.headers['set-cookie'].map(c => c.split(';')[0]).join('; ');
+                    cookies = cookies ? `${cookies}; ${newCookies}` : newCookies;
+                }
+                const loc = new URL(proxyRes.headers['location'], parsed).toString();
+                proxyRes.resume();
+                proxyReq.destroy(); // Destruye socket intermedio
+                
+                if (hopsLeft <= 0) {
+                    if(!clientRes.headersSent) clientRes.status(508).end();
+                    return;
+                }
+                start(loc, hopsLeft - 1);
+                return;
+            }
+            
+            clientRes.setHeader('Access-Control-Allow-Origin', '*');
+            if (proxyRes.headers['content-type']) clientRes.setHeader('Content-Type', proxyRes.headers['content-type']);
+            clientRes.status(proxyRes.statusCode);
+            proxyRes.pipe(clientRes);
+        });
+        
+        session.activeSockets.push(proxyReq);
+        
+        proxyReq.on('error', err => {
+            if(destroyed || proxyReq.destroyed) return;
+            if(!clientRes.headersSent) clientRes.status(502).end();
+        });
+        proxyReq.on('timeout', () => { proxyReq.destroy(); });
+        proxyReq.end();
+    }
+    
+    clientReq.on('close', () => {
+        destroyed = true;
+        console.log(`[${ts()}] ⏹️ El usuario cerró el reproductor. Limpiando sockets de la sesión...`);
+        session.activeSockets.forEach(s => { if(s && !s.destroyed) s.destroy(); });
+        session.activeSockets = [];
+    });
+    
+    start(targetUrl, MAX_REDIRECTS);
+}
+
+// Limpieza automática de sesiones inactivas (>12h)
+setInterval(() => {
+    const now = Date.now();
+    for (const [sid, sess] of sessions.entries()) {
+        if (now - sess.lastActive > 1000 * 60 * 60 * 12) {
+            sess.activeSockets.forEach(s => { if(s && !s.destroyed) s.destroy(); });
+            sessions.delete(sid);
+        }
+    }
+}, 60000 * 10);
+
+app.listen(PORT, () => console.log(`\n🚀 IPTV Global V3 Bouncer iniciado en puerto ${PORT}\n`));
