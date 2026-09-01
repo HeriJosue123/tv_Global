@@ -586,16 +586,7 @@
 <!-- ====== SIDEBAR ====== -->
 <div class="app-layout" id="app-layout">
 
-<div id="v-byoc" class="view" style="display:flex; align-items:center; justify-content:center; height:100vh; background:#0b0d13;">
-  <div style="background:#151821; padding:32px; border-radius:12px; width:90%; max-width:400px; text-align:center;">
-    <h2 style="color:white; margin-bottom:20px;">IPTV Global V3</h2>
-    <input type="text" id="byoc-server" placeholder="URL Servidor (ej. http://tv.com:8080)" style="width:100%; padding:12px; margin-bottom:12px; border-radius:8px; border:none; background:#222; color:white;">
-    <input type="text" id="byoc-user" placeholder="Usuario" style="width:100%; padding:12px; margin-bottom:12px; border-radius:8px; border:none; background:#222; color:white;">
-    <input type="password" id="byoc-pass" placeholder="Contraseña" style="width:100%; padding:12px; margin-bottom:20px; border-radius:8px; border:none; background:#222; color:white;">
-    <button id="byoc-btn" style="width:100%; padding:12px; border-radius:8px; border:none; background:#00d26a; color:white; font-weight:bold; cursor:pointer;">Conectar</button>
-    <div id="byoc-err" style="color:#ff4b4b; margin-top:12px; font-size:14px;"></div>
-  </div>
-</div>
+
 
 <nav class="sidebar" id="sidebar">
   <div class="sb-toggle" id="sb-toggle">◀</div>
@@ -624,6 +615,17 @@
 </nav>
 
 <div class="main-content" id="main-content">
+
+<div id="v-byoc" class="view" style="align-items:center; justify-content:center; height:100vh; background:#0b0d13;">
+  <div style="background:#151821; padding:32px; border-radius:12px; width:90%; max-width:400px; text-align:center;">
+    <h2 style="color:white; margin-bottom:20px;">IPTV Global V3</h2>
+    <input type="text" id="byoc-server" placeholder="URL Servidor (ej. http://tv.com:8080)" style="width:100%; padding:12px; margin-bottom:12px; border-radius:8px; border:none; background:#222; color:white;">
+    <input type="text" id="byoc-user" placeholder="Usuario" style="width:100%; padding:12px; margin-bottom:12px; border-radius:8px; border:none; background:#222; color:white;">
+    <input type="password" id="byoc-pass" placeholder="Contraseña" style="width:100%; padding:12px; margin-bottom:20px; border-radius:8px; border:none; background:#222; color:white;">
+    <button id="byoc-btn" style="width:100%; padding:12px; border-radius:8px; border:none; background:#00d26a; color:white; font-weight:bold; cursor:pointer;">Conectar</button>
+    <div id="byoc-err" style="color:#ff4b4b; margin-top:12px; font-size:14px;"></div>
+  </div>
+</div>
 
 <!-- ====== MOBILE HEADER ====== -->
 <div id="mobile-header" style="display:none;">
