@@ -289,6 +289,17 @@
   .tb-right { display: flex; gap: 16px; align-items: center; }
   .tb-user { font-size:14px; font-weight:bold; color:var(--text); padding:6px 12px; background:var(--surface); border-radius:20px; border:1px solid var(--border); }
 
+  @media (max-width: 900px) {
+    #topbar { padding: 0 6px !important; gap: 2px; }
+    .tb-left .brand { font-size: 12px !important; letter-spacing: 0 !important; white-space: nowrap; }
+    .tb-center { margin-left: 0 !important; gap: 2px !important; flex: 1; justify-content: center; }
+    .tb-btn { font-size: 11px !important; padding: 6px 6px !important; white-space: nowrap; }
+    .tb-right { gap: 4px !important; }
+    #btn-favs, #tb-user { display: none !important; }
+    #btn-logout { font-size: 11px !important; padding: 6px 8px !important; }
+  }
+
+
   .tb-left,.tb-center,.tb-right { display:flex; align-items:center; gap:8px; }
   .tb-btn { display:flex; align-items:center; gap:5px; padding:7px 13px; border:none; border-radius:8px; background:var(--surface); color:var(--muted); font-size:13px; font-weight:600; transition:all 0.2s; border:1px solid var(--border); }
   .tb-btn:hover { background:var(--surface2); color:var(--text); }
