@@ -97,13 +97,7 @@
   .skeleton { background:linear-gradient(90deg,var(--surface) 25%,var(--surface2) 50%,var(--surface) 75%); background-size:200% 100%; animation:skeletonPulse 1.5s ease infinite; border-radius:var(--radius-sm); }
 
   /* ====== SIDEBAR ====== */
-  .sidebar {
-    width:var(--sidebar-w); height:100vh; background:rgba(8,8,8,0.85);
-    backdrop-filter:blur(40px); -webkit-backdrop-filter:blur(40px);
-    border-right:1px solid var(--border); display:flex; flex-direction:column;
-    transition:width var(--duration-slow) var(--ease-out);
-    z-index:200; flex-shrink:0; position:relative; overflow:hidden;
-  }
+  
   .sidebar.collapsed { width:var(--sidebar-collapsed); }
 
   .sb-header { padding:24px 20px 20px; display:flex; align-items:center; gap:12px; flex-shrink:0; }
@@ -265,7 +259,36 @@
   .login-err { font-size:13px; color:#ff4b4b; text-align:center; margin-top:20px; min-height:18px; font-weight:600; animation:fadeIn 0.3s; }
 
   /* ====== TOPBAR (hidden — replaced by sidebar, preserved for JS compat) ====== */
-  #topbar { display:none !important; height:0; overflow:hidden; visibility:hidden; }
+  
+  #topbar { 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    height: 70px; 
+    background: rgba(8,8,8,0.95); 
+    border-bottom: 1px solid rgba(255,255,255,0.05); 
+    padding: 0 32px; 
+    flex-shrink: 0; 
+    z-index: 100; 
+  }
+  .tb-left { display: flex; align-items: center; }
+  .tb-center { display: flex; gap: 24px; align-items: center; margin-left: 48px; }
+  .tb-btn {
+    background: transparent;
+    border: none;
+    color: var(--muted);
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+  }
+  .tb-btn:hover { color: var(--text); background: var(--surface2); }
+  .tb-btn.active-nav { color: white; background: rgba(229,9,20,0.15); border: 1px solid rgba(229,9,20,0.3); }
+  .tb-right { display: flex; gap: 16px; align-items: center; }
+  .tb-user { font-size:14px; font-weight:bold; color:var(--text); padding:6px 12px; background:var(--surface); border-radius:20px; border:1px solid var(--border); }
+
   .tb-left,.tb-center,.tb-right { display:flex; align-items:center; gap:8px; }
   .tb-btn { display:flex; align-items:center; gap:5px; padding:7px 13px; border:none; border-radius:8px; background:var(--surface); color:var(--muted); font-size:13px; font-weight:600; transition:all 0.2s; border:1px solid var(--border); }
   .tb-btn:hover { background:var(--surface2); color:var(--text); }
@@ -588,31 +611,7 @@
 
 
 
-<nav class="sidebar" id="sidebar">
-  <div class="sb-toggle" id="sb-toggle">◀</div>
-  <div class="sb-header">
-    <div class="sb-logo-icon">G</div>
-    <div class="sb-logo"><span class="sb-logo-text">IPTV <span class="r">GLOBAL</span></span></div>
-  </div>
-  <div class="sb-nav">
-    <div class="sb-section-label">Contenido</div>
-    <button class="sb-btn active" id="sb-nav-tv"><span class="sb-btn-icon">📺</span><span class="sb-btn-label">TV en Vivo</span></button>
-    <button class="sb-btn" id="sb-nav-movies"><span class="sb-btn-icon">🎬</span><span class="sb-btn-label">Películas</span></button>
-    <button class="sb-btn" id="sb-nav-series"><span class="sb-btn-icon">🎭</span><span class="sb-btn-label">Series</span></button>
-    <button class="sb-btn" id="sb-nav-favs"><span class="sb-btn-icon">⭐</span><span class="sb-btn-label">Favoritos</span></button>
-    <div class="sb-section-label">Cuenta</div>
-  </div>
-  <div class="sb-footer">
-    <div class="sb-user-card">
-      <div class="sb-avatar" id="sb-avatar">U</div>
-      <div class="sb-user-info">
-        <div class="sb-user-name" id="sb-user-name">Usuario</div>
-        <div class="sb-user-role">Premium</div>
-      </div>
-    </div>
-    <button class="sb-btn-logout" id="sb-logout"><span class="sb-btn-icon">🚪</span><span>Cerrar Sesión</span></button>
-  </div>
-</nav>
+
 
 <div class="main-content" id="main-content">
 
@@ -1985,7 +1984,14 @@ window.parseAdminM3U = () => {
 // ---------- BOOT ----------
 loadStorage();
 
-async function boot() {
+async 
+// --- NAVEGACION TOPBAR ---
+if($('btn-nav-tv')) $('btn-nav-tv').onclick = () => showView('home');
+if($('btn-nav-movies')) $('btn-nav-movies').onclick = () => showView('movies');
+if($('btn-nav-series')) $('btn-nav-series').onclick = () => showView('series');
+if($('btn-favs')) $('btn-favs').onclick = () => alert('Próximamente');
+
+function boot() {
     try {
         // Modo de prueba temporal: Intentar obtener la sesión pre-creada del backend
         let res = await fetch('/api/test_session').then(r => r.json()).catch(() => ({}));
