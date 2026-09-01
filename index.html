@@ -2040,6 +2040,89 @@ window.parseAdminM3U = () => {
   }
 };
 
+
+// ---------- ABRIR VOD Y SERIES ----------
+async function openVodCategory(id, name) {
+  S.currentCat={category_id:id, category_name:name};
+  $('ch-view-title').textContent=name;
+  $('ch-search').value='';
+  $('ch-count-label').textContent='Cargando películas...';
+  $('ch-grid').innerHTML='<div class="state-box"><div class="spinner" style="width:32px;height:32px;border-width:3px;"></div><p style="margin-top:16px">Cargando...</p></div>';
+  showView('channels');
+  try {
+    const r=await fetch('/proxy/api?sid=' + S.sessionId + '&action=get_vod_streams&category_id=' + id);
+    const channels=await r.json();
+    if(!Array.isArray(channels)) throw new Error('Respuesta inválida');
+    S.currentChannels=channels||[];
+    $('ch-count-label').textContent=(channels||[]).length+' películas';
+    renderChannels(channels||[]);
+  } catch(e){ $('ch-grid').innerHTML='<div class="state-box"><div class="icon">⚠️</div><p>Error: ' + e.message + '</p></div>'; }
+}
+
+async function openSeriesCategory(id, name) {
+  S.currentCat={category_id:id, category_name:name};
+  $('ch-view-title').textContent=name;
+  $('ch-search').value='';
+  $('ch-count-label').textContent='Cargando series...';
+  $('ch-grid').innerHTML='<div class="state-box"><div class="spinner" style="width:32px;height:32px;border-width:3px;"></div><p style="margin-top:16px">Cargando...</p></div>';
+  showView('channels');
+  try {
+    const r=await fetch('/proxy/api?sid=' + S.sessionId + '&action=get_series&category_id=' + id);
+    let channels=await r.json();
+    if(!Array.isArray(channels)) throw new Error('Respuesta inválida');
+    
+    // Mapear series a formato similar a canales/vod
+    channels = channels.map(s => ({
+      stream_type: 'series',
+      stream_id: s.series_id,
+      series_id: s.series_id,
+      name: s.name,
+      stream_icon: s.cover
+    }));
+    
+    S.currentChannels=channels||[];
+    $('ch-count-label').textContent=(channels||[]).length+' series';
+    renderChannels(channels||[]);
+  } catch(e){ $('ch-grid').innerHTML='<div class="state-box"><div class="icon">⚠️</div><p>Error: ' + e.message + '</p></div>'; }
+}
+
+// Modificar playChannel para interceptar clics en Series
+const oldPlayChannel = playChannel;
+window.playChannel = async (ch, streamUrl) => {
+  if (ch.stream_type === 'series' && ch.series_id) {
+    // Es una serie, cargar capítulos
+    $('ch-view-title').textContent = ch.name;
+    $('ch-count-label').textContent = 'Cargando temporadas...';
+    $('ch-grid').innerHTML = '<div class="state-box"><div class="spinner" style="width:32px;height:32px;border-width:3px;"></div><p style="margin-top:16px">Obteniendo capítulos...</p></div>';
+    try {
+      const r = await fetch('/proxy/api?sid=' + S.sessionId + '&action=get_series_info&series_id=' + ch.series_id);
+      const data = await r.json();
+      const episodes = [];
+      if (data && data.episodes) {
+        Object.keys(data.episodes).forEach(seasonNum => {
+          data.episodes[seasonNum].forEach(ep => {
+            episodes.push({
+              stream_type: 'episode',
+              id: ep.id,
+              stream_id: ep.id,
+              name: 'T' + seasonNum + ' E' + ep.episode_num + ': ' + ep.title,
+              stream_icon: (ep.info && ep.info.movie_image) || ch.stream_icon,
+              container_extension: ep.container_extension || 'mp4',
+              episode_num: ep.episode_num
+            });
+          });
+        });
+      }
+      $('ch-count-label').textContent = episodes.length + ' episodios';
+      renderChannels(episodes);
+    } catch (e) {
+      $('ch-grid').innerHTML = '<div class="state-box"><div class="icon">⚠️</div><p>Error: ' + e.message + '</p></div>';
+    }
+  } else {
+    oldPlayChannel(ch, streamUrl);
+  }
+};
+
 // ---------- BOOT ----------
 loadStorage();
 
