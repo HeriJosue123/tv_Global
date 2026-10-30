@@ -18,52 +18,109 @@ const ts = () => new Date().toLocaleTimeString();
 const mask = (str) => str ? str.substring(0, 3) + '***' : '';
 
 
-// === TEMPORARY TEST MODE ===
-const TEST_MODE = true;
-let testSessionId = null;
-if (TEST_MODE) {
-    testSessionId = crypto.randomUUID();
-    sessions.set(testSessionId, {
-        server: 'http://redworld.pro:8880',
-        user: 'demop3814',
-        pass: 'eBKyum6YnxNm',
-        activeSockets: [],
-        streamTimeout: null,
-        lastActive: Date.now()
-    });
-    console.log('[TEST MODE] Auto-created session: ' + testSessionId);
-}
-
-app.get('/api/test_session', (req, res) => {
-    if (!TEST_MODE) return res.status(403).json({error: 'Not in test mode'});
-    res.json({ sessionId: testSessionId });
-});
-// ===========================
-
 // 1. Crear Sesión BYOC
-app.post('/api/session', (req, res) => {
-    const { server, user, pass } = req.body;
-    if(!server || !user || !pass) return res.status(400).json({error: 'Faltan credenciales BYOC'});
-    
-    let parsedServer;
-    try { 
-        parsedServer = new URL(server); 
-    } catch(e) { 
-        return res.status(400).json({error: 'URL de servidor inválida'}); 
+app.post('/api/session', async (req, res) => {
+    const { server, user, pass } = req.body || {};
+
+    if (!server || !user || !pass) {
+        return res.status(400).json({ error: 'Faltan credenciales BYOC' });
     }
-    
-    const sessionId = crypto.randomUUID();
-    sessions.set(sessionId, {
-        server: parsedServer.origin,
-        user,
-        pass,
-        activeSockets: [],
-        streamTimeout: null,
-        lastActive: Date.now()
-    });
-    
-    console.log(`[${ts()}] 🟢 Nueva Sesión BYOC aislada: ${sessionId.split('-')[0]}... -> ${parsedServer.origin}`);
-    res.json({ success: true, sessionId });
+
+    let parsedServer;
+    try {
+        parsedServer = new URL(server.trim());
+        if (!['http:', 'https:'].includes(parsedServer.protocol) ||
+            !parsedServer.hostname) {
+            throw new Error('Protocolo no permitido');
+        }
+    } catch (e) {
+        return res.status(400).json({ error: 'URL de servidor inválida' });
+    }
+
+    parsedServer.pathname = '';
+    parsedServer.search = '';
+    parsedServer.hash = '';
+
+    const authUrl = new URL('/player_api.php', parsedServer.origin);
+    authUrl.searchParams.set('username', user);
+    authUrl.searchParams.set('password', pass);
+
+    const transport = authUrl.protocol === 'https:' ? https : http;
+
+    try {
+        const authData = await new Promise((resolve, reject) => {
+            const request = transport.get(authUrl, { timeout: 12000 }, response => {
+                let body = '';
+
+                response.setEncoding('utf8');
+
+                response.on('data', chunk => {
+                    body += chunk;
+
+                    if (body.length > 1024 * 1024) {
+                        response.destroy(new Error('Respuesta demasiado grande'));
+ }
+ });
+
+                response.on('end', () => {
+                    if (response.statusCode !== 200) {
+                        return reject(new Error('Servidor IPTV no disponible'));
+                    }
+
+                    try {
+                        resolve(JSON.parse(body));
+                    } catch (e) {
+                        reject(new Error('Respuesta IPTV inválida'));
+                    }
+                });
+
+                response.on('error', reject);
+            });
+
+            request.on('timeout', () => {
+                request.destroy(new Error('Tiempo de conexión agotado'));
+            });
+
+            request.on('error', reject);
+        });
+
+        if (!authData ||
+            !authData.user_info ||
+            Number(authData.user_info.auth) !== 1) {
+            return res.status(401).json({
+                error: 'Usuario o contraseña incorrectos'
+            });
+        }
+
+        const sessionId = crypto.randomUUID();
+
+        sessions.set(sessionId, {
+            server: parsedServer.origin,
+            user,
+            pass,
+            activeSockets: [],
+            streamTimeout: null,
+            lastActive: Date.now()
+        });
+
+        console.log(`[${ts()}] 🟢 Autenticación IPTV correcta: ${sessionId.split('-')[0]}... -> ${parsedServer.origin}`);
+
+        return res.json({
+            success: true,
+            sessionId
+        });
+
+    } catch (error) {
+        console.error(`[${ts()}] Error de autenticación IPTV: ${error.message}`);
+
+        return res.status(502).json({
+            error: error.message === 'Tiempo de conexión agotado'
+                ? 'Tiempo de conexión agotado'
+                : error.message === 'Respuesta IPTV inválida'
+                    ? error.message
+                    : 'No se pudo verificar el servidor IPTV'
+        });
+    }
 });
 
 // Middleware de sesión
@@ -244,10 +301,13 @@ function forwardStream(targetUrl, clientReq, clientRes, session) {
         proxyReq.end();
     }
     
-    clientReq.on('close', () => {
+    clientRes.on('close', () => {
+        if (clientRes.writableEnded) return;
         destroyed = true;
-        console.log(`[${ts()}] ⏹️ El usuario cerró el reproductor. Limpiando sockets de la sesión...`);
-        session.activeSockets.forEach(s => { if(s && !s.destroyed) s.destroy(); });
+        console.log(`[${ts()}] ⏹️ El usuario desconectó el reproductor. Limpiando sockets de la sesión...`);
+        session.activeSockets.forEach(s => {
+            if (s && !s.destroyed) s.destroy();
+        });
         session.activeSockets = [];
     });
     
