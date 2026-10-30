@@ -8,6 +8,7 @@
   <script src="https://cdn.jsdelivr.net/npm/mpegts.js@1.7.3/dist/mpegts.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./responsive_fix.css">
   <style>
   /* ====== DESIGN SYSTEM V2 — IPTV GLOBAL HD ====== */
   :root {
@@ -650,7 +651,703 @@
     .history-row { padding:0 20px 16px !important; }
     .history-section h3 { margin: 0 20px 16px !important; }
   }
-  </style>
+  /* =====================================================
+     RESPONSIVE LAYER — MOBILE / TABLET / DESKTOP
+     ===================================================== */
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    width: 100%;
+    min-width: 320px;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow-x: hidden;
+    overscroll-behavior-x: none;
+  }
+
+  .app-layout {
+    width: 100%;
+    min-width: 0;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+  }
+
+  .main-content,
+  .view,
+  .view.show {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  img, video, iframe {
+    max-width: 100%;
+  }
+
+  button, input, select, textarea {
+    font: inherit;
+  }
+
+  button, .tb-btn {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* TABLETS */
+  @media (min-width: 601px) and (max-width: 1100px) {
+    .cat-grid {
+      grid-template-columns: repeat(auto-fill, minmax(155px, 1fr)) !important;
+      gap: 14px !important;
+      padding-left: 18px !important;
+      padding-right: 18px !important;
+    }
+
+    .main-content {
+      width: 100%;
+    }
+
+    #topbar {
+      padding-left: 18px;
+      padding-right: 18px;
+    }
+
+    .tb-center {
+      gap: 12px;
+      margin-left: 15px;
+    }
+  }
+
+  /* PHONES */
+  @media (max-width: 600px) {
+    body {
+      font-size: 14px;
+    }
+
+    .app-layout {
+      height: 100vh;
+      height: 100dvh;
+    }
+
+    #topbar {
+      min-height: 56px;
+      padding-left: 12px !important;
+      padding-right: 12px !important;
+      padding-top: env(safe-area-inset-top, 0px);
+      gap: 8px;
+    }
+
+    .tb-left .brand {
+      font-size: 16px !important;
+      letter-spacing: .5px !important;
+    }
+
+    .tb-right {
+      gap: 6px;
+    }
+
+    .tb-btn {
+      min-height: 42px;
+      padding: 8px 10px;
+    }
+
+    .main-content {
+      overflow-x: hidden;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .cat-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 10px !important;
+      padding: 10px 12px 20px !important;
+    }
+
+    .cat-grid > *,
+    .channel-grid > * {
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    .channel-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 10px !important;
+      padding-left: 12px !important;
+      padding-right: 12px !important;
+    }
+
+    input, select, textarea {
+      max-width: 100%;
+      min-width: 0;
+    }
+
+    button {
+      min-height: 40px;
+    }
+
+    .sb-header {
+      padding: 16px 14px;
+    }
+
+    .sb-nav {
+      padding-left: 8px;
+      padding-right: 8px;
+      padding-bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+    }
+
+    .view {
+      overflow-x: hidden;
+    }
+
+    video {
+      width: 100%;
+      height: auto;
+      max-height: 65dvh;
+      object-fit: contain;
+    }
+
+    .tb-left, .tb-right {
+      min-width: 0;
+    }
+  }
+
+  /* PHONES VERY SMALL */
+  @media (max-width: 380px) {
+    #topbar {
+      padding-left: 8px !important;
+      padding-right: 8px !important;
+    }
+
+    .tb-left .brand {
+      font-size: 14px !important;
+    }
+
+    .cat-grid,
+    .channel-grid {
+      gap: 8px !important;
+      padding-left: 8px !important;
+      padding-right: 8px !important;
+    }
+  }
+
+  /* LANDSCAPE MOBILE */
+  @media (max-height: 500px) and (max-width: 900px) {
+    #topbar {
+      min-height: 46px;
+    }
+
+    video {
+      max-height: 72dvh;
+    }
+  }
+
+  /* ACCESSIBILITY */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      scroll-behavior: auto !important;
+      animation-duration: .01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: .01ms !important;
+    }
+  }
+
+  @media (hover: none) {
+    .tb-btn:hover {
+      transform: none;
+    }
+  }
+
+  /* ===== RESPONSIVE V2: TABLETS, DESKTOP, FULL HD & 4K ===== */
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html, body {
+    width: 100%;
+    min-width: 320px;
+    min-height: 100%;
+    overflow-x: hidden;
+  }
+
+  img, video {
+    max-width: 100%;
+  }
+
+  .view, .main-content, .home-content,
+  .channels-content, .si-content {
+    min-width: 0;
+  }
+
+  /* PORTÁTILES Y TABLETS HORIZONTALES */
+  @media (min-width: 1101px) and (max-width: 1440px) {
+    .home-content {
+      padding: 0;
+    }
+
+    .channels-content {
+      padding: 18px;
+    }
+
+    .ch-grid {
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+      gap: 16px;
+    }
+
+    .hero-banner {
+      min-height: 360px;
+    }
+  }
+
+  /* MONITORES GRANDES Y FULL HD */
+  @media (min-width: 1441px) {
+    .channels-content {
+      padding: 28px;
+    }
+
+    .ch-grid {
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 22px;
+    }
+
+    .cat-grid {
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    }
+
+    .hero-banner {
+      min-height: 480px;
+    }
+  }
+
+  /* TELEVISORES 4K Y PANTALLAS ULTRA GRANDES */
+  @media (min-width: 2000px) {
+    body {
+      font-size: 18px;
+    }
+
+    .channels-content {
+      padding: 36px;
+    }
+
+    .ch-grid {
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 28px;
+    }
+
+    .cat-grid {
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 26px;
+    }
+
+    .channels-bar {
+      padding: 20px 32px;
+    }
+  }
+
+  /* TABLETS VERTICALES Y HORIZONTALES */
+  @media (min-width: 601px) and (max-width: 1100px) {
+    .channels-bar {
+      gap: 10px;
+      padding: 12px 16px;
+    }
+
+    .channels-content {
+      padding: 16px;
+    }
+
+    .ch-grid {
+      grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+      gap: 14px;
+    }
+
+    .si-content {
+      padding: 0 20px 24px;
+    }
+
+    .player-controls {
+      padding: 12px;
+    }
+  }
+
+  /* MÓVILES */
+  @media (max-width: 600px) {
+    #v-home, #v-channels {
+      height: 100%;
+      min-height: 0;
+    }
+
+    .channels-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 10px 12px;
+    }
+
+    .channels-bar h2 {
+      flex: 1 1 40%;
+      font-size: 15px;
+    }
+
+    .channels-bar .search-input {
+      flex: 1 1 100%;
+      width: 100%;
+      order: 3;
+    }
+
+    .channels-content {
+      padding: 12px;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .ch-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .hero-banner {
+      height: 48vh;
+      height: 48dvh;
+      min-height: 260px;
+    }
+
+    .hero-content {
+      padding: 18px;
+      max-width: 100%;
+    }
+
+    .hero-title {
+      font-size: clamp(22px, 7vw, 34px);
+    }
+
+    .si-content {
+      padding: 0 12px 20px;
+      overflow-y: auto;
+    }
+
+    .si-hero {
+      padding: 20px 8px;
+    }
+
+    .si-title {
+      font-size: 26px;
+    }
+
+    .si-seasons-scroll,
+    .si-episodes-scroll {
+      max-width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    #v-player {
+      justify-content: center;
+      min-height: 0;
+    }
+
+    .player-main {
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+    }
+
+    .player-controls {
+      max-width: 100%;
+      padding: 10px;
+      gap: 8px;
+    }
+
+    .player-ui {
+      max-width: 100%;
+    }
+
+    .player-ch-name {
+      max-width: 55%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    video {
+      width: 100%;
+      max-width: 100%;
+      object-fit: contain;
+    }
+
+    input, button, select {
+      font-size: 14px;
+    }
+
+    button {
+      touch-action: manipulation;
+    }
+  }
+
+  /* MÓVILES PEQUEÑOS */
+  @media (max-width: 380px) {
+    .ch-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .channels-content {
+      padding: 8px;
+    }
+
+    .channels-bar {
+      padding: 8px;
+    }
+
+    .btn-back {
+      padding: 7px 10px;
+      font-size: 12px;
+    }
+
+    .player-controls {
+      padding: 6px;
+      gap: 5px;
+    }
+  }
+
+  /* MÓVILES EN HORIZONTAL */
+  @media (max-height: 500px) and (max-width: 900px) {
+    .hero-banner {
+      height: 75vh;
+      min-height: 220px;
+    }
+
+    #v-player {
+      overflow-y: auto;
+    }
+
+    video {
+      max-height: 75dvh;
+    }
+
+    .si-content {
+      overflow-y: auto;
+    }
+  }
+
+  /* PANTALLAS TÁCTILES */
+  @media (hover: none) and (pointer: coarse) {
+    button, .tb-btn, .btn-back {
+      min-height: 42px;
+    }
+
+    input, select {
+      min-height: 42px;
+    }
+
+    * {
+      -webkit-tap-highlight-color: transparent;
+    }
+  }
+
+  /* ACCESIBILIDAD */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      scroll-behavior: auto !important;
+      animation-duration: .01ms !important;
+      transition-duration: .01ms !important;
+    }
+  }
+
+    /* ====== RESPONSIVE VISUAL FIXES ====== */
+  html {
+    min-height: 100%;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body,
+  .app-layout {
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
+  .app-layout {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  img, video, canvas {
+    max-width: 100%;
+  }
+
+  @media (max-width: 600px) {
+    body {
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    .app-layout {
+      height: 100dvh;
+      overflow: hidden;
+    }
+
+    .main-content,
+    .view {
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    #v-home {
+      height: 100dvh;
+    }
+
+    .hero-banner {
+      height: 42dvh;
+      min-height: 260px;
+      max-height: 420px;
+    }
+
+    .hero-content {
+      left: 18px;
+      right: 18px;
+      bottom: 22px;
+      max-width: none;
+    }
+
+    #topbar {
+      padding-left: 12px !important;
+      padding-right: 12px !important;
+      min-width: 0;
+    }
+
+    .tb-left,
+    .tb-right {
+      min-width: 0;
+      gap: 6px;
+    }
+
+    .home-content {
+      overscroll-behavior-y: contain;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    button,
+    input,
+    select {
+      max-width: 100%;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .tb-left .brand {
+      font-size: 15px !important;
+      letter-spacing: 0 !important;
+    }
+
+    .hero-content {
+      left: 14px;
+      right: 14px;
+    }
+  }
+
+  @media (max-height: 500px) and (orientation: landscape) {
+    .hero-banner {
+      height: 75dvh;
+      min-height: 200px;
+    }
+
+    .hero-content {
+      bottom: 15px;
+    }
+  }
+  /* ===== RESPONSIVE FIX FINAL ===== */
+@media (max-width: 900px) {
+  .app-layout { position: relative; }
+  .sidebar {
+    position: fixed !important;
+    z-index: 1000 !important;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: min(280px, 85vw) !important;
+    height: 100vh;
+    height: 100dvh;
+    transform: translateX(-105%);
+    transition: transform .25s ease;
+    box-shadow: 12px 0 35px rgba(0,0,0,.45);
+  }
+  .sidebar.mobile-open { transform: translateX(0); }
+  .sidebar.collapsed { width: min(280px, 85vw) !important; }
+  .sidebar.collapsed .sb-logo-text,
+  .sidebar.collapsed .sb-section-label {
+    opacity: 1;
+    width: auto;
+    height: auto;
+  }
+  .main-content {
+    width: 100%;
+    min-width: 0;
+    flex: 1 1 100%;
+  }
+}
+@media (max-width: 600px) {
+  .app-layout { width: 100%; overflow: hidden; }
+  #topbar { width: 100%; min-height: 56px; flex-wrap: nowrap; }
+  .tb-left, .tb-right { flex-shrink: 1; min-width: 0; }
+  .tb-left .brand {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .view, .view.show {
+    width: 100%;
+    min-width: 0;
+    overflow-x: hidden;
+  }
+  .cat-grid, .channel-grid, .ch-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    width: 100%;
+    min-width: 0;
+  }
+  .cat-grid > *, .channel-grid > *, .ch-grid > * {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .hero-banner {
+    min-height: 220px;
+    height: auto;
+    padding: 20px 14px;
+  }
+  .channels-content, .home-content {
+    min-width: 0;
+    max-width: 100%;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  video, iframe {
+    width: 100%;
+    max-width: 100%;
+    object-fit: contain;
+  }
+  input, select, textarea { max-width: 100%; min-width: 0; }
+  button, .tb-btn, .md-btn { touch-action: manipulation; }
+}
+@media (max-width: 380px) {
+  .cat-grid, .channel-grid, .ch-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+  .tb-left .brand { font-size: 14px !important; }
+}
+@media (orientation: landscape) and (max-height: 500px) and (max-width: 900px) {
+  .sidebar { overflow-y: auto; }
+  video { max-height: 75dvh; }
+}
+/* ===== END RESPONSIVE FIX ===== */
+</style>
   
   <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app-compat.js"></script>
@@ -660,6 +1357,21 @@
 
 <!-- ====== SIDEBAR ====== -->
 <div class="app-layout" id="app-layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sb-header">
+    <div class="sb-logo-icon">G</div>
+    <div class="sb-logo sb-logo-text">IPTV <span class="r">GLOBAL HD</span></div>
+  </div>
+  <nav class="sb-nav">
+    <div class="sb-section-label">MENÚ PRINCIPAL</div>
+    <button class="sb-btn active" data-view="home" onclick="showView('home')"><span class="sb-btn-icon">🏠</span><span class="sb-btn-label">Inicio</span></button>
+    <button class="sb-btn" data-view="channels" onclick="showView('channels')"><span class="sb-btn-icon">📺</span><span class="sb-btn-label">TV en Vivo</span></button>
+    <button class="sb-btn" data-view="movies" onclick="showView('movies')"><span class="sb-btn-icon">🎬</span><span class="sb-btn-label">Películas</span></button>
+    <button class="sb-btn" data-view="series" onclick="showView('series')"><span class="sb-btn-icon">🍿</span><span class="sb-btn-label">Series</span></button>
+    <div class="sb-section-label">PERSONAL</div>
+    <button class="sb-btn" onclick="document.getElementById('btn-favs')?.click()"><span class="sb-btn-icon">⭐</span><span class="sb-btn-label">Favoritos</span></button>
+  </nav>
+</aside>
 
 
 
@@ -667,7 +1379,7 @@
 
 <div class="main-content" id="main-content">
 
-<div id="v-byoc" class="view" style="align-items:center; justify-content:center; height:100vh; background:#0b0d13;">
+<div id="v-login" class="view" style="align-items:center; justify-content:center; height:100vh; background:#0b0d13;">
   <div style="background:#151821; padding:32px; border-radius:12px; width:90%; max-width:400px; text-align:center;">
     <h2 style="color:white; margin-bottom:20px;">IPTV Global V3</h2>
     <input type="text" id="byoc-server" placeholder="URL Servidor (ej. http://tv.com:8080)" style="width:100%; padding:12px; margin-bottom:12px; border-radius:8px; border:none; background:#222; color:white;">
@@ -1154,7 +1866,7 @@ function setLogo(imgEl, src, name) {
 }
 
 function showView(name) {
-    const vByoc=$("v-byoc"); if(vByoc) vByoc.classList.remove("show");
+    const vByoc=$("v-login"); if(vByoc) vByoc.classList.remove("show");
   [vLogin,vHome,vChannels,vPlayer,vAdmin,vMovies,vSeries,vSeriesInfo].forEach(v=>v?.classList.remove('show'));
   topbar.style.display = (name!=='login' && name!=='player' && name!=='admin') ? 'flex' : 'none';
   if(name==='login')    vLogin?.classList.add('show');
@@ -1167,7 +1879,10 @@ function showView(name) {
   if(name==='admin')    vAdmin?.classList.add('show');
   if(name==='series-info') vSeriesInfo?.classList.add('show');
   
-  ['btn-nav-tv','btn-nav-movies','btn-nav-series'].forEach(id=>{if($(id)) $(id).classList.remove('active-nav')});
+    ['btn-nav-tv','btn-nav-movies','btn-nav-series'].forEach(id=>{if($(id)) $(id).classList.remove('active-nav')});
+  document.querySelectorAll('.sb-btn[data-view]').forEach(btn=>{
+    btn.classList.toggle('active', btn.dataset.view === name);
+  });
   if(name==='home' && $('btn-nav-tv')) $('btn-nav-tv').classList.add('active-nav');
   if(name==='movies' && $('btn-nav-movies')) $('btn-nav-movies').classList.add('active-nav');
   if(name==='series' && $('btn-nav-series')) $('btn-nav-series').classList.add('active-nav');
@@ -1371,7 +2086,35 @@ function renderCats(cats) {
   });
 }
 
+function bindMediaCategorySearch() {
+  const vodSearch = document.getElementById('vod-search');
+  const seriesSearch = document.getElementById('series-search');
+
+  if (vodSearch && !vodSearch.dataset.filterBound) {
+    vodSearch.dataset.filterBound = '1';
+    vodSearch.addEventListener('input', () => {
+      const query = vodSearch.value.trim().toLocaleLowerCase();
+      const source = Array.isArray(S.vodCats) ? S.vodCats : [];
+      renderVodCats(source.filter(cat =>
+        String(cat.category_name || '').toLocaleLowerCase().includes(query)
+      ));
+    });
+  }
+
+  if (seriesSearch && !seriesSearch.dataset.filterBound) {
+    seriesSearch.dataset.filterBound = '1';
+    seriesSearch.addEventListener('input', () => {
+      const query = seriesSearch.value.trim().toLocaleLowerCase();
+      const source = Array.isArray(S.seriesCats) ? S.seriesCats : [];
+      renderSeriesCats(source.filter(cat =>
+        String(cat.category_name || '').toLocaleLowerCase().includes(query)
+      ));
+    });
+  }
+}
+
 function renderVodCats(cats) {
+  bindMediaCategorySearch();
   const grid=document.getElementById('vod-grid'); if(!grid) return;
   grid.innerHTML='';
   if(!cats.length){grid.innerHTML='<div class="state-box"><div class="icon">🎬</div><p>No hay películas</p></div>';return;}
@@ -1771,13 +2514,70 @@ btnForward.onclick = () => { vid.currentTime = Math.min(vid.duration || Infinity
 btnMute.onclick = () => { vid.muted = !vid.muted; btnMute.textContent = vid.muted || vid.volume===0 ? '🔇' : '🔊'; };
 volSlider.oninput = (e) => { vid.volume = e.target.value; vid.muted = false; btnMute.textContent = vid.volume===0 ? '🔇' : '🔊'; };
 
-btnFullscreen.onclick = () => {
-  if(!document.fullscreenElement) document.querySelector('.player-main').requestFullscreen();
-  else document.exitFullscreen();
-};
-document.addEventListener('fullscreenchange', () => {
-  btnFullscreen.textContent = document.fullscreenElement ? '🗗' : '⛶';
+const playerMain = document.querySelector('.player-main');
+
+function isPlayerFullscreen() {
+  return !!(
+    document.fullscreenElement ||
+    document.webkitFullscreenElement ||
+    document.mozFullScreenElement ||
+    document.msFullscreenElement ||
+    vid.webkitDisplayingFullscreen
+  );
+}
+
+function updateFullscreenButton() {
+  btnFullscreen.textContent = isPlayerFullscreen() ? '🗗' : '⛶';
+  btnFullscreen.title = isPlayerFullscreen()
+    ? 'Salir de pantalla completa'
+    : 'Pantalla completa';
+}
+
+btnFullscreen.onclick = async () => {
+  try {
+    if (isPlayerFullscreen()) {
+      if (document.exitFullscreen) await document.exitFullscreen();
+      else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+      else if (document.mozCancelFullScreen) document.mozCancelFullScreen();
+      else if (document.msExitFullscreen) document.msExitFullscreen();
+      else if (vid.webkitExitFullscreen) vid.webkitExitFullscreen();
+      return;
+    }
+
+    if (playerMain.requestFullscreen) {
+      await playerMain.requestFullscreen();
+    } else if (playerMain.webkitRequestFullscreen) {
+      playerMain.webkitRequestFullscreen();
+    } else if (playerMain.mozRequestFullScreen) {
+      playerMain.mozRequestFullScreen();
+    } else if (playerMain.msRequestFullscreen) {
+      playerMain.msRequestFullscreen();
+    } else if (vid.webkitEnterFullscreen) {
+      // Safari en iPhone y iPad.
+      vid.webkitEnterFullscreen();
+    } else {
+      console.warn('Este navegador no admite pantalla completa.');
+    }
+  } catch (error) {
+    console.error('No se pudo activar pantalla completa:', error);
+  }
+
+  updateFullscreenButton();
+}
+
+[
+  'fullscreenchange',
+  'webkitfullscreenchange',
+  'mozfullscreenchange',
+  'MSFullscreenChange'
+].forEach(eventName => {
+  document.addEventListener(eventName, updateFullscreenButton);
 });
+
+vid.addEventListener('webkitbeginfullscreen', updateFullscreenButton);
+vid.addEventListener('webkitendfullscreen', updateFullscreenButton);
+
+updateFullscreenButton();
 
 progressContainer.onclick = (e) => {
   if(!vid.duration) return;
@@ -1788,6 +2588,38 @@ progressContainer.onclick = (e) => {
 
 // Clic en el video para Pausar/Reproducir
 vid.onclick = () => btnPlayPause.click();
+
+// Sincronización de la interfaz del reproductor
+const formatPlayerTime = seconds => {
+  if (!Number.isFinite(seconds) || seconds < 0) return '00:00';
+  const h = Math.floor(seconds / 3600);
+  const m = Math.floor((seconds % 3600) / 60);
+  const s = Math.floor(seconds % 60);
+  return h > 0
+    ? `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`
+    : `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+};
+
+function updatePlayerInterface() {
+  const duration = Number.isFinite(vid.duration) ? vid.duration : 0;
+  const current = Number.isFinite(vid.currentTime) ? vid.currentTime : 0;
+  const percentage = duration > 0 ? Math.min(100, current / duration * 100) : 0;
+
+  $('progress-fill').style.width = percentage + '%';
+  $('progress-thumb').style.left = percentage + '%';
+  $('time-display').textContent =
+    `${formatPlayerTime(current)} / ${formatPlayerTime(duration)}`;
+
+  $('btn-play-pause').textContent = vid.paused ? '▶' : '⏸';
+}
+
+vid.addEventListener('timeupdate', updatePlayerInterface);
+vid.addEventListener('durationchange', updatePlayerInterface);
+vid.addEventListener('loadedmetadata', updatePlayerInterface);
+vid.addEventListener('play', updatePlayerInterface);
+vid.addEventListener('pause', updatePlayerInterface);
+vid.addEventListener('ended', updatePlayerInterface);
+vid.addEventListener('seeked', updatePlayerInterface);
 
 // ------------------------------
 
@@ -2136,31 +2968,85 @@ if($('btn-favs')) $('btn-favs').onclick = () => alert('Próximamente');
 // --- MENU MOVIL ---
 const mNavBtn = $('mobile-nav-btn');
 const mDropdown = $('mobile-dropdown');
-if(mNavBtn && mDropdown) {
+const sidebar = $('sidebar');
+
+if(mNavBtn && sidebar) {
+    let drawerBackdrop = $('drawer-backdrop');
+
+    if(!drawerBackdrop) {
+        drawerBackdrop = document.createElement('div');
+        drawerBackdrop.id = 'drawer-backdrop';
+        drawerBackdrop.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.62);z-index:999;display:none;opacity:0;transition:opacity .25s ease;';
+        document.body.appendChild(drawerBackdrop);
+    }
+
+    const closeMobileDrawer = () => {
+        sidebar.classList.remove('mobile-open');
+        drawerBackdrop.style.opacity = '0';
+        drawerBackdrop.style.display = 'none';
+        mNavBtn.setAttribute('aria-expanded', 'false');
+    };
+
+    const openMobileDrawer = () => {
+        if(mDropdown) mDropdown.classList.remove('show');
+        sidebar.classList.add('mobile-open');
+        drawerBackdrop.style.display = 'block';
+        requestAnimationFrame(() => drawerBackdrop.style.opacity = '1');
+        mNavBtn.setAttribute('aria-expanded', 'true');
+    };
+
+    mNavBtn.setAttribute('aria-controls', 'sidebar');
+    mNavBtn.setAttribute('aria-expanded', 'false');
+
     mNavBtn.onclick = (e) => {
         e.stopPropagation();
-        mDropdown.classList.toggle('show');
+        if(sidebar.classList.contains('mobile-open')) {
+            closeMobileDrawer();
+        } else {
+            openMobileDrawer();
+        }
     };
+
+    drawerBackdrop.addEventListener('click', closeMobileDrawer);
+
+    document.addEventListener('keydown', (e) => {
+        if(e.key === 'Escape') closeMobileDrawer();
+    });
+
+    sidebar.addEventListener('click', (e) => {
+        if(e.target.closest('button, a, [role="button"]')) {
+            closeMobileDrawer();
+        }
+    });
+
+    window.addEventListener('resize', () => {
+        if(window.innerWidth > 900) closeMobileDrawer();
+    });
+}
+
+if(mDropdown) {
     document.addEventListener('click', (e) => {
         if(!mDropdown.contains(e.target) && e.target !== mNavBtn) {
             mDropdown.classList.remove('show');
         }
     });
 }
-if($('md-btn-tv')) $('md-btn-tv').onclick = () => { showView('home'); mDropdown.classList.remove('show'); };
-if($('md-btn-movies')) $('md-btn-movies').onclick = () => { showView('movies'); mDropdown.classList.remove('show'); };
-if($('md-btn-series')) $('md-btn-series').onclick = () => { showView('series'); mDropdown.classList.remove('show'); };
-if($('md-btn-favs')) $('md-btn-favs').onclick = () => { alert('Próximamente'); mDropdown.classList.remove('show'); };
-if($('md-btn-account')) $('md-btn-account').onclick = () => { alert('Cuenta Premium'); mDropdown.classList.remove('show'); };
-if($('md-btn-logout')) $('md-btn-logout').onclick = () => { 
-    mDropdown.classList.remove('show');
-    if($('btn-logout')) $('btn-logout').click(); 
+
+if($('md-btn-tv')) $('md-btn-tv').onclick = () => { showView('home'); if(mDropdown) mDropdown.classList.remove('show'); };
+if($('md-btn-movies')) $('md-btn-movies').onclick = () => { showView('movies'); if(mDropdown) mDropdown.classList.remove('show'); };
+if($('md-btn-series')) $('md-btn-series').onclick = () => { showView('series'); if(mDropdown) mDropdown.classList.remove('show'); };
+if($('md-btn-favs')) $('md-btn-favs').onclick = () => { alert('Próximamente'); if(mDropdown) mDropdown.classList.remove('show'); };
+if($('md-btn-account')) $('md-btn-account').onclick = () => { alert('Cuenta Premium'); if(mDropdown) mDropdown.classList.remove('show'); };
+if($('md-btn-logout')) $('md-btn-logout').onclick = () => {
+    if(mDropdown) mDropdown.classList.remove('show');
+    if($('btn-logout')) $('btn-logout').click();
 };
 
 async function boot() {
     try {
         // Modo de prueba temporal: Intentar obtener la sesión pre-creada del backend
-        let res = await fetch('/api/test_session').then(r => r.json()).catch(() => ({}));
+        // El endpoint /api/test_session fue eliminado; no solicitar una sesión de prueba.
+        let res = {};
         if (res.sessionId) {
             S.sessionId = res.sessionId;
             console.log('TEST MODE: Loaded auto-session', S.sessionId);
